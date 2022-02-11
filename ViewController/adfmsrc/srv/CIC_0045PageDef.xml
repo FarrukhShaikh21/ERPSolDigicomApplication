@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0045PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvStnreceivingCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvStnreceivingCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvStnrecepartsDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvStnrecepartsDETCRUDIterator"/>
+    <searchRegion Criteria="SrvStnreceivingFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvStnreceivingCRUDIterator" id="SrvStnreceivingFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvStnreceivingCRUDIterator" id="Receno">
+      <AttrNames>
+        <Item Value="Receno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStnreceivingCRUDIterator" id="Recedate">
+      <AttrNames>
+        <Item Value="Recedate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStnreceivingCRUDIterator" id="Locationid">
+      <AttrNames>
+        <Item Value="Locationid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStnreceivingCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvStnreceivingCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvStnreceivingCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvStnreceivingCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvStnreceivingCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <attributeValues IterBinding="SrvStnreceivingCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvStnreceivingCRUDIterator" StaticList="false" Uses="LovSrnStnVO" id="Stnno"/>
+    <tree IterBinding="SrvStnrecepartsDETCRUDIterator" id="SrvStnrecepartsDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvStnrecepartsVO" Name="SrvStnrecepartsDETCRUD0">
+        <AttrNames>
+          <Item Value="Stndetlid"/>
+          <Item Value="Partid"/>
+          <Item Value="Receqty"/>
+          <Item Value="txtPartName"/>
+          <Item Value="txtPartNo"/>
+          <Item Value="txtStoreName"/>
+          <Item Value="txtTotalRecord"/>
+          <Item Value="txtSumRecQty"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvStnrecepartsDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvStnrecepartsDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <methodAction id="doSubmitStnReceiving" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitStnReceiving" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvStnreceivingCRUD"/>
+    <attributeValues IterBinding="SrvStnreceivingCRUDIterator" id="CourierNo">
+      <AttrNames>
+        <Item Value="CourierNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStnreceivingCRUDIterator" id="CourierAmount">
+      <AttrNames>
+        <Item Value="CourierAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SrvStnreceivingCRUDIterator" StaticList="false" Uses="LovPuSuppliers" id="Supplierid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SrvStnrecepartsDETCRUDIterator" id="txtSumRecQty">
+      <AttrNames>
+        <Item Value="txtSumRecQty"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStnrecepartsDETCRUDIterator" id="txtTotalRecord">
+      <AttrNames>
+        <Item Value="txtTotalRecord"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

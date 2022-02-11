@@ -1,0 +1,80 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Login" id="d1" binding="#{backingBeanScope.backing_Login.d1}" initialFocusId="it1">
+        <af:form id="f1" binding="#{backingBeanScope.backing_Login.f1}">
+            <af:decorativeBox id="db1" binding="#{backingBeanScope.backing_Login.db1}" dimensionsFrom="parent"
+                              theme="medium" topHeight="0">
+                <f:facet name="center">
+                    <af:panelStretchLayout id="psl1" binding="#{backingBeanScope.backing_Login.psl1}" startWidth="70%"
+                                           endWidth="50px" topHeight="13pc" dimensionsFrom="children"
+                                           styleClass="BKImage">
+                        <f:facet name="center">
+                            <af:panelBox text="Enter Login Credential" id="pb1" binding="#{backingBeanScope.backing_Login.pb1}" showDisclosure="false"
+                                         icon="#{resource['images:imgLoginCard.png']}">
+                                <af:panelFormLayout id="pfl1" binding="#{backingBeanScope.backing_Login.pfl1}"
+                                                    styleClass="LoginForm"
+                                                    maxColumns="1" rows="1">
+                                    <f:facet name="footer">
+                                        <af:panelGroupLayout id="pgl1" binding="#{backingBeanScope.backing_Login.pgl1}"
+                                                             layout="horizontal">
+                                            <af:spacer width="100" height="10" id="s6"
+                                                       binding="#{backingBeanScope.backing_Login.s6}"/>
+                                            <af:button text="Login" id="b1"
+                                                       binding="#{backingBeanScope.backing_Login.b1}"
+                                                       styleClass="LoginButton"
+                                                       action="#{backingBeanScope.backing_Login.doLogin}">
+                                                <af:setActionListener to="#{TheAppBean.gotoActivity}" from="#{null}"/>
+                                            </af:button>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                    <af:panelGroupLayout id="pgl3" binding="#{backingBeanScope.backing_Login.pgl3}"
+                                                         layout="vertical">
+                                        <af:panelGroupLayout id="pgl4" binding="#{backingBeanScope.backing_Login.pgl4}"
+                                                             layout="horizontal">
+                                            <af:image source="#{resource['images:imgInputUser.png']}" id="i2"
+                                                      binding="#{backingBeanScope.backing_Login.i2}"/>
+                                            <af:inputText label="User Name" id="it1"
+                                                          binding="#{backingBeanScope.backing_Login.it1}"
+                                                          styleClass="IText" contentStyle="text-transform:uppercase;"
+                                                          labelStyle="font-weight:bold;color:blue" showRequired="true" simple="true"
+                                                          clientComponent="true"/>
+                                        </af:panelGroupLayout>
+                                        <af:panelGroupLayout id="pgl5" binding="#{backingBeanScope.backing_Login.pgl5}"
+                                                             layout="horizontal">
+                                            <af:image source="#{resource['images:imgInputPassword.png']}" id="i3"
+                                                      binding="#{backingBeanScope.backing_Login.i3}"/>
+                                            <af:inputText label="Password" id="it2"
+                                                          binding="#{backingBeanScope.backing_Login.it2}"
+                                                          styleClass="IText" showRequired="true" secret="true" simple="true"/>
+                                        </af:panelGroupLayout>
+                                        <f:facet name="separator">
+                                            <af:spacer width="10" height="10" id="s4"
+                                                       binding="#{backingBeanScope.backing_Login.s4}"/>
+                                        </f:facet>
+                                    </af:panelGroupLayout>
+                                </af:panelFormLayout>
+                            </af:panelBox>
+                        </f:facet>
+                        <f:facet name="start">
+                            <af:spacer width="10" height="10" id="s1" binding="#{backingBeanScope.backing_Login.s1}"/>
+                        </f:facet>
+                        <f:facet name="end">
+                            <af:spacer width="10" height="10" id="s2" binding="#{backingBeanScope.backing_Login.s2}"/>
+                        </f:facet>
+                        <f:facet name="top">
+                            <af:spacer width="10" height="10" id="s3" binding="#{backingBeanScope.backing_Login.s3}"/>
+                        </f:facet>
+                    </af:panelStretchLayout>
+                </f:facet>
+                <f:facet name="top">
+                    <af:panelGroupLayout id="pgl2" binding="#{backingBeanScope.backing_Login.pgl2}">
+                        <af:image id="i1" binding="#{backingBeanScope.backing_Login.i1}"
+                                  source="#{resource['images:digicom.jpg']}"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:decorativeBox>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_Login-->
+</f:view>

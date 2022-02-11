@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0196PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvRfwarrantyCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvRfwarrantyCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvRfwdetlDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvRfwdetlDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvRfwarrantyFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvRfwarrantyCRUDIterator" id="SrvRfwarrantyFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvRfwarrantyCRUDIterator" id="Rfwid">
+      <AttrNames>
+        <Item Value="Rfwid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvRfwarrantyCRUDIterator" id="Locationid">
+      <AttrNames>
+        <Item Value="Locationid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvRfwarrantyCRUDIterator" id="Rdate">
+      <AttrNames>
+        <Item Value="Rdate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvRfwarrantyCRUDIterator" id="Postedby">
+      <AttrNames>
+        <Item Value="Postedby"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvRfwarrantyCRUDIterator" id="Createdby">
+      <AttrNames>
+        <Item Value="Createdby"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvRfwarrantyCRUDIterator" id="Reason">
+      <AttrNames>
+        <Item Value="Reason"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvRfwarrantyCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvRfwarrantyCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvRfwarrantyCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action IterBinding="SrvRfwarrantyCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvRfwarrantyCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="SrvRfwdetlDETCRUDIterator" id="SrvRfwdetlDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvRfwdetlVO" Name="SrvRfwdetlDETCRUD0">
+        <AttrNames>
+          <Item Value="Jobcardno"/>
+          <Item Value="Itemid"/>
+          <Item Value="Startdate"/>
+          <Item Value="Expdate"/>
+          <Item Value="NewItemid"/>
+          <Item Value="ImeiNo"/>
+          <Item Value="txtItemidDesc"/>
+          <Item Value="txtNewItemIdDesc"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvRfwdetlDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvRfwdetlDETCRUDIterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="SrvRfwarrantyCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doCreateNewWarrantyRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewWarrantyRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvRfwarrantyCRUD"/>
+    <methodAction id="doCreateNewWarrantyDetRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewWarrantyDetRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvRfwdetlDETCRUD"/>
+    <methodAction id="doSubmitWarrantyRefresh" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitWarrantyRefresh" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvRfwarrantyCRUD"/>
+  </bindings>
+</pageDefinition>

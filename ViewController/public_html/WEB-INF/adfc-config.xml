@@ -1,2 +1,100 @@
 <?xml version="1.0" encoding="windows-1252" ?>
-<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2"></adfc-config>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <view id="Login">
+    <page>/Login.jsf</page>
+  </view>
+  <method-call id="doTreeNull">
+    <method>#{TheAppBean.collapseAllTreeNodes}</method>
+    <outcome>
+      <fixed-outcome>doRemoveTree</fixed-outcome>
+    </outcome>
+  </method-call>
+  <method-call id="doRemoveTree">
+    <method>#{TheAppBean.doRemoeTree}</method>
+    <outcome>
+      <fixed-outcome>populateTree</fixed-outcome>
+    </outcome>
+  </method-call>
+  <method-call id="doPopulateTree">
+    <method>#{TheAppBean.doCreateTree}</method>
+    <outcome>
+      <fixed-outcome>taskFlowCalls</fixed-outcome>
+    </outcome>
+  </method-call>
+  <task-flow-call id="TFDigicomMain">
+    <task-flow-reference>
+      <document>/WEB-INF/TFDigicomMain.xml</document>
+      <id>TFDigicomMain</id>
+    </task-flow-reference>
+  </task-flow-call>
+  <method-call id="Execute">
+    <method>#{bindings.Execute.execute}</method>
+    <outcome>
+      <fixed-outcome>Execute</fixed-outcome>
+    </outcome>
+  </method-call>
+  <control-flow-rule id="__3">
+    <from-activity-id>Login</from-activity-id>
+    <control-flow-case id="__4">
+      <from-outcome>taskFlowCall</from-outcome>
+      <to-activity-id>Execute</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__5">
+    <from-activity-id>doTreeNull</from-activity-id>
+    <control-flow-case id="__6">
+      <from-outcome>doRemoveTree</from-outcome>
+      <to-activity-id>doRemoveTree</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__7">
+    <from-activity-id>doRemoveTree</from-activity-id>
+    <control-flow-case id="__8">
+      <from-outcome>populateTree</from-outcome>
+      <to-activity-id>doPopulateTree</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__9">
+    <from-activity-id>doPopulateTree</from-activity-id>
+    <control-flow-case id="__10">
+      <from-outcome>taskFlowCalls</from-outcome>
+      <to-activity-id>TFDigicomMain</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__12">
+    <from-activity-id>Execute</from-activity-id>
+    <control-flow-case id="__13">
+      <from-outcome>Execute</from-outcome>
+      <to-activity-id>TFDigicomMain</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__1">
+    <managed-bean-name>backing_Login</managed-bean-name>
+    <managed-bean-class>dgcom.view.backing.Login</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1Login.jsf-->
+  </managed-bean>
+  <managed-bean id="__2">
+    <managed-bean-name>TheAppBean</managed-bean-name>
+    <managed-bean-class>dgcom.view.appbean.TheAppBean</managed-bean-class>
+    <managed-bean-scope>session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__11">
+    <managed-bean-name>backing_CIC_0017</managed-bean-name>
+    <managed-bean-class>dgcom.view.backing.CIC_0017</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1srv/CIC_0017.jsf-->
+  </managed-bean>
+  <managed-bean id="__14">
+    <managed-bean-name>backing_CIC_0206</managed-bean-name>
+    <managed-bean-class>dgcom.view.backing.CIC_0206</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1srv/CIC_0206.jsf-->
+  </managed-bean>
+  <managed-bean id="__15">
+    <managed-bean-name>backing_CIC_0207</managed-bean-name>
+    <managed-bean-class>dgcom.view.backing.CIC_0207</managed-bean-class>
+    <managed-bean-scope>backingBean</managed-bean-scope>
+    <!--oracle-jdev-comment:managed-bean-jsp-link:1srv/CIC_0207.jsf-->
+  </managed-bean>
+</adfc-config>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0201PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvDiscountNoteCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvDiscountNoteCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvDnDetailDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvDnDetailDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvDiscountNoteFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvDiscountNoteCRUDIterator" id="SrvDiscountNoteFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvDiscountNoteCRUDIterator" id="DnoteId">
+      <AttrNames>
+        <Item Value="DnoteId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDiscountNoteCRUDIterator" id="DnDate">
+      <AttrNames>
+        <Item Value="DnDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDiscountNoteCRUDIterator" id="Locationid">
+      <AttrNames>
+        <Item Value="Locationid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDiscountNoteCRUDIterator" id="DocType">
+      <AttrNames>
+        <Item Value="DocType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDiscountNoteCRUDIterator" id="Amount">
+      <AttrNames>
+        <Item Value="Amount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDiscountNoteCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvDiscountNoteCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvDiscountNoteCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvDiscountNoteCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="SrvDiscountNoteCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <attributeValues IterBinding="SrvDiscountNoteCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvDiscountNoteCRUDIterator" StaticList="false" Uses="LovSrvDealersDealerID"
+                  id="DealerId"/>
+    <tree IterBinding="SrvDnDetailDETCRUDIterator" id="SrvDnDetailDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvDnDetailVO" Name="SrvDnDetailDETCRUD0">
+        <AttrNames>
+          <Item Value="Documentid"/>
+          <Item Value="DocAmount"/>
+          <Item Value="DiscAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvDnDetailDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvDnDetailDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <methodAction id="doSubmitSrvDiscountNote" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitSrvDiscountNote" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvDiscountNoteCRUD"/>
+  </bindings>
+</pageDefinition>

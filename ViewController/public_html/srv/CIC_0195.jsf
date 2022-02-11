@@ -1,0 +1,186 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="CIC_0195.jsf" id="d1" binding="#{backingBeanScope.backing_CIC_0195.d1}"
+                 initialFocusId="pt1:tolocationidId" partialTriggers="pt1:b1">
+        <af:clientListener method="window.registerKeyBoardHandler" type="load"/>
+        <af:messages id="m1" binding="#{backingBeanScope.backing_CIC_0195.m1}"/>
+        <af:form id="f1" partialTriggers="pt1:b7 pt1:b6 pt1:b5 pt1:b1 pt1:b4 pt1:b2 pt1:b3"
+                 binding="#{backingBeanScope.backing_CIC_0195.f1}">
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p2"
+                      binding="#{backingBeanScope.backing_CIC_0195.p2}"
+                      popupFetchListener="#{backingBeanScope.backing_CIC_0195.deptPopUpFetchListener}">
+                <af:dialog id="d3" binding="#{backingBeanScope.backing_CIC_0195.d3}">
+                    <f:facet name="buttonBar"/>
+                    <af:panelGroupLayout layout="vertical" id="pgl2"
+                                         binding="#{backingBeanScope.backing_CIC_0195.pgl2}">
+                        <af:panelHeader text="SrvJobreturn" id="ph1" binding="#{backingBeanScope.backing_CIC_0195.ph1}">
+                            <af:query id="qryId1" headerText="Search" disclosed="true"
+                                      value="#{bindings.SrvJobreturnFindVCQuery.queryDescriptor}"
+                                      model="#{bindings.SrvJobreturnFindVCQuery.queryModel}"
+                                      queryListener="#{bindings.SrvJobreturnFindVCQuery.processQuery}"
+                                      queryOperationListener="#{bindings.SrvJobreturnFindVCQuery.processQueryOperation}"
+                                      binding="#{backingBeanScope.backing_CIC_0195.qryId1}" saveResultsLayout="never"
+                                      runQueryAutomatically="allSavedSearches"/>
+                        </af:panelHeader>
+                    </af:panelGroupLayout>
+                </af:dialog>
+            </af:popup>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                      binding="#{backingBeanScope.backing_CIC_0195.p1}">
+                <af:dialog id="d2" binding="#{backingBeanScope.backing_CIC_0195.d2}" type="yesNo"
+                           title="Do you want to submit this transaction?" closeIconVisible="false"
+                           dialogListener="#{backingBeanScope.backing_CIC_0195.doDialogEventSubmit}">
+                    <f:facet name="buttonBar"/>
+                </af:dialog>
+            </af:popup>
+            <af:pageTemplate viewId="/tmpDigicomTemplate.jsf" value="#{bindings.ptb1}" id="pt1"
+                             binding="#{backingBeanScope.backing_CIC_0195.pt1}">
+                <f:facet name="left"/>
+                <f:facet name="middle">
+                    <af:panelFormLayout id="pfl1" binding="#{backingBeanScope.backing_CIC_0195.pfl1}">
+                        <af:panelLabelAndMessage label="#{bindings.Jobretid.hints.label}" id="plam1"
+                                                 binding="#{backingBeanScope.backing_CIC_0195.plam1}">
+                            <af:inputText value="#{bindings.Jobretid.inputValue}"
+                                          label="#{bindings.Jobretid.hints.label}"
+                                          required="#{bindings.Jobretid.hints.mandatory}"
+                                          columns="#{bindings.Jobretid.hints.displayWidth}"
+                                          maximumLength="#{bindings.Jobretid.hints.precision}"
+                                          shortDesc="#{bindings.Jobretid.hints.tooltip}" id="it1" readOnly="true"
+                                          visible="#{bindings.Jobretid.inputValue>'0'}" simple="true"
+                                          binding="#{backingBeanScope.backing_CIC_0195.it1}">
+                                <f:validator binding="#{bindings.Jobretid.validator}"/>
+                            </af:inputText>
+                        </af:panelLabelAndMessage>
+                        <af:inputText value="#{bindings.Locationid.inputValue}"
+                                      label="#{bindings.Locationid.hints.label}"
+                                      required="#{bindings.Locationid.hints.mandatory}"
+                                      columns="#{bindings.Locationid.hints.displayWidth}"
+                                      maximumLength="#{bindings.Locationid.hints.precision}"
+                                      shortDesc="#{bindings.Locationid.hints.tooltip}" id="it2"
+                                      binding="#{backingBeanScope.backing_CIC_0195.it2}"
+                                      readOnly="#{data.dgcom_view_LoginPageDef.HLevel.inputValue=='U'||data.dgcom_view_LoginPageDef.HLevel.inputValue=='L'}">
+                            <f:validator binding="#{bindings.Locationid.validator}"/>
+                        </af:inputText>
+                        <af:inputListOfValues id="tolocationidId"
+                                              popupTitle="Search and Select: #{bindings.Tolocationid.hints.label}"
+                                              value="#{bindings.Tolocationid.inputValue}"
+                                              label="#{bindings.Tolocationid.hints.label}"
+                                              model="#{bindings.Tolocationid.listOfValuesModel}"
+                                              required="#{bindings.Tolocationid.hints.mandatory}"
+                                              columns="#{bindings.Tolocationid.hints.displayWidth}"
+                                              shortDesc="#{bindings.Tolocationid.hints.tooltip}" autoSubmit="true"
+                                              binding="#{backingBeanScope.backing_CIC_0195.tolocationidId}"
+                                              clientComponent="true">
+                            <f:validator binding="#{bindings.Tolocationid.validator}"/>
+                        </af:inputListOfValues>
+                        <af:inputDate value="#{bindings.Jrdate.inputValue}" label="#{bindings.Jrdate.hints.label}"
+                                      required="#{bindings.Jrdate.hints.mandatory}"
+                                      columns="#{bindings.Jrdate.hints.displayWidth}"
+                                      shortDesc="#{bindings.Jrdate.hints.tooltip}" id="id1"
+                                      binding="#{backingBeanScope.backing_CIC_0195.id1}">
+                            <f:validator binding="#{bindings.Jrdate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.Jrdate.format}"/>
+                        </af:inputDate>
+                        <af:inputText value="#{bindings.Remarks.inputValue}" label="#{bindings.Remarks.hints.label}"
+                                      required="#{bindings.Remarks.hints.mandatory}"
+                                      columns="#{bindings.Remarks.hints.displayWidth}"
+                                      maximumLength="#{bindings.Remarks.hints.precision}"
+                                      shortDesc="#{bindings.Remarks.hints.tooltip}" id="it3"
+                                      binding="#{backingBeanScope.backing_CIC_0195.it3}">
+                            <f:validator binding="#{bindings.Remarks.validator}"/>
+                        </af:inputText>
+                        <f:facet name="footer"/>
+                    </af:panelFormLayout>
+                    <af:panelCollection id="pc1" binding="#{backingBeanScope.backing_CIC_0195.pc1}"
+                                        partialTriggers="b8 b9" featuresOff="detach viewMenu">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2" binding="#{backingBeanScope.backing_CIC_0195.t2}">
+                                <af:button actionListener="#{bindings.CreateInsert1.execute}" text="New"
+                                           disabled="#{bindings.Posted.inputValue=='Y'}" id="b8"
+                                           binding="#{backingBeanScope.backing_CIC_0195.b8}" accessKey="w"
+                                           styleClass="CRUDButton" icon="#{resource['images:imgNewDocument4.png']}"/>
+                                <af:button actionListener="#{bindings.Delete1.execute}" text="Delete"
+                                           disabled="#{bindings.Posted.inputValue=='Y'}" id="b9"
+                                           binding="#{backingBeanScope.backing_CIC_0195.b9}" styleClass="CRUDButton"
+                                           accessKey="t" icon="#{resource['images:ImgDelete.png']}" immediate="true">
+                                    <af:resetListener type="action"/>
+                                </af:button>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.SrvJobretdetlDETCIC_0195CRUD.collectionModel}" var="row"
+                                  rows="#{bindings.SrvJobretdetlDETCIC_0195CRUD.rangeSize}"
+                                  emptyText="#{bindings.SrvJobretdetlDETCIC_0195CRUD.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.SrvJobretdetlDETCIC_0195CRUD.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.SrvJobretdetlDETCIC_0195CRUD.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.SrvJobretdetlDETCIC_0195CRUD.rangeSize}"
+                                  id="t1" partialTriggers="::b8 ::b9" binding="#{backingBeanScope.backing_CIC_0195.t1}"
+                                  displayRow="selected" scrollPolicy="scroll" autoHeightRows="10">
+                            <af:column headerText="#{bindings.SrvJobretdetlDETCIC_0195CRUD.hints.Jobcardno.label}"
+                                       id="c1" width="150">
+                                <af:inputListOfValues id="jobcardnoId"
+                                                      popupTitle="Search and Select: #{bindings.SrvJobretdetlDETCIC_0195CRUD.hints.Jobcardno.label}"
+                                                      value="#{row.bindings.Jobcardno.inputValue}"
+                                                      model="#{row.bindings.Jobcardno.listOfValuesModel}"
+                                                      required="#{bindings.SrvJobretdetlDETCIC_0195CRUD.hints.Jobcardno.mandatory}"
+                                                      columns="#{bindings.SrvJobretdetlDETCIC_0195CRUD.hints.Jobcardno.displayWidth}"
+                                                      shortDesc="#{bindings.SrvJobretdetlDETCIC_0195CRUD.hints.Jobcardno.tooltip}">
+                                    <f:validator binding="#{row.bindings.Jobcardno.validator}"/>
+                                </af:inputListOfValues>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </f:facet>
+                <f:facet name="toolbar">
+                    <af:panelGroupLayout layout="horizontal" id="pgl1"
+                                         binding="#{backingBeanScope.backing_CIC_0195.pgl1}">
+                        <af:button text="Find" id="b10" binding="#{backingBeanScope.backing_CIC_0195.b10}"
+                                   styleClass="CRUDButton" accessKey="i" icon="#{resource['images:imgFind.png']}">
+                            <af:showPopupBehavior popupId="::p2" triggerType="action"/>
+                        </af:button>
+                        <af:button text="Submit" id="b7" disabled="#{bindings.Posted.inputValue=='Y'}"
+                                   binding="#{backingBeanScope.backing_CIC_0195.b7}" styleClass="CRUDButton"
+                                   accessKey="m" icon="#{resource['images:imgSubmit.png']}">
+                            <af:showPopupBehavior triggerType="action" popupId="::p1"/>
+                        </af:button>
+                        <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                                   disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"
+                                   binding="#{backingBeanScope.backing_CIC_0195.b2}" accessKey="p"
+                                   styleClass="CRUDButton" icon="#{resource['images:imgPrevious.png']}"/>
+                        <af:button actionListener="#{bindings.Next.execute}" text="Next"
+                                   disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"
+                                   binding="#{backingBeanScope.backing_CIC_0195.b3}" styleClass="CRUDButton"
+                                   accessKey="x" icon="#{resource['images:nextImage.png']}"/>
+                        <af:button text="New" disabled="#{!bindings.CreateInsert.enabled}" partialSubmit="true" id="b1"
+                                   actionListener="#{bindings.CreateInsert.execute}"
+                                   binding="#{backingBeanScope.backing_CIC_0195.b1}" accessKey="n"
+                                   styleClass="CRUDButton" icon="#{resource['images:imgNewDocument4.png']}"
+                                   action="#{backingBeanScope.backing_CIC_0195.doNew}"/>
+                        <af:button actionListener="#{bindings.Commit.execute}" text="Save"
+                                   disabled="#{!bindings.Commit.enabled}" id="b5"
+                                   binding="#{backingBeanScope.backing_CIC_0195.b5}" styleClass="CRUDButton"
+                                   accessKey="s" icon="#{resource['images:imgSave.png']}"/>
+                        <af:button actionListener="#{bindings.Rollback.execute}" text="Undo"
+                                   disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b6"
+                                   binding="#{backingBeanScope.backing_CIC_0195.b6}" accessKey="u"
+                                   styleClass="CRUDButton" icon="#{resource['images:imgUndo.png']}">
+                            <af:resetActionListener/>
+                        </af:button>
+                        <af:button text="Delete" disabled="#{bindings.Posted.inputValue=='Y'}" partialSubmit="true"
+                                   id="b4" actionListener="#{bindings.Delete.execute}"
+                                   binding="#{backingBeanScope.backing_CIC_0195.b4}" styleClass="CRUDButton"
+                                   accessKey="l" icon="#{resource['images:ImgDelete.png']}"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="top"/>
+            </af:pageTemplate>
+        </af:form>
+        <f:facet name="metaContainer">
+            <af:resource type="javascript" source="/resources/js/EditableTableNavigation.js"/>
+        </f:facet>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_CIC_0195-->
+</f:view>

@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0024PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="PuPurchaseOrdersCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="PuPurchaseOrdersCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="PuPoLinesDETLINES" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="PuPoLinesDETLINESIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="PuPurchaseOrdersFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="PuPurchaseOrdersCRUDIterator" id="PuPurchaseOrdersFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PuPurchaseOrdersCRUDIterator" id="Poid">
+      <AttrNames>
+        <Item Value="Poid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PuPurchaseOrdersCRUDIterator" id="PoDate">
+      <AttrNames>
+        <Item Value="PoDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PuPurchaseOrdersCRUDIterator" id="SuppRefno">
+      <AttrNames>
+        <Item Value="SuppRefno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PuPurchaseOrdersCRUDIterator" id="SuppRefDate">
+      <AttrNames>
+        <Item Value="SuppRefDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PuPurchaseOrdersCRUDIterator" id="ExchangeRate">
+      <AttrNames>
+        <Item Value="ExchangeRate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PuPurchaseOrdersCRUDIterator" id="Potype">
+      <AttrNames>
+        <Item Value="Potype"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="PuPurchaseOrdersCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="PuPurchaseOrdersCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="PuPurchaseOrdersCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="PuPurchaseOrdersCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <attributeValues IterBinding="PuPurchaseOrdersCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PuPurchaseOrdersCRUDIterator" StaticList="false" Uses="LovAllProdcategory" id="ProdId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="PuPurchaseOrdersCRUDIterator" StaticList="false" Uses="LovAllCurrencry" id="Currcode"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <tree IterBinding="PuPoLinesDETLINESIterator" id="PuPoLinesDETLINES">
+      <nodeDefinition DefName="dgcom.model.vo.srv.PuPoLinesVO" Name="PuPoLinesDETLINES0">
+        <AttrNames>
+          <Item Value="Dmditemid"/>
+          <Item Value="Partid"/>
+          <Item Value="Itemid"/>
+          <Item Value="ItemType"/>
+          <Item Value="DemandQty"/>
+          <Item Value="OrderQty"/>
+          <Item Value="ConfirmedQty"/>
+          <Item Value="UnitPriceInFcurr"/>
+          <Item Value="UnitPriceInBcurr"/>
+          <Item Value="DeliveryDate"/>
+          <Item Value="Remarks"/>
+          <Item Value="txtDemand" Binds="txtDemand"/>
+          <Item Value="txtFCAmount"/>
+          <Item Value="txtBCAmount"/>
+          <Item Value="txtPartNo"/>
+          <Item Value="txtPartName"/>
+          <Item Value="txtModelNo"/>
+          <Item Value="txtUnitPriceInBcurr"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="PuPoLinesDETLINESIterator" id="txtDemand" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="txtDemand"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <list IterBinding="PuPurchaseOrdersCRUDIterator" StaticList="false" Uses="LovAllDeliveryTerms" id="Deliverytermid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="PuPurchaseOrdersCRUDIterator" StaticList="false" Uses="LovAllPaymentTerms" id="Paymenttermid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <action IterBinding="PuPoLinesDETLINESIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createWithParams" InstanceName="modServiceTransactionsDataControl.PuPoLinesDETLINES"
+            DataControl="modServiceTransactionsDataControl">
+      <NamedData NDName="Poid" NDValue="#{bindings.Poid.inputValue}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="PuPoLinesDETLINESIterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <methodAction id="doSubmitPurchaseOrder" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitPurchaseOrder" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.PuPurchaseOrdersCRUD"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.doSubmitPurchaseOrder_modServiceTransactionsDataControl_PuPurchaseOrdersCRUD_doSubmitPurchaseOrder_result"/>
+    <listOfValues IterBinding="PuPurchaseOrdersCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <listOfValues IterBinding="PuPurchaseOrdersCRUDIterator" StaticList="false" Uses="LovSysUserStoreName"
+                  id="txtRecStoreName"/>
+    <attributeValues IterBinding="PuPurchaseOrdersCRUDIterator" id="ReceStoreid">
+      <AttrNames>
+        <Item Value="ReceStoreid"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="PuPurchaseOrdersCRUDIterator" StaticList="false" Uses="LovPuSuppliersName"
+                  id="txtSupplierName"/>
+    <attributeValues IterBinding="PuPurchaseOrdersCRUDIterator" id="Supplierid">
+      <AttrNames>
+        <Item Value="Supplierid"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="PuPurchaseOrdersCRUDIterator" StaticList="false" Uses="LovInItemsItemName"
+                  id="txtModelName"/>
+    <attributeValues IterBinding="PuPurchaseOrdersCRUDIterator" id="txtItemID">
+      <AttrNames>
+        <Item Value="txtItemID"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doCreateNewPurchaseOrderRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewPurchaseOrderRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.PuPurchaseOrdersCRUD"/>
+    <methodAction id="doCreatePurchaseDetailRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreatePurchaseDetailRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.PuPoLinesDETLINES"/>
+  </bindings>
+</pageDefinition>

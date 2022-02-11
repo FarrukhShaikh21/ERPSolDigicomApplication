@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0026PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvJobassignCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobassignCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJobassdetlDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobassdetlDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvJobassignFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvJobassignCRUDIterator" id="SrvJobassignFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvJobassignCRUDIterator" id="Assignid">
+      <AttrNames>
+        <Item Value="Assignid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobassignCRUDIterator" id="Assdate">
+      <AttrNames>
+        <Item Value="Assdate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobassignCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobassignCRUDIterator" id="Createdby">
+      <AttrNames>
+        <Item Value="Createdby"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobassignCRUDIterator" id="Modifiedby">
+      <AttrNames>
+        <Item Value="Modifiedby"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvJobassignCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvJobassignCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action IterBinding="SrvJobassignCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJobassignCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="SrvJobassdetlDETCRUDIterator" id="SrvJobassdetlDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJobassdetlVO" Name="SrvJobassdetlDETCRUD0">
+        <AttrNames>
+          <Item Value="Jobcardno"/>
+          <Item Value="txtModelNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvJobassdetlDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createWithParams" InstanceName="modServiceTransactionsDataControl.SrvJobassdetlDETCRUD"
+            DataControl="modServiceTransactionsDataControl">
+      <NamedData NDName="Assignid" NDValue="#{bindings.Assignid.execute}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SrvJobassdetlDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <attributeValues IterBinding="SrvJobassignCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doSubmitJobAssign" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doSubmitJobAssign"
+                  IsViewObjectMethod="true" DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobassignCRUD"/>
+    <listOfValues IterBinding="SrvJobassignCRUDIterator" StaticList="false" Uses="AccSysUserRightWiseLocation"
+                  id="Locationid"/>
+    <listOfValues IterBinding="SrvJobassignCRUDIterator" StaticList="false" Uses="LovTechnitionJobAssignTechnitionName"
+                  id="txtTechnicianName"/>
+    <attributeValues IterBinding="SrvJobassignCRUDIterator" id="Technicianid">
+      <AttrNames>
+        <Item Value="Technicianid"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doCreateNewJobAssignRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewJobAssignRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobassignCRUD"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.doCreateNewJobAssignRow_modServiceTransactionsDataControl_SrvJobassignCRUD_doCreateNewJobAssignRow_result"/>
+    <methodAction id="doCreateNewJobAssignDetRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewJobAssignDetRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobassdetlDETCRUD"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.doCreateNewJobAssignDetRow_modServiceTransactionsDataControl_SrvJobassdetlDETCRUD_doCreateNewJobAssignDetRow_result"/>
+  </bindings>
+</pageDefinition>

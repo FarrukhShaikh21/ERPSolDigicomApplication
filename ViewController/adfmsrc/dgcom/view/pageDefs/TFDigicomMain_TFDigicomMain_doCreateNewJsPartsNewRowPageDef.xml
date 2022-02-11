@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68"
+                id="TFDigicomMain_TFDigicomMain_doCreateNewJsPartsNewRowPageDef" Package="dgcom.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="doCreateNewJsPartsNewRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewJsPartsNewRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJspartsDETCRUD"/>
+  </bindings>
+</pageDefinition>

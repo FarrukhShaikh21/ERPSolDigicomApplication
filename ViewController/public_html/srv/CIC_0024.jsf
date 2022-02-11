@@ -1,0 +1,523 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="CIC_0024.jsf" id="d1" binding="#{backingBeanScope.backing_CIC_0024.d1}"
+                 initialFocusId="pt1:it3" partialTriggers="pt1:b1">
+        <af:clientListener method="window.registerKeyBoardHandler" type="load"/>
+        <af:messages id="m1" binding="#{backingBeanScope.backing_CIC_0024.m1}"/>
+        <af:form id="f1" binding="#{backingBeanScope.backing_CIC_0024.f1}"
+                 partialTriggers="pt1:b10 pt1:b7 pt1:b3 pt1:b2 pt1:b1 pt1:b4 pt1:b5 pt1:b6 p1">
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p2"
+                      binding="#{backingBeanScope.backing_CIC_0024.p2}"
+                      popupFetchListener="#{backingBeanScope.backing_CIC_0024.deptPopUpFetchListener}">
+                <af:dialog id="d3" binding="#{backingBeanScope.backing_CIC_0024.d3}" styleClass="AFStretchWidth">
+                    <f:facet name="buttonBar"/>
+                    <af:panelGroupLayout layout="vertical" id="pgl2"
+                                         binding="#{backingBeanScope.backing_CIC_0024.pgl2}">
+                        <af:panelHeader text="PuPurchaseOrders" id="ph1"
+                                        binding="#{backingBeanScope.backing_CIC_0024.ph1}">
+                            <af:query id="qryId1" headerText="Search" disclosed="true"
+                                      value="#{bindings.PuPurchaseOrdersFindVCQuery.queryDescriptor}"
+                                      model="#{bindings.PuPurchaseOrdersFindVCQuery.queryModel}"
+                                      queryListener="#{bindings.PuPurchaseOrdersFindVCQuery.processQuery}"
+                                      queryOperationListener="#{bindings.PuPurchaseOrdersFindVCQuery.processQueryOperation}"
+                                      binding="#{backingBeanScope.backing_CIC_0024.qryId1}" saveQueryMode="hidden"
+                                      runQueryAutomatically="allSavedSearches" saveResultsLayout="never"/>
+                        </af:panelHeader>
+                    </af:panelGroupLayout>
+                </af:dialog>
+            </af:popup>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                      binding="#{backingBeanScope.backing_CIC_0024.p1}">
+                <af:dialog id="d2" binding="#{backingBeanScope.backing_CIC_0024.d2}" type="yesNo"
+                           title="Do you want to submit this transaction?"
+                           dialogListener="#{backingBeanScope.backing_CIC_0024.doDialogEventSubmit}">
+                    <f:facet name="buttonBar"/>
+                </af:dialog>
+            </af:popup>
+            <af:pageTemplate viewId="/tmpDigicomTemplate.jsf" value="#{bindings.ptb1}" id="pt1"
+                             binding="#{backingBeanScope.backing_CIC_0024.pt1}">
+                <f:facet name="left"/>
+                <f:facet name="middle">
+                    <af:panelSplitter id="ps1" binding="#{backingBeanScope.backing_CIC_0024.ps1}"
+                                      orientation="vertical" splitterPosition="200">
+                        <f:facet name="first">
+                            <af:panelSplitter id="ps2" binding="#{backingBeanScope.backing_CIC_0024.ps2}"
+                                              splitterPosition="404" disabled="true">
+                                <f:facet name="first">
+                                    <af:panelFormLayout id="pfl1" binding="#{backingBeanScope.backing_CIC_0024.pfl1}">
+                                        <af:panelLabelAndMessage label="#{bindings.Poid.hints.label}" id="plam1"
+                                                                 binding="#{backingBeanScope.backing_CIC_0024.plam1}">
+                                            <af:inputText value="#{bindings.Poid.inputValue}"
+                                                          label="#{bindings.Poid.hints.label}"
+                                                          required="#{bindings.Poid.hints.mandatory}"
+                                                          columns="#{bindings.Poid.hints.displayWidth}"
+                                                          maximumLength="#{bindings.Poid.hints.precision}"
+                                                          shortDesc="#{bindings.Poid.hints.tooltip}" id="it1"
+                                                          simple="true" visible="#{bindings.Poid.inputValue>'0'}"
+                                                          readOnly="true"
+                                                          binding="#{backingBeanScope.backing_CIC_0024.it1}">
+                                                <f:validator binding="#{bindings.Poid.validator}"/>
+                                            </af:inputText>
+                                        </af:panelLabelAndMessage>
+                                        <af:inputListOfValues id="locationidId"
+                                                              popupTitle="Search and Select: #{bindings.Locationid.hints.label}"
+                                                              value="#{bindings.Locationid.inputValue}"
+                                                              label="#{bindings.Locationid.hints.label}"
+                                                              model="#{bindings.Locationid.listOfValuesModel}"
+                                                              required="#{bindings.Locationid.hints.mandatory}"
+                                                              columns="#{bindings.Locationid.hints.displayWidth}"
+                                                              shortDesc="#{bindings.Locationid.hints.tooltip}"
+                                                              binding="#{backingBeanScope.backing_CIC_0024.locationidId}"
+                                                              autoSubmit="true"
+                                                              readOnly="#{data.dgcom_view_LoginPageDef.HLevel.inputValue=='U'||data.dgcom_view_LoginPageDef.HLevel.inputValue=='L'}">
+                                            <f:validator binding="#{bindings.Locationid.validator}"/>
+                                        </af:inputListOfValues>
+                                        <af:inputDate value="#{bindings.PoDate.inputValue}"
+                                                      label="#{bindings.PoDate.hints.label}"
+                                                      required="#{bindings.PoDate.hints.mandatory}"
+                                                      columns="#{bindings.PoDate.hints.displayWidth}"
+                                                      shortDesc="#{bindings.PoDate.hints.tooltip}" id="id1"
+                                                      binding="#{backingBeanScope.backing_CIC_0024.id1}">
+                                            <f:validator binding="#{bindings.PoDate.validator}"/>
+                                            <af:convertDateTime pattern="#{bindings.PoDate.format}"/>
+                                        </af:inputDate>
+                                        <af:inputText value="#{bindings.SuppRefno.inputValue}"
+                                                      label="#{bindings.SuppRefno.hints.label}"
+                                                      required="#{bindings.SuppRefno.hints.mandatory}"
+                                                      columns="#{bindings.SuppRefno.hints.displayWidth}"
+                                                      maximumLength="#{bindings.SuppRefno.hints.precision}"
+                                                      shortDesc="#{bindings.SuppRefno.hints.tooltip}" id="it3"
+                                                      binding="#{backingBeanScope.backing_CIC_0024.it3}"
+                                                      clientComponent="true">
+                                            <f:validator binding="#{bindings.SuppRefno.validator}"/>
+                                        </af:inputText>
+                                        <af:inputDate value="#{bindings.SuppRefDate.inputValue}"
+                                                      label="#{bindings.SuppRefDate.hints.label}"
+                                                      required="#{bindings.SuppRefDate.hints.mandatory}"
+                                                      columns="#{bindings.SuppRefDate.hints.displayWidth}"
+                                                      shortDesc="#{bindings.SuppRefDate.hints.tooltip}" id="id2"
+                                                      binding="#{backingBeanScope.backing_CIC_0024.id2}">
+                                            <f:validator binding="#{bindings.SuppRefDate.validator}"/>
+                                            <af:convertDateTime pattern="#{bindings.SuppRefDate.format}"/>
+                                        </af:inputDate>
+                                        <af:inputText value="#{bindings.ExchangeRate.inputValue}"
+                                                      label="#{bindings.ExchangeRate.hints.label}"
+                                                      required="#{bindings.ExchangeRate.hints.mandatory}"
+                                                      columns="#{bindings.ExchangeRate.hints.displayWidth}"
+                                                      maximumLength="#{bindings.ExchangeRate.hints.precision}"
+                                                      shortDesc="#{bindings.ExchangeRate.hints.tooltip}" id="it4"
+                                                      binding="#{backingBeanScope.backing_CIC_0024.it4}"
+                                                      autoSubmit="true">
+                                            <f:validator binding="#{bindings.ExchangeRate.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.ExchangeRate.format}"/>
+                                        </af:inputText>
+                                        <af:selectOneChoice label="#{bindings.Potype.hints.label}" id="soc1"
+                                                            value="#{bindings.Potype.inputValue}" autoSubmit="true"
+                                                            binding="#{backingBeanScope.backing_CIC_0024.soc1}">
+                                            <af:selectItem label="International LC" id="si1" value="I_LC"
+                                                           binding="#{backingBeanScope.backing_CIC_0024.si1}"/>
+                                            <af:selectItem label="International Contract" id="si2" value="I_CO"
+                                                           binding="#{backingBeanScope.backing_CIC_0024.si2}"/>
+                                            <af:selectItem label="Local PO" id="si3" value="POL"
+                                                           binding="#{backingBeanScope.backing_CIC_0024.si3}"/>
+                                            <af:selectItem label="Local Contract" id="si4" value="L_CO"
+                                                           binding="#{backingBeanScope.backing_CIC_0024.si4}"/>
+                                        </af:selectOneChoice>
+                                        <f:facet name="footer"/>
+                                    </af:panelFormLayout>
+                                </f:facet>
+                                <f:facet name="second">
+                                    <af:panelFormLayout id="pfl2" binding="#{backingBeanScope.backing_CIC_0024.pfl2}">
+                                        <f:facet name="footer"/>
+                                        <af:panelLabelAndMessage label="#{bindings.txtRecStoreName.hints.label}" id="plam2"
+                                                                 binding="#{backingBeanScope.backing_CIC_0024.plam2}">
+                                            <af:panelGroupLayout id="pgl3"
+                                                                 binding="#{backingBeanScope.backing_CIC_0024.pgl3}"
+                                                                 layout="horizontal">
+                                                <af:inputComboboxListOfValues id="txtRecStoreNameId"
+                                                                              popupTitle="Search and Select: #{bindings.txtRecStoreName.hints.label}"
+                                                                              value="#{bindings.txtRecStoreName.inputValue}"
+                                                                              label="#{bindings.txtRecStoreName.hints.label}"
+                                                                              model="#{bindings.txtRecStoreName.listOfValuesModel}"
+                                                                              required="#{bindings.txtRecStoreName.hints.mandatory}"
+                                                                              columns="#{bindings.txtRecStoreName.hints.displayWidth}"
+                                                                              shortDesc="#{bindings.txtRecStoreName.hints.tooltip}"
+                                                                              binding="#{backingBeanScope.backing_CIC_0024.txtRecStoreNameId}"
+                                                                              simple="true" autoSubmit="true">
+                                                    <f:validator binding="#{bindings.txtRecStoreName.validator}"/>
+                                                    <af:autoSuggestBehavior maxSuggestedItems="10"
+                                                                            suggestedItems="#{backingBeanScope.backing_CIC_0024.getSuggesteStore}"/>
+                                                </af:inputComboboxListOfValues>
+                                                <af:inputText value="#{bindings.ReceStoreid.inputValue}"
+                                                              label="#{bindings.ReceStoreid.hints.label}"
+                                                              required="#{bindings.ReceStoreid.hints.mandatory}"
+                                                              columns="#{bindings.ReceStoreid.hints.displayWidth}"
+                                                              maximumLength="#{bindings.ReceStoreid.hints.precision}"
+                                                              shortDesc="#{bindings.ReceStoreid.hints.tooltip}"
+                                                              id="it11"
+                                                              binding="#{backingBeanScope.backing_CIC_0024.it11}"
+                                                              readOnly="true" partialTriggers="txtRecStoreNameId">
+                                                    <f:validator binding="#{bindings.ReceStoreid.validator}"/>
+                                                </af:inputText>
+                                            </af:panelGroupLayout>
+                                        </af:panelLabelAndMessage>
+                                        <af:panelLabelAndMessage label="#{bindings.txtSupplierName.hints.label}" id="plam3"
+                                                                 binding="#{backingBeanScope.backing_CIC_0024.plam3}">
+                                            <af:panelGroupLayout id="pgl4"
+                                                                 binding="#{backingBeanScope.backing_CIC_0024.pgl4}"
+                                                                 layout="horizontal">
+                                                <af:inputComboboxListOfValues id="txtSupplierNameId"
+                                                                              popupTitle="Search and Select: #{bindings.txtSupplierName.hints.label}"
+                                                                              value="#{bindings.txtSupplierName.inputValue}"
+                                                                              label="#{bindings.txtSupplierName.hints.label}"
+                                                                              model="#{bindings.txtSupplierName.listOfValuesModel}"
+                                                                              required="#{bindings.txtSupplierName.hints.mandatory}"
+                                                                              columns="#{bindings.txtSupplierName.hints.displayWidth}"
+                                                                              shortDesc="#{bindings.txtSupplierName.hints.tooltip}"
+                                                                              binding="#{backingBeanScope.backing_CIC_0024.txtSupplierNameId}"
+                                                                              simple="true" autoSubmit="true">
+                                                    <f:validator binding="#{bindings.txtSupplierName.validator}"/>
+                                                    <af:autoSuggestBehavior maxSuggestedItems="10"
+                                                                            suggestedItems="#{backingBeanScope.backing_CIC_0024.getSuggestedSupplier}"/>
+                                                </af:inputComboboxListOfValues>
+                                                <af:inputText value="#{bindings.Supplierid.inputValue}"
+                                                              label="#{bindings.Supplierid.hints.label}"
+                                                              required="#{bindings.Supplierid.hints.mandatory}"
+                                                              columns="#{bindings.Supplierid.hints.displayWidth}"
+                                                              maximumLength="#{bindings.Supplierid.hints.precision}"
+                                                              shortDesc="#{bindings.Supplierid.hints.tooltip}" id="it14"
+                                                              binding="#{backingBeanScope.backing_CIC_0024.it14}"
+                                                              readOnly="true" partialTriggers="txtSupplierNameId">
+                                                    <f:validator binding="#{bindings.Supplierid.validator}"/>
+                                                </af:inputText>
+                                            </af:panelGroupLayout>
+                                        </af:panelLabelAndMessage>
+                                        <af:selectOneChoice value="#{bindings.Deliverytermid.inputValue}"
+                                                            label="#{bindings.Deliverytermid.label}"
+                                                            required="#{bindings.Deliverytermid.hints.mandatory}"
+                                                            shortDesc="#{bindings.Deliverytermid.hints.tooltip}"
+                                                            id="soc4" autoSubmit="true"
+                                                            binding="#{backingBeanScope.backing_CIC_0024.soc4}">
+                                            <f:selectItems value="#{bindings.Deliverytermid.items}" id="si7"
+                                                           binding="#{backingBeanScope.backing_CIC_0024.si7}"/>
+                                            <f:validator binding="#{bindings.Deliverytermid.validator}"/>
+                                        </af:selectOneChoice>
+                                        <af:selectOneChoice value="#{bindings.Paymenttermid.inputValue}"
+                                                            label="#{bindings.Paymenttermid.label}"
+                                                            required="#{bindings.Paymenttermid.hints.mandatory}"
+                                                            shortDesc="#{bindings.Paymenttermid.hints.tooltip}"
+                                                            id="soc5" autoSubmit="true"
+                                                            binding="#{backingBeanScope.backing_CIC_0024.soc5}">
+                                            <f:selectItems value="#{bindings.Paymenttermid.items}" id="si8"
+                                                           binding="#{backingBeanScope.backing_CIC_0024.si8}"/>
+                                            <f:validator binding="#{bindings.Paymenttermid.validator}"/>
+                                        </af:selectOneChoice>
+                                        <af:selectOneChoice value="#{bindings.Currcode.inputValue}"
+                                                            label="#{bindings.Currcode.label}"
+                                                            required="#{bindings.Currcode.hints.mandatory}"
+                                                            shortDesc="#{bindings.Currcode.hints.tooltip}" id="soc3"
+                                                            autoSubmit="true"
+                                                            binding="#{backingBeanScope.backing_CIC_0024.soc3}">
+                                            <f:selectItems value="#{bindings.Currcode.items}" id="si6"
+                                                           binding="#{backingBeanScope.backing_CIC_0024.si6}"/>
+                                            <f:validator binding="#{bindings.Currcode.validator}"/>
+                                        </af:selectOneChoice>
+                                        <af:selectOneChoice value="#{bindings.ProdId.inputValue}"
+                                                            label="#{bindings.ProdId.label}"
+                                                            required="#{bindings.ProdId.hints.mandatory}"
+                                                            shortDesc="#{bindings.ProdId.hints.tooltip}" id="soc2"
+                                                            autoSubmit="true"
+                                                            binding="#{backingBeanScope.backing_CIC_0024.soc2}">
+                                            <f:selectItems value="#{bindings.ProdId.items}" id="si5"
+                                                           binding="#{backingBeanScope.backing_CIC_0024.si5}"/>
+                                            <f:validator binding="#{bindings.ProdId.validator}"/>
+                                        </af:selectOneChoice>
+                                        <af:panelLabelAndMessage label="#{bindings.txtModelName.hints.label}" id="plam4"
+                                                                 binding="#{backingBeanScope.backing_CIC_0024.plam4}">
+                                            <af:panelGroupLayout id="pgl5"
+                                                                 binding="#{backingBeanScope.backing_CIC_0024.pgl5}"
+                                                                 layout="horizontal">
+                                                <af:inputComboboxListOfValues id="txtModelNameId"
+                                                                              popupTitle="Search and Select: #{bindings.txtModelName.hints.label}"
+                                                                              value="#{bindings.txtModelName.inputValue}"
+                                                                              label="#{bindings.txtModelName.hints.label}"
+                                                                              model="#{bindings.txtModelName.listOfValuesModel}"
+                                                                              required="#{bindings.txtModelName.hints.mandatory}"
+                                                                              columns="#{bindings.txtModelName.hints.displayWidth}"
+                                                                              shortDesc="#{bindings.txtModelName.hints.tooltip}"
+                                                                              binding="#{backingBeanScope.backing_CIC_0024.txtModelNameId}"
+                                                                              simple="true" autoSubmit="true">
+                                                    <f:validator binding="#{bindings.txtModelName.validator}"/>
+                                                    <af:autoSuggestBehavior maxSuggestedItems="10"
+                                                                            suggestedItems="#{backingBeanScope.backing_CIC_0024.getSuggestedModel}"/>
+                                                </af:inputComboboxListOfValues>
+                                                <af:inputText value="#{bindings.txtItemID.inputValue}"
+                                                              label="#{bindings.txtItemID.hints.label}"
+                                                              required="#{bindings.txtItemID.hints.mandatory}"
+                                                              columns="#{bindings.txtItemID.hints.displayWidth}"
+                                                              maximumLength="#{bindings.txtItemID.hints.precision}"
+                                                              shortDesc="#{bindings.txtItemID.hints.tooltip}" id="it15"
+                                                              binding="#{backingBeanScope.backing_CIC_0024.it15}"
+                                                              readOnly="true" partialTriggers="txtModelNameId">
+                                                    <f:validator binding="#{bindings.txtItemID.validator}"/>
+                                                </af:inputText>
+                                            </af:panelGroupLayout>
+                                        </af:panelLabelAndMessage>
+                                    </af:panelFormLayout>
+                                </f:facet>
+                            </af:panelSplitter>
+                        </f:facet>
+                        <f:facet name="second">
+                            <af:panelCollection id="pc1" styleClass="AFStretchWidth"
+                                                binding="#{backingBeanScope.backing_CIC_0024.pc1}"
+                                                partialTriggers="b8 b9 ::txtModelNameId" featuresOff="detach viewMenu">
+                                <f:facet name="menus"/>
+                                <f:facet name="toolbar">
+                                    <af:toolbar id="t2" binding="#{backingBeanScope.backing_CIC_0024.t2}">
+                                        <af:button actionListener="#{bindings.CreateInsert1.execute}" text="New" id="b8"
+                                                   binding="#{backingBeanScope.backing_CIC_0024.b8}"
+                                                   disabled="#{bindings.Posted.inputValue=='Y'}" styleClass="CRUDButton"
+                                                   accessKey="w" icon="#{resource['images:imgNewDocument4.png']}"/>
+                                        <af:button actionListener="#{bindings.Delete1.execute}" text="Delete"
+                                                   disabled="#{bindings.Posted.inputValue=='Y'}" id="b9"
+                                                   binding="#{backingBeanScope.backing_CIC_0024.b9}" accessKey="t"
+                                                   styleClass="CRUDButton" icon="#{resource['images:ImgDelete.png']}"/>
+                                    </af:toolbar>
+                                </f:facet>
+                                <f:facet name="statusbar"/>
+                                <af:table value="#{bindings.PuPoLinesDETLINES.collectionModel}" var="row"
+                                          rows="#{bindings.PuPoLinesDETLINES.rangeSize}"
+                                          emptyText="#{bindings.PuPoLinesDETLINES.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0"
+                                          selectedRowKeys="#{bindings.PuPoLinesDETLINES.collectionModel.selectedRow}"
+                                          selectionListener="#{bindings.PuPoLinesDETLINES.collectionModel.makeCurrent}"
+                                          rowSelection="single" fetchSize="#{bindings.PuPoLinesDETLINES.rangeSize}"
+                                          id="t1"
+                                          partialTriggers=":::b3 :::b2 :::b1 :::b4 :::b5 :::b6 ::b8 ::b9 :::it4 :::txtModelNameId"
+                                          binding="#{backingBeanScope.backing_CIC_0024.t1}" scrollPolicy="scroll"
+                                          displayRow="selected" autoHeightRows="10" styleClass="AFStretchWidth">
+                                    <af:column headerText="#{bindings.PuPoLinesDETLINES.hints.txtDemand.label}" id="c12"
+                                               width="46">
+                                        <af:selectBooleanCheckbox value="#{row.bindings.txtDemand.inputValue}"
+                                                                  label="#{row.bindings.txtDemand.label}"
+                                                                  shortDesc="#{bindings.PuPoLinesDETLINES.hints.txtDemand.tooltip}"
+                                                                  id="sbc1" autoSubmit="true"/>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.PuPoLinesDETLINES.hints.Dmditemid.label}" id="c1"
+                                               width="105">
+                                        <af:inputListOfValues id="dmditemidId"
+                                                              popupTitle="Search and Select: #{bindings.PuPoLinesDETLINES.hints.Dmditemid.label}"
+                                                              value="#{row.bindings.Dmditemid.inputValue}"
+                                                              model="#{row.bindings.Dmditemid.listOfValuesModel}"
+                                                              required="#{bindings.PuPoLinesDETLINES.hints.Dmditemid.mandatory}"
+                                                              columns="#{bindings.PuPoLinesDETLINES.hints.Dmditemid.displayWidth}"
+                                                              shortDesc="#{bindings.PuPoLinesDETLINES.hints.Dmditemid.tooltip}"
+                                                              autoSubmit="true"
+                                                              readOnly="#{row.bindings.Partid.inputValue!=null}"
+                                                              partialTriggers="txtPartNameId">
+                                            <f:validator binding="#{row.bindings.Dmditemid.validator}"/>
+                                        </af:inputListOfValues>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.PuPoLinesDETLINES.hints.txtPartName.label}"
+                                               id="c7" width="200">
+                                        <af:inputComboboxListOfValues id="txtPartNameId"
+                                                                      popupTitle="Search and Select: #{bindings.PuPoLinesDETLINES.hints.txtPartName.label}"
+                                                                      value="#{row.bindings.txtPartName.inputValue}"
+                                                                      model="#{row.bindings.txtPartName.listOfValuesModel}"
+                                                                      required="#{bindings.PuPoLinesDETLINES.hints.txtPartName.mandatory}"
+                                                                      columns="#{bindings.PuPoLinesDETLINES.hints.txtPartName.displayWidth}"
+                                                                      shortDesc="#{bindings.PuPoLinesDETLINES.hints.txtPartName.tooltip}"
+                                                                      autoSubmit="true">
+                                            <f:validator binding="#{row.bindings.txtPartName.validator}"/>
+                                            <af:autoSuggestBehavior maxSuggestedItems="10"
+                                                                    suggestedItems="#{backingBeanScope.backing_CIC_0024.getSuggestedPart}"/>
+                                        </af:inputComboboxListOfValues>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.PuPoLinesDETLINES.hints.txtPartNo.label}" id="c9">
+                                        <af:inputText value="#{row.bindings.txtPartNo.inputValue}"
+                                                      label="#{bindings.PuPoLinesDETLINES.hints.txtPartNo.label}"
+                                                      required="#{bindings.PuPoLinesDETLINES.hints.txtPartNo.mandatory}"
+                                                      columns="#{bindings.PuPoLinesDETLINES.hints.txtPartNo.displayWidth}"
+                                                      maximumLength="#{bindings.PuPoLinesDETLINES.hints.txtPartNo.precision}"
+                                                      shortDesc="#{bindings.PuPoLinesDETLINES.hints.txtPartNo.tooltip}"
+                                                      id="it16" readOnly="true" partialTriggers="txtPartNameId">
+                                            <f:validator binding="#{row.bindings.txtPartNo.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.PuPoLinesDETLINES.hints.Partid.label}" id="c2">
+                                        <af:inputText value="#{row.bindings.Partid.inputValue}"
+                                                      label="#{bindings.PuPoLinesDETLINES.hints.Partid.label}"
+                                                      required="#{bindings.PuPoLinesDETLINES.hints.Partid.mandatory}"
+                                                      columns="#{bindings.PuPoLinesDETLINES.hints.Partid.displayWidth}"
+                                                      maximumLength="#{bindings.PuPoLinesDETLINES.hints.Partid.precision}"
+                                                      shortDesc="#{bindings.PuPoLinesDETLINES.hints.Partid.tooltip}"
+                                                      id="it2" readOnly="true" partialTriggers="txtPartNameId">
+                                            <f:validator binding="#{row.bindings.Partid.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.PuPoLinesDETLINES.hints.txtModelNo.label}"
+                                               id="c23" width="112">
+                                        <af:inputText value="#{row.bindings.txtModelNo.inputValue}"
+                                                      label="#{bindings.PuPoLinesDETLINES.hints.txtModelNo.label}"
+                                                      required="#{bindings.PuPoLinesDETLINES.hints.txtModelNo.mandatory}"
+                                                      columns="#{bindings.PuPoLinesDETLINES.hints.txtModelNo.displayWidth}"
+                                                      maximumLength="#{bindings.PuPoLinesDETLINES.hints.txtModelNo.precision}"
+                                                      shortDesc="#{bindings.PuPoLinesDETLINES.hints.txtModelNo.tooltip}"
+                                                      id="it12" readOnly="true" partialTriggers="txtPartNameId">
+                                            <f:validator binding="#{row.bindings.txtModelNo.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.PuPoLinesDETLINES.hints.DemandQty.label}" id="c5"
+                                               width="83">
+                                        <af:inputText value="#{row.bindings.DemandQty.inputValue}"
+                                                      label="#{bindings.PuPoLinesDETLINES.hints.DemandQty.label}"
+                                                      required="#{bindings.PuPoLinesDETLINES.hints.DemandQty.mandatory}"
+                                                      columns="#{bindings.PuPoLinesDETLINES.hints.DemandQty.displayWidth}"
+                                                      maximumLength="#{bindings.PuPoLinesDETLINES.hints.DemandQty.precision}"
+                                                      shortDesc="#{bindings.PuPoLinesDETLINES.hints.DemandQty.tooltip}"
+                                                      id="it9" partialTriggers="txtPartNameId" autoSubmit="true">
+                                            <f:validator binding="#{row.bindings.DemandQty.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.PuPoLinesDETLINES.hints.DemandQty.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.PuPoLinesDETLINES.hints.OrderQty.label}" id="c6"
+                                               width="77">
+                                        <af:inputText value="#{row.bindings.OrderQty.inputValue}"
+                                                      label="#{bindings.PuPoLinesDETLINES.hints.OrderQty.label}"
+                                                      required="#{bindings.PuPoLinesDETLINES.hints.OrderQty.mandatory}"
+                                                      columns="#{bindings.PuPoLinesDETLINES.hints.OrderQty.displayWidth}"
+                                                      maximumLength="#{bindings.PuPoLinesDETLINES.hints.OrderQty.precision}"
+                                                      shortDesc="#{bindings.PuPoLinesDETLINES.hints.OrderQty.tooltip}"
+                                                      id="it10" autoSubmit="true">
+                                            <f:validator binding="#{row.bindings.OrderQty.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.PuPoLinesDETLINES.hints.OrderQty.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.PuPoLinesDETLINES.hints.UnitPriceInFcurr.label}"
+                                               id="c8" width="88">
+                                        <af:inputText value="#{row.bindings.UnitPriceInFcurr.inputValue}"
+                                                      label="#{bindings.PuPoLinesDETLINES.hints.UnitPriceInFcurr.label}"
+                                                      required="#{bindings.PuPoLinesDETLINES.hints.UnitPriceInFcurr.mandatory}"
+                                                      columns="#{bindings.PuPoLinesDETLINES.hints.UnitPriceInFcurr.displayWidth}"
+                                                      maximumLength="#{bindings.PuPoLinesDETLINES.hints.UnitPriceInFcurr.precision}"
+                                                      shortDesc="#{bindings.PuPoLinesDETLINES.hints.UnitPriceInFcurr.tooltip}"
+                                                      id="it13" autoSubmit="true">
+                                            <f:validator binding="#{row.bindings.UnitPriceInFcurr.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.PuPoLinesDETLINES.hints.UnitPriceInFcurr.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.PuPoLinesDETLINES.hints.txtFCAmount.label}"
+                                               id="c4" width="98">
+                                        <af:inputText value="#{row.bindings.txtFCAmount.inputValue}"
+                                                      label="#{bindings.PuPoLinesDETLINES.hints.txtFCAmount.label}"
+                                                      required="#{bindings.PuPoLinesDETLINES.hints.txtFCAmount.mandatory}"
+                                                      columns="#{bindings.PuPoLinesDETLINES.hints.txtFCAmount.displayWidth}"
+                                                      maximumLength="#{bindings.PuPoLinesDETLINES.hints.txtFCAmount.precision}"
+                                                      shortDesc="#{bindings.PuPoLinesDETLINES.hints.txtFCAmount.tooltip}"
+                                                      id="it5" partialTriggers="it13 it10">
+                                            <f:validator binding="#{row.bindings.txtFCAmount.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.PuPoLinesDETLINES.hints.txtFCAmount.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.PuPoLinesDETLINES.hints.txtUnitPriceInBcurr.label}"
+                                               id="c3" width="87">
+                                        <af:inputText value="#{row.bindings.txtUnitPriceInBcurr.inputValue}"
+                                                      label="#{bindings.PuPoLinesDETLINES.hints.txtUnitPriceInBcurr.label}"
+                                                      required="#{bindings.PuPoLinesDETLINES.hints.txtUnitPriceInBcurr.mandatory}"
+                                                      columns="#{bindings.PuPoLinesDETLINES.hints.txtUnitPriceInBcurr.displayWidth}"
+                                                      maximumLength="#{bindings.PuPoLinesDETLINES.hints.txtUnitPriceInBcurr.precision}"
+                                                      shortDesc="#{bindings.PuPoLinesDETLINES.hints.txtUnitPriceInBcurr.tooltip}"
+                                                      id="it7" readOnly="true" partialTriggers=":::it4">
+                                            <f:validator binding="#{row.bindings.txtUnitPriceInBcurr.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.PuPoLinesDETLINES.hints.txtUnitPriceInBcurr.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.PuPoLinesDETLINES.hints.txtBCAmount.label}"
+                                               id="c13" width="79">
+                                        <af:inputText value="#{row.bindings.txtBCAmount.inputValue}"
+                                                      label="#{bindings.PuPoLinesDETLINES.hints.txtBCAmount.label}"
+                                                      required="#{bindings.PuPoLinesDETLINES.hints.txtBCAmount.mandatory}"
+                                                      columns="#{bindings.PuPoLinesDETLINES.hints.txtBCAmount.displayWidth}"
+                                                      maximumLength="#{bindings.PuPoLinesDETLINES.hints.txtBCAmount.precision}"
+                                                      shortDesc="#{bindings.PuPoLinesDETLINES.hints.txtBCAmount.tooltip}"
+                                                      id="it6" partialTriggers="it10 it7 :::it4">
+                                            <f:validator binding="#{row.bindings.txtBCAmount.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.PuPoLinesDETLINES.hints.txtBCAmount.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column headerText="#{bindings.PuPoLinesDETLINES.hints.DeliveryDate.label}"
+                                               id="c10" width="121">
+                                        <af:inputDate value="#{row.bindings.DeliveryDate.inputValue}"
+                                                      label="#{bindings.PuPoLinesDETLINES.hints.DeliveryDate.label}"
+                                                      required="#{bindings.PuPoLinesDETLINES.hints.DeliveryDate.mandatory}"
+                                                      columns="#{bindings.PuPoLinesDETLINES.hints.DeliveryDate.displayWidth}"
+                                                      shortDesc="#{bindings.PuPoLinesDETLINES.hints.DeliveryDate.tooltip}"
+                                                      id="id3">
+                                            <f:validator binding="#{row.bindings.DeliveryDate.validator}"/>
+                                            <af:convertDateTime pattern="#{bindings.PuPoLinesDETLINES.hints.DeliveryDate.format}"/>
+                                        </af:inputDate>
+                                    </af:column>
+                                </af:table>
+                            </af:panelCollection>
+                        </f:facet>
+                    </af:panelSplitter>
+                </f:facet>
+                <f:facet name="toolbar">
+                    <af:panelGroupLayout layout="horizontal" id="pgl1"
+                                         binding="#{backingBeanScope.backing_CIC_0024.pgl1}">
+                        <af:button text="Print" id="b11" binding="#{backingBeanScope.backing_CIC_0024.b11}"
+                                   accessKey="r" action="#{backingBeanScope.backing_CIC_0024.doPrint}"
+                                   disabled="#{bindings.Posted.inputValue!='Y'}" styleClass="CRUDButton"
+                                   icon="#{resource['images:imgPrintPreview.png']}"/>
+                        <af:button text="Find" id="b10" binding="#{backingBeanScope.backing_CIC_0024.b10}"
+                                   accessKey="i" styleClass="CRUDButton" icon="#{resource['images:imgFind.png']}">
+                            <af:showPopupBehavior triggerType="action" popupId="::p2"/>
+                        </af:button>
+                        <af:button text="Submit: #{bindings.Posted.inputValue}" id="b7" disabled="#{bindings.Posted.inputValue=='Y'||data.dgcom_view_LoginPageDef.Submit.inputValue!='Y'}"
+                                   binding="#{backingBeanScope.backing_CIC_0024.b7}" styleClass="CRUDButton"
+                                   accessKey="m" icon="#{resource['images:imgSubmit.png']}">
+                            <af:showPopupBehavior triggerType="action" popupId="::p1"/>
+                        </af:button>
+                        <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                                   disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"
+                                   binding="#{backingBeanScope.backing_CIC_0024.b2}" styleClass="CRUDButton"
+                                   accessKey="p" icon="#{resource['images:imgPrevious.png']}"/>
+                        <af:button actionListener="#{bindings.Next.execute}" text="Next"
+                                   disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"
+                                   binding="#{backingBeanScope.backing_CIC_0024.b3}" accessKey="x"
+                                   styleClass="CRUDButton" icon="#{resource['images:nextImage.png']}"/>
+                        <af:button text="New" disabled="#{!bindings.CreateInsert.enabled}" partialSubmit="true" id="b1"
+                                   binding="#{backingBeanScope.backing_CIC_0024.b1}" accessKey="n"
+                                   styleClass="CRUDButton" icon="#{resource['images:imgNewDocument4.png']}"
+                                   action="#{backingBeanScope.backing_CIC_0024.doNew}"/>
+                        <af:button actionListener="#{bindings.Commit.execute}" text="Save" id="b5"
+                                   binding="#{backingBeanScope.backing_CIC_0024.b5}" accessKey="s"
+                                   styleClass="CRUDButton" icon="#{resource['images:imgSave.png']}"/>
+                        <af:button actionListener="#{bindings.Rollback.execute}" text="Undo" immediate="true" id="b6"
+                                   binding="#{backingBeanScope.backing_CIC_0024.b6}"
+                                   icon="#{resource['images:imgUndo.png']}" styleClass="CRUDButton" accessKey="u">
+                            <af:resetActionListener/>
+                        </af:button>
+                        <af:button text="Delete" disabled="#{bindings.Posted.inputValue=='Y'}" partialSubmit="true"
+                                   id="b4" actionListener="#{bindings.Delete.execute}"
+                                   binding="#{backingBeanScope.backing_CIC_0024.b4}" styleClass="CRUDButton"
+                                   accessKey="l" icon="#{resource['images:ImgDelete.png']}"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="top"/>
+            </af:pageTemplate>
+        </af:form>
+        <f:facet name="metaContainer">
+            <af:resource type="javascript" source="/resources/js/EditableTableNavigation.js"/>
+        </f:facet>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_CIC_0024-->
+</f:view>

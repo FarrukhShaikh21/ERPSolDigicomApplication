@@ -1,0 +1,275 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="CIC_0016.jsf" id="d1" binding="#{backingBeanScope.backing_CIC_0016.d1}"
+                 initialFocusId="pt1:txtDealerNameId" partialTriggers="pt1:b1">
+        <af:messages id="m1" binding="#{backingBeanScope.backing_CIC_0016.m1}"/>
+        <af:form id="f1" partialTriggers="pt1:b2 pt1:b3 pt1:b8 pt1:b7 pt1:b5 pt1:b6 pt1:b1 pt1:b4 d2"
+                 binding="#{backingBeanScope.backing_CIC_0016.f1}">
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p3"
+                      binding="#{backingBeanScope.backing_CIC_0016.p3}"
+                      popupFetchListener="#{backingBeanScope.backing_CIC_0016.deptPopUpFetchListener}">
+                <af:dialog id="d4" binding="#{backingBeanScope.backing_CIC_0016.d4}" type="ok"
+                           styleClass="AFStretchWidth">
+                    <f:facet name="buttonBar"/>
+                    <af:panelGroupLayout layout="vertical" id="pgl2"
+                                         binding="#{backingBeanScope.backing_CIC_0016.pgl2}">
+                        <af:panelHeader text="SrvReceiptMaster" id="ph1"
+                                        binding="#{backingBeanScope.backing_CIC_0016.ph1}">
+                            <af:query id="qryId1" headerText="Search" disclosed="true"
+                                      value="#{bindings.SrvReceiptMasterFindVCQuery.queryDescriptor}"
+                                      model="#{bindings.SrvReceiptMasterFindVCQuery.queryModel}"
+                                      queryListener="#{bindings.SrvReceiptMasterFindVCQuery.processQuery}"
+                                      queryOperationListener="#{bindings.SrvReceiptMasterFindVCQuery.processQueryOperation}"
+                                      binding="#{backingBeanScope.backing_CIC_0016.qryId1}" saveQueryMode="hidden"
+                                      runQueryAutomatically="allSavedSearches" saveResultsLayout="never"/>
+                        </af:panelHeader>
+                    </af:panelGroupLayout>
+                </af:dialog>
+            </af:popup>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p2"
+                      binding="#{backingBeanScope.backing_CIC_0016.p2}">
+                <af:dialog id="d3" binding="#{backingBeanScope.backing_CIC_0016.d3}" type="ok" closeIconVisible="false">
+                    <f:facet name="buttonBar"/>
+                    <af:table value="#{bindings.DocGlTransTypeSRVRECDETRO.collectionModel}" var="row"
+                              rows="#{bindings.DocGlTransTypeSRVRECDETRO.rangeSize}"
+                              emptyText="#{bindings.DocGlTransTypeSRVRECDETRO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0" fetchSize="#{bindings.DocGlTransTypeSRVRECDETRO.rangeSize}"
+                              id="t1" binding="#{backingBeanScope.backing_CIC_0016.t1}">
+                        <af:column headerText="#{bindings.DocGlTransTypeSRVRECDETRO.hints.AccountCode.label}" id="c1">
+                            <af:outputText value="#{row.AccountCode}"
+                                           shortDesc="#{bindings.DocGlTransTypeSRVRECDETRO.hints.AccountCode.tooltip}"
+                                           id="ot1"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.DocGlTransTypeSRVRECDETRO.hints.CostCenter.label}" id="c2">
+                            <af:outputText value="#{row.CostCenter}"
+                                           shortDesc="#{bindings.DocGlTransTypeSRVRECDETRO.hints.CostCenter.tooltip}"
+                                           id="ot2"/>
+                        </af:column>
+                        <af:column headerText="#{bindings.DocGlTransTypeSRVRECDETRO.hints.DbtAmount.label}" id="c3">
+                            <af:outputText value="#{row.DbtAmount}"
+                                           shortDesc="#{bindings.DocGlTransTypeSRVRECDETRO.hints.DbtAmount.tooltip}"
+                                           id="ot3">
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.DocGlTransTypeSRVRECDETRO.hints.DbtAmount.format}"/>
+                            </af:outputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.DocGlTransTypeSRVRECDETRO.hints.CrdAmount.label}" id="c4">
+                            <af:outputText value="#{row.CrdAmount}"
+                                           shortDesc="#{bindings.DocGlTransTypeSRVRECDETRO.hints.CrdAmount.tooltip}"
+                                           id="ot4">
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.DocGlTransTypeSRVRECDETRO.hints.CrdAmount.format}"/>
+                            </af:outputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.DocGlTransTypeSRVRECDETRO.hints.Narration.label}" id="c5">
+                            <af:outputText value="#{row.Narration}"
+                                           shortDesc="#{bindings.DocGlTransTypeSRVRECDETRO.hints.Narration.tooltip}"
+                                           id="ot5"/>
+                        </af:column>
+                    </af:table>
+                </af:dialog>
+            </af:popup>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                      binding="#{backingBeanScope.backing_CIC_0016.p1}">
+                <af:dialog id="d2" binding="#{backingBeanScope.backing_CIC_0016.d2}" type="yesNo"
+                           title="Do you want to submit this transaction?"
+                           dialogListener="#{backingBeanScope.backing_CIC_0016.doDialogEventSubmit}">
+                    <f:facet name="buttonBar"/>
+                </af:dialog>
+            </af:popup>
+            <af:pageTemplate viewId="/tmpDigicomTemplate.jsf" value="#{bindings.ptb1}" id="pt1"
+                             binding="#{backingBeanScope.backing_CIC_0016.pt1}">
+                <f:facet name="left"/>
+                <f:facet name="middle">
+                    <af:panelFormLayout id="pfl1" binding="#{backingBeanScope.backing_CIC_0016.pfl1}">
+                        <af:panelLabelAndMessage label="#{bindings.ReceiptNo.hints.label}" id="plam1"
+                                                 binding="#{backingBeanScope.backing_CIC_0016.plam1}">
+                            <af:inputText value="#{bindings.ReceiptNo.inputValue}"
+                                          label="#{bindings.ReceiptNo.hints.label}"
+                                          required="#{bindings.ReceiptNo.hints.mandatory}"
+                                          columns="#{bindings.ReceiptNo.hints.displayWidth}"
+                                          maximumLength="#{bindings.ReceiptNo.hints.precision}"
+                                          shortDesc="#{bindings.ReceiptNo.hints.tooltip}" id="it1" simple="true"
+                                          readOnly="true" visible="#{bindings.ReceiptNo.inputValue>'0'}"
+                                          binding="#{backingBeanScope.backing_CIC_0016.it1}">
+                                <f:validator binding="#{bindings.ReceiptNo.validator}"/>
+                            </af:inputText>
+                        </af:panelLabelAndMessage>
+                        <af:inputDate value="#{bindings.ReceiptDate.inputValue}"
+                                      label="#{bindings.ReceiptDate.hints.label}"
+                                      required="#{bindings.ReceiptDate.hints.mandatory}"
+                                      columns="#{bindings.ReceiptDate.hints.displayWidth}"
+                                      shortDesc="#{bindings.ReceiptDate.hints.tooltip}" id="id1"
+                                      binding="#{backingBeanScope.backing_CIC_0016.id1}">
+                            <f:validator binding="#{bindings.ReceiptDate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.ReceiptDate.format}"/>
+                        </af:inputDate>
+                        <af:inputListOfValues id="locationidId"
+                                              popupTitle="Search and Select: #{bindings.Locationid.hints.label}"
+                                              value="#{bindings.Locationid.inputValue}"
+                                              label="#{bindings.Locationid.hints.label}"
+                                              model="#{bindings.Locationid.listOfValuesModel}"
+                                              required="#{bindings.Locationid.hints.mandatory}"
+                                              columns="#{bindings.Locationid.hints.displayWidth}"
+                                              shortDesc="#{bindings.Locationid.hints.tooltip}"
+                                              binding="#{backingBeanScope.backing_CIC_0016.locationidId}"
+                                              autoSubmit="true"
+                                              readOnly="#{data.dgcom_view_LoginPageDef.HLevel.inputValue=='U'||data.dgcom_view_LoginPageDef.HLevel.inputValue=='L'}">
+                            <f:validator binding="#{bindings.Locationid.validator}"/>
+                        </af:inputListOfValues>
+                        <af:panelLabelAndMessage label="#{bindings.txtDealerName.hints.label}" id="plam2"
+                                                 binding="#{backingBeanScope.backing_CIC_0016.plam2}">
+                            <af:panelGroupLayout id="pgl3" binding="#{backingBeanScope.backing_CIC_0016.pgl3}"
+                                                 layout="horizontal">
+                                <af:inputComboboxListOfValues id="txtDealerNameId"
+                                                              popupTitle="Search and Select: #{bindings.txtDealerName.hints.label}"
+                                                              value="#{bindings.txtDealerName.inputValue}"
+                                                              label="#{bindings.txtDealerName.hints.label}"
+                                                              model="#{bindings.txtDealerName.listOfValuesModel}"
+                                                              required="#{bindings.txtDealerName.hints.mandatory}"
+                                                              columns="#{bindings.txtDealerName.hints.displayWidth}"
+                                                              shortDesc="#{bindings.txtDealerName.hints.tooltip}"
+                                                              binding="#{backingBeanScope.backing_CIC_0016.txtDealerNameId}"
+                                                              autoSubmit="true" simple="true">
+                                    <f:validator binding="#{bindings.txtDealerName.validator}"/>
+                                    <af:autoSuggestBehavior maxSuggestedItems="10"
+                                                            suggestedItems="#{backingBeanScope.backing_CIC_0016.getSuggestedDealer}"/>
+                                </af:inputComboboxListOfValues>
+                                <af:inputText value="#{bindings.DealerId.inputValue}"
+                                              label="#{bindings.DealerId.hints.label}"
+                                              required="#{bindings.DealerId.hints.mandatory}"
+                                              columns="#{bindings.DealerId.hints.displayWidth}"
+                                              maximumLength="#{bindings.DealerId.hints.precision}"
+                                              shortDesc="#{bindings.DealerId.hints.tooltip}" id="it2"
+                                              binding="#{backingBeanScope.backing_CIC_0016.it2}"
+                                              partialTriggers="txtDealerNameId" readOnly="true">
+                                    <f:validator binding="#{bindings.DealerId.validator}"/>
+                                </af:inputText>
+                            </af:panelGroupLayout>
+                        </af:panelLabelAndMessage>
+                        <af:selectOneChoice label="#{bindings.ReceiptMode.hints.label}" id="soc1"
+                                            value="#{bindings.ReceiptMode.inputValue}" autoSubmit="true"
+                                            binding="#{backingBeanScope.backing_CIC_0016.soc1}">
+                            <af:selectItem label="Cash" id="si1" value="CA"
+                                           binding="#{backingBeanScope.backing_CIC_0016.si1}"/>
+                            <af:selectItem label="Cheque" id="si2" value="CH"
+                                           binding="#{backingBeanScope.backing_CIC_0016.si2}"/>
+                            <af:selectItem label="Pay Order" id="si3" value="PO"
+                                           binding="#{backingBeanScope.backing_CIC_0016.si3}"/>
+                            <af:selectItem label="Demand Draft" id="si4" value="DD"
+                                           binding="#{backingBeanScope.backing_CIC_0016.si4}"/>
+                            <af:selectItem label="Travellers Cheque" id="si5" value="TC"
+                                           binding="#{backingBeanScope.backing_CIC_0016.si5}"/>
+                            <af:selectItem label="TT/Online/IBTS" id="si6" value="TT"
+                                           binding="#{backingBeanScope.backing_CIC_0016.si6}"/>
+                        </af:selectOneChoice>
+                        <af:inputListOfValues id="branchidId"
+                                              popupTitle="Search and Select: #{bindings.Branchid.hints.label}"
+                                              value="#{bindings.Branchid.inputValue}"
+                                              label="#{bindings.Branchid.hints.label}"
+                                              model="#{bindings.Branchid.listOfValuesModel}"
+                                              required="#{bindings.Branchid.hints.mandatory}"
+                                              columns="#{bindings.Branchid.hints.displayWidth}"
+                                              shortDesc="#{bindings.Branchid.hints.tooltip}"
+                                              partialTriggers="locationidId"
+                                              binding="#{backingBeanScope.backing_CIC_0016.branchidId}">
+                            <f:validator binding="#{bindings.Branchid.validator}"/>
+                        </af:inputListOfValues>
+                        <af:inputText value="#{bindings.ChequeNo.inputValue}" label="#{bindings.ChequeNo.hints.label}"
+                                      required="#{bindings.ChequeNo.hints.mandatory}"
+                                      columns="#{bindings.ChequeNo.hints.displayWidth}"
+                                      maximumLength="#{bindings.ChequeNo.hints.precision}"
+                                      shortDesc="#{bindings.ChequeNo.hints.tooltip}" id="it6"
+                                      binding="#{backingBeanScope.backing_CIC_0016.it6}">
+                            <f:validator binding="#{bindings.ChequeNo.validator}"/>
+                        </af:inputText>
+                        <af:inputDate value="#{bindings.ChequeDate.inputValue}"
+                                      label="#{bindings.ChequeDate.hints.label}"
+                                      required="#{bindings.ChequeDate.hints.mandatory}"
+                                      columns="#{bindings.ChequeDate.hints.displayWidth}"
+                                      shortDesc="#{bindings.ChequeDate.hints.tooltip}" id="id2"
+                                      binding="#{backingBeanScope.backing_CIC_0016.id2}">
+                            <f:validator binding="#{bindings.ChequeDate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.ChequeDate.format}"/>
+                        </af:inputDate>
+                        <af:inputText value="#{bindings.Referno.inputValue}" label="#{bindings.Referno.hints.label}"
+                                      required="#{bindings.Referno.hints.mandatory}"
+                                      columns="#{bindings.Referno.hints.displayWidth}"
+                                      maximumLength="#{bindings.Referno.hints.precision}"
+                                      shortDesc="#{bindings.Referno.hints.tooltip}" id="it7"
+                                      binding="#{backingBeanScope.backing_CIC_0016.it7}">
+                            <f:validator binding="#{bindings.Referno.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.ReceAmnt.inputValue}" label="#{bindings.ReceAmnt.hints.label}"
+                                      required="#{bindings.ReceAmnt.hints.mandatory}"
+                                      columns="#{bindings.ReceAmnt.hints.displayWidth}"
+                                      maximumLength="#{bindings.ReceAmnt.hints.precision}"
+                                      shortDesc="#{bindings.ReceAmnt.hints.tooltip}" id="it8"
+                                      binding="#{backingBeanScope.backing_CIC_0016.it8}">
+                            <f:validator binding="#{bindings.ReceAmnt.validator}"/>
+                            <af:convertNumber groupingUsed="false" pattern="#{bindings.ReceAmnt.format}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Remarks.inputValue}" label="#{bindings.Remarks.hints.label}"
+                                      required="#{bindings.Remarks.hints.mandatory}"
+                                      columns="#{bindings.Remarks.hints.displayWidth}"
+                                      maximumLength="#{bindings.Remarks.hints.precision}"
+                                      shortDesc="#{bindings.Remarks.hints.tooltip}" id="it9" rows="5"
+                                      binding="#{backingBeanScope.backing_CIC_0016.it9}">
+                            <f:validator binding="#{bindings.Remarks.validator}"/>
+                        </af:inputText>
+                        <f:facet name="footer"/>
+                    </af:panelFormLayout>
+                </f:facet>
+                <f:facet name="toolbar">
+                    <af:panelGroupLayout layout="horizontal" id="pgl1"
+                                         binding="#{backingBeanScope.backing_CIC_0016.pgl1}">
+                        <af:button text="Print" id="b10" binding="#{backingBeanScope.backing_CIC_0016.b10}"
+                                   action="#{backingBeanScope.backing_CIC_0016.doPrint}"
+                                   disabled="#{bindings.Posted.inputValue!='Y'}" styleClass="CRUDButton"
+                                   icon="#{resource['images:imgPrintPreview.png']}" accessKey="r"/>
+                        <af:button text="Find" id="b9" binding="#{backingBeanScope.backing_CIC_0016.b9}" accessKey="i"
+                                   styleClass="CRUDButton" icon="#{resource['images:imgFind.png']}">
+                            <af:showPopupBehavior triggerType="action" popupId="::p3"/>
+                        </af:button>
+                        <af:button text="Submit: #{bindings.Posted.inputValue}" id="b7"
+                                   disabled="#{bindings.Posted.inputValue=='Y'||data.dgcom_view_LoginPageDef.Submit.inputValue!='Y'}"
+                                   binding="#{backingBeanScope.backing_CIC_0016.b7}" styleClass="CRUDButton"
+                                   accessKey="m" icon="#{resource['images:imgSubmit.png']}"/>
+                        <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                                   disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"
+                                   binding="#{backingBeanScope.backing_CIC_0016.b2}" styleClass="CRUDButton"
+                                   accessKey="p" icon="#{resource['images:imgPrevious.png']}"/>
+                        <af:button actionListener="#{bindings.Next.execute}" text="Next"
+                                   disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"
+                                   binding="#{backingBeanScope.backing_CIC_0016.b3}" accessKey="x"
+                                   styleClass="CRUDButton" icon="#{resource['images:nextImage.png']}"/>
+                        <af:button text="New" disabled="#{!bindings.CreateInsert.enabled}" partialSubmit="true" id="b1"
+                                   actionListener="#{bindings.CreateInsert.execute}"
+                                   binding="#{backingBeanScope.backing_CIC_0016.b1}"
+                                   icon="#{resource['images:imgNewDocument4.png']}" styleClass="CRUDButton"
+                                   accessKey="n"/>
+                        <af:button actionListener="#{bindings.Commit.execute}" text="Save" id="b5"
+                                   binding="#{backingBeanScope.backing_CIC_0016.b5}" accessKey="s"
+                                   styleClass="CRUDButton" icon="#{resource['images:imgSave.png']}"/>
+                        <af:button actionListener="#{bindings.Rollback.execute}" text="Undo" immediate="true" id="b6"
+                                   binding="#{backingBeanScope.backing_CIC_0016.b6}" styleClass="CRUDButton"
+                                   accessKey="u" icon="#{resource['images:imgUndo.png']}">
+                            <af:resetActionListener/>
+                        </af:button>
+                        <af:button text="Delete" disabled="#{bindings.Posted.inputValue=='Y'}" partialSubmit="true" id="b4"
+                                   actionListener="#{bindings.Delete.execute}"
+                                   binding="#{backingBeanScope.backing_CIC_0016.b4}" styleClass="CRUDButton"
+                                   accessKey="l" icon="#{resource['images:ImgDelete.png']}"/>
+                        <af:button text="Accounting" id="b8" binding="#{backingBeanScope.backing_CIC_0016.b8}"
+                                   styleClass="CRUDButton">
+                            <af:showPopupBehavior triggerType="action" popupId="::p2"/>
+                        </af:button>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="top"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_CIC_0016-->
+</f:view>

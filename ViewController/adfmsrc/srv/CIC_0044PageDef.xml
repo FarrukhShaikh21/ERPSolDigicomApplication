@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0044PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvStnCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvStnCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvStnpartsDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvStnpartsDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvStnFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvStnCRUDIterator" id="SrvStnFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvStnCRUDIterator" id="Stnno">
+      <AttrNames>
+        <Item Value="Stnno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStnCRUDIterator" id="Stndate">
+      <AttrNames>
+        <Item Value="Stndate"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvStnCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvStnCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvStnCRUDIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SrvStnCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <listOfValues IterBinding="SrvStnCRUDIterator" StaticList="false" Uses="LovSysUserStoreUserWiseFromStore"
+                  id="txtFromStore"/>
+    <listOfValues IterBinding="SrvStnCRUDIterator" StaticList="false" Uses="LovSysUserStoreUserWiseToStore"
+                  id="txtToStore"/>
+    <listOfValues IterBinding="SrvStnCRUDIterator" StaticList="false" Uses="LOV_Tolocationid" id="Tolocationid"/>
+    <attributeValues IterBinding="SrvStnCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvStnCRUDIterator" StaticList="false" Uses="LovSrvStnAllDemandDemandID"
+                  id="txtDemandId"/>
+    <tree IterBinding="SrvStnpartsDETCRUDIterator" id="SrvStnpartsDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvStnpartsVO" Name="SrvStnpartsDETCRUD0">
+        <AttrNames>
+          <Item Value="Dmditemid"/>
+          <Item Value="Fromstoreid"/>
+          <Item Value="Tostoreid"/>
+          <Item Value="Partid"/>
+          <Item Value="Itemid"/>
+          <Item Value="Stnqty"/>
+          <Item Value="txtDemandQty"/>
+          <Item Value="txtStock"/>
+          <Item Value="txtFromStoreName"/>
+          <Item Value="txtToStoreName"/>
+          <Item Value="txtPartName"/>
+          <Item Value="txtPartID"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvStnpartsDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvStnpartsDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <methodAction id="doSubmitSrvStn" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doSubmitSrvStn"
+                  IsViewObjectMethod="true" DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvStnCRUD"/>
+    <listOfValues IterBinding="SrvStnCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <listOfValues IterBinding="SrvStnCRUDIterator" StaticList="false" Uses="LovSysUserStoreUserWiseToStoreName"
+                  id="txtToStoreName"/>
+    <listOfValues IterBinding="SrvStnCRUDIterator" StaticList="false" Uses="LovSysUserStoreUserWiseFromStoreName"
+                  id="txtFromStoreName"/>
+    <attributeValues IterBinding="SrvStnpartsDETCRUDIterator" id="Fromstoreid">
+      <AttrNames>
+        <Item Value="Fromstoreid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStnpartsDETCRUDIterator" id="Tostoreid">
+      <AttrNames>
+        <Item Value="Tostoreid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStnpartsDETCRUDIterator" id="Stndetlid">
+      <AttrNames>
+        <Item Value="Stndetlid"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doCreateNewStnRow" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doCreateNewStnRow"
+                  IsViewObjectMethod="true" DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvStnCRUD"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.doCreateNewStnRow_modServiceTransactionsDataControl_SrvStnCRUD_doCreateNewStnRow_result"/>
+    <methodAction id="doCreateNewStnDetRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewStnDetRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvStnpartsDETCRUD"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.doCreateNewStnDetRow_modServiceTransactionsDataControl_SrvStnpartsDETCRUD_doCreateNewStnDetRow_result"/>
+    <attributeValues IterBinding="SrvStnCRUDIterator" id="Stntype">
+      <AttrNames>
+        <Item Value="Stntype"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

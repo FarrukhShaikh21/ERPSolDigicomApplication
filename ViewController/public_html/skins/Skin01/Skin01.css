@@ -1,0 +1,438 @@
+@charset "UTF-8";
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+
+af|button.ButtonShape {
+background-image: none; 
+    border: 1.0px outset;
+    background-color: White;
+     color: black;
+     width: 60.0%;
+     text-align: center;
+    border-bottom-left-radius: 5.0px;
+    border-bottom-right-radius: 5.0px;
+    border-top-left-radius: 5.0px;
+    border-top-right-radius: 5.0px;
+}
+
+.BKImage
+{
+
+/*background-image: url("C:/JDeveloper/mywork/App01/ViewController/src/META-INF/resources/images/LoginPassword.png");*/
+/*C:\JDeveloper\mywork\App01\ViewController\public_html\skins\*/
+    background-image:url("../../imgLoginBackground.jpg");
+    /*background-image: url("../../../ViewController/src/META-INF/resources/images/SideLoginLogo.jpg");*/
+    background-repeat: no-repeat;       
+    background-size: 100%;
+}
+af|button.ButtonShape:hover {
+background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAATCAIAAADeafBOAAAAMUlEQVQIWy3J0QkAMAxCwZDFu15nSjSpYD+Oh5jnbkZEjnBVAa2/GrUFVvQG/EM/EQ/yQSLyr7PZcQAAAABJRU5ErkJggg=="); 
+
+background-color: #adb6c4;
+    border: 1.0px outset;
+     color: black;
+    border-bottom-left-radius: 5.0px;
+    border-bottom-right-radius: 5.0px;
+    border-top-left-radius: 5.0px;
+    border-top-right-radius: 5.0px;
+}
+
+
+@agent (touchScreen:none) {
+
+    af|button.ButtonShape:depressed:hover {
+        background-image: none; 
+        background-color: Highlight; 
+    }
+
+}
+
+@agent (touchScreen:none) {
+
+    af|button:depressed:hover {
+        background-image: none; 
+        background-color: Highlight; 
+    }
+
+    af|button:hover {
+        background-image: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAATCAIAAADeafBOAAAAMUlEQVQIWy3J0QkAMAxCwZDFu15nSjSpYD+Oh5jnbkZEjnBVAa2/GrUFVvQG/EM/EQ/yQSLyr7PZcQAAAABJRU5ErkJggg=="); 
+    }
+}
+
+af|inputListOfValues{
+             -tr-stretch-search-dialog: false;
+           } 
+
+af|inputComboboxListOfValues{
+             -tr-stretch-search-dialog: false;
+           } 
+
+af|button.LoginButton:focus:hover,
+af|button.LoginButton:focus,
+af|button.LoginButton:focus:hover, 
+af|button.LoginButton:focus:hover:active ,
+af|button.LoginButton
+{
+background: royalblue;
+border-radius: 28px;
+font-family:  Verdana, Arial, Helvetica, sans-serif;
+color: #ffffff;
+font-size: 15px;
+padding: 10px 10px 10px 10px;
+text-decoration: none; 
+background-image: none;
+border: outset;
+outline:none;
+cursor: pointer;
+}
+af|button.LoginButton:hover
+{
+background: royalblue;
+border-radius: 28px;
+font-family:  Verdana, Arial, Helvetica, sans-serif;
+color: #ffffff;
+font-size: 15px;
+padding: 10px 10px 10px 10px;
+text-decoration: none; 
+background-image: none;
+border: inset;
+outline:none;
+cursor: pointer;
+}
+
+af|inputText.IText::content{
+color: Navy;
+    background-color: Silver; 
+    text-transform: uppercase; 
+    background-image: none;
+    font-size: large;
+    font-stretch: expanded;
+    font-weight: bolder;
+    
+  width:230px;height:30px;
+}
+
+
+.LoginForm
+{
+    background-image: none;
+    background-color: #cbcfd2;
+    height: 8pc;
+    border:  5.0px outset;
+    padding: 10px 10px 10px 10px; 
+
+}
+
+
+af|button.MenuHover:focus:hover,
+af|button.MenuHover:focus,
+af|button.MenuHover:hover,
+af|button.MenuHover:focus:hover, 
+af|button.MenuHover:focus:hover:active 
+{
+    width: 100.0%;
+    text-align: center;
+    cursor: pointer;
+    height: 100.0%;
+display: block;
+    color: Black;
+     background-image: none; 
+     padding: 5.0px ;
+      border: skyblue 1.0px inset;
+      background-color: #A9DB80;  /*#eee;*/
+      border: 1px solid #57D6C7
+      
+    
+}
+
+af|button.MenuHover
+{
+    width: 100.0%;
+    text-align: center;
+    height: 100.0%;
+    color: Black;
+     background-image: none; 
+     background-color: #daecf4;
+     
+      
+     border: Blue  ;
+     border-color: Orange ;
+     border-width: 1.0pt thick ;
+     padding: 5.0px ;
+}
+af|button.MenuClick
+{
+    width: 100.0%;
+    text-align: center;
+    cursor: pointer;
+    height: 100.0%;
+
+    color: Black;
+     background-image: none; 
+     padding: 5.0px ;
+      border: White  2.0px outset;
+      background-color: #428bca
+      /*background-color:  #10c4b2;*/
+    
+}
+af|table.MenuButton{
+    
+}
+af|table.MenuButton::data-row:selected:inactive af|column::data-cell ,
+af|column::data-cell:selected af|button,
+af|table::data-row:selected:busy af|button,
+af|column::data-cell:focus af|button,
+af|column::data-cell:focus af|button,
+af|table.MenuButton::data-row:selected:focused af|column::banded-data-cell af|button,
+af|table.MenuButton::data-row:selected:focused af|column::data-cell af|button,
+af|table.MenuButton::data-row:selected af|column::data-cell af|button{
+    width: 100.0%;
+    text-align: center;
+    cursor: pointer;
+    height: 100.0%;
+
+    color: Black;
+     background-image: none; 
+     padding: 5.0px ;
+      border: White  2.0px outset;
+      background-color: #428bca
+      /*background-color:  #10c4b2;*/
+}
+
+af|button.CRUDButton
+{
+  background-image:none;
+  background-size: cover;
+  font-weight: bold;
+  color:Blue;
+  background-color: transparent;
+  border-radius: 10px;
+
+}
+af|button.CRUDButton:disabled
+{
+  background-image:none;
+  background-size: cover;
+  font-weight: bold;
+  color:Gray;
+  background-color: transparent;
+  border-radius: 10px;
+
+}
+af|inputText::label
+{
+   color: Blue;
+    font-weight: bold; 
+}
+af|inputText:read-only::content
+{
+    color: Green;
+    font-weight: bold;
+}
+
+af|inputText::label[theme="medium"]
+{
+    color: Blue;
+    font-weight: bold;
+}
+af|inputText::content[theme="medium"]
+{
+    color: Black;
+    font-weight: bold;
+}
+
+af|inputText:read-only::content[theme="medium"]
+{
+    color: Green;
+    font-weight: bold;
+}
+
+af|inputListOfValues::label[theme="medium"]
+{
+    color: Blue;
+    font-weight: bold;   
+}
+af|inputListOfValues::label
+{
+    color: Blue;
+    font-weight: bold;   
+}
+af|inputListOfValues:read-only::content
+{
+    color: Green;
+    font-weight: bold;   
+}
+
+af|inputDate:read-only::content
+{
+    color: Green;
+    font-weight: bold;   
+}
+
+af|inputDate::label
+{
+    color: Blue;
+    font-weight: bold;   
+}
+af|inputListOfValues:read-only::content[theme="medium"]
+{
+    color: Green;
+    font-weight: bold;   
+}
+af|inputListOfValues::content[theme="medium"]
+{
+    color: Black;
+    font-weight: bold;   
+}
+
+af|inputDate::label[theme="medium"]
+{
+    color: Blue;
+    font-weight: bold;   
+}
+af|inputDate:read-only::content[theme="medium"]
+{
+    color: Green;
+    font-weight: bold;
+}
+
+af|inputDate::content[theme="medium"]
+{
+    color: Black;
+    font-weight: bold;
+}
+
+af|selectOneChoice::label[theme="medium"]
+{
+    color: Blue;
+    font-weight: bold;   
+}
+af|selectOneChoice::content[theme="medium"]
+{
+    color: Black;
+    font-weight: bold;   
+}
+af|selectOneChoice:read-only::content[theme="medium"]
+{
+    color: Green;
+    font-weight: bold;   
+}
+
+af|activeOutputText
+{
+    color: Green;
+    font-weight: bold;   
+}
+
+af|selectOneChoice::content
+{
+    color: Black;
+    font-weight: bold;   
+}
+af|selectOneChoice:read-only::content
+{
+    color: Green;
+    font-weight: bold;   
+}
+
+af|selectOneChoice::label
+{
+    color: Blue;
+    font-weight: bold;   
+}
+af|panelLabelAndMessage::label[theme="medium"]
+{
+    color: Blue;
+    font-weight: bold;   
+}
+
+af|inputComboboxListOfValues::content[theme="medium"]
+{
+    color: Black;
+    font-weight: bold;   
+}
+af|inputComboboxListOfValues::label[theme="medium"]
+{
+    color: Blue;
+    font-weight: bold;   
+}
+af|inputComboboxListOfValues:read-only::content[theme="medium"]
+{
+    color: Green;
+    font-weight: bold;   
+}
+
+af|selectManyListbox::content[theme="medium"]
+{
+    color: Black;
+    font-weight: bold;   
+}
+/*
+af|inputText:read-only::label[theme="medium"]
+{
+    color: Blue;
+    font-weight: bold;
+}
+
+af|inputText::label:read-only[theme="medium"]
+{
+    color: Blue;
+    font-weight: bold;
+}*/
+af|inputText:multi-row::label,af|inputText:multi-row:disabled::label[theme="medium"]
+{
+    color: Blue;
+    font-weight: bold;
+}
+
+
+input:focus{
+outline: none;
+/*box-shadow: 0px 0px 5px #61C5FA;*/
+box-shadow:0px 0px 5px Red;
+border:2px solid #5AB0DB;
+}
+select:focus
+{
+outline: none;
+/*box-shadow: 0px 0px 5px #61C5FA;*/
+box-shadow:0px 0px 5px Red;
+border:2px solid #5AB0DB;  
+}
+/*
+af|button.CRUDButton:focus:hover,
+af|button.CRUDButton:focus,
+af|button.CRUDButton:focus:hover, 
+af|button.CRUDButton:focus:hover:active ,
+af|button.CRUDButton
+{
+background: royalblue;
+border-radius: 28px;
+font-family:  Verdana, Arial, Helvetica, sans-serif;
+color: #ffffff;
+font-size: 15px;
+padding: 10px 10px 10px 10px;
+text-decoration: none; 
+background-image: none;
+border: outset;
+outline:none;
+cursor: pointer;
+}
+af|button.LoginButton:hover
+{
+background: royalblue;
+border-radius: 28px;
+font-family:  Verdana, Arial, Helvetica, sans-serif;
+color: #ffffff;
+font-size: 15px;
+padding: 10px 10px 10px 10px;
+text-decoration: none; 
+background-image: none;
+border: inset;
+outline:none;
+cursor: pointer;
+}
+*/
+
+           

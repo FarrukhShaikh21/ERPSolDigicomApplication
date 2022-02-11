@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0022PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvGrnCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvGrnCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvGrnPartsDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvGrnPartsDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvGrnFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvGrnCRUDIterator" id="SrvGrnFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvGrnCRUDIterator" id="GrnId">
+      <AttrNames>
+        <Item Value="GrnId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvGrnCRUDIterator" id="GrnDate">
+      <AttrNames>
+        <Item Value="GrnDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvGrnCRUDIterator" id="BiltyNo">
+      <AttrNames>
+        <Item Value="BiltyNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvGrnCRUDIterator" id="ChallanNo">
+      <AttrNames>
+        <Item Value="ChallanNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvGrnCRUDIterator" id="ChallanNoDate">
+      <AttrNames>
+        <Item Value="ChallanNoDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvGrnCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvGrnCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvGrnCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvGrnCRUDIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"
+            InstanceName="modServiceTransactionsDataControl.SrvGrnCRUD" DataControl="modServiceTransactionsDataControl">
+      <NamedData NDName="GrnId" NDValue="#{bindings.GrnId.inputValue}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SrvGrnCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <attributeValues IterBinding="SrvGrnCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvGrnCRUDIterator" StaticList="false" Uses="LovPuPurchaseOrdersSuppWise" id="Poid"/>
+    <tree IterBinding="SrvGrnPartsDETCRUDIterator" id="SrvGrnPartsDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvGrnPartsVO" Name="SrvGrnPartsDETCRUD0">
+        <AttrNames>
+          <Item Value="Partid"/>
+          <Item Value="GrnQty"/>
+          <Item Value="Rate"/>
+          <Item Value="Storeid"/>
+          <Item Value="txtPartNo"/>
+          <Item Value="txtPartName"/>
+          <Item Value="txtStoreName"/>
+          <Item Value="txtAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvGrnPartsDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createWithParams" InstanceName="modServiceTransactionsDataControl.SrvGrnPartsDETCRUD"
+            DataControl="modServiceTransactionsDataControl">
+      <NamedData NDName="GrnId" NDValue="#{bindings.GrnId.inputValue}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SrvGrnPartsDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <methodAction id="doSubmitSrvGrn" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doSubmitSrvGrn"
+                  IsViewObjectMethod="true" DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvGrnCRUD"/>
+    <listOfValues IterBinding="SrvGrnCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <listOfValues IterBinding="SrvGrnCRUDIterator" StaticList="false" Uses="LovInItemsItemName" id="txtModelName"/>
+    <attributeValues IterBinding="SrvGrnCRUDIterator" id="txtItemId">
+      <AttrNames>
+        <Item Value="txtItemId"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvGrnCRUDIterator" StaticList="false" Uses="LovPuSuppliersName" id="txtSupplierName"/>
+    <attributeValues IterBinding="SrvGrnCRUDIterator" id="Supplierid">
+      <AttrNames>
+        <Item Value="Supplierid"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doCreateNewGRNRow" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doCreateNewGRNRow"
+                  IsViewObjectMethod="true" DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvGrnCRUD"/>
+    <methodAction id="doCreateNewGRNDetRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewGRNDetRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvGrnPartsDETCRUD"/>
+  </bindings>
+</pageDefinition>

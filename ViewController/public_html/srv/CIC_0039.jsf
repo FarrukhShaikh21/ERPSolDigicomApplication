@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="CIC_0039.jsf" id="d1" initialFocusId="pt1:it3">
+        <af:messages id="m1"/>
+        <af:form id="f1" partialTriggers="pt1:b3 pt1:b9 pt1:b7 pt1:b8 pt1:b1 pt1:b2 pt1:b6 pt1:b5">
+            <af:pageTemplate viewId="/tmpDigicomTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+                <f:facet name="left"/>
+                <f:facet name="middle">
+                    <af:panelFormLayout id="pfl1">
+                        <af:inputText value="#{bindings.DealerId.inputValue}" label="#{bindings.DealerId.hints.label}"
+                                      required="#{bindings.DealerId.hints.mandatory}"
+                                      columns="#{bindings.DealerId.hints.displayWidth}"
+                                      maximumLength="#{bindings.DealerId.hints.precision}"
+                                      shortDesc="#{bindings.DealerId.hints.tooltip}" id="it1" readOnly="true">
+                            <f:validator binding="#{bindings.DealerId.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Name.inputValue}" label="#{bindings.Name.hints.label}"
+                                      required="#{bindings.Name.hints.mandatory}"
+                                      columns="#{bindings.Name.hints.displayWidth}"
+                                      maximumLength="#{bindings.Name.hints.precision}"
+                                      shortDesc="#{bindings.Name.hints.tooltip}" id="it3" clientComponent="true">
+                            <f:validator binding="#{bindings.Name.validator}"/>
+                        </af:inputText>
+                        <af:inputListOfValues id="locationidId"
+                                              popupTitle="Search and Select: #{bindings.Locationid.hints.label}"
+                                              value="#{bindings.Locationid.inputValue}"
+                                              label="#{bindings.Locationid.hints.label}"
+                                              model="#{bindings.Locationid.listOfValuesModel}"
+                                              required="#{bindings.Locationid.hints.mandatory}"
+                                              columns="#{bindings.Locationid.hints.displayWidth}"
+                                              shortDesc="#{bindings.Locationid.hints.tooltip}" autoSubmit="true"
+                                              readOnly="#{data.dgcom_view_LoginPageDef.HLevel.inputValue=='U'||data.dgcom_view_LoginPageDef.HLevel.inputValue=='L'}">
+                            <f:validator binding="#{bindings.Locationid.validator}"/>
+                        </af:inputListOfValues>
+                        <af:inputText value="#{bindings.City.inputValue}" label="#{bindings.City.hints.label}"
+                                      required="#{bindings.City.hints.mandatory}"
+                                      columns="#{bindings.City.hints.displayWidth}"
+                                      maximumLength="#{bindings.City.hints.precision}"
+                                      shortDesc="#{bindings.City.hints.tooltip}" id="it4">
+                            <f:validator binding="#{bindings.City.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Address.inputValue}" label="#{bindings.Address.hints.label}"
+                                      required="#{bindings.Address.hints.mandatory}"
+                                      columns="#{bindings.Address.hints.displayWidth}"
+                                      maximumLength="#{bindings.Address.hints.precision}"
+                                      shortDesc="#{bindings.Address.hints.tooltip}" id="it5">
+                            <f:validator binding="#{bindings.Address.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Phoneno1.inputValue}" label="#{bindings.Phoneno1.hints.label}"
+                                      required="#{bindings.Phoneno1.hints.mandatory}"
+                                      columns="#{bindings.Phoneno1.hints.displayWidth}"
+                                      maximumLength="#{bindings.Phoneno1.hints.precision}"
+                                      shortDesc="#{bindings.Phoneno1.hints.tooltip}" id="it6">
+                            <f:validator binding="#{bindings.Phoneno1.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Phoneno2.inputValue}" label="#{bindings.Phoneno2.hints.label}"
+                                      required="#{bindings.Phoneno2.hints.mandatory}"
+                                      columns="#{bindings.Phoneno2.hints.displayWidth}"
+                                      maximumLength="#{bindings.Phoneno2.hints.precision}"
+                                      shortDesc="#{bindings.Phoneno2.hints.tooltip}" id="it7">
+                            <f:validator binding="#{bindings.Phoneno2.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.MobileNo.inputValue}" label="#{bindings.MobileNo.hints.label}"
+                                      required="#{bindings.MobileNo.hints.mandatory}"
+                                      columns="#{bindings.MobileNo.hints.displayWidth}"
+                                      maximumLength="#{bindings.MobileNo.hints.precision}"
+                                      shortDesc="#{bindings.MobileNo.hints.tooltip}" id="it8">
+                            <f:validator binding="#{bindings.MobileNo.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Email.inputValue}" label="#{bindings.Email.hints.label}"
+                                      required="#{bindings.Email.hints.mandatory}"
+                                      columns="#{bindings.Email.hints.displayWidth}"
+                                      maximumLength="#{bindings.Email.hints.precision}"
+                                      shortDesc="#{bindings.Email.hints.tooltip}" id="it9">
+                            <f:validator binding="#{bindings.Email.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Cityid.inputValue}" label="#{bindings.Cityid.hints.label}"
+                                      required="#{bindings.Cityid.hints.mandatory}"
+                                      columns="#{bindings.Cityid.hints.displayWidth}"
+                                      maximumLength="#{bindings.Cityid.hints.precision}"
+                                      shortDesc="#{bindings.Cityid.hints.tooltip}" id="it10">
+                            <f:validator binding="#{bindings.Cityid.validator}"/>
+                        </af:inputText>
+                        <af:inputText value="#{bindings.Careof.inputValue}" label="#{bindings.Careof.hints.label}"
+                                      required="#{bindings.Careof.hints.mandatory}"
+                                      columns="#{bindings.Careof.hints.displayWidth}"
+                                      maximumLength="#{bindings.Careof.hints.precision}"
+                                      shortDesc="#{bindings.Careof.hints.tooltip}" id="it11">
+                            <f:validator binding="#{bindings.Careof.validator}"/>
+                        </af:inputText>
+                        <af:selectBooleanCheckbox value="#{bindings.Active.inputValue}" label="#{bindings.Active.label}"
+                                                  shortDesc="#{bindings.Active.hints.tooltip}" id="sbc1"
+                                                  autoSubmit="true"/>
+                    </af:panelFormLayout>
+                </f:facet>
+                <f:facet name="toolbar">
+                    <af:panelGroupLayout id="pgl1">
+                        <af:button actionListener="#{bindings.Execute.execute}" text="Execute"
+                                   disabled="#{!bindings.Execute.enabled}" id="b3" styleClass="CRUDButton "/>
+                        <af:button text="Find" id="b9" accessKey="i" styleClass="CRUDButton "
+                                   icon="#{resource['images:imgFind.png']}"/>
+                        <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                                   disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b6"
+                                   styleClass="CRUDButton" accessKey="p" icon="#{resource['images:imgPrevious.png']}"/>
+                        <af:button actionListener="#{bindings.Next.execute}" text="Next"
+                                   disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b5" accessKey="x"
+                                   styleClass="CRUDButton" icon="#{resource['images:nextImage.png']}"/>
+                        <af:button actionListener="#{bindings.CreateInsert.execute}" text="New"
+                                   disabled="#{!bindings.CreateInsert.enabled}" id="b1" styleClass="CRUDButton "
+                                   accessKey="n" icon="#{resource['images:imgNewDocument4.png']}"/>
+                        <af:button actionListener="#{bindings.Commit.execute}" text="Save"
+                                   disabled="#{!bindings.Commit.enabled}" id="b7" styleClass="CRUDButton "
+                                   accessKey="s" icon="#{resource['images:imgSave.png']}"/>
+                        <af:button actionListener="#{bindings.Rollback.execute}" text="Undo"
+                                   disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b8" accessKey="u"
+                                   styleClass="CRUDButton " icon="#{resource['images:imgUndo.png']}">
+                            <af:resetActionListener/>
+                        </af:button>
+                        <af:button actionListener="#{bindings.Delete.execute}" text="Delete"
+                                   disabled="#{!bindings.Delete.enabled}" id="b2" accessKey="l"
+                                   styleClass="CRUDButton" icon="#{resource['images:ImgDelete.png']}"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="top"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

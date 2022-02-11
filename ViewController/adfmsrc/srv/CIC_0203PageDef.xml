@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0203PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvDapCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvDapCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvDapFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvDapCRUDIterator" id="SrvDapFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvDapCRUDIterator" id="DapId">
+      <AttrNames>
+        <Item Value="DapId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDapCRUDIterator" id="Locationid">
+      <AttrNames>
+        <Item Value="Locationid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDapCRUDIterator" id="DapDate">
+      <AttrNames>
+        <Item Value="DapDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDapCRUDIterator" id="BhApproval">
+      <AttrNames>
+        <Item Value="BhApproval"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDapCRUDIterator" id="BhRemarks">
+      <AttrNames>
+        <Item Value="BhRemarks"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDapCRUDIterator" id="Box">
+      <AttrNames>
+        <Item Value="Box"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDapCRUDIterator" id="Handfree">
+      <AttrNames>
+        <Item Value="Handfree"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDapCRUDIterator" id="Battery">
+      <AttrNames>
+        <Item Value="Battery"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDapCRUDIterator" id="BackCover">
+      <AttrNames>
+        <Item Value="BackCover"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDapCRUDIterator" id="WarrantyCard">
+      <AttrNames>
+        <Item Value="WarrantyCard"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDapCRUDIterator" id="Pop">
+      <AttrNames>
+        <Item Value="Pop"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDapCRUDIterator" id="Charger">
+      <AttrNames>
+        <Item Value="Charger"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvDapCRUDIterator" id="DataCable">
+      <AttrNames>
+        <Item Value="DataCable"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SrvDapCRUDIterator" StaticList="false" Uses="LovSrvDapTechnicianid" id="Technicianid"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <action IterBinding="SrvDapCRUDIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SrvDapCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="SrvDapCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvDapCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <listOfValues IterBinding="SrvDapCRUDIterator" StaticList="false" Uses="LOV_Jobcardno" id="Jobcardno"/>
+    <methodAction id="doSubmitDAP" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doSubmitDAP"
+                  IsViewObjectMethod="true" DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvDapCRUD"/>
+    <attributeValues IterBinding="SrvDapCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

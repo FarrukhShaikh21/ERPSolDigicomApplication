@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0040PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="AllProdcategoryRO" RangeSize="25" DataControl="modServiceSetupDataControl"
+              id="AllProdcategoryROIterator"/>
+    <iterator Binds="SrvFaultsDetCRUD" RangeSize="25" DataControl="modServiceSetupDataControl"
+              id="SrvFaultsDetCRUDIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="AllProdcategoryROIterator" ListOperMode="navigation" ListIter="AllProdcategoryROIterator"
+          id="AllProdcategoryRO" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </list>
+    <tree IterBinding="SrvFaultsDetCRUDIterator" id="SrvFaultsDetCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvFaultsVO" Name="SrvFaultsDetCRUD0">
+        <AttrNames>
+          <Item Value="Faultid"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvFaultsDetCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvFaultsDetCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="modServiceSetupDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceSetupDataControl"/>
+  </bindings>
+</pageDefinition>

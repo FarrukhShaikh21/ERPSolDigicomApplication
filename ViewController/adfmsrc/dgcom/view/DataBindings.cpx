@@ -1,0 +1,566 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.2.66.68" id="DataBindings"
+             SeparateXMLFiles="false" Package="dgcom.view" ClientType="Generic">
+    <pageMap>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobSymRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobSymRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobHORow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobHORowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobHODetRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobHODetRowPageDef"/>
+        <page path="/tmpDigicomTemplate.jsf" usageId="dgcom_view_tmpDigicomTemplatePageDef"/>
+        <page path="/Main.jsf" usageId="dgcom_view_MainPageDef"/>
+        <page path="/Login.jsf" usageId="dgcom_view_LoginPageDef"/>
+        <page path="/srv/CIC_0002.jsf" usageId="dgcom_view_CIC_0002PageDef"/>
+        <page path="/srv/CIC_0098.jsf" usageId="dgcom_view_CIC_0098PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@ServiceModuleRollBack"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_RollbackPageDef"/>
+        <page path="/srv/CIC_0026.jsf" usageId="dgcom_view_CIC_0026PageDef"/>
+        <page path="/srv/CIC_0013.jsf" usageId="dgcom_view_CIC_0013PageDef"/>
+        <page path="/srv/CIC_0015.jsf" usageId="dgcom_view_CIC_0015PageDef"/>
+        <page path="/srv/CIC_0031.jsf" usageId="dgcom_view_CIC_0031PageDef"/>
+        <page path="/srv/CIC_0032.jsf" usageId="dgcom_view_CIC_0032PageDef"/>
+        <page path="/srv/CIC_0082.jsf" usageId="dgcom_view_CIC_0082PageDef"/>
+        <page path="/srv/CIC_0055.jsf" usageId="dgcom_view_CIC_0055PageDef"/>
+        <page path="/srv/CIC_0012.jsf" usageId="dgcom_view_CIC_0012PageDef"/>
+        <page path="/srv/CIC_0035.jsf" usageId="dgcom_view_CIC_0035PageDef"/>
+        <page path="/srv/CIC_0072.jsf" usageId="dgcom_view_CIC_0072PageDef"/>
+        <page path="/srv/CIC_0087.jsf" usageId="dgcom_view_CIC_0087PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@ExecuteWithParams"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_ExecuteWithParamsPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@ExecuteWithParams1"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_ExecuteWithParams1PageDef"/>
+        <page path="/srv/CIC_0054.jsf" usageId="dgcom_view_CIC_0054PageDef"/>
+        <page path="/srv/CIC_0067.jsf" usageId="dgcom_view_CIC_0067PageDef"/>
+        <page path="/srv/CIC_0028.jsf" usageId="dgcom_view_CIC_0028PageDef"/>
+        <page path="/srv/CIC_0195.jsf" usageId="dgcom_view_CIC_0195PageDef"/>
+        <page path="/srv/CIC_0194.jsf" usageId="dgcom_view_CIC_0194PageDef"/>
+        <page path="/srv/CIC_0193.jsf" usageId="dgcom_view_CIC_0193PageDef"/>
+        <page path="/srv/CIC_0198.jsf" usageId="dgcom_view_CIC_0198PageDef"/>
+        <page path="/srv/CIC_0189.jsf" usageId="dgcom_view_CIC_0189PageDef"/>
+        <page path="/srv/CIC_0201.jsf" usageId="dgcom_view_CIC_0201PageDef"/>
+        <page path="/srv/CIC_0202.jsf" usageId="dgcom_view_CIC_0202PageDef"/>
+        <page path="/srv/CIC_0016.jsf" usageId="dgcom_view_CIC_0016PageDef"/>
+        <page path="/srv/CIC_0079.jsf" usageId="dgcom_view_CIC_0079PageDef"/>
+        <page path="/srv/CIC_0034.jsf" usageId="dgcom_view_CIC_0034PageDef"/>
+        <page path="/srv/CIC_0021.jsf" usageId="dgcom_view_CIC_0021PageDef"/>
+        <page path="/srv/CIC_0024.jsf" usageId="dgcom_view_CIC_0024PageDef"/>
+        <page path="/srv/CIC_0022.jsf" usageId="dgcom_view_CIC_0022PageDef"/>
+        <page path="/srv/CIC_0118.jsf" usageId="dgcom_view_CIC_0118PageDef"/>
+        <page path="/srv/CIC_0044.jsf" usageId="dgcom_view_CIC_0044PageDef"/>
+        <page path="/srv/CIC_0045.jsf" usageId="dgcom_view_CIC_0045PageDef"/>
+        <page path="/srv/CIC_0065.jsf" usageId="dgcom_view_CIC_0065PageDef"/>
+        <page path="/srv/CIC_0085.jsf" usageId="dgcom_view_CIC_0085PageDef"/>
+        <page path="/srv/CIC_0086.jsf" usageId="dgcom_view_CIC_0086PageDef"/>
+        <page path="/srv/CIC_0049.jsf" usageId="dgcom_view_CIC_0049PageDef"/>
+        <page path="/srv/CIC_0051.jsf" usageId="dgcom_view_CIC_0051PageDef"/>
+        <page path="/srv/CIC_0080.jsf" usageId="dgcom_view_CIC_0080PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSetPageDef"/>
+        <page path="/srv/CIC_0038.jsf" usageId="dgcom_view_CIC_0038PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet1"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet1PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet2"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet2PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet3"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet3PageDef"/>
+        <page path="/srv/CIC_0053.jsf" usageId="dgcom_view_CIC_0053PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet4"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet4PageDef"/>
+        <page path="/srv/CIC_0041.jsf" usageId="dgcom_view_CIC_0041PageDef"/>
+        <page path="/srv/CIC_0042.jsf" usageId="dgcom_view_CIC_0042PageDef"/>
+        <page path="/srv/CIC_0047.jsf" usageId="dgcom_view_CIC_0047PageDef"/>
+        <page path="/srv/CIC_0043.jsf" usageId="dgcom_view_CIC_0043PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet5"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet5PageDef"/>
+        <page path="/srv/CIC_0050.jsf" usageId="dgcom_view_CIC_0050PageDef"/>
+        <page path="/srv/CIC_0037.jsf" usageId="dgcom_view_CIC_0037PageDef"/>
+        <page path="/srv/CIC_0046.jsf" usageId="dgcom_view_CIC_0046PageDef"/>
+        <page path="/srv/CIC_0036.jsf" usageId="dgcom_view_CIC_0036PageDef"/>
+        <page path="/srv/CIC_0040.jsf" usageId="dgcom_view_CIC_0040PageDef"/>
+        <page path="/srv/CIC_0004.jsf" usageId="dgcom_view_CIC_0004PageDef"/>
+        <page path="/srv/CIC_0039.jsf" usageId="dgcom_view_CIC_0039PageDef"/>
+        <page path="/srv/CIC_0017.jsf" usageId="dgcom_view_CIC_0017PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet6"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet6PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet7"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet7PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@SrvGrnRowSet"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet8PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet8"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet8PageDef1"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet9"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet9PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@SrvReceiptEmptyRowSet"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@SrvJobSwapEmptyRowSet"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef1"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@SrvJobSolutionRowSet"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef11"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@SrvSetDeliveryRowSet"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef111"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@SrvCourierDeliveryRowSet"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef1111"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@SrvJobComplainRowSet"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef11111"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@SrvPurchaseOrderRowSet"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef111111"/>
+        <page path="/srv/CIC_0018.jsf" usageId="dgcom_view_CIC_0018PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet10"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef1111111"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet11"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet11PageDef"/>
+        <page path="/srv/CIC_0009.jsf" usageId="dgcom_view_CIC_0009PageDef"/>
+        <page path="/srv/CIC_0027.jsf" usageId="dgcom_view_CIC_0027PageDef"/>
+        <page path="/srv/CIC_0056.jsf" usageId="dgcom_view_CIC_0056PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doLogoutUser"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doLogoutUser1PageDef"/>
+        <page path="PageFlow#Execute" usageId="dgcom_view_adfc_config___ExecutePageDef"/>
+        <page path="/srv/CIC_0088.jsf" usageId="dgcom_view_CIC_0088PageDef"/>
+        <page path="/srv/CIC_0203.jsf" usageId="dgcom_view_CIC_0203PageDef"/>
+        <page path="/srv/CIC_0196.jsf" usageId="dgcom_view_CIC_0196PageDef"/>
+        <page path="/srv/CIC_0206.jsf" usageId="dgcom_view_CIC_0206PageDef"/>
+        <page path="/srv/CIC_0010.jsf" usageId="dgcom_view_CIC_0010PageDef"/>
+        <page path="/srv/CIC_0207.jsf" usageId="dgcom_view_CIC_0207PageDef"/>
+    <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobCardRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobCardRowPageDef"/>
+        <page path="/srv/CIC_0208.jsf" usageId="dgcom_view_CIC_0208PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobAssignRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobAssignRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobAssignDetRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobAssignDetRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsertCIC_0012"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsertPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewIssuanceRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewIssuanceRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewIssueDetDetRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewIssueDetDetRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobSolRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobSolRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobFaultRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobFaultRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobActionRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobActionRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsertCIC_0018"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsertPageDef1"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSetCIC_0018"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet12PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewDemandNoteRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewDemandNoteRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewDemandLineRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewDemandLineRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSetCIC_00208"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet12PageDef1"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsertCIC_0028"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsertPageDef11"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsert"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsertPageDef111"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSetCIC_0032"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet12PageDef11"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet12"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet12PageDef111"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsert2"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert2PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet13"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet13PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsert3"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert3PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsert4"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert4PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet14"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet14PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet15"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet15PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsert5"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert5PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsert6"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert6PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet16"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet16PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsert7"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert7PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsert8"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert8PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobReturnRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobReturnRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobRetDetRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobRetDetRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet17"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet17PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobReturnRow1"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobReturnRow1PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobRetDetRow1"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobRetDetRow1PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet18"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet18PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewStnRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewStnRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewStnDetRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewStnDetRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsert9"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert9PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewCourierDelRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewCourierDelRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewCourierDelDetRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewCourierDelDetRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet19"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet19PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewLogisticRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewLogisticRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewLogisticDetRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewLogisticDetRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet20"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet20PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewLogisticRow1"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewLogisticRow1PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewLogisticDetRow1"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewLogisticDetRow1PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet21"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet21PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewStockAdjRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewStockAdjRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewStockAdjDetRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewStockAdjDetRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet22"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet22PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewPartSaleRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewPartSaleRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewPartSaleDetRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewPartSaleDetRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet23"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet23PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsert11"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert11PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet24"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet24PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobTransferRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobTransferRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobTransDetRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobTransDetRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobTransferRow1"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobTransferRow1PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJobTransDetRow1"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobTransDetRow1PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet25"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet25PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewStnRow1"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewStnRow1PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsert1"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert1PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewPurchaseOrderRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewPurchaseOrderRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreatePurchaseDetailRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreatePurchaseDetailRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateInsert12"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert12PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet26"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet26PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewWarrantyRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewWarrantyRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewWarrantyDetRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewWarrantyDetRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@CreateWithParameters"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_CreateWithParametersPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet27"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet27PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewBOMRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewBOMRowPageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@executeEmptyRowSet28"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet28PageDef"/>
+        <page path="/WEB-INF/TFDigicomMain.xml#TFDigicomMain@doCreateNewJsPartsNewRow"
+              usageId="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJsPartsNewRowPageDef"/>
+        <page path="/srv/CIC_0213.jsf" usageId="dgcom_view_CIC_0213PageDef"/>
+    </pageMap>
+    <pageDefinitionUsages>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobSymRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobSymRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobHORowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobHORowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobHODetRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobHODetRowPageDef"/>
+        <page id="dgcom_view_tmpDigicomTemplatePageDef" path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef"/>
+        <page id="dgcom_view_MainPageDef" path="dgcom.view.pageDefs.MainPageDef"/>
+        <page id="dgcom_view_LoginPageDef" path="dgcom.view.pageDefs.LoginPageDef"/>
+        <page id="dgcom_view_CIC_0002PageDef" path="srv.CIC_0002PageDef"/>
+        <page id="dgcom_view_CIC_0098PageDef" path="srv.CIC_0098PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_RollbackPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_RollbackPageDef"/>
+        <page id="dgcom_view_CIC_0026PageDef" path="srv.CIC_0026PageDef"/>
+        <page id="dgcom_view_CIC_0013PageDef" path="srv.CIC_0013PageDef"/>
+        <page id="dgcom_view_CIC_0015PageDef" path="srv.CIC_0015PageDef"/>
+        <page id="dgcom_view_CIC_0031PageDef" path="srv.CIC_0031PageDef"/>
+        <page id="dgcom_view_CIC_0032PageDef" path="srv.CIC_0032PageDef"/>
+        <page id="dgcom_view_CIC_0082PageDef" path="srv.CIC_0082PageDef"/>
+        <page id="dgcom_view_CIC_0055PageDef" path="srv.CIC_0055PageDef"/>
+        <page id="dgcom_view_CIC_0012PageDef" path="srv.CIC_0012PageDef"/>
+        <page id="dgcom_view_CIC_0035PageDef" path="srv.CIC_0035PageDef"/>
+        <page id="dgcom_view_CIC_0072PageDef" path="srv.CIC_0072PageDef"/>
+        <page id="dgcom_view_CIC_0087PageDef" path="srv.CIC_0087PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_ExecuteWithParamsPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_ExecuteWithParamsPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_ExecuteWithParams1PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_ExecuteWithParams1PageDef"/>
+        <page id="dgcom_view_CIC_0054PageDef" path="srv.CIC_0054PageDef"/>
+        <page id="dgcom_view_CIC_0067PageDef" path="srv.CIC_0067PageDef"/>
+        <page id="dgcom_view_CIC_0028PageDef" path="srv.CIC_0028PageDef"/>
+        <page id="dgcom_view_CIC_0195PageDef" path="srv.CIC_0195PageDef"/>
+        <page id="dgcom_view_CIC_0194PageDef" path="srv.CIC_0194PageDef"/>
+        <page id="dgcom_view_CIC_0193PageDef" path="srv.CIC_0193PageDef"/>
+        <page id="dgcom_view_CIC_0198PageDef" path="srv.CIC_0198PageDef"/>
+        <page id="dgcom_view_CIC_0189PageDef" path="srv.CIC_0189PageDef"/>
+        <page id="dgcom_view_CIC_0201PageDef" path="srv.CIC_0201PageDef"/>
+        <page id="dgcom_view_CIC_0202PageDef" path="srv.CIC_0202PageDef"/>
+        <page id="dgcom_view_CIC_0016PageDef" path="srv.CIC_0016PageDef"/>
+        <page id="dgcom_view_CIC_0079PageDef" path="srv.CIC_0079PageDef"/>
+        <page id="dgcom_view_CIC_0034PageDef" path="srv.CIC_0034PageDef"/>
+        <page id="dgcom_view_CIC_0021PageDef" path="srv.CIC_0021PageDef"/>
+        <page id="dgcom_view_CIC_0024PageDef" path="srv.CIC_0024PageDef"/>
+        <page id="dgcom_view_CIC_0022PageDef" path="srv.CIC_0022PageDef"/>
+        <page id="dgcom_view_CIC_0118PageDef" path="srv.CIC_0118PageDef"/>
+        <page id="dgcom_view_CIC_0044PageDef" path="srv.CIC_0044PageDef"/>
+        <page id="dgcom_view_CIC_0045PageDef" path="srv.CIC_0045PageDef"/>
+        <page id="dgcom_view_CIC_0065PageDef" path="srv.CIC_0065PageDef"/>
+        <page id="dgcom_view_CIC_0085PageDef" path="srv.CIC_0085PageDef"/>
+        <page id="dgcom_view_CIC_0086PageDef" path="srv.CIC_0086PageDef"/>
+        <page id="dgcom_view_CIC_0049PageDef" path="srv.CIC_0049PageDef"/>
+        <page id="dgcom_view_CIC_0051PageDef" path="srv.CIC_0051PageDef"/>
+        <page id="dgcom_view_CIC_0080PageDef" path="srv.CIC_0080PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSetPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSetPageDef"/>
+        <page id="dgcom_view_CIC_0038PageDef" path="srv.CIC_0038PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet1PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet1PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet2PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet2PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet3PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet3PageDef"/>
+        <page id="dgcom_view_CIC_0053PageDef" path="srv.CIC_0053PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet4PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet4PageDef"/>
+        <page id="dgcom_view_CIC_0041PageDef" path="srv.CIC_0041PageDef"/>
+        <page id="dgcom_view_CIC_0047PageDef" path="srv.CIC_0047PageDef"/>
+        <page id="dgcom_view_CIC_0043PageDef" path="srv.CIC_0043PageDef"/>
+        <page id="dgcom_view_CIC_0042PageDef" path="srv.CIC_0042PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet5PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet5PageDef"/>
+        <page id="dgcom_view_CIC_0050PageDef" path="srv.CIC_0050PageDef"/>
+        <page id="dgcom_view_CIC_0037PageDef" path="srv.CIC_0037PageDef"/>
+        <page id="dgcom_view_CIC_0046PageDef" path="srv.CIC_0046PageDef"/>
+        <page id="dgcom_view_CIC_0036PageDef" path="srv.CIC_0036PageDef"/>
+        <page id="dgcom_view_CIC_0040PageDef" path="srv.CIC_0040PageDef"/>
+        <page id="dgcom_view_CIC_0004PageDef" path="srv.CIC_0004PageDef"/>
+        <page id="dgcom_view_CIC_0039PageDef" path="srv.CIC_0039PageDef"/>
+        <page id="dgcom_view_CIC_0017PageDef" path="srv.CIC_0017PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet6PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet6PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet7PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet7PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet8PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet8PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet8PageDef1"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet8PageDef1"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet9PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet9PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef1"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef1"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef11"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef11"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef111"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef111"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef1111"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef1111"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef11111"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef11111"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef111111"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef111111"/>
+        <page id="dgcom_view_CIC_0018PageDef" path="srv.CIC_0018PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef1111111"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet10PageDef1111111"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet11PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet11PageDef"/>
+        <page id="dgcom_view_CIC_0009PageDef" path="srv.CIC_0009PageDef"/>
+        <page id="dgcom_view_CIC_0027PageDef" path="srv.CIC_0027PageDef"/>
+        <page id="dgcom_view_CIC_0056PageDef" path="srv.CIC_0056PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doLogoutUser1PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doLogoutUser1PageDef"/>
+        <page id="dgcom_view_adfc_config___ExecutePageDef" path="dgcom.view.pageDefs.adfc_config___ExecutePageDef"/>
+        <page id="dgcom_view_CIC_0088PageDef" path="srv.CIC_0088PageDef"/>
+        <page id="dgcom_view_CIC_0203PageDef" path="srv.CIC_0203PageDef"/>
+        <page id="dgcom_view_CIC_0196PageDef" path="srv.CIC_0196PageDef"/>
+        <page id="dgcom_view_CIC_0206PageDef" path="srv.CIC_0206PageDef"/>
+        <page id="dgcom_view_CIC_0010PageDef" path="srv.CIC_0010PageDef"/>
+        <page id="dgcom_view_CIC_0207PageDef" path="srv.CIC_0207PageDef"/>
+    <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobCardRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobCardRowPageDef"/>
+        <page id="dgcom_view_CIC_0208PageDef" path="srv.CIC_0208PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobAssignRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobAssignRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobAssignDetRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobAssignDetRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsertPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsertPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewIssuanceRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewIssuanceRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewIssueDetDetRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewIssueDetDetRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobSolRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobSolRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobFaultRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobFaultRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobActionRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobActionRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet12PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet12PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsertPageDef1"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsertPageDef1"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewDemandNoteRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewDemandNoteRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewDemandLineRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewDemandLineRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet12PageDef1"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet12PageDef1"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsertPageDef11"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsertPageDef11"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsertPageDef111"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsertPageDef111"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet12PageDef11"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet12PageDef11"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet12PageDef111"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet12PageDef111"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert2PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsert2PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet13PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet13PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert3PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsert3PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert4PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsert4PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet14PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet14PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet15PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet15PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert5PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsert5PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert6PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsert6PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet16PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet16PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert7PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsert7PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert8PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsert8PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobReturnRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobReturnRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobRetDetRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobRetDetRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet17PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet17PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobReturnRow1PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobReturnRow1PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobRetDetRow1PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobRetDetRow1PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet18PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet18PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewStnRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewStnRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewStnDetRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewStnDetRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert9PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsert9PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewCourierDelRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewCourierDelRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewCourierDelDetRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewCourierDelDetRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet19PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet19PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewLogisticRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewLogisticRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewLogisticDetRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewLogisticDetRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet20PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet20PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewLogisticRow1PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewLogisticRow1PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewLogisticDetRow1PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewLogisticDetRow1PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet21PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet21PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewStockAdjRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewStockAdjRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewStockAdjDetRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewStockAdjDetRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet22PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet22PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewPartSaleRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewPartSaleRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewPartSaleDetRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewPartSaleDetRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet23PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet23PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert11PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsert11PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet24PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet24PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobTransferRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobTransferRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobTransDetRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobTransDetRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobTransferRow1PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobTransferRow1PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJobTransDetRow1PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJobTransDetRow1PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet25PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet25PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewStnRow1PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewStnRow1PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert1PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsert1PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewPurchaseOrderRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewPurchaseOrderRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreatePurchaseDetailRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreatePurchaseDetailRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateInsert12PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateInsert12PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet26PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet26PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewWarrantyRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewWarrantyRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewWarrantyDetRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewWarrantyDetRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_CreateWithParametersPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_CreateWithParametersPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet27PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet27PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewBOMRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewBOMRowPageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_executeEmptyRowSet28PageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_executeEmptyRowSet28PageDef"/>
+        <page id="dgcom_view_TFDigicomMain_TFDigicomMain_doCreateNewJsPartsNewRowPageDef"
+              path="dgcom.view.pageDefs.TFDigicomMain_TFDigicomMain_doCreateNewJsPartsNewRowPageDef"/>
+        <page id="dgcom_view_CIC_0213PageDef" path="srv.CIC_0213PageDef"/>
+    </pageDefinitionUsages>
+    <dataControlUsages>
+        <BC4JDataControl id="modLoginDataControl" Package="dgcom.model.ams"
+                         FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                         SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                         SupportsSortCollection="true" Configuration="modLoginLocal" syncMode="Immediate"
+                         xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+        <BC4JDataControl id="modServiceTransactionsDataControl" Package="dgcom.model.ams"
+                         FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                         SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                         SupportsSortCollection="true" Configuration="modServiceTransactionsLocal" syncMode="Immediate"
+                         xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+        <BC4JDataControl id="modServiceSetupDataControl" Package="dgcom.model.ams"
+                         FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                         SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                         SupportsSortCollection="true" Configuration="modServiceSetupLocal" syncMode="Immediate"
+                         xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+        <BC4JDataControl id="modServiceReportsDataControl" Package="dgcom.model.ams"
+                         FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                         SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                         SupportsSortCollection="true" Configuration="modServiceReportsLocal" syncMode="Immediate"
+                         xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    </dataControlUsages>
+</Application>

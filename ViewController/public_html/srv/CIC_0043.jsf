@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="CIC_0043.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:pageTemplate viewId="/tmpDigicomTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+                <f:facet name="left"/>
+                <f:facet name="middle">
+                    <af:table value="#{bindings.SrvReturntermCRUD.collectionModel}" var="row"
+                              rows="#{bindings.SrvReturntermCRUD.rangeSize}"
+                              emptyText="#{bindings.SrvReturntermCRUD.viewable ? 'No data to display.' : 'Access Denied.'}"
+                              rowBandingInterval="0"
+                              selectedRowKeys="#{bindings.SrvReturntermCRUD.collectionModel.selectedRow}"
+                              selectionListener="#{bindings.SrvReturntermCRUD.collectionModel.makeCurrent}"
+                              rowSelection="single" fetchSize="#{bindings.SrvReturntermCRUD.rangeSize}" id="t1"
+                              displayRow="selected" scrollPolicy="scroll" autoHeightRows="20"
+                              partialTriggers="::b1 ::b2">
+                        <af:column headerText="#{bindings.SrvReturntermCRUD.hints.Rettermid.label}" id="c1"
+                                   align="center">
+                            <af:inputText value="#{row.bindings.Rettermid.inputValue}"
+                                          label="#{bindings.SrvReturntermCRUD.hints.Rettermid.label}"
+                                          required="#{bindings.SrvReturntermCRUD.hints.Rettermid.mandatory}"
+                                          columns="#{bindings.SrvReturntermCRUD.hints.Rettermid.displayWidth}"
+                                          maximumLength="#{bindings.SrvReturntermCRUD.hints.Rettermid.precision}"
+                                          shortDesc="#{bindings.SrvReturntermCRUD.hints.Rettermid.tooltip}" id="it1"
+                                          readOnly="true">
+                                <f:validator binding="#{row.bindings.Rettermid.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                        <af:column headerText="#{bindings.SrvReturntermCRUD.hints.Description.label}" id="c2"
+                                   width="200" align="center">
+                            <af:inputText value="#{row.bindings.Description.inputValue}"
+                                          label="#{bindings.SrvReturntermCRUD.hints.Description.label}"
+                                          required="#{bindings.SrvReturntermCRUD.hints.Description.mandatory}"
+                                          columns="#{bindings.SrvReturntermCRUD.hints.Description.displayWidth}"
+                                          maximumLength="#{bindings.SrvReturntermCRUD.hints.Description.precision}"
+                                          shortDesc="#{bindings.SrvReturntermCRUD.hints.Description.tooltip}" id="it2">
+                                <f:validator binding="#{row.bindings.Description.validator}"/>
+                            </af:inputText>
+                        </af:column>
+                    </af:table>
+                </f:facet>
+                <f:facet name="toolbar">
+                    <af:toolbar id="t2">
+                        <af:button actionListener="#{bindings.CreateInsert.execute}" text="New"
+                                   disabled="#{!bindings.CreateInsert.enabled}" id="b1" accessKey="n"
+                                   styleClass="CRUDButton" icon="#{resource['images:imgNewDocument4.png']}"/>
+                        <af:button actionListener="#{bindings.Commit.execute}" text="Save"
+                                   disabled="#{!bindings.Commit.enabled}" id="b3" accessKey="s"
+                                   styleClass="CRUDButton" icon="#{resource['images:imgSave.png']}"/>
+                        <af:button actionListener="#{bindings.Rollback.execute}" text="Undo"
+                                   disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b4"
+                                   styleClass="CRUDButton" accessKey="u" icon="#{resource['images:imgUndo.png']}">
+                            <af:resetActionListener/>
+                        </af:button>
+                        <af:button actionListener="#{bindings.Delete.execute}" text="Delete"
+                                   disabled="#{!bindings.Delete.enabled}" id="b2" styleClass="CRUDButton"
+                                   accessKey="l" icon="#{resource['images:ImgDelete.png']}"/>
+                    </af:toolbar>
+                </f:facet>
+                <f:facet name="top"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

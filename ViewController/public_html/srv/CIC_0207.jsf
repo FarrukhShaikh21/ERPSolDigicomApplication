@@ -1,0 +1,120 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="CIC_0207.jsf" id="d1" binding="#{backingBeanScope.backing_CIC_0207.d1}">
+        <af:messages id="m1" binding="#{backingBeanScope.backing_CIC_0207.m1}"/>
+        <af:form id="f1" binding="#{backingBeanScope.backing_CIC_0207.f1}">
+            <af:pageTemplate viewId="/tmpDigicomTemplate.jsf" value="#{bindings.ptb1}" id="pt1"
+                             binding="#{backingBeanScope.backing_CIC_0207.pt1}">
+                <f:facet name="left"/>
+                <f:facet name="middle">
+                    <af:panelCollection id="pc1" binding="#{backingBeanScope.backing_CIC_0207.pc1}"
+                                        styleClass="AFStretchWidth">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2" binding="#{backingBeanScope.backing_CIC_0207.t2}">
+                                <af:button actionListener="#{bindings.CreateInsert.execute}" text="New"
+                                           disabled="#{!bindings.CreateInsert.enabled}" id="b1"
+                                           binding="#{backingBeanScope.backing_CIC_0207.b1}"
+                                           icon="#{resource['images:imgNewDocument4.png']}" styleClass="CRUDButton"
+                                           accessKey="n"/>
+                                <af:button actionListener="#{bindings.Commit.execute}" text="Save" id="b3"
+                                           binding="#{backingBeanScope.backing_CIC_0207.b3}" styleClass="CRUDButton"
+                                           icon="#{resource['images:imgSave.png']}" accessKey="s"/>
+                                <af:button actionListener="#{bindings.Rollback.execute}" text="Undo" immediate="true" id="b4"
+                                           binding="#{backingBeanScope.backing_CIC_0207.b4}" styleClass="CRUDButton"
+                                           icon="#{resource['images:imgUndo.png']}" accessKey="u">
+                                    <af:resetActionListener/>
+                                </af:button>
+                                <af:button actionListener="#{bindings.Delete.execute}" text="Delete"
+                                           disabled="#{!bindings.Delete.enabled}" id="b2"
+                                           binding="#{backingBeanScope.backing_CIC_0207.b2}" styleClass="CRUDButton"
+                                           icon="#{resource['images:ImgDelete.png']}" accessKey="l"/>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.ItemPartMappingCRUD.collectionModel}" var="row"
+                                  rows="#{bindings.ItemPartMappingCRUD.rangeSize}"
+                                  emptyText="#{bindings.ItemPartMappingCRUD.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.ItemPartMappingCRUD.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.ItemPartMappingCRUD.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.ItemPartMappingCRUD.rangeSize}" id="t1"
+                                  binding="#{backingBeanScope.backing_CIC_0207.t1}" partialTriggers="::b1 ::b2"
+                                  displayRow="selected" scrollPolicy="scroll" autoHeightRows="25"
+                                  styleClass="AFStretchWidth" columnStretching="last"
+                                  filterModel="#{bindings.ItemPartMappingCRUDQuery.queryDescriptor}"
+                                  queryListener="#{bindings.ItemPartMappingCRUDQuery.processQuery}" filterVisible="true"
+                                  varStatus="vs">
+                            <af:column headerText="#{bindings.ItemPartMappingCRUD.hints.Itemid.label}" id="c1"
+                                       sortProperty="#{bindings.ItemPartMappingCRUD.hints.Itemid.name}"
+                                       filterable="true" width="100">
+                                <af:inputListOfValues id="itemidId"
+                                                      popupTitle="Search and Select: #{bindings.ItemPartMappingCRUD.hints.Itemid.label}"
+                                                      value="#{row.bindings.Itemid.inputValue}"
+                                                      model="#{row.bindings.Itemid.listOfValuesModel}"
+                                                      required="#{bindings.ItemPartMappingCRUD.hints.Itemid.mandatory}"
+                                                      columns="#{bindings.ItemPartMappingCRUD.hints.Itemid.displayWidth}"
+                                                      shortDesc="#{bindings.ItemPartMappingCRUD.hints.Itemid.tooltip}">
+                                    <f:validator binding="#{row.bindings.Itemid.validator}"/>
+                                </af:inputListOfValues>
+                            </af:column>
+                            <af:column headerText="#{bindings.ItemPartMappingCRUD.hints.txtModel.label}" id="c3"
+                                       filterable="true" width="155">
+                                <af:inputText value="#{row.bindings.txtModel.inputValue}"
+                                              label="#{bindings.ItemPartMappingCRUD.hints.txtModel.label}"
+                                              required="#{bindings.ItemPartMappingCRUD.hints.txtModel.mandatory}"
+                                              columns="#{bindings.ItemPartMappingCRUD.hints.txtModel.displayWidth}"
+                                              maximumLength="#{bindings.ItemPartMappingCRUD.hints.txtModel.precision}"
+                                              shortDesc="#{bindings.ItemPartMappingCRUD.hints.txtModel.tooltip}"
+                                              id="it1" readOnly="true">
+                                    <f:validator binding="#{row.bindings.txtModel.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.ItemPartMappingCRUD.hints.Partid.label}" id="c2"
+                                       sortProperty="#{bindings.ItemPartMappingCRUD.hints.Partid.name}"
+                                       filterable="true" width="124">
+                                <af:inputListOfValues id="partidId"
+                                                      popupTitle="Search and Select: #{bindings.ItemPartMappingCRUD.hints.Partid.label}"
+                                                      value="#{row.bindings.Partid.inputValue}"
+                                                      model="#{row.bindings.Partid.listOfValuesModel}"
+                                                      required="#{bindings.ItemPartMappingCRUD.hints.Partid.mandatory}"
+                                                      columns="#{bindings.ItemPartMappingCRUD.hints.Partid.displayWidth}"
+                                                      shortDesc="#{bindings.ItemPartMappingCRUD.hints.Partid.tooltip}">
+                                    <f:validator binding="#{row.bindings.Partid.validator}"/>
+                                </af:inputListOfValues>
+                            </af:column>
+                            <af:column headerText="#{bindings.ItemPartMappingCRUD.hints.txtPartName.label}" id="c4"
+                                       filterable="true" width="120">
+                                <af:inputText value="#{row.bindings.txtPartName.inputValue}"
+                                              label="#{bindings.ItemPartMappingCRUD.hints.txtPartName.label}"
+                                              required="#{bindings.ItemPartMappingCRUD.hints.txtPartName.mandatory}"
+                                              columns="#{bindings.ItemPartMappingCRUD.hints.txtPartName.displayWidth}"
+                                              maximumLength="#{bindings.ItemPartMappingCRUD.hints.txtPartName.precision}"
+                                              shortDesc="#{bindings.ItemPartMappingCRUD.hints.txtPartName.tooltip}"
+                                              id="it2" readOnly="true">
+                                    <f:validator binding="#{row.bindings.txtPartName.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.ItemPartMappingCRUD.hints.txtPartNo.label}" id="c5"
+                                       filterable="true" width="118">
+                                <af:inputText value="#{row.bindings.txtPartNo.inputValue}"
+                                              label="#{bindings.ItemPartMappingCRUD.hints.txtPartNo.label}"
+                                              required="#{bindings.ItemPartMappingCRUD.hints.txtPartNo.mandatory}"
+                                              columns="#{bindings.ItemPartMappingCRUD.hints.txtPartNo.displayWidth}"
+                                              maximumLength="#{bindings.ItemPartMappingCRUD.hints.txtPartNo.precision}"
+                                              shortDesc="#{bindings.ItemPartMappingCRUD.hints.txtPartNo.tooltip}"
+                                              id="it3" readOnly="true">
+                                    <f:validator binding="#{row.bindings.txtPartNo.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </f:facet>
+                <f:facet name="toolbar"/>
+                <f:facet name="top"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_CIC_0207-->
+</f:view>

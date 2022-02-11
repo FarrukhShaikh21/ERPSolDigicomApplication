@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68"
+                id="TFDigicomMain_TFDigicomMain_doCreateNewBOMRowPageDef" Package="dgcom.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="doCreateNewBOMRow" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doCreateNewBOMRow"
+                  IsViewObjectMethod="true" DataControl="modServiceSetupDataControl"
+                  InstanceName="data.modServiceSetupDataControl.SrvBomCRUD"/>
+  </bindings>
+</pageDefinition>

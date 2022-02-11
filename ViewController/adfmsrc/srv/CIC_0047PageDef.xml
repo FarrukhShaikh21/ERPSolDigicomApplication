@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0047PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvImeiblockmasterCRUD" RangeSize="25" DataControl="modServiceSetupDataControl"
+              id="SrvImeiblockmasterCRUDIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SrvImeiblockmasterCRUDIterator" id="SrvImeiblockmasterCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvImeiblockmasterVO" Name="SrvImeiblockmasterCRUD0">
+        <AttrNames>
+          <Item Value="Blockid"/>
+          <Item Value="Description"/>
+          <Item Value="Createdby"/>
+          <Item Value="Exist" Binds="Exist"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvImeiblockmasterCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvImeiblockmasterCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="modServiceSetupDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceSetupDataControl"/>
+    <button IterBinding="SrvImeiblockmasterCRUDIterator" id="Exist" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Exist"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+  </bindings>
+</pageDefinition>

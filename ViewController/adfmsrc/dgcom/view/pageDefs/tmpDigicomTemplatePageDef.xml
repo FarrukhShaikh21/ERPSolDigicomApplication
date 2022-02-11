@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="tmpDigicomTemplatePageDef"
+                Package="dgcom.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="CurrentDateTimeReadOnlyIterator" Binds="CurrentDateTimeReadOnly" DataControl="modLoginDataControl"
+              RangeSize="25"/>
+    <iterator Binds="ApplicationActivityQVO1" RangeSize="-1" DataControl="modLoginDataControl"
+              id="ApplicationActivityQVO1Iterator"/>
+    <!--<iterator id="SysUsersView1Iterator" Binds="SysUsersView1" DataControl="modLoginDataControl" RangeSize="25"/>-->
+    <iterator Binds="SysProgramRO" RangeSize="-1" DataControl="modLoginDataControl" id="SysProgramROIterator"/>
+    <searchRegion Binds="SysProgramROIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SysProgramROQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="CurrentDateTimeReadOnlyIterator" id="Dt">
+      <AttrNames>
+        <Item Value="Dt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SysUsersView1Iterator" id="Userid">
+      <AttrNames>
+        <Item Value="Userid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ApplicationActivityQVO1Iterator" id="Moduleid">
+      <AttrNames>
+        <Item Value="Moduleid"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SysProgramROIterator" id="SysProgramRO">
+      <nodeDefinition DefName="dgcom.model.vo.sys.SysProgramVO" Name="SysProgramRO0">
+        <AttrNames>
+          <Item Value="Moduleid"/>
+          <Item Value="ModuleName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

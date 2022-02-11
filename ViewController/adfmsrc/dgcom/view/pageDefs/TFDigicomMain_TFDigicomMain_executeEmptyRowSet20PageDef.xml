@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68"
+                id="TFDigicomMain_TFDigicomMain_executeEmptyRowSet20PageDef" Package="dgcom.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="executeEmptyRowSet" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="executeEmptyRowSet" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvLogisticCIC_0194CRUD"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.executeEmptyRowSet_modServiceTransactionsDataControl_SrvLogisticCIC_0194CRUD_executeEmptyRowSet_result"/>
+  </bindings>
+</pageDefinition>

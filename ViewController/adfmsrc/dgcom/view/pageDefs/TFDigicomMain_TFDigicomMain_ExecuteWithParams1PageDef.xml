@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68"
+                id="TFDigicomMain_TFDigicomMain_ExecuteWithParams1PageDef" Package="dgcom.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="SrvJobqcCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobqcCRUDIterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="SrvJobqcCRUDIterator" id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="P_ADF_DOCTYPE_ID" NDValue="#{'JQC'}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0053PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvJobestimationCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobestimationCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvEstdetlDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvEstdetlDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvJobestimationFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvJobestimationCRUDIterator" id="SrvJobestimationFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvJobestimationCRUDIterator" id="EstId">
+      <AttrNames>
+        <Item Value="EstId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobestimationCRUDIterator" id="Esdate">
+      <AttrNames>
+        <Item Value="Esdate"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvJobestimationCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <attributeValues IterBinding="SrvJobestimationCRUDIterator" id="Lapcost">
+      <AttrNames>
+        <Item Value="Lapcost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobestimationCRUDIterator" id="Lcharges">
+      <AttrNames>
+        <Item Value="Lcharges"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobestimationCRUDIterator" id="Apcost">
+      <AttrNames>
+        <Item Value="Apcost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobestimationCRUDIterator" id="Charges">
+      <AttrNames>
+        <Item Value="Charges"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobestimationCRUDIterator" id="Approved">
+      <AttrNames>
+        <Item Value="Approved"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobestimationCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvJobestimationCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvJobestimationCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvJobestimationCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJobestimationCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <listOfValues IterBinding="SrvJobestimationCRUDIterator" StaticList="false" Uses="LovSrvJobEstimationSrvJobcardNo"
+                  id="Jobcardno"/>
+    <attributeValues IterBinding="SrvJobestimationCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobestimationCRUDIterator" id="txtImeiNo">
+      <AttrNames>
+        <Item Value="txtImeiNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobestimationCRUDIterator" id="txtMobile">
+      <AttrNames>
+        <Item Value="txtMobile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobestimationCRUDIterator" id="txtPhone">
+      <AttrNames>
+        <Item Value="txtPhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobestimationCRUDIterator" id="txtCustomer">
+      <AttrNames>
+        <Item Value="txtCustomer"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobestimationCRUDIterator" id="txtWarranty">
+      <AttrNames>
+        <Item Value="txtWarranty"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SrvEstdetlDETCRUDIterator" id="SrvEstdetlDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvEstdetlVO" Name="SrvEstdetlDETCRUD0">
+        <AttrNames>
+          <Item Value="CalledPerson"/>
+          <Item Value="CallDate"/>
+          <Item Value="Remarks"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvEstdetlDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvEstdetlDETCRUDIterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <methodAction id="doSubmitJobEstimation" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitJobEstimation" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobestimationCRUD"/>
+  </bindings>
+</pageDefinition>

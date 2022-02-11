@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0027PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvBomCRUD" RangeSize="25" DataControl="modServiceSetupDataControl" id="SrvBomCRUDIterator"
+              ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvBompartsDetCRUD" RangeSize="25" DataControl="modServiceSetupDataControl"
+              id="SrvBompartsDetCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvBomItemWiseVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvBomCRUDIterator" id="SrvBomItemWiseVCQuery"/>
+    <searchRegion Criteria="SrvBomFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvBomCRUDIterator" id="SrvBomFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvBomCRUDIterator" id="BomId">
+      <AttrNames>
+        <Item Value="BomId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvBomCRUDIterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvBomCRUDIterator" id="Bomdate">
+      <AttrNames>
+        <Item Value="Bomdate"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvBomCRUDIterator" StaticList="false" Uses="LOV_Supplierid" id="Supplierid"/>
+    <tree IterBinding="SrvBompartsDetCRUDIterator" id="SrvBompartsDetCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvBompartsVO" Name="SrvBompartsDetCRUD0">
+        <AttrNames>
+          <Item Value="Partid"/>
+          <Item Value="txtPartno"/>
+          <Item Value="txtDescription"/>
+          <Item Value="Qty"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvBompartsDetCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvBompartsDetCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="SrvBomCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SrvBomCRUDIterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="SrvBomCRUDIterator" id="Find" RequiresUpdateModel="true" Action="iteratorFind"/>
+    <action IterBinding="SrvBomCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvBomCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="modServiceSetupDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceSetupDataControl"/>
+    <attributeValues IterBinding="SrvBomCRUDIterator" id="Itemid">
+      <AttrNames>
+        <Item Value="Itemid"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvBomCRUDIterator" StaticList="false" Uses="LovSupplier" id="txtSupplier"/>
+    <attributeValues IterBinding="SrvBomCRUDIterator" id="Levelno">
+      <AttrNames>
+        <Item Value="Levelno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvBomCRUDIterator" id="txtEOL">
+      <AttrNames>
+        <Item Value="txtEOL"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvBomCRUDIterator" id="txtEOLRemarks">
+      <AttrNames>
+        <Item Value="txtEOLRemarks"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvBomCRUDIterator" StaticList="false" Uses="LovModelBom" id="txtModelName"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0088PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="PartExplorePartWiseRO" RangeSize="25" DataControl="modServiceReportsDataControl"
+              id="PartExplorePartWiseROIterator"/>
+    <searchRegion Binds="PartExplorePartWiseROIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="PartExplorePartWiseROQuery"/>
+    <iterator Binds="ControlBlockRO" RangeSize="25" DataControl="modServiceReportsDataControl"
+              id="ControlBlockROIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PartExplorePartWiseROIterator" id="PartExplorePartWiseRO">
+      <nodeDefinition DefName="dgcom.model.qvo.srv.PartExplorePartWiseQVO" Name="PartExplorePartWiseRO0">
+        <AttrNames>
+          <Item Value="txtAvailable"/>
+          <Item Value="ItemName"/>
+          <Item Value="CatDesc"/>
+          <Item Value="Partid"/>
+          <Item Value="PartName"/>
+          <Item Value="Partno"/>
+          <Item Value="Stock"/>
+          <Item Value="Price"/>
+          <Item Value="StoreName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="ControlBlockROIterator" StaticList="false" Uses="LovSrvPartCategory" id="CatId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <methodAction IterBinding="ControlBlockROIterator" id="doQueryPartExplore" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="doQueryPartExplore" IsViewObjectMethod="false"
+                  DataControl="modServiceReportsDataControl" InstanceName="bindings.ControlBlockROIterator.currentRow"
+                  IsLocalObjectReference="true"
+                  ReturnName="data.modServiceReportsDataControl.methodResults.doQueryPartExplore_doQueryPartExplore_doQueryPartExplore_result"/>
+    <listOfValues IterBinding="ControlBlockROIterator" StaticList="false" Uses="LovInItemsItemName" id="ModelName"/>
+    <attributeValues IterBinding="ControlBlockROIterator" id="Itemid">
+      <AttrNames>
+        <Item Value="Itemid"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="ControlBlockROIterator" StaticList="false" Uses="LovSrvPartNameItemAndCategoryWise"
+                  id="PartName"/>
+    <attributeValues IterBinding="ControlBlockROIterator" id="Partid">
+      <AttrNames>
+        <Item Value="Partid"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

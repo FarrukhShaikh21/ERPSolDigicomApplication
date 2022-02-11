@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68"
+                id="TFDigicomMain_TFDigicomMain_CreateWithParametersPageDef" Package="dgcom.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="SrvJobqcCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobqcCRUDIterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="SrvJobqcCRUDIterator" id="CreateWithParams" RequiresUpdateModel="true"
+            Action="createWithParams">
+      <NamedData NDName="Doctypeid" NDValue="#{'QCBD'}" NDType="java.lang.String"/>
+      <NamedData NDName="Status" NDValue="#{'N'}" NDType="java.lang.String"/>
+      <NamedData NDName="Qcid" NDValue="#{'003'}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

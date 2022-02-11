@@ -1,0 +1,235 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="CIC_0054.jsf" id="d1" binding="#{backingBeanScope.backing_CIC_0054.d1}"
+                 initialFocusId="pt1:jobcardnoId" partialTriggers="pt1:b4">
+        <af:messages id="m1" binding="#{backingBeanScope.backing_CIC_0054.m1}"/>
+        <af:form id="f1" partialTriggers="pt1:b7 pt1:b4 pt1:b1 pt1:b2 pt1:b3 pt1:b5 pt1:b6 d2"
+                 binding="#{backingBeanScope.backing_CIC_0054.f1}">
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p2"
+                      binding="#{backingBeanScope.backing_CIC_0054.p2}"
+                      popupFetchListener="#{backingBeanScope.backing_CIC_0054.deptPopUpFetchListener}">
+                <af:dialog id="d3" binding="#{backingBeanScope.backing_CIC_0054.d3}" type="ok"
+                           styleClass="AFStretchWidth">
+                    <f:facet name="buttonBar"/>
+                    <af:panelGroupLayout layout="vertical" id="pgl2"
+                                         binding="#{backingBeanScope.backing_CIC_0054.pgl2}">
+                        <af:panelHeader text="SrvJobswap" id="ph1" binding="#{backingBeanScope.backing_CIC_0054.ph1}">
+                            <af:query id="qryId1" headerText="Search" disclosed="true"
+                                      value="#{bindings.SrvJobswapFindVCQuery.queryDescriptor}"
+                                      model="#{bindings.SrvJobswapFindVCQuery.queryModel}"
+                                      queryListener="#{bindings.SrvJobswapFindVCQuery.processQuery}"
+                                      queryOperationListener="#{bindings.SrvJobswapFindVCQuery.processQueryOperation}"
+                                      binding="#{backingBeanScope.backing_CIC_0054.qryId1}" saveQueryMode="hidden"
+                                      runQueryAutomatically="allSavedSearches" saveResultsLayout="never"/>
+                        </af:panelHeader>
+                    </af:panelGroupLayout>
+                </af:dialog>
+            </af:popup>
+            <af:popup childCreation="deferred" autoCancel="disabled" id="p1"
+                      binding="#{backingBeanScope.backing_CIC_0054.p1}">
+                <af:dialog id="d2" binding="#{backingBeanScope.backing_CIC_0054.d2}" type="yesNo"
+                           title="Do you want to submit this transaction?" closeIconVisible="false"
+                           dialogListener="#{backingBeanScope.backing_CIC_0054.doDialogEventSubmit}">
+                    <f:facet name="buttonBar"/>
+                </af:dialog>
+            </af:popup>
+            <af:pageTemplate viewId="/tmpDigicomTemplate.jsf" value="#{bindings.ptb1}" id="pt1"
+                             binding="#{backingBeanScope.backing_CIC_0054.pt1}">
+                <f:facet name="left"/>
+                <f:facet name="middle">
+                    <af:panelFormLayout id="pfl1" binding="#{backingBeanScope.backing_CIC_0054.pfl1}">
+                        <af:panelLabelAndMessage label="#{bindings.Swapid.hints.label}" id="plam1"
+                                                 binding="#{backingBeanScope.backing_CIC_0054.plam1}">
+                            <af:inputText value="#{bindings.Swapid.inputValue}" label="#{bindings.Swapid.hints.label}"
+                                          required="#{bindings.Swapid.hints.mandatory}"
+                                          columns="#{bindings.Swapid.hints.displayWidth}"
+                                          maximumLength="#{bindings.Swapid.hints.precision}"
+                                          shortDesc="#{bindings.Swapid.hints.tooltip}" id="it1" readOnly="true"
+                                          simple="true" visible="#{bindings.Swapid.inputValue>'0'}"
+                                          binding="#{backingBeanScope.backing_CIC_0054.it1}">
+                                <f:validator binding="#{bindings.Swapid.validator}"/>
+                            </af:inputText>
+                        </af:panelLabelAndMessage>
+                        <af:inputDate value="#{bindings.Sdate.inputValue}" label="#{bindings.Sdate.hints.label}"
+                                      required="#{bindings.Sdate.hints.mandatory}"
+                                      columns="#{bindings.Sdate.hints.displayWidth}"
+                                      shortDesc="#{bindings.Sdate.hints.tooltip}" id="id1"
+                                      binding="#{backingBeanScope.backing_CIC_0054.id1}">
+                            <f:validator binding="#{bindings.Sdate.validator}"/>
+                            <af:convertDateTime pattern="#{bindings.Sdate.format}"/>
+                        </af:inputDate>
+                        <af:inputListOfValues id="locationidId"
+                                              popupTitle="Search and Select: #{bindings.Locationid.hints.label}"
+                                              value="#{bindings.Locationid.inputValue}"
+                                              label="#{bindings.Locationid.hints.label}"
+                                              model="#{bindings.Locationid.listOfValuesModel}"
+                                              required="#{bindings.Locationid.hints.mandatory}"
+                                              columns="#{bindings.Locationid.hints.displayWidth}"
+                                              shortDesc="#{bindings.Locationid.hints.tooltip}"
+                                              binding="#{backingBeanScope.backing_CIC_0054.locationidId}"
+                                              autoSubmit="true"
+                                              readOnly="#{data.dgcom_view_LoginPageDef.HLevel.inputValue=='U'||data.dgcom_view_LoginPageDef.HLevel.inputValue=='L'}">
+                            <f:validator binding="#{bindings.Locationid.validator}"/>
+                        </af:inputListOfValues>
+                        <af:inputListOfValues id="jobcardnoId"
+                                              popupTitle="Search and Select: #{bindings.Jobcardno.hints.label}"
+                                              value="#{bindings.Jobcardno.inputValue}"
+                                              label="#{bindings.Jobcardno.hints.label}"
+                                              model="#{bindings.Jobcardno.listOfValuesModel}"
+                                              required="#{bindings.Jobcardno.hints.mandatory}"
+                                              columns="#{bindings.Jobcardno.hints.displayWidth}"
+                                              shortDesc="#{bindings.Jobcardno.hints.tooltip}" autoSubmit="true"
+                                              binding="#{backingBeanScope.backing_CIC_0054.jobcardnoId}"
+                                              partialTriggers="locationidId" clientComponent="true">
+                            <f:validator binding="#{bindings.Jobcardno.validator}"/>
+                        </af:inputListOfValues>
+                        <af:selectOneChoice label="#{bindings.SwpStatus.hints.label}" id="soc1"
+                                            value="#{bindings.SwpStatus.inputValue}" autoSubmit="true"
+                                            binding="#{backingBeanScope.backing_CIC_0054.soc1}">
+                            <af:selectItem label="Yes" id="si2" value="Yes"
+                                           binding="#{backingBeanScope.backing_CIC_0054.si2}"/>
+                            <af:selectItem label="No" id="si1" value="No"
+                                           binding="#{backingBeanScope.backing_CIC_0054.si1}"/>
+                        </af:selectOneChoice>
+                        <af:panelLabelAndMessage label="#{bindings.txtItemName.hints.label}" id="plam2"
+                                                 binding="#{backingBeanScope.backing_CIC_0054.plam2}">
+                            <af:panelGroupLayout id="pgl3" binding="#{backingBeanScope.backing_CIC_0054.pgl3}"
+                                                 layout="horizontal">
+                                <af:inputComboboxListOfValues id="txtItemNameId"
+                                                              popupTitle="Search and Select: #{bindings.txtItemName.hints.label}"
+                                                              value="#{bindings.txtItemName.inputValue}"
+                                                              label="#{bindings.txtItemName.hints.label}"
+                                                              model="#{bindings.txtItemName.listOfValuesModel}"
+                                                              required="#{bindings.txtItemName.hints.mandatory}"
+                                                              columns="#{bindings.txtItemName.hints.displayWidth}"
+                                                              shortDesc="#{bindings.txtItemName.hints.tooltip}"
+                                                              binding="#{backingBeanScope.backing_CIC_0054.txtItemNameId}"
+                                                              simple="true" autoSubmit="true"
+                                                              partialTriggers="soc1"
+                                                              readOnly="#{bindings.txtPartName.inputValue!=null}">
+                                    <f:validator binding="#{bindings.txtItemName.validator}"/>
+                                    <af:autoSuggestBehavior maxSuggestedItems="10"
+                                                            suggestedItems="#{backingBeanScope.backing_CIC_0054.getSuggestedModel}"/>
+                                </af:inputComboboxListOfValues>
+                                <af:inputText value="#{bindings.Itemid.inputValue}"
+                                              label="#{bindings.Itemid.hints.label}"
+                                              required="#{bindings.Itemid.hints.mandatory}"
+                                              columns="#{bindings.Itemid.hints.displayWidth}"
+                                              maximumLength="#{bindings.Itemid.hints.precision}"
+                                              shortDesc="#{bindings.Itemid.hints.tooltip}" id="it2"
+                                              binding="#{backingBeanScope.backing_CIC_0054.it2}" readOnly="true"
+                                              partialTriggers="txtItemNameId">
+                                    <f:validator binding="#{bindings.Itemid.validator}"/>
+                                </af:inputText>
+                            </af:panelGroupLayout>
+                        </af:panelLabelAndMessage>
+                        <af:panelLabelAndMessage label="#{bindings.txtPartName.hints.label}" id="plam3"
+                                                 binding="#{backingBeanScope.backing_CIC_0054.plam3}">
+                            <af:panelGroupLayout id="pgl4" binding="#{backingBeanScope.backing_CIC_0054.pgl4}"
+                                                 layout="horizontal">
+                                <af:inputComboboxListOfValues id="txtPartNameId"
+                                                              popupTitle="Search and Select: #{bindings.txtPartName.hints.label}"
+                                                              value="#{bindings.txtPartName.inputValue}"
+                                                              label="#{bindings.txtPartName.hints.label}"
+                                                              model="#{bindings.txtPartName.listOfValuesModel}"
+                                                              required="#{bindings.txtPartName.hints.mandatory}"
+                                                              columns="#{bindings.txtPartName.hints.displayWidth}"
+                                                              shortDesc="#{bindings.txtPartName.hints.tooltip}"
+                                                              binding="#{backingBeanScope.backing_CIC_0054.txtPartNameId}"
+                                                              simple="true" autoSubmit="true"
+                                                              partialTriggers="soc1 txtItemNameId"
+                                                              readOnly="#{bindings.txtItemName.inputValue!=null}">
+                                    <f:validator binding="#{bindings.txtPartName.validator}"/>
+                                    <af:autoSuggestBehavior maxSuggestedItems="10"
+                                                            suggestedItems="#{backingBeanScope.backing_CIC_0054.getSuggestePart}"/>
+                                </af:inputComboboxListOfValues>
+                                <af:inputText value="#{bindings.Partid.inputValue}"
+                                              label="#{bindings.Partid.hints.label}"
+                                              required="#{bindings.Partid.hints.mandatory}"
+                                              columns="#{bindings.Partid.hints.displayWidth}"
+                                              maximumLength="#{bindings.Partid.hints.precision}"
+                                              shortDesc="#{bindings.Partid.hints.tooltip}" id="it3"
+                                              binding="#{backingBeanScope.backing_CIC_0054.it3}"
+                                              partialTriggers="txtPartNameId" readOnly="true">
+                                    <f:validator binding="#{bindings.Partid.validator}"/>
+                                </af:inputText>
+                            </af:panelGroupLayout>
+                        </af:panelLabelAndMessage>
+                        <af:inputText value="#{bindings.Remarks.inputValue}" label="#{bindings.Remarks.hints.label}"
+                                      required="#{bindings.Remarks.hints.mandatory}"
+                                      columns="#{bindings.Remarks.hints.displayWidth}"
+                                      maximumLength="#{bindings.Remarks.hints.precision}"
+                                      shortDesc="#{bindings.Remarks.hints.tooltip}" id="it7" rows="4"
+                                      binding="#{backingBeanScope.backing_CIC_0054.it7}">
+                            <f:validator binding="#{bindings.Remarks.validator}"/>
+                        </af:inputText>
+                        <f:facet name="footer">
+                            <af:panelGroupLayout id="pgl5" binding="#{backingBeanScope.backing_CIC_0054.pgl5}"
+                                                 rendered="false">
+                                <af:inputText value="#{bindings.txtProdId.inputValue}"
+                                              label="#{bindings.txtProdId.hints.label}"
+                                              required="#{bindings.txtProdId.hints.mandatory}"
+                                              columns="#{bindings.txtProdId.hints.displayWidth}"
+                                              maximumLength="#{bindings.txtProdId.hints.precision}"
+                                              shortDesc="#{bindings.txtProdId.hints.tooltip}" id="it4"
+                                              binding="#{backingBeanScope.backing_CIC_0054.it4}" rendered="false">
+                                    <f:validator binding="#{bindings.txtProdId.validator}"/>
+                                </af:inputText>
+                                <af:inputText value="#{bindings.txtItemId.inputValue}"
+                                              label="#{bindings.txtItemId.hints.label}"
+                                              required="#{bindings.txtItemId.hints.mandatory}"
+                                              columns="#{bindings.txtItemId.hints.displayWidth}"
+                                              maximumLength="#{bindings.txtItemId.hints.precision}"
+                                              shortDesc="#{bindings.txtItemId.hints.tooltip}" id="it5"
+                                              binding="#{backingBeanScope.backing_CIC_0054.it5}">
+                                    <f:validator binding="#{bindings.txtItemId.validator}"/>
+                                </af:inputText>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </af:panelFormLayout>
+                </f:facet>
+                <f:facet name="toolbar">
+                    <af:panelGroupLayout layout="horizontal" id="pgl1"
+                                         binding="#{backingBeanScope.backing_CIC_0054.pgl1}">
+                        <af:button text="Find" id="b8" binding="#{backingBeanScope.backing_CIC_0054.b8}"
+                                   styleClass="CRUDButton" accessKey="i" icon="#{resource['images:imgFind.png']}">
+                            <af:showPopupBehavior triggerType="action" popupId="::p2"/>
+                        </af:button>
+                        <af:button text="Submit: #{bindings.Posted.inputValue}" id="b7" disabled="#{bindings.Posted.inputValue=='Y'||data.dgcom_view_LoginPageDef.Submit.inputValue!='Y'}"
+                                   binding="#{backingBeanScope.backing_CIC_0054.b7}" accessKey="m"
+                                   styleClass="CRUDButton" icon="#{resource['images:imgSubmit.png']}">
+                            <af:showPopupBehavior triggerType="action" popupId="::p1"/>
+                        </af:button>
+                        <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                                   disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"
+                                   binding="#{backingBeanScope.backing_CIC_0054.b2}" styleClass="CRUDButton"
+                                   accessKey="p" icon="#{resource['images:imgPrevious.png']}"/>
+                        <af:button actionListener="#{bindings.Next.execute}" text="Next"
+                                   disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"
+                                   binding="#{backingBeanScope.backing_CIC_0054.b3}" accessKey="x"
+                                   styleClass="CRUDButton" icon="#{resource['images:nextImage.png']}"/>
+                        <af:button text="New" disabled="#{!bindings.CreateInsert.enabled}" partialSubmit="true"
+                                   id="b4" actionListener="#{bindings.CreateInsert.execute}"
+                                   binding="#{backingBeanScope.backing_CIC_0054.b4}" styleClass="CRUDButton"
+                                   accessKey="n" icon="#{resource['images:imgNewDocument4.png']}"/>
+                        <af:button actionListener="#{bindings.Commit.execute}" text="Save" id="b5"
+                                   binding="#{backingBeanScope.backing_CIC_0054.b5}" styleClass="CRUDButton"
+                                   accessKey="s" icon="#{resource['images:imgSave.png']}"/>
+                        <af:button actionListener="#{bindings.Rollback.execute}" text="Undo" immediate="true" id="b6"
+                                   binding="#{backingBeanScope.backing_CIC_0054.b6}" accessKey="u"
+                                   styleClass="CRUDButton" icon="#{resource['images:imgUndo.png']}">
+                            <af:resetActionListener/>
+                        </af:button>
+                        <af:button text="Delete" disabled="#{bindings.Posted.inputValue=='Y'}" partialSubmit="true"
+                                   id="b1" actionListener="#{bindings.Delete.execute}"
+                                   binding="#{backingBeanScope.backing_CIC_0054.b1}" accessKey="l"
+                                   styleClass="CRUDButton" icon="#{resource['images:ImgDelete.png']}"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="top"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_CIC_0054-->
+</f:view>

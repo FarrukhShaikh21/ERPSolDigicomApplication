@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0018PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="InPartsCRUD" RangeSize="25" DataControl="modServiceSetupDataControl" id="InPartsCRUDIterator"
+              ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="InPartsPartExistsInBOMWithItemVC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" Binds="InPartsCRUDIterator"
+                  id="InPartsPartExistsInBOMWithItemVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="InPartsCRUDIterator" id="Partid">
+      <AttrNames>
+        <Item Value="Partid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InPartsCRUDIterator" id="Uomsid">
+      <AttrNames>
+        <Item Value="Uomsid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InPartsCRUDIterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InPartsCRUDIterator" id="Specification">
+      <AttrNames>
+        <Item Value="Specification"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InPartsCRUDIterator" id="Partno">
+      <AttrNames>
+        <Item Value="Partno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InPartsCRUDIterator" id="Partweight">
+      <AttrNames>
+        <Item Value="Partweight"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InPartsCRUDIterator" id="Lastpurchrate">
+      <AttrNames>
+        <Item Value="Lastpurchrate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InPartsCRUDIterator" id="DutyPr">
+      <AttrNames>
+        <Item Value="DutyPr"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InPartsCRUDIterator" id="IbPr">
+      <AttrNames>
+        <Item Value="IbPr"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InPartsCRUDIterator" id="Stax">
+      <AttrNames>
+        <Item Value="Stax"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InPartsCRUDIterator" id="Itax">
+      <AttrNames>
+        <Item Value="Itax"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InPartsCRUDIterator" id="Pglcode">
+      <AttrNames>
+        <Item Value="Pglcode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InPartsCRUDIterator" id="Pccenter">
+      <AttrNames>
+        <Item Value="Pccenter"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="InPartsCRUDIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="InPartsCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="InPartsCRUDIterator" id="Find" RequiresUpdateModel="true" Action="iteratorFind"/>
+    <action IterBinding="InPartsCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="InPartsCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="modServiceSetupDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceSetupDataControl"/>
+    <button IterBinding="InPartsCRUDIterator" id="Needapproval" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="Needapproval"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <listOfValues IterBinding="InPartsCRUDIterator" StaticList="false" Uses="LovModelInparts" id="txtModel"/>
+    <attributeValues IterBinding="InPartsCRUDIterator" id="Itemid">
+      <AttrNames>
+        <Item Value="Itemid"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="InPartsCRUDIterator" StaticList="false" Uses="LovSysProdCatagory" id="ProdId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="InPartsCRUDIterator" StaticList="false" Uses="LovSysPartCatagory" id="Partcatid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+  </bindings>
+</pageDefinition>

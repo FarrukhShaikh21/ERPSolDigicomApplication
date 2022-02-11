@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="CIC_0050.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:pageTemplate viewId="/tmpDigicomTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+                <f:facet name="left"/>
+                <f:facet name="middle">
+                    <af:panelCollection id="pc1" partialTriggers="b3 b4 b1 b2">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2">
+                                <af:button actionListener="#{bindings.CreateInsert.execute}" text="New"
+                                           disabled="#{!bindings.CreateInsert.enabled}" id="b1" styleClass="CRUDButton"
+                                           accessKey="n" icon="#{resource['images:imgNewDocument4.png']}"/>
+                                <af:button actionListener="#{bindings.Commit.execute}" text="Save"
+                                           disabled="#{!bindings.Commit.enabled}" id="b3" styleClass="CRUDButton"
+                                           accessKey="s" icon="#{resource['images:imgSave.png']}"/>
+                                <af:button actionListener="#{bindings.Rollback.execute}" text="Undo"
+                                           disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b4"
+                                           accessKey="u" styleClass="CRUDButton"
+                                           icon="#{resource['images:imgUndo.png']}">
+                                    <af:resetActionListener/>
+                                </af:button>
+                                <af:button actionListener="#{bindings.Delete.execute}" text="Delete"
+                                           disabled="#{!bindings.Delete.enabled}" id="b2" accessKey="l"
+                                           styleClass="CRUDButton" icon="#{resource['images:ImgDelete.png']}"/>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.SrvCompcategoryCRUD.collectionModel}" var="row"
+                                  rows="#{bindings.SrvCompcategoryCRUD.rangeSize}"
+                                  emptyText="#{bindings.SrvCompcategoryCRUD.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.SrvCompcategoryCRUD.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.SrvCompcategoryCRUD.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.SrvCompcategoryCRUD.rangeSize}" id="t1"
+                                  partialTriggers="::b1 ::b2" autoHeightRows="20" displayRow="selected"
+                                  scrollPolicy="scroll">
+                            <af:column headerText="#{bindings.SrvCompcategoryCRUD.hints.Compcatid.label}" id="c1"
+                                       align="center">
+                                <af:inputText value="#{row.bindings.Compcatid.inputValue}"
+                                              label="#{bindings.SrvCompcategoryCRUD.hints.Compcatid.label}"
+                                              required="#{bindings.SrvCompcategoryCRUD.hints.Compcatid.mandatory}"
+                                              columns="#{bindings.SrvCompcategoryCRUD.hints.Compcatid.displayWidth}"
+                                              maximumLength="#{bindings.SrvCompcategoryCRUD.hints.Compcatid.precision}"
+                                              shortDesc="#{bindings.SrvCompcategoryCRUD.hints.Compcatid.tooltip}"
+                                              id="it1" readOnly="true">
+                                    <f:validator binding="#{row.bindings.Compcatid.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.SrvCompcategoryCRUD.hints.Description.label}" id="c2"
+                                       width="200" align="center">
+                                <af:inputText value="#{row.bindings.Description.inputValue}"
+                                              label="#{bindings.SrvCompcategoryCRUD.hints.Description.label}"
+                                              required="#{bindings.SrvCompcategoryCRUD.hints.Description.mandatory}"
+                                              columns="#{bindings.SrvCompcategoryCRUD.hints.Description.displayWidth}"
+                                              maximumLength="#{bindings.SrvCompcategoryCRUD.hints.Description.precision}"
+                                              shortDesc="#{bindings.SrvCompcategoryCRUD.hints.Description.tooltip}"
+                                              id="it2">
+                                    <f:validator binding="#{row.bindings.Description.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </f:facet>
+                <f:facet name="toolbar"/>
+                <f:facet name="top"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

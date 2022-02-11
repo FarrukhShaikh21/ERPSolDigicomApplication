@@ -1,0 +1,557 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <af:document title="CIC_0056.jsf" id="d1" binding="#{backingBeanScope.backing_CIC_0056.d1}">
+    <af:messages id="m1" binding="#{backingBeanScope.backing_CIC_0056.m1}"/>
+    <af:form id="f1" binding="#{backingBeanScope.backing_CIC_0056.f1}">
+      <af:pageTemplate viewId="/tmpDigicomTemplate.jsf" value="#{bindings.ptb1}" id="pt1"
+                       binding="#{backingBeanScope.backing_CIC_0056.pt1}">
+        <f:facet name="left"/>
+        <f:facet name="middle">
+          <af:panelSplitter id="ps1" splitterPosition="390" binding="#{backingBeanScope.backing_CIC_0056.ps1}">
+            <f:facet name="first">
+              <af:panelGroupLayout id="pgl2" binding="#{backingBeanScope.backing_CIC_0056.pgl2}">
+                <af:panelFormLayout id="pfl1" binding="#{backingBeanScope.backing_CIC_0056.pfl1}" rows="2"
+                                    maxColumns="1">
+                  <af:inputText value="#{bindings.txtAllias.inputValue}" label="#{bindings.txtAllias.hints.label}"
+                                required="#{bindings.txtAllias.hints.mandatory}"
+                                columns="#{bindings.txtAllias.hints.displayWidth}"
+                                maximumLength="#{bindings.txtAllias.hints.precision}"
+                                shortDesc="#{bindings.txtAllias.hints.tooltip}" id="it4"
+                                binding="#{backingBeanScope.backing_CIC_0056.it4}" partialTriggers="soc3"
+                                rendered="false">
+                    <f:validator binding="#{bindings.txtAllias.validator}"/>
+                  </af:inputText>
+                  <af:inputText value="#{bindings.ReportExeName.inputValue}"
+                                label="#{bindings.ReportExeName.hints.label}"
+                                required="#{bindings.ReportExeName.hints.mandatory}"
+                                columns="#{bindings.ReportExeName.hints.displayWidth}"
+                                maximumLength="#{bindings.ReportExeName.hints.precision}"
+                                shortDesc="#{bindings.ReportExeName.hints.tooltip}" id="it1"
+                                binding="#{backingBeanScope.backing_CIC_0056.it1}">
+                    <f:validator binding="#{bindings.ReportExeName.validator}"/>
+                  </af:inputText>
+                  <af:selectOneChoice value="#{bindings.ReportId.inputValue}" label="#{bindings.ReportId.label}"
+                                      required="#{bindings.ReportId.hints.mandatory}"
+                                      shortDesc="#{bindings.ReportId.hints.tooltip}" id="soc3"
+                                      binding="#{backingBeanScope.backing_CIC_0056.soc3}"
+                                      valueChangeListener="#{backingBeanScope.backing_CIC_0056.reportIdVCE}"
+                                      autoSubmit="true">
+                    <f:selectItems value="#{bindings.ReportId.items}" id="si8"
+                                   binding="#{backingBeanScope.backing_CIC_0056.si8}"/>
+                    <f:validator binding="#{bindings.ReportId.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.Regionid.inputValue}" label="#{bindings.Regionid.label}"
+                                      required="#{bindings.Regionid.hints.mandatory}"
+                                      shortDesc="#{bindings.Regionid.hints.tooltip}" id="soc1" autoSubmit="true"
+                                      binding="#{backingBeanScope.backing_CIC_0056.soc1}" partialTriggers="soc3">
+                    <f:selectItems value="#{bindings.Regionid.items}" id="si3"
+                                   binding="#{backingBeanScope.backing_CIC_0056.si3}"/>
+                    <f:validator binding="#{bindings.Regionid.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.Locationid.inputValue}" label="#{bindings.Locationid.label}"
+                                      required="#{bindings.Locationid.hints.mandatory}"
+                                      shortDesc="#{bindings.Locationid.hints.tooltip}" id="soc2" autoSubmit="true"
+                                      binding="#{backingBeanScope.backing_CIC_0056.soc2}"
+                                      valueChangeListener="#{backingBeanScope.backing_CIC_0056.doLocationChangeEvent}"
+                                      partialTriggers="soc3">
+                    <f:selectItems value="#{bindings.Locationid.items}" id="si4"
+                                   binding="#{backingBeanScope.backing_CIC_0056.si4}"/>
+                    <f:validator binding="#{bindings.Locationid.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.Storeid.inputValue}" label="#{bindings.Storeid.label}"
+                                      required="#{bindings.Storeid.hints.mandatory}"
+                                      shortDesc="#{bindings.Storeid.hints.tooltip}" id="soc12"
+                                      binding="#{backingBeanScope.backing_CIC_0056.soc12}"
+                                      partialTriggers="soc1 soc2 soc3" contentStyle="width:100% ">
+                    <f:selectItems value="#{bindings.Storeid.items}" id="si54"
+                                   binding="#{backingBeanScope.backing_CIC_0056.si54}"/>
+                    <f:validator binding="#{bindings.Storeid.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.ToLocationid.inputValue}" label="#{bindings.ToLocationid.label}"
+                                      required="#{bindings.ToLocationid.hints.mandatory}"
+                                      shortDesc="#{bindings.ToLocationid.hints.tooltip}" id="soc7"
+                                      binding="#{backingBeanScope.backing_CIC_0056.soc7}" partialTriggers="soc1 soc3"
+                                      autoSubmit="true">
+                    <f:selectItems value="#{bindings.ToLocationid.items}" id="si34"
+                                   binding="#{backingBeanScope.backing_CIC_0056.si34}"/>
+                    <f:validator binding="#{bindings.ToLocationid.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.ToStoreid.inputValue}" label="#{bindings.ToStoreid.label}"
+                                      required="#{bindings.ToStoreid.hints.mandatory}"
+                                      shortDesc="#{bindings.ToStoreid.hints.tooltip}" id="soc13"
+                                      binding="#{backingBeanScope.backing_CIC_0056.soc13}" contentStyle="width:100%"
+                                      partialTriggers="soc3 soc1 soc7">
+                    <f:selectItems value="#{bindings.ToStoreid.items}" id="si55"
+                                   binding="#{backingBeanScope.backing_CIC_0056.si55}"/>
+                    <f:validator binding="#{bindings.ToStoreid.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice label="Agreed" id="soc4" binding="#{backingBeanScope.backing_CIC_0056.soc4}"
+                                      autoSubmit="true" partialTriggers="soc3" contentStyle="width:100%;">
+                    <af:selectItem label="Yes" id="si19" binding="#{backingBeanScope.backing_CIC_0056.si19}"
+                                   value="Yes"/>
+                    <af:selectItem label="No" id="si18" binding="#{backingBeanScope.backing_CIC_0056.si18}"
+                                   value="No"/>
+                    <af:selectItem id="si20" binding="#{backingBeanScope.backing_CIC_0056.si20}" label="All" value="-"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice label="Status" id="soc5" binding="#{backingBeanScope.backing_CIC_0056.soc5}"
+                                      partialTriggers="soc3" contentStyle="width:100%;">
+                    <af:selectItem label="All" id="si21" binding="#{backingBeanScope.backing_CIC_0056.si21}" value="-"/>
+                    <af:selectItem label="Initial" id="si22" binding="#{backingBeanScope.backing_CIC_0056.si22}"
+                                   value="I"/>
+                    <af:selectItem label="Assign" id="si23" binding="#{backingBeanScope.backing_CIC_0056.si23}"
+                                   value="A"/>
+                    <af:selectItem label="QC" id="si24" binding="#{backingBeanScope.backing_CIC_0056.si24}" value="Q"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice label="QC Status" id="soc6" binding="#{backingBeanScope.backing_CIC_0056.soc6}"
+                                      contentStyle="width:100%" partialTriggers="soc3">
+                    <af:selectItem label="QC Pass" id="si32" binding="#{backingBeanScope.backing_CIC_0056.si32}"
+                                   value="Y"/>
+                    <af:selectItem label="QC Fail" id="si31" binding="#{backingBeanScope.backing_CIC_0056.si31}"
+                                   value="N"/>
+                    <af:selectItem label="All" id="si33" binding="#{backingBeanScope.backing_CIC_0056.si33}" value="-"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice label="Doc Type" id="soc8" binding="#{backingBeanScope.backing_CIC_0056.soc8}"
+                                      contentStyle="width:100%" partialTriggers="soc3">
+                    <af:selectItem label="All" id="si37" binding="#{backingBeanScope.backing_CIC_0056.si37}"
+                                   value="-"/>
+                    <af:selectItem id="si35" binding="#{backingBeanScope.backing_CIC_0056.si35}"
+                                   value="JT" label="Transfer"/>
+                    <af:selectItem id="si36" binding="#{backingBeanScope.backing_CIC_0056.si36}"
+                                   value="JR" label="Return"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice label="Receipt Mode" id="soc9" binding="#{backingBeanScope.backing_CIC_0056.soc9}"
+                                      contentStyle="width:100%" partialTriggers="soc3">
+                    <af:selectItem label="All" id="si40" binding="#{backingBeanScope.backing_CIC_0056.si40}"
+                                   value="-"/>
+                    <af:selectItem label="Credit" id="si38" binding="#{backingBeanScope.backing_CIC_0056.si38}"
+                                   value="Credit"/>
+                    <af:selectItem label="Cash" id="si39" binding="#{backingBeanScope.backing_CIC_0056.si39}"
+                                   value="Cash"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice label="Receipt Mode" id="soc10" binding="#{backingBeanScope.backing_CIC_0056.soc10}"
+                                      contentStyle="width:100%" partialTriggers="soc3">
+                    <af:selectItem label="Cash" id="si41" binding="#{backingBeanScope.backing_CIC_0056.si41}"
+                                   value="CA"/>
+                    <af:selectItem label="Cheque" id="si42" binding="#{backingBeanScope.backing_CIC_0056.si42}"
+                                   value="CH"/>
+                    <af:selectItem label="Pay Order" id="si43" binding="#{backingBeanScope.backing_CIC_0056.si43}"
+                                   value="PO"/>
+                    <af:selectItem label="Demand Draft" id="si44" binding="#{backingBeanScope.backing_CIC_0056.si44}"
+                                   value="DD"/>
+                    <af:selectItem label="Travellers Cheque" id="si45" binding="#{backingBeanScope.backing_CIC_0056.si45}"
+                                   value="TC"/>
+                    <af:selectItem label="TT/Online/IBTS" id="si46" binding="#{backingBeanScope.backing_CIC_0056.si46}"
+                                   value="TT"/>
+                    <af:selectItem label="ALL" id="si47" binding="#{backingBeanScope.backing_CIC_0056.si47}" value="-"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice label="Wty Ref Reason" id="soc11" binding="#{backingBeanScope.backing_CIC_0056.soc11}"
+                                      partialTriggers="soc3" contentStyle="width:100%">
+                    <af:selectItem label="Any" id="si52" binding="#{backingBeanScope.backing_CIC_0056.si52}" value="-"/>
+                    <af:selectItem label="DAP" id="si48" binding="#{backingBeanScope.backing_CIC_0056.si48}"
+                                   value="D"/>
+                    <af:selectItem label="Replacement/Exchange" id="si49" binding="#{backingBeanScope.backing_CIC_0056.si49}"
+                                   value="R"/>
+                    <af:selectItem label="Legal" id="si50" binding="#{backingBeanScope.backing_CIC_0056.si50}"
+                                   value="L"/>
+                    <af:selectItem label="Card Lost/InHouse" id="si51" binding="#{backingBeanScope.backing_CIC_0056.si51}"
+                                   value="CL"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice label="Job Source" id="soc14" binding="#{backingBeanScope.backing_CIC_0056.soc14}"
+                                      contentStyle="width:100%" partialTriggers="soc3">
+                    <af:selectItem label="All" id="si58" binding="#{backingBeanScope.backing_CIC_0056.si58}" value="-"/>
+                    <af:selectItem label="Courier" id="si56" binding="#{backingBeanScope.backing_CIC_0056.si56}"
+                                   value="CR"/>
+                    <af:selectItem label="Carry In" id="si57" binding="#{backingBeanScope.backing_CIC_0056.si57}"
+                                   value="CI"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.Compcatid.inputValue}" label="#{bindings.Compcatid.label}"
+                                      required="#{bindings.Compcatid.hints.mandatory}"
+                                      shortDesc="#{bindings.Compcatid.hints.tooltip}" id="soc15"
+                                      binding="#{backingBeanScope.backing_CIC_0056.soc15}" partialTriggers="soc3"
+                                      contentStyle="width:100%">
+                    <f:selectItems value="#{bindings.Compcatid.items}" id="si60"
+                                   binding="#{backingBeanScope.backing_CIC_0056.si60}"/>
+                    <f:validator binding="#{bindings.Compcatid.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice value="#{bindings.Agentid.inputValue}" label="#{bindings.Agentid.label}"
+                                      required="#{bindings.Agentid.hints.mandatory}"
+                                      shortDesc="#{bindings.Agentid.hints.tooltip}" id="soc16"
+                                      binding="#{backingBeanScope.backing_CIC_0056.soc16}" partialTriggers="soc3 soc2"
+                                      contentStyle="width:100%">
+                    <f:selectItems value="#{bindings.Agentid.items}" id="si61"
+                                   binding="#{backingBeanScope.backing_CIC_0056.si61}"/>
+                    <f:validator binding="#{bindings.Agentid.validator}"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice label="Response" id="soc17" binding="#{backingBeanScope.backing_CIC_0056.soc17}"
+                                      contentStyle="width:100%" partialTriggers="soc3">
+                    <af:selectItem label="Excellent" id="si62" binding="#{backingBeanScope.backing_CIC_0056.si62}"
+                                   value="E"/>
+                    <af:selectItem label="Good" id="si63" binding="#{backingBeanScope.backing_CIC_0056.si63}"
+                                   value="G"/>
+                    <af:selectItem label="Average" id="si64" binding="#{backingBeanScope.backing_CIC_0056.si64}"
+                                   value="A"/>
+                    <af:selectItem label="Poor" id="si65" binding="#{backingBeanScope.backing_CIC_0056.si65}"
+                                   value="P"/>
+                    <af:selectItem label="Not Any" id="si66" binding="#{backingBeanScope.backing_CIC_0056.si66}"
+                                   value="N"/>
+                    <af:selectItem label="All" id="si67" binding="#{backingBeanScope.backing_CIC_0056.si67}" value="-"/>
+                  </af:selectOneChoice>
+                  <af:inputDate value="#{bindings.FromDate.inputValue}" label="#{bindings.FromDate.hints.label}"
+                                required="#{bindings.FromDate.hints.mandatory}"
+                                columns="#{bindings.FromDate.hints.displayWidth}"
+                                shortDesc="#{bindings.FromDate.hints.tooltip}" id="id1"
+                                binding="#{backingBeanScope.backing_CIC_0056.id1}" partialTriggers="soc3">
+                    <f:validator binding="#{bindings.FromDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.FromDate.format}"/>
+                  </af:inputDate>
+                  <af:inputDate value="#{bindings.ToDate.inputValue}" label="#{bindings.ToDate.hints.label}"
+                                required="#{bindings.ToDate.hints.mandatory}"
+                                columns="#{bindings.ToDate.hints.displayWidth}"
+                                shortDesc="#{bindings.ToDate.hints.tooltip}" id="id2"
+                                binding="#{backingBeanScope.backing_CIC_0056.id2}" partialTriggers="soc3">
+                    <f:validator binding="#{bindings.ToDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.ToDate.format}"/>
+                  </af:inputDate>
+                  <f:facet name="footer">
+                    <af:panelGroupLayout id="pgl1" binding="#{backingBeanScope.backing_CIC_0056.pgl1}">
+                      <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback" immediate="true" id="b6"
+                                 binding="#{backingBeanScope.backing_CIC_0056.b6}">
+                        <af:resetActionListener/>
+                      </af:button>
+                      <af:button text="Process" id="b5" binding="#{backingBeanScope.backing_CIC_0056.b5}" partialTriggers="soc3"
+                                 action="#{backingBeanScope.backing_CIC_0056.doRunProcess}"/>
+                      <af:button text="Submit" id="b1" binding="#{backingBeanScope.backing_CIC_0056.b1}"
+                                 action="#{backingBeanScope.backing_CIC_0056.doRunReport}"/>
+                      <af:button text="Test" id="b2" binding="#{backingBeanScope.backing_CIC_0056.b2}"
+                                 action="#{backingBeanScope.backing_CIC_0056.b2_action}"/>
+                    </af:panelGroupLayout>
+                  </f:facet>
+                </af:panelFormLayout>
+              </af:panelGroupLayout>
+            </f:facet>
+            <f:facet name="second">
+              <af:panelStretchLayout id="psl1" binding="#{backingBeanScope.backing_CIC_0056.psl1}">
+                <f:facet name="center">
+                  <af:panelFormLayout id="pfl2" rows="2" maxColumns="2"
+                                      binding="#{backingBeanScope.backing_CIC_0056.pfl2}" partialTriggers="soc3"
+                                      styleClass="AFStretchWidth">
+                    <f:facet name="footer"/>
+                    <af:panelAccordion id="pa1" binding="#{backingBeanScope.backing_CIC_0056.pa1}">
+                      <af:showDetailItem text="Job Type" id="sdi1"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi1}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms1.visible}">
+                        <af:selectManyShuttle value="#{bindings.SrvJobtypesRO.inputValue}"
+                                              label="#{bindings.SrvJobtypesRO.label}" id="sms1"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms1}" autoSubmit="true"
+                                              partialTriggers="soc3" contentStyle="width:200px">
+                          <f:selectItems value="#{bindings.SrvJobtypesRO.items}" id="si14"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si14}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Job Symptom" id="sdi2"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi2}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms2.visible}">
+                        <af:selectManyShuttle value="#{bindings.SrvSymptomsRO.inputValue}"
+                                              label="#{bindings.SrvSymptomsRO.label}" id="sms2"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms2}" autoSubmit="true"
+                                              partialTriggers="soc3" contentStyle="width:200px">
+                          <f:selectItems value="#{bindings.SrvSymptomsRO.items}" id="si1"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si1}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Product Brand" id="sdi3"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi3}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms3.visible}">
+                        <af:selectManyShuttle value="#{bindings.SoProductBrandsRO.inputValue}"
+                                              label="#{bindings.SoProductBrandsRO.label}" id="sms3"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms3}" autoSubmit="true"
+                                              partialTriggers="soc3" contentStyle="width:200px">
+                          <f:selectItems id="si12" binding="#{backingBeanScope.backing_CIC_0056.si12}"
+                                         value="#{bindings.SoProductBrandsRO.items}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Faults" id="sdi4"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi4}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms4.visible}">
+                        <af:selectManyShuttle value="#{bindings.SrvFaultsRO.inputValue}"
+                                              label="#{bindings.SrvFaultsRO.label}" id="sms4"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms4}" autoSubmit="true"
+                                              partialTriggers="soc3" contentStyle="width:200px">
+                          <f:selectItems value="#{bindings.SrvFaultsRO.items}" id="si2"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si2}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Reason" id="sdi5"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi5}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms5.visible}">
+                        <af:selectManyShuttle value="#{bindings.SrvReasonsRO.inputValue}"
+                                              label="#{bindings.SrvReasonsRO.label}" id="sms5"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms5}" autoSubmit="true"
+                                              partialTriggers="soc3" contentStyle="width:200px">
+                          <f:selectItems value="#{bindings.SrvReasonsRO.items}" id="si5"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si5}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Dealers" id="sdi6"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi6}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms6.visible}">
+                        <af:selectManyShuttle value="#{bindings.SrvDealersRO.inputValue}"
+                                              label="#{bindings.SrvDealersRO.label}" id="sms6"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms6}" autoSubmit="true"
+                                              partialTriggers="soc3 soc2" contentStyle="width:200px">
+                          <f:selectItems value="#{bindings.SrvDealersRO.items}" id="si6"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si6}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Technicians" id="sdi7"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi7}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms7.visible}">
+                        <af:selectManyShuttle value="#{bindings.SrvTechnicianRO.inputValue}"
+                                              label="#{bindings.SrvTechnicianRO.label}" id="sms7"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms7}" autoSubmit="true"
+                                              partialTriggers="soc3 soc2" contentStyle="width:200px">
+                          <f:selectItems value="#{bindings.SrvTechnicianRO.items}" id="si7"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si7}"/>
+                          <f:validator binding="#{bindings.SrvTechnicianRO.validator}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Store" id="sdi8"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi8}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms8.visible}">
+                        <af:selectManyShuttle value="#{bindings.SysUserStoreRO.inputValue}"
+                                              label="#{bindings.SysUserStoreRO.label}" id="sms8"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms8}" autoSubmit="true"
+                                              partialTriggers="soc3 soc2" contentStyle="width:200px">
+                          <f:selectItems value="#{bindings.SysUserStoreRO.items}" id="si9"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si9}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Part Category" id="sdi9"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi9}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms9.visible}">
+                        <af:selectManyShuttle value="#{bindings.SrvPartcategoryRO.inputValue}"
+                                              label="#{bindings.SrvPartcategoryRO.label}" id="sms9"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms9}" autoSubmit="true"
+                                              partialTriggers="soc3" contentStyle="width:200px">
+                          <f:selectItems value="#{bindings.SrvPartcategoryRO.items}" id="si10"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si10}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Suppliers" id="sdi10"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi10}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms10.visible}">
+                        <af:selectManyShuttle value="#{bindings.PuSuppliersRO.inputValue}"
+                                              label="#{bindings.PuSuppliersRO.label}" id="sms10"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms10}" autoSubmit="true"
+                                              partialTriggers="soc3 soc2" contentStyle="width:200px">
+                          <f:selectItems value="#{bindings.PuSuppliersRO.items}" id="si11"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si11}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Items" id="sdi11"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi11}"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms11.visible}"
+                                         partialTriggers="soc3">
+                        <af:panelGroupLayout id="pgl3" binding="#{backingBeanScope.backing_CIC_0056.pgl3}"
+                                             layout="horizontal">
+                          <af:inputComboboxListOfValues label="#{bindings.Itemid.hints.label}"
+                                                        popupTitle="Search and Select: #{bindings.Itemid.hints.label}"
+                                                        id="iclov1"
+                                                        binding="#{backingBeanScope.backing_CIC_0056.iclov1}"
+                                                        model="#{bindings.Itemid.listOfValuesModel}"
+                                                        value="#{bindings.Itemid.inputValue}"
+                                                        columns="#{bindings.Itemid.hints.displayWidth}"
+                                                        searchDesc="#{bindings.Itemid.hints.tooltip}"
+                                                        autoSubmit="true" autoTab="true" autoComplete="on">
+                            <af:autoSuggestBehavior suggestedItems="#{backingBeanScope.backing_CIC_0056.getSuggestedModel}"/>
+                          </af:inputComboboxListOfValues>
+                          <af:button text="Select" id="b3" binding="#{backingBeanScope.backing_CIC_0056.b3}"
+                                     action="#{backingBeanScope.backing_CIC_0056.doAddModelInList}"/>
+                          <af:inputText value="#{bindings.txtModelName.inputValue}"
+                                        label="#{bindings.txtModelName.hints.label}"
+                                        required="#{bindings.txtModelName.hints.mandatory}"
+                                        columns="#{bindings.txtModelName.hints.displayWidth}"
+                                        maximumLength="#{bindings.txtModelName.hints.precision}"
+                                        shortDesc="#{bindings.txtModelName.hints.tooltip}" id="it2"
+                                        binding="#{backingBeanScope.backing_CIC_0056.it2}" partialTriggers="iclov1"
+                                        rendered="false">
+                            <f:validator binding="#{bindings.txtModelName.validator}"/>
+                          </af:inputText>
+                        </af:panelGroupLayout>
+                        <af:selectManyShuttle value="#{bindings.InItemsVORO.inputValue}"
+                                              label="#{bindings.InItemsVORO.label}" id="sms11"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms11}"
+                                              partialTriggers="soc3 b3">
+                          <f:selectItems value="#{bindings.InItemsVORO.items}" id="si13"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si13}"/>
+                          <f:validator binding="#{bindings.InItemsVORO.validator}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Parts" id="sdi12"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi12}"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms12.visible}"
+                                         partialTriggers="soc3">
+                        <af:panelGroupLayout id="pgl4" binding="#{backingBeanScope.backing_CIC_0056.pgl4}"
+                                             layout="horizontal">
+                          <af:inputComboboxListOfValues id="txtPartNameId"
+                                                        popupTitle="Search and Select: #{bindings.txtPartName.hints.label}"
+                                                        value="#{bindings.txtPartName.inputValue}"
+                                                        label="#{bindings.txtPartName.hints.label}"
+                                                        model="#{bindings.txtPartName.listOfValuesModel}"
+                                                        required="#{bindings.txtPartName.hints.mandatory}"
+                                                        columns="#{bindings.txtPartName.hints.displayWidth}"
+                                                        shortDesc="#{bindings.txtPartName.hints.tooltip}"
+                                                        binding="#{backingBeanScope.backing_CIC_0056.txtPartNameId}"
+                                                        autoSubmit="true">
+                            <af:autoSuggestBehavior suggestedItems="#{backingBeanScope.backing_CIC_0056.getSuggestedPart}"/>
+                          </af:inputComboboxListOfValues>
+                          <af:inputText value="#{bindings.Partid.inputValue}" label="#{bindings.Partid.hints.label}"
+                                        required="#{bindings.Partid.hints.mandatory}"
+                                        columns="#{bindings.Partid.hints.displayWidth}"
+                                        maximumLength="#{bindings.Partid.hints.precision}"
+                                        shortDesc="#{bindings.Partid.hints.tooltip}" id="it3"
+                                        binding="#{backingBeanScope.backing_CIC_0056.it3}"
+                                        partialTriggers="txtPartNameId" readOnly="true">
+                            <f:validator binding="#{bindings.Partid.validator}"/>
+                          </af:inputText>
+                          <af:button text="Add" id="b4" binding="#{backingBeanScope.backing_CIC_0056.b4}"
+                                     action="#{backingBeanScope.backing_CIC_0056.doAddPart}"/>
+                        </af:panelGroupLayout>
+                        <af:selectManyShuttle value="#{bindings.InPartsRO.inputValue}"
+                                              label="#{bindings.InPartsRO.label}" id="sms12"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms12}" autoSubmit="true"
+                                              partialTriggers="b4 soc3">
+                          <f:selectItems value="#{bindings.InPartsRO.items}" id="si15"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si15}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem id="sdi13"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi13}"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms13.visible}" text="Warranty">
+                        <af:selectManyShuttle value="#{bindings.WarrantyTypeRO.inputValue}"
+                                              label="#{bindings.WarrantyTypeRO.label}" id="sms13"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms13}" autoSubmit="true"
+                                              partialTriggers="soc3">
+                          <f:selectItems value="#{bindings.WarrantyTypeRO.items}" id="si16"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si16}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Job Status" id="sdi14"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi14}"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms14.visible}"
+                                         partialTriggers="soc3">
+                        <af:selectManyShuttle value="#{bindings.JobStatusRO.inputValue}"
+                                              label="#{bindings.JobStatusRO.label}" id="sms14"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms14}">
+                          <f:selectItems value="#{bindings.JobStatusRO.items}" id="si17"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si17}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Users /  Posted By" id="sdi15"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi15}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms15.visible}">
+                        <af:selectManyShuttle value="#{bindings.SysUsersRO.inputValue}"
+                                              label="#{bindings.SysUsersRO.label}" id="sms15"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms15}">
+                          <f:selectItems value="#{bindings.SysUsersRO.items}" id="si25"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si25}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Users / Created By" id="sdi16"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi16}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms16.visible}">
+                        <af:selectManyShuttle value="#{bindings.SysUsersCreatedByRO.inputValue}"
+                                              label="#{bindings.SysUsersCreatedByRO.label}" id="sms16"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms16}">
+                          <f:selectItems value="#{bindings.SysUsersCreatedByRO.items}" id="si26"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si26}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Warranty Receive In" id="sdi17"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi17}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms17.visible}">
+                        <af:selectManyShuttle value="#{bindings.WarrantyTypeReceiveInRO.inputValue}"
+                                              label="#{bindings.WarrantyTypeReceiveInRO.label}" id="sms17"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms17}">
+                          <f:selectItems value="#{bindings.WarrantyTypeReceiveInRO.items}" id="si27"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si27}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Warranty Change In" id="sdi18"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi18}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms18.visible}">
+                        <af:selectManyShuttle value="#{bindings.WarrantyTypeChangeInRO.inputValue}"
+                                              label="#{bindings.WarrantyTypeChangeInRO.label}" id="sms18"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms18}">
+                          <f:selectItems value="#{bindings.WarrantyTypeChangeInRO.items}" id="si28"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si28}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Job Solution Technicians" id="sdi19"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi19}"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms19.visible}"
+                                         partialTriggers="soc3 soc2">
+                        <af:selectManyShuttle value="#{bindings.SrvTechnicianJobSolutionRO.inputValue}"
+                                              label="#{bindings.SrvTechnicianJobSolutionRO.label}" id="sms19"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms19}">
+                          <f:selectItems value="#{bindings.SrvTechnicianJobSolutionRO.items}" id="si29"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si29}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="QC" id="sdi20"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi20}"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms20.visible}"
+                                         partialTriggers="soc3">
+                        <af:selectManyShuttle value="#{bindings.SrvQcRO.inputValue}" label="#{bindings.SrvQcRO.label}"
+                                              id="sms20" binding="#{backingBeanScope.backing_CIC_0056.sms20}">
+                          <f:selectItems value="#{bindings.SrvQcRO.items}" id="si30"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si30}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="All Ciities" id="sdi21"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi21}"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms21.visible}"
+                                         partialTriggers="soc3">
+                        <af:selectManyShuttle value="#{bindings.AllCitiesRO.inputValue}"
+                                              label="#{bindings.AllCitiesRO.label}" id="sms21"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms21}">
+                          <f:selectItems value="#{bindings.AllCitiesRO.items}" id="si53"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si53}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Store Type" id="sdi22"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi22}" partialTriggers="soc3"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms22.visible}">
+                        <af:selectManyShuttle value="#{bindings.InStoreTransTypeRO.inputValue}"
+                                              label="#{bindings.InStoreTransTypeRO.label}" id="sms22"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms22}">
+                          <f:selectItems value="#{bindings.InStoreTransTypeRO.items}" id="si59"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si59}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                      <af:showDetailItem text="Job Status" id="sdi23"
+                                         binding="#{backingBeanScope.backing_CIC_0056.sdi23}"
+                                         visible="#{backingBeanScope.backing_CIC_0056.sms23.visible}"
+                                         partialTriggers="soc3">
+                        <af:selectManyShuttle value="#{bindings.SrvJobStatusInJobSolutionRO.inputValue}"
+                                              label="#{bindings.SrvJobStatusInJobSolutionRO.label}" id="sms23"
+                                              binding="#{backingBeanScope.backing_CIC_0056.sms23}">
+                          <f:selectItems value="#{bindings.SrvJobStatusInJobSolutionRO.items}" id="si68"
+                                         binding="#{backingBeanScope.backing_CIC_0056.si68}"/>
+                        </af:selectManyShuttle>
+                      </af:showDetailItem>
+                    </af:panelAccordion>
+                  </af:panelFormLayout>
+                </f:facet>
+              </af:panelStretchLayout>
+            </f:facet>
+          </af:panelSplitter>
+        </f:facet>
+        <f:facet name="toolbar"/>
+        <f:facet name="top"/>
+      </af:pageTemplate>
+    </af:form>
+  </af:document>
+  <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_CIC_0056-->
+</f:view>

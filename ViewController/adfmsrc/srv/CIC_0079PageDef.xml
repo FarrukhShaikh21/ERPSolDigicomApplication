@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0079PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvReceiptMasterCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvReceiptMasterCRUDIterator" ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <listOfValues IterBinding="SrvReceiptMasterCRUDIterator" StaticList="false" Uses="LovAllBankBranchesBranchID"
+                  id="Branchid"/>
+    <attributeValues IterBinding="SrvReceiptMasterCRUDIterator" id="ReceiptNo">
+      <AttrNames>
+        <Item Value="ReceiptNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvReceiptMasterCRUDIterator" id="Locationid">
+      <AttrNames>
+        <Item Value="Locationid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvReceiptMasterCRUDIterator" id="ReceiptDate">
+      <AttrNames>
+        <Item Value="ReceiptDate"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvReceiptMasterCRUDIterator" StaticList="false" Uses="LovSrvDealersDealerID"
+                  id="DealerId"/>
+    <attributeValues IterBinding="SrvReceiptMasterCRUDIterator" id="ReceiptMode">
+      <AttrNames>
+        <Item Value="ReceiptMode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvReceiptMasterCRUDIterator" id="ChequeNo">
+      <AttrNames>
+        <Item Value="ChequeNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvReceiptMasterCRUDIterator" id="ChequeDate">
+      <AttrNames>
+        <Item Value="ChequeDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvReceiptMasterCRUDIterator" id="ReceAmnt">
+      <AttrNames>
+        <Item Value="ReceAmnt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvReceiptMasterCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvReceiptMasterCRUDIterator" id="SubmitDate">
+      <AttrNames>
+        <Item Value="SubmitDate"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvReceiptMasterCRUDIterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="SrvReceiptMasterCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvReceiptMasterCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvReceiptMasterCRUDIterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="SrvReceiptMasterCRUDIterator" id="Referno">
+      <AttrNames>
+        <Item Value="Referno"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

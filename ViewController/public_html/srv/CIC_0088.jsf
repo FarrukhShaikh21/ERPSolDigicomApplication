@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="CIC_0088.jsf" id="d1" binding="#{backingBeanScope.backing_CIC_0088.d1}">
+        <af:messages id="m1" binding="#{backingBeanScope.backing_CIC_0088.m1}"/>
+        <af:form id="f1" binding="#{backingBeanScope.backing_CIC_0088.f1}">
+            <af:pageTemplate viewId="/tmpDigicomTemplate.jsf" value="#{bindings.ptb1}" id="pt1"
+                             binding="#{backingBeanScope.backing_CIC_0088.pt1}">
+                <f:facet name="left"/>
+                <f:facet name="middle">
+                    <af:panelSplitter id="ps1" orientation="vertical" splitterPosition="130"
+                                      binding="#{backingBeanScope.backing_CIC_0088.ps1}">
+                        <f:facet name="first">
+                            <af:panelFormLayout id="pfl1" binding="#{backingBeanScope.backing_CIC_0088.pfl1}">
+                                <af:inputComboboxListOfValues id="modelNameId"
+                                                              popupTitle="Search and Select: #{bindings.ModelName.hints.label}"
+                                                              value="#{bindings.ModelName.inputValue}"
+                                                              label="#{bindings.ModelName.hints.label}"
+                                                              model="#{bindings.ModelName.listOfValuesModel}"
+                                                              required="#{bindings.ModelName.hints.mandatory}"
+                                                              columns="#{bindings.ModelName.hints.displayWidth}"
+                                                              shortDesc="#{bindings.ModelName.hints.tooltip}"
+                                                              binding="#{backingBeanScope.backing_CIC_0088.modelNameId}"
+                                                              autoSubmit="true">
+                                    <f:validator binding="#{bindings.ModelName.validator}"/>
+                                    <af:autoSuggestBehavior maxSuggestedItems="10"
+                                                            suggestedItems="#{backingBeanScope.backing_CIC_0088.getSuggestedModel}"/>
+                                </af:inputComboboxListOfValues>
+                                <af:inputText value="#{bindings.Itemid.inputValue}"
+                                              label="#{bindings.Itemid.hints.label}"
+                                              required="#{bindings.Itemid.hints.mandatory}"
+                                              columns="#{bindings.Itemid.hints.displayWidth}"
+                                              maximumLength="#{bindings.Itemid.hints.precision}"
+                                              shortDesc="#{bindings.Itemid.hints.tooltip}" id="it9"
+                                              binding="#{backingBeanScope.backing_CIC_0088.it9}" readOnly="true"
+                                              partialTriggers="modelNameId">
+                                    <f:validator binding="#{bindings.Itemid.validator}"/>
+                                </af:inputText>
+                                <af:selectOneChoice value="#{bindings.CatId.inputValue}" label="#{bindings.CatId.label}"
+                                                    required="#{bindings.CatId.hints.mandatory}"
+                                                    shortDesc="#{bindings.CatId.hints.tooltip}" id="soc2"
+                                                    contentStyle="width:100%;" autoSubmit="true"
+                                                    binding="#{backingBeanScope.backing_CIC_0088.soc2}">
+                                    <f:selectItems value="#{bindings.CatId.items}" id="si2"
+                                                   binding="#{backingBeanScope.backing_CIC_0088.si2}"/>
+                                    <f:validator binding="#{bindings.CatId.validator}"/>
+                                </af:selectOneChoice>
+                                <af:inputComboboxListOfValues id="partNameId"
+                                                              popupTitle="Search and Select: #{bindings.PartName.hints.label}"
+                                                              value="#{bindings.PartName.inputValue}"
+                                                              label="#{bindings.PartName.hints.label}"
+                                                              model="#{bindings.PartName.listOfValuesModel}"
+                                                              required="#{bindings.PartName.hints.mandatory}"
+                                                              columns="#{bindings.PartName.hints.displayWidth}"
+                                                              shortDesc="#{bindings.PartName.hints.tooltip}"
+                                                              binding="#{backingBeanScope.backing_CIC_0088.partNameId}"
+                                                              autoSubmit="true">
+                                    <f:validator binding="#{bindings.PartName.validator}"/>
+                                    <af:autoSuggestBehavior maxSuggestedItems="10"
+                                                            suggestedItems="#{backingBeanScope.backing_CIC_0088.getSuggestedPart}"/>
+                                </af:inputComboboxListOfValues>
+                                <af:inputText value="#{bindings.Partid.inputValue}"
+                                              label="#{bindings.Partid.hints.label}"
+                                              required="#{bindings.Partid.hints.mandatory}"
+                                              columns="#{bindings.Partid.hints.displayWidth}"
+                                              maximumLength="#{bindings.Partid.hints.precision}"
+                                              shortDesc="#{bindings.Partid.hints.tooltip}" id="it11"
+                                              binding="#{backingBeanScope.backing_CIC_0088.it11}" readOnly="true"
+                                              partialTriggers="partNameId">
+                                    <f:validator binding="#{bindings.Partid.validator}"/>
+                                </af:inputText>
+                                <af:button actionListener="#{bindings.doQueryPartExplore.execute}"
+                                           text="Get Stock" disabled="#{!bindings.doQueryPartExplore.enabled}"
+                                           id="b1" partialSubmit="false"
+                                           binding="#{backingBeanScope.backing_CIC_0088.b1}"/>
+                                <f:facet name="footer"/>
+                            </af:panelFormLayout>
+                        </f:facet>
+                        <f:facet name="second">
+                            <af:table value="#{bindings.PartExplorePartWiseRO.collectionModel}" var="row"
+                                      rows="#{bindings.PartExplorePartWiseRO.rangeSize}"
+                                      emptyText="#{bindings.PartExplorePartWiseRO.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                      rowBandingInterval="0" fetchSize="#{bindings.PartExplorePartWiseRO.rangeSize}"
+                                      filterModel="#{bindings.PartExplorePartWiseROQuery.queryDescriptor}"
+                                      queryListener="#{bindings.PartExplorePartWiseROQuery.processQuery}"
+                                      filterVisible="true" varStatus="vs" id="t1" columnStretching="column:c4"
+                                      selectedRowKeys="#{bindings.PartExplorePartWiseRO.collectionModel.selectedRow}"
+                                      selectionListener="#{bindings.PartExplorePartWiseRO.collectionModel.makeCurrent}"
+                                      rowSelection="single" binding="#{backingBeanScope.backing_CIC_0088.t1}">
+                                <af:column headerText="#{bindings.PartExplorePartWiseRO.hints.txtAvailable.label}"
+                                           id="c9" width="50"
+                                           sortProperty="#{bindings.PartExplorePartWiseRO.hints.txtAvailable.name}"
+                                           filterable="true">
+                                    <af:inputText value="#{row.bindings.txtAvailable.inputValue}"
+                                                  label="#{bindings.PartExplorePartWiseRO.hints.txtAvailable.label}"
+                                                  required="#{bindings.PartExplorePartWiseRO.hints.txtAvailable.mandatory}"
+                                                  columns="#{bindings.PartExplorePartWiseRO.hints.txtAvailable.displayWidth}"
+                                                  maximumLength="#{bindings.PartExplorePartWiseRO.hints.txtAvailable.precision}"
+                                                  shortDesc="#{bindings.PartExplorePartWiseRO.hints.txtAvailable.tooltip}"
+                                                  id="it10">
+                                        <f:validator binding="#{row.bindings.txtAvailable.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.PartExplorePartWiseRO.hints.ItemName.name}"
+                                           filterable="true"
+                                           headerText="#{bindings.PartExplorePartWiseRO.hints.ItemName.label}" id="c1">
+                                    <af:inputText value="#{row.bindings.ItemName.inputValue}"
+                                                  label="#{bindings.PartExplorePartWiseRO.hints.ItemName.label}"
+                                                  required="#{bindings.PartExplorePartWiseRO.hints.ItemName.mandatory}"
+                                                  columns="#{bindings.PartExplorePartWiseRO.hints.ItemName.displayWidth}"
+                                                  maximumLength="#{bindings.PartExplorePartWiseRO.hints.ItemName.precision}"
+                                                  shortDesc="#{bindings.PartExplorePartWiseRO.hints.ItemName.tooltip}"
+                                                  id="it1">
+                                        <f:validator binding="#{row.bindings.ItemName.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.PartExplorePartWiseRO.hints.CatDesc.name}"
+                                           filterable="true"
+                                           headerText="#{bindings.PartExplorePartWiseRO.hints.CatDesc.label}" id="c2">
+                                    <af:inputText value="#{row.bindings.CatDesc.inputValue}"
+                                                  label="#{bindings.PartExplorePartWiseRO.hints.CatDesc.label}"
+                                                  required="#{bindings.PartExplorePartWiseRO.hints.CatDesc.mandatory}"
+                                                  columns="#{bindings.PartExplorePartWiseRO.hints.CatDesc.displayWidth}"
+                                                  maximumLength="#{bindings.PartExplorePartWiseRO.hints.CatDesc.precision}"
+                                                  shortDesc="#{bindings.PartExplorePartWiseRO.hints.CatDesc.tooltip}"
+                                                  id="it2">
+                                        <f:validator binding="#{row.bindings.CatDesc.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.PartExplorePartWiseRO.hints.Partid.name}"
+                                           filterable="true"
+                                           headerText="#{bindings.PartExplorePartWiseRO.hints.Partid.label}" id="c3">
+                                    <af:inputText value="#{row.bindings.Partid.inputValue}"
+                                                  label="#{bindings.PartExplorePartWiseRO.hints.Partid.label}"
+                                                  required="#{bindings.PartExplorePartWiseRO.hints.Partid.mandatory}"
+                                                  columns="#{bindings.PartExplorePartWiseRO.hints.Partid.displayWidth}"
+                                                  maximumLength="#{bindings.PartExplorePartWiseRO.hints.Partid.precision}"
+                                                  shortDesc="#{bindings.PartExplorePartWiseRO.hints.Partid.tooltip}"
+                                                  id="it3">
+                                        <f:validator binding="#{row.bindings.Partid.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.PartExplorePartWiseRO.hints.PartName.name}"
+                                           filterable="true"
+                                           headerText="#{bindings.PartExplorePartWiseRO.hints.PartName.label}" id="c4">
+                                    <af:inputText value="#{row.bindings.PartName.inputValue}"
+                                                  label="#{bindings.PartExplorePartWiseRO.hints.PartName.label}"
+                                                  required="#{bindings.PartExplorePartWiseRO.hints.PartName.mandatory}"
+                                                  columns="#{bindings.PartExplorePartWiseRO.hints.PartName.displayWidth}"
+                                                  maximumLength="#{bindings.PartExplorePartWiseRO.hints.PartName.precision}"
+                                                  shortDesc="#{bindings.PartExplorePartWiseRO.hints.PartName.tooltip}"
+                                                  id="it4">
+                                        <f:validator binding="#{row.bindings.PartName.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.PartExplorePartWiseRO.hints.Partno.name}"
+                                           filterable="true"
+                                           headerText="#{bindings.PartExplorePartWiseRO.hints.Partno.label}" id="c5">
+                                    <af:inputText value="#{row.bindings.Partno.inputValue}"
+                                                  label="#{bindings.PartExplorePartWiseRO.hints.Partno.label}"
+                                                  required="#{bindings.PartExplorePartWiseRO.hints.Partno.mandatory}"
+                                                  columns="#{bindings.PartExplorePartWiseRO.hints.Partno.displayWidth}"
+                                                  maximumLength="#{bindings.PartExplorePartWiseRO.hints.Partno.precision}"
+                                                  shortDesc="#{bindings.PartExplorePartWiseRO.hints.Partno.tooltip}"
+                                                  id="it5">
+                                        <f:validator binding="#{row.bindings.Partno.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.PartExplorePartWiseRO.hints.Stock.name}"
+                                           filterable="true"
+                                           headerText="#{bindings.PartExplorePartWiseRO.hints.Stock.label}" id="c6">
+                                    <af:inputText value="#{row.bindings.Stock.inputValue}"
+                                                  label="#{bindings.PartExplorePartWiseRO.hints.Stock.label}"
+                                                  required="#{bindings.PartExplorePartWiseRO.hints.Stock.mandatory}"
+                                                  columns="#{bindings.PartExplorePartWiseRO.hints.Stock.displayWidth}"
+                                                  maximumLength="#{bindings.PartExplorePartWiseRO.hints.Stock.precision}"
+                                                  shortDesc="#{bindings.PartExplorePartWiseRO.hints.Stock.tooltip}"
+                                                  id="it6">
+                                        <f:validator binding="#{row.bindings.Stock.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.PartExplorePartWiseRO.hints.Stock.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.PartExplorePartWiseRO.hints.Price.name}"
+                                           filterable="true"
+                                           headerText="#{bindings.PartExplorePartWiseRO.hints.Price.label}" id="c7">
+                                    <af:inputText value="#{row.bindings.Price.inputValue}"
+                                                  label="#{bindings.PartExplorePartWiseRO.hints.Price.label}"
+                                                  required="#{bindings.PartExplorePartWiseRO.hints.Price.mandatory}"
+                                                  columns="#{bindings.PartExplorePartWiseRO.hints.Price.displayWidth}"
+                                                  maximumLength="#{bindings.PartExplorePartWiseRO.hints.Price.precision}"
+                                                  shortDesc="#{bindings.PartExplorePartWiseRO.hints.Price.tooltip}"
+                                                  id="it7">
+                                        <f:validator binding="#{row.bindings.Price.validator}"/>
+                                        <af:convertNumber groupingUsed="false"
+                                                          pattern="#{bindings.PartExplorePartWiseRO.hints.Price.format}"/>
+                                    </af:inputText>
+                                </af:column>
+                                <af:column sortProperty="#{bindings.PartExplorePartWiseRO.hints.StoreName.name}"
+                                           filterable="true"
+                                           headerText="#{bindings.PartExplorePartWiseRO.hints.StoreName.label}" id="c8">
+                                    <af:inputText value="#{row.bindings.StoreName.inputValue}"
+                                                  label="#{bindings.PartExplorePartWiseRO.hints.StoreName.label}"
+                                                  required="#{bindings.PartExplorePartWiseRO.hints.StoreName.mandatory}"
+                                                  columns="#{bindings.PartExplorePartWiseRO.hints.StoreName.displayWidth}"
+                                                  maximumLength="#{bindings.PartExplorePartWiseRO.hints.StoreName.precision}"
+                                                  shortDesc="#{bindings.PartExplorePartWiseRO.hints.StoreName.tooltip}"
+                                                  id="it8">
+                                        <f:validator binding="#{row.bindings.StoreName.validator}"/>
+                                    </af:inputText>
+                                </af:column>
+                            </af:table>
+                        </f:facet>
+                    </af:panelSplitter>
+                </f:facet>
+                <f:facet name="toolbar"/>
+                <f:facet name="top"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:auto-binding-backing-bean-name:backing_CIC_0088-->
+</f:view>

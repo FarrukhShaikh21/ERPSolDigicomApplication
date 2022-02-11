@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="adfc_config___ExecutePageDef"
+                Package="dgcom.view.pageDefs" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="SysProgramRO" RangeSize="25" DataControl="modLoginDataControl" id="SysProgramROIterator"
+              Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="SysProgramROIterator" id="Execute" RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

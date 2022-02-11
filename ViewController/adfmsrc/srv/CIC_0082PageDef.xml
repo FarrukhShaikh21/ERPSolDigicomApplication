@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0082PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvLogisticCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvLogisticCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvLogdetlDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvLogdetlDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvLogisticFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvLogisticCRUDIterator" id="SrvLogisticFindVCQuery"/>
+    <iterator Binds="SrvLogDetSrvJobCardNoPendingDocRO" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvLogDetSrvJobCardNoPendingDocROIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Binds="SrvLogDetSrvJobCardNoPendingDocROIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SrvLogDetSrvJobCardNoPendingDocROQuery"/>
+    <searchRegion Criteria="SrvLogDetSrvJobCardNoNotExistsInCurrentDocVC"
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvLogDetSrvJobCardNoPendingDocROIterator"
+                  id="SrvLogDetSrvJobCardNoNotExistsInCurrentDocVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvLogisticCRUDIterator" id="Logid">
+      <AttrNames>
+        <Item Value="Logid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvLogisticCRUDIterator" id="Logdate">
+      <AttrNames>
+        <Item Value="Logdate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvLogisticCRUDIterator" id="Doctypeid">
+      <AttrNames>
+        <Item Value="Doctypeid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvLogisticCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvLogisticCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvLogisticCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action IterBinding="SrvLogisticCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvLogisticCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="SrvLogisticCRUDIterator" id="Fromlocationid">
+      <AttrNames>
+        <Item Value="Fromlocationid"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvLogisticCRUDIterator" StaticList="false" Uses="LovSrvLogisticDocumentIdJobDocument"
+                  id="Docid"/>
+    <action IterBinding="SrvLogdetlDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createWithParams" InstanceName="modServiceTransactionsDataControl.SrvLogdetlDETCRUD"
+            DataControl="modServiceTransactionsDataControl">
+      <NamedData NDName="Logid" NDValue="#{bindings.Docid.inputValue}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SrvLogdetlDETCRUDIterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="SrvLogisticCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SrvLogdetlDETCRUDIterator" id="SrvLogdetlDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvLogdetlVO" Name="SrvLogdetlDETCRUD0">
+        <AttrNames>
+          <Item Value="Jobcardno"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="doSubmitJobLogistic" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitJobLogistic" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvLogisticCRUD"/>
+    <listOfValues IterBinding="SrvLogisticCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <methodAction id="doCreateNewLogisticRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewLogisticRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvLogisticCRUD"/>
+    <methodAction id="doCreateNewLogisticDetRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewLogisticDetRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvLogdetlDETCRUD"/>
+    <tree IterBinding="SrvLogDetSrvJobCardNoPendingDocROIterator" id="SrvLogDetSrvJobCardNoPendingDocRO">
+      <nodeDefinition DefName="dgcom.model.qvo.srv.SrvLogDetSrvJobCardNoCIC_0082QVO"
+                      Name="SrvLogDetSrvJobCardNoPendingDocRO0">
+        <AttrNames>
+          <Item Value="Jobcardno"/>
+          <Item Value="Jobdate"/>
+          <Item Value="ImeiNo"/>
+          <Item Value="Models"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction IterBinding="SrvLogDetSrvJobCardNoPendingDocROIterator" id="doSelectDocument"
+                  RequiresUpdateModel="true" Action="invokeMethod" MethodName="doSelectDocument"
+                  IsViewObjectMethod="false" DataControl="modServiceTransactionsDataControl"
+                  InstanceName="bindings.SrvLogDetSrvJobCardNoPendingDocROIterator.currentRow"
+                  IsLocalObjectReference="true"/>
+    <action IterBinding="SrvLogDetSrvJobCardNoPendingDocROIterator" id="Execute" RequiresUpdateModel="true"
+            Action="iteratorExecute"/>
+    <methodAction id="doSelectAllDocument" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSelectAllDocument" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvLogDetSrvJobCardNoPendingDocRO"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.doSelectAllDocument_modServiceTransactionsDataControl_SrvLogDetSrvJobCardNoPendingDocRO_doSelectAllDocument_result"/>
+  </bindings>
+</pageDefinition>

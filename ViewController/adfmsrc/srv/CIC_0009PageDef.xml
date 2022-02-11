@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0009PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SrvSymptomsDetCRUD" RangeSize="25" DataControl="modServiceSetupDataControl"
+              id="SrvSymptomsDetCRUDIterator"/>
+    <iterator Binds="AllProdcategoryRO" RangeSize="25" DataControl="modServiceSetupDataControl"
+              id="AllProdcategoryROIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SrvSymptomsDetCRUDIterator" id="SrvSymptomsDetCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvSymptomsVO" Name="SrvSymptomsDetCRUD0">
+        <AttrNames>
+          <Item Value="SymptomId"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvSymptomsDetCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvSymptomsDetCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="modServiceSetupDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceSetupDataControl"/>
+    <list IterBinding="AllProdcategoryROIterator" ListOperMode="navigation" ListIter="AllProdcategoryROIterator"
+          id="AllProdcategoryRO" DTSupportsMRU="true" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

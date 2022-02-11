@@ -1,0 +1,2064 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="TFDigicomMain">
+    <default-activity>isFirstTime</default-activity>
+    <task-flow-reentry>
+      <reentry-not-allowed/>
+    </task-flow-reentry>
+    <managed-bean id="__21">
+      <managed-bean-name>backing_CIC_0002</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0002</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__25">
+      <managed-bean-name>backing_CIC_0098</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0098</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__23">
+      <managed-bean-name>backing_CIC_0026</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0026</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__29">
+      <managed-bean-name>backing_CIC_0013</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0013</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__31">
+      <managed-bean-name>backing_CIC_0015</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0015</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__33">
+      <managed-bean-name>backing_CIC_0031</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0031</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__35">
+      <managed-bean-name>backing_CIC_0032</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0032</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__37">
+      <managed-bean-name>backing_CIC_0082</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0082</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__39">
+      <managed-bean-name>backing_CIC_0055</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0055</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__41">
+      <managed-bean-name>backing_CIC_0012</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0012</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__43">
+      <managed-bean-name>backing_CIC_0035</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0035</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__45">
+      <managed-bean-name>backing_CIC_0072</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0072</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__51">
+      <managed-bean-name>backing_CIC_0087</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0087</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__53">
+      <managed-bean-name>backing_CIC_0054</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0054</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__55">
+      <managed-bean-name>backing_CIC_0067</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0067</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__57">
+      <managed-bean-name>backing_CIC_0028</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0028</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__59">
+      <managed-bean-name>backing_CIC_0195</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0195</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__61">
+      <managed-bean-name>backing_CIC_0194</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0194</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__63">
+      <managed-bean-name>backing_CIC_0193</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0193</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__65">
+      <managed-bean-name>backing_CIC_0198</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0198</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__67">
+      <managed-bean-name>backing_CIC_0189</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0189</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__69">
+      <managed-bean-name>backing_CIC_0201</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0201</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__71">
+      <managed-bean-name>backing_CIC_0202</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0202</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__73">
+      <managed-bean-name>backing_CIC_0016</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0016</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__75">
+      <managed-bean-name>backing_CIC_0034</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0034</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__77">
+      <managed-bean-name>backing_CIC_0021</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0021</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__79">
+      <managed-bean-name>backing_CIC_0024</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0024</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__81">
+      <managed-bean-name>backing_CIC_0022</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0022</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__83">
+      <managed-bean-name>backing_CIC_0118</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0118</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__85">
+      <managed-bean-name>backing_CIC_0044</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0044</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__87">
+      <managed-bean-name>backing_CIC_0045</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0045</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__89">
+      <managed-bean-name>backing_CIC_0065</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0065</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__91">
+      <managed-bean-name>backing_CIC_0085</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0085</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__93">
+      <managed-bean-name>backing_CIC_0086</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0086</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__95">
+      <managed-bean-name>backing_CIC_0049</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0049</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__97">
+      <managed-bean-name>backing_CIC_0051</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0051</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__111">
+      <managed-bean-name>backing_CIC_0053</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0053</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__151">
+      <managed-bean-name>backing_CIC_0056</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0056</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__156">
+      <managed-bean-name>backing_CIC_0203</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0203</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__158">
+      <managed-bean-name>backing_CIC_0088</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0088</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__162">
+      <managed-bean-name>backing_CIC_0196</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0196</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__171">
+      <managed-bean-name>backing_CIC_0208</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0208</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__308">
+      <managed-bean-name>backing_CIC_0018</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0018</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__314">
+      <managed-bean-name>backing_CIC_0027</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0027</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__319">
+      <managed-bean-name>backing_CIC_0080</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0080</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__323">
+      <managed-bean-name>backing_CIC_0213</managed-bean-name>
+      <managed-bean-class>dgcom.view.backing.CIC_0213</managed-bean-class>
+      <managed-bean-scope>backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="Main">
+      <page>/Main.jsf</page>
+    </view>
+    <view id="tmpDigicomTemplate">
+      <page>/tmpDigicomTemplate.jsf</page>
+    </view>
+    <router id="isFirstTime">
+      <case id="__5">
+        <expression>#{TheAppBean.gotoActivity==null}</expression>
+        <outcome>mainPage</outcome>
+      </case>
+      <default-outcome>checkRights</default-outcome>
+    </router>
+    <method-call id="medhodCheckRights">
+      <method>#{data.dgcom_view_LoginPageDef.checkUserRights.execute}</method>
+      <outcome>
+        <fixed-outcome>rightsResult</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="IsRightsSuccessFul">
+      <case id="__18">
+        <expression>#{data.dgcom_view_LoginPageDef.checkUserRights.result=='N'}</expression>
+        <outcome>ACT-gotoActivity</outcome>
+      </case>
+      <default-outcome>gotoMain</default-outcome>
+    </router>
+    <method-call id="GoActivity">
+      <method>#{TheAppBean.getGotoActivity}</method>
+      <outcome>
+        <to-string/>
+      </outcome>
+    </method-call>
+    <task-flow-return id="Logout">
+      <outcome>
+        <name>Logout</name>
+      </outcome>
+    </task-flow-return>
+    <view id="CIC_0002">
+      <page>/srv/CIC_0002.jsf</page>
+    </view>
+    <view id="CIC_0098">
+      <page>/srv/CIC_0098.jsf</page>
+    </view>
+    <method-call id="ServiceModuleRollBack">
+      <method>#{bindings.Rollback.execute}</method>
+      <outcome>
+        <fixed-outcome>Rollback</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="CIC_0026">
+      <page>/srv/CIC_0026.jsf</page>
+    </view>
+    <view id="CIC_0013">
+      <page>/srv/CIC_0013.jsf</page>
+    </view>
+    <view id="CIC_0015">
+      <page>/srv/CIC_0015.jsf</page>
+    </view>
+    <view id="CIC_0031">
+      <page>/srv/CIC_0031.jsf</page>
+    </view>
+    <view id="CIC_0032">
+      <page>/srv/CIC_0032.jsf</page>
+    </view>
+    <view id="CIC_0082">
+      <page>/srv/CIC_0082.jsf</page>
+    </view>
+    <view id="CIC_0055">
+      <page>/srv/CIC_0055.jsf</page>
+    </view>
+    <view id="CIC_0012">
+      <page>/srv/CIC_0012.jsf</page>
+    </view>
+    <view id="CIC_0035">
+      <page>/srv/CIC_0035.jsf</page>
+    </view>
+    <view id="CIC_0072">
+      <page>/srv/CIC_0072.jsf</page>
+    </view>
+    <view id="CIC_0087">
+      <page>/srv/CIC_0087.jsf</page>
+    </view>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="ExecuteWithParams1">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="ACT-CIC_0054">
+      <page>/srv/CIC_0054.jsf</page>
+    </view>
+    <view id="CIC_0067">
+      <page>/srv/CIC_0067.jsf</page>
+    </view>
+    <view id="CIC_0028">
+      <page>/srv/CIC_0028.jsf</page>
+    </view>
+    <view id="CIC_0195">
+      <page>/srv/CIC_0195.jsf</page>
+    </view>
+    <view id="CIC_0194">
+      <page>/srv/CIC_0194.jsf</page>
+    </view>
+    <view id="CIC_0193">
+      <page>/srv/CIC_0193.jsf</page>
+    </view>
+    <view id="CIC_0198">
+      <page>/srv/CIC_0198.jsf</page>
+    </view>
+    <view id="CIC_0189">
+      <page>/srv/CIC_0189.jsf</page>
+    </view>
+    <view id="CIC_0201">
+      <page>/srv/CIC_0201.jsf</page>
+    </view>
+    <view id="CIC_0202">
+      <page>/srv/CIC_0202.jsf</page>
+    </view>
+    <view id="CIC_0016">
+      <page>/srv/CIC_0016.jsf</page>
+    </view>
+    <view id="CIC_0034">
+      <page>/srv/CIC_0034.jsf</page>
+    </view>
+    <view id="CIC_0021">
+      <page>/srv/CIC_0021.jsf</page>
+    </view>
+    <view id="CIC_0024">
+      <page>/srv/CIC_0024.jsf</page>
+    </view>
+    <view id="CIC_0022">
+      <page>/srv/CIC_0022.jsf</page>
+    </view>
+    <view id="CIC_0118">
+      <page>/srv/CIC_0118.jsf</page>
+    </view>
+    <view id="CIC_0044">
+      <page>/srv/CIC_0044.jsf</page>
+    </view>
+    <view id="CIC_00441">
+      <page>/srv/CIC_0044.jsf</page>
+    </view>
+    <view id="CIC_0045">
+      <page>/srv/CIC_0045.jsf</page>
+    </view>
+    <view id="CIC_0065">
+      <page>/srv/CIC_0065.jsf</page>
+    </view>
+    <view id="CIC_0085">
+      <page>/srv/CIC_0085.jsf</page>
+    </view>
+    <view id="CIC_0086">
+      <page>/srv/CIC_0086.jsf</page>
+    </view>
+    <view id="CIC_0049">
+      <page>/srv/CIC_0049.jsf</page>
+    </view>
+    <view id="CIC-0051">
+      <page>/srv/CIC_0051.jsf</page>
+    </view>
+    <view id="CIC_0080">
+      <page>/srv/CIC_0080.jsf</page>
+    </view>
+    <view id="CIC_0018">
+      <page>/srv/CIC_0018.jsf</page>
+    </view>    
+    <view id="CIC_0009">
+      <page>/srv/CIC_0009.jsf</page>
+    </view>    
+   
+    <view id="CIC_0056">
+      <page>/srv/CIC_0056.jsf</page>
+    </view> 
+    
+    <method-call id="executeEmptyRowSet">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet1">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet2">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet3">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="CIC_0053">
+      <page>/srv/CIC_0053.jsf</page>
+    </view>
+    <method-call id="executeEmptyRowSet4">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="CIC_0041">
+      <page>/srv/CIC_0041.jsf</page>
+    </view>
+    <view id="CIC_0038">
+      <page>/srv/CIC_0038.jsf</page>
+    </view>
+    <view id="CIC_0047">
+      <page>/srv/CIC_0047.jsf</page>
+    </view>
+    <method-call id="executeEmptyRowSet5">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="CIC_0042">
+      <page>/srv/CIC_0042.jsf</page>
+    </view>
+    <view id="CIC_0043">
+      <page>/srv/CIC_0043.jsf</page>
+    </view>
+    <view id="CIC_0037">
+      <page>/srv/CIC_0037.jsf</page>
+    </view>
+    <view id="CIC_0046">
+      <page>/srv/CIC_0046.jsf</page>
+    </view>
+    <view id="CIC_0036">
+      <page>/srv/CIC_0036.jsf</page>
+    </view>
+    <view id="CIC_0040">
+      <page>/srv/CIC_0040.jsf</page>
+    </view>
+    <view id="CIC_0004">
+      <page>/srv/CIC_0004.jsf</page>
+    </view>
+    <view id="CIC_0039">
+      <page>/srv/CIC_0039.jsf</page>
+    </view>
+    <view id="CIC_0050">
+      <page>/srv/CIC_0050.jsf</page>
+    </view>
+    <method-call id="executeEmptyRowSet6">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet7">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="SrvGrnRowSet">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet8">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet9">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="SrvReceiptEmptyRowSet">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="SrvJobSwapEmptyRowSet">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="SrvJobSolutionRowSet">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="SrvSetDeliveryRowSet">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="SrvCourierDeliveryRowSet">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="SrvJobComplainRowSet">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="SrvPurchaseOrderRowSet">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet10">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet11">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doLogoutUser">
+      <method>#{bindings.doLogoutUser.execute}</method>
+      <outcome>
+        <fixed-outcome>doLogoutUser</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="CIC_0088">
+      <page>/srv/CIC_0088.jsf</page>
+    </view>
+    <view id="CIC_0203">
+      <page>/srv/CIC_0203.jsf</page>
+    </view>
+    <view id="CIC_0196">
+      <page>/srv/CIC_0196.jsf</page>
+    </view>
+    <view id="CIC_0206">
+      <page>/srv/CIC_0206.jsf</page>
+    </view>
+    <view id="CIC_0207">
+      <page>/srv/CIC_0207.jsf</page>
+    </view>
+    <method-call id="doCreateNewJobCardRow">
+      <method>#{bindings.doCreateNewJobCardRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobCardRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobSymRow">
+      <method>#{bindings.doCreateNewJobSymRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobSymRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobHORow">
+      <method>#{bindings.doCreateNewJobHORow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobHORow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobHODetRow">
+      <method>#{bindings.doCreateNewJobHODetRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobHODetRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobAssignRow">
+      <method>#{bindings.doCreateNewJobAssignRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobAssignRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobAssignDetRow">
+      <method>#{bindings.doCreateNewJobAssignDetRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobAssignDetRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsertCIC_0012">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewIssuanceRow">
+      <method>#{bindings.doCreateNewIssuanceRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewIssuanceRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewIssueDetDetRow">
+      <method>#{bindings.doCreateNewIssueDetDetRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewIssueDetDetRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobSolRow">
+      <method>#{bindings.doCreateNewJobSolRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobSolRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobFaultRow">
+      <method>#{bindings.doCreateNewJobFaultRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobFaultRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobActionRow">
+      <method>#{bindings.doCreateNewJobActionRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobActionRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSetCIC_0018">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsertCIC_0018">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewDemandNoteRow">
+      <method>#{bindings.doCreateNewDemandNoteRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewDemandNoteRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewDemandLineRow">
+      <method>#{bindings.doCreateNewDemandLineRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewDemandLineRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="CIC_0208">
+      <page>/srv/CIC_0208.jsf</page>
+    </view>
+    <method-call id="executeEmptyRowSetCIC_00208">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsertCIC_0028">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSetCIC_0032">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet12">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert2">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet13">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert3">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert4">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet14">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet15">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert5">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert6">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet16">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert7">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert8">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobReturnRow">
+      <method>#{bindings.doCreateNewJobReturnRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobReturnRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobRetDetRow">
+      <method>#{bindings.doCreateNewJobRetDetRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobRetDetRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet17">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobReturnRow1">
+      <method>#{bindings.doCreateNewJobReturnRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobReturnRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobRetDetRow1">
+      <method>#{bindings.doCreateNewJobRetDetRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobRetDetRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet18">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewStnRow">
+      <method>#{bindings.doCreateNewStnRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewStnRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewStnDetRow">
+      <method>#{bindings.doCreateNewStnDetRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewStnDetRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert9">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewCourierDelRow">
+      <method>#{bindings.doCreateNewCourierDelRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewCourierDelRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewCourierDelDetRow">
+      <method>#{bindings.doCreateNewCourierDelDetRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewCourierDelDetRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet19">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewLogisticRow">
+      <method>#{bindings.doCreateNewLogisticRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewLogisticRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewLogisticDetRow">
+      <method>#{bindings.doCreateNewLogisticDetRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewLogisticDetRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet20">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewLogisticRow1">
+      <method>#{bindings.doCreateNewLogisticRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewLogisticRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewLogisticDetRow1">
+      <method>#{bindings.doCreateNewLogisticDetRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewLogisticDetRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet21">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewStockAdjRow">
+      <method>#{bindings.doCreateNewStockAdjRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewStockAdjRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewStockAdjDetRow">
+      <method>#{bindings.doCreateNewStockAdjDetRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewStockAdjDetRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet22">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewPartSaleRow">
+      <method>#{bindings.doCreateNewPartSaleRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewPartSaleRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewPartSaleDetRow">
+      <method>#{bindings.doCreateNewPartSaleDetRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewPartSaleRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet23">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert11">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet24">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobTransferRow">
+      <method>#{bindings.doCreateNewJobTransferRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobTransferRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobTransDetRow">
+      <method>#{bindings.doCreateNewJobTransDetRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobTransDetRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobTransferRow1">
+      <method>#{bindings.doCreateNewJobTransferRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobTransferRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJobTransDetRow1">
+      <method>#{bindings.doCreateNewJobTransDetRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJobTransDetRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet25">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewStnRow1">
+      <method>#{bindings.doCreateNewStnRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewStnRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert1">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewPurchaseOrderRow">
+      <method>#{bindings.doCreateNewPurchaseOrderRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewPurchaseOrderRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreatePurchaseDetailRow">
+      <method>#{bindings.doCreatePurchaseDetailRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreatePurchaseDetailRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateInsert12">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet26">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewWarrantyRow">
+      <method>#{bindings.doCreateNewWarrantyRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewWarrantyRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewWarrantyDetRow">
+      <method>#{bindings.doCreateNewWarrantyDetRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewWarrantyDetRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="CreateWithParameters">
+      <method>#{bindings.CreateWithParams.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="CIC_0027">
+      <page>/srv/CIC_0027.jsf</page>
+    </view>
+    <method-call id="executeEmptyRowSet27">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewBOMRow">
+      <method>#{bindings.doCreateNewBOMRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewBOMRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="executeEmptyRowSet28">
+      <method>#{bindings.executeEmptyRowSet.execute}</method>
+      <outcome>
+        <fixed-outcome>executeEmptyRowSet</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="doCreateNewJsPartsNewRow">
+      <method>#{bindings.doCreateNewJsPartsNewRow.execute}</method>
+      <outcome>
+        <fixed-outcome>doCreateNewJsPartsNewRow</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="EXCEPTION_HANDLE">
+      <page>/EXCEPTION_HANDLE.jsf</page>
+    </view>
+    <view id="CIC_0213">
+      <page>/srv/CIC_0213.jsf</page>
+    </view>
+    <control-flow-rule id="__1">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>StartTaskFlows</from-outcome>
+        <to-activity-id>isFirstTime</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__3">
+      <from-activity-id>isFirstTime</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>mainPage</from-outcome>
+        <to-activity-id>Main</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__6">
+        <from-outcome>checkRights</from-outcome>
+        <to-activity-id>medhodCheckRights</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>medhodCheckRights</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>rightsResult</from-outcome>
+        <to-activity-id>IsRightsSuccessFul</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>IsRightsSuccessFul</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome>gotoMain</from-outcome>
+        <to-activity-id>Main</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome>ACT-gotoActivity</from-outcome>
+        <to-activity-id>ServiceModuleRollBack</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__12">
+      <from-activity-id>Main</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome>ACT-LogOut</from-outcome>
+        <to-activity-id>doLogoutUser</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome>ACT-LogOut</from-outcome>
+        <to-activity-id>doLogoutUser</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id>GoActivity</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome>ACT-CIC-0002</from-outcome>
+        <to-activity-id>executeEmptyRowSet</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__22">
+        <from-outcome>ACT-CIC-0098</from-outcome>
+        <to-activity-id>executeEmptyRowSet1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome>ACT-CIC-0026</from-outcome>
+        <to-activity-id>executeEmptyRowSet2</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__24">
+        <from-outcome>ACT-CIC-0013</from-outcome>
+        <to-activity-id>executeEmptyRowSet3</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__30">
+        <from-outcome>ACT-CIC-0015</from-outcome>
+        <to-activity-id>SrvJobSolutionRowSet</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__32">
+        <from-outcome>ACT-CIC-0031</from-outcome>
+        <to-activity-id>ExecuteWithParams1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__34">
+        <from-outcome>ACT-CIC-0032</from-outcome>
+        <to-activity-id>executeEmptyRowSetCIC_0032</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__36">
+        <from-outcome>ACT-CIC-0082</from-outcome>
+        <to-activity-id>executeEmptyRowSet19</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__38">
+        <from-outcome>ACT-CIC-0055</from-outcome>
+        <to-activity-id>executeEmptyRowSet6</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__40">
+        <from-outcome>ACT-CIC-0012</from-outcome>
+        <to-activity-id>executeEmptyRowSet9</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__42">
+        <from-outcome>ACT-CIC-0035</from-outcome>
+        <to-activity-id>SrvSetDeliveryRowSet</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__44">
+        <from-outcome>ACT-CIC-0072</from-outcome>
+        <to-activity-id>SrvCourierDeliveryRowSet</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__46">
+        <from-outcome>ACT-CIC-0087</from-outcome>
+        <to-activity-id>ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__52">
+        <from-outcome>ACT-CIC-0054</from-outcome>
+        <to-activity-id>SrvJobSwapEmptyRowSet</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__54">
+        <from-outcome>ACT-CIC-0067</from-outcome>
+        <to-activity-id>executeEmptyRowSet5</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__56">
+        <from-outcome>ACT-CIC-0028</from-outcome>
+        <to-activity-id>executeEmptyRowSet8</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__58">
+        <from-outcome>ACT-CIC-0195</from-outcome>
+        <to-activity-id>executeEmptyRowSet17</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__60">
+        <from-outcome>ACT-CIC-0194</from-outcome>
+        <to-activity-id>executeEmptyRowSet20</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__62">
+        <from-outcome>ACT-CIC-0193</from-outcome>
+        <to-activity-id>executeEmptyRowSet24</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__64">
+        <from-outcome>ACT-CIC-0198</from-outcome>
+        <to-activity-id>CIC_0198</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__66">
+        <from-outcome>ACT-CIC-0189</from-outcome>
+        <to-activity-id>CIC_0189</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__68">
+        <from-outcome>ACT-CIC-0201</from-outcome>
+        <to-activity-id>CIC_0201</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__70">
+        <from-outcome>ACT-CIC-0202</from-outcome>
+        <to-activity-id>CIC_0202</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__72">
+        <from-outcome>ACT-CIC-0016</from-outcome>
+        <to-activity-id>SrvReceiptEmptyRowSet</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__74">
+        <from-outcome>ACT-CIC-0034</from-outcome>
+        <to-activity-id>executeEmptyRowSet12</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__76">
+        <from-outcome>ACT-CIC-0021</from-outcome>
+        <to-activity-id>executeEmptyRowSet7</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__78">
+        <from-outcome>ACT-CIC-0024</from-outcome>
+        <to-activity-id>SrvPurchaseOrderRowSet</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__80">
+        <from-outcome>ACT-CIC-0022</from-outcome>
+        <to-activity-id>SrvGrnRowSet</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__82">
+        <from-outcome>ACT-CIC-0118</from-outcome>
+        <to-activity-id>executeEmptyRowSet23</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__84">
+        <from-outcome>ACT-CIC-0044</from-outcome>
+        <to-activity-id>executeEmptyRowSet25</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__86">
+        <from-outcome>ACT-CIC-0045</from-outcome>
+        <to-activity-id>executeEmptyRowSet15</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__88">
+        <from-outcome>ACT-CIC-0065</from-outcome>
+        <to-activity-id>executeEmptyRowSet18</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__90">
+        <from-outcome>ACT-CIC-0085</from-outcome>
+        <to-activity-id>executeEmptyRowSet21</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__92">
+        <from-outcome>ACT-CIC-0086</from-outcome>
+        <to-activity-id>executeEmptyRowSet22</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__94">
+        <from-outcome>ACT-CIC-0049</from-outcome>
+        <to-activity-id>SrvJobComplainRowSet</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__96">
+        <from-outcome>ACT-CIC-0051</from-outcome>
+        <to-activity-id>CIC-0051</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__98">
+        <from-outcome>ACT-CIC-0080</from-outcome>
+        <to-activity-id>CIC_0080</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__107">
+        <from-outcome>ACT-CIC-0053</from-outcome>
+        <to-activity-id>executeEmptyRowSet16</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__108">
+        <from-outcome>ACT-CIC-0041</from-outcome>
+        <to-activity-id>CIC_0041</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__109">
+        <from-outcome>ACT-CIC-0038</from-outcome>
+        <to-activity-id>CIC_0038</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__110">
+        <from-outcome>ACT-CIC-0047</from-outcome>
+        <to-activity-id>CIC_0047</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__123">
+        <from-outcome>ACT-CIC-0018</from-outcome>
+        <to-activity-id>executeEmptyRowSetCIC_0018</to-activity-id>
+      </control-flow-case>   
+      <control-flow-case id="__152">
+        <from-outcome>ACT-CIC-0009</from-outcome>
+        <to-activity-id>CIC_0009</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__160">
+        <from-outcome>ACT-CIC-0056</from-outcome>
+        <to-activity-id>CIC_0056</to-activity-id>
+      </control-flow-case>        
+      <control-flow-case id="__114">
+        <from-outcome>ACT-CIC-0042</from-outcome>
+        <to-activity-id>CIC_0042</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__115">
+        <from-outcome>ACT-CIC-0043</from-outcome>
+        <to-activity-id>CIC_0043</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__116">
+        <from-outcome>ACT-CIC-0037</from-outcome>
+        <to-activity-id>CIC_0037</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__117">
+        <from-outcome>ACT-CIC-0046</from-outcome>
+        <to-activity-id>CIC_0046</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__118">
+        <from-outcome>ACT-CIC-0036</from-outcome>
+        <to-activity-id>CIC_0036</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__119">
+        <from-outcome>ACT-CIC-0040</from-outcome>
+        <to-activity-id>CIC_0040</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__120">
+        <from-outcome>ACT-CIC-0004</from-outcome>
+        <to-activity-id>executeEmptyRowSet14</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__121">
+        <from-outcome>ACT-CIC-0039</from-outcome>
+        <to-activity-id>executeEmptyRowSet13</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__122">
+        <from-outcome>ACT-CIC-0050</from-outcome>
+        <to-activity-id>CIC_0050</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__154">
+        <from-outcome>ACT-CIC-0088</from-outcome>
+        <to-activity-id>executeEmptyRowSet28</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__155">
+        <from-outcome>ACT-CIC-0203</from-outcome>
+        <to-activity-id>CIC_0203</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__157">
+        <from-outcome>ACT-CIC-0196</from-outcome>
+        <to-activity-id>executeEmptyRowSet26</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__159">
+        <from-outcome>ACT-CIC-0206</from-outcome>
+        <to-activity-id>CIC_0206</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__161">
+        <from-outcome>ACT-CIC-0207</from-outcome>
+        <to-activity-id>CIC_0207</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__197">
+        <from-outcome>ACT-CIC-0208</from-outcome>
+        <to-activity-id>executeEmptyRowSetCIC_00208</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__309">
+        <from-outcome>ACT-CIC-0027</from-outcome>
+        <to-activity-id>executeEmptyRowSet27</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__322">
+        <from-outcome>ACT-CIC-0213</from-outcome>
+        <to-activity-id>CIC_0213</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__27">
+      <from-activity-id>ServiceModuleRollBack</from-activity-id>
+      <control-flow-case id="__28">
+        <from-outcome>Rollback</from-outcome>
+        <to-activity-id>GoActivity</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__47">
+      <from-activity-id>ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__48">
+        <from-outcome>ExecuteWithParams</from-outcome>
+        <to-activity-id>executeEmptyRowSet11</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__49">
+      <from-activity-id>ExecuteWithParams1</from-activity-id>
+      <control-flow-case id="__50">
+        <from-outcome>ExecuteWithParams</from-outcome>
+        <to-activity-id>executeEmptyRowSet10</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__101">
+      <from-activity-id>executeEmptyRowSet1</from-activity-id>
+      <control-flow-case id="__102">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewJobHORow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__105">
+      <from-activity-id>executeEmptyRowSet2</from-activity-id>
+      <control-flow-case id="__106">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewJobAssignRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__103">
+      <from-activity-id>executeEmptyRowSet3</from-activity-id>
+      <control-flow-case id="__104">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewIssuanceRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__112">
+      <from-activity-id>executeEmptyRowSet5</from-activity-id>
+      <control-flow-case id="__113">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsert9</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__153">
+      <from-activity-id>executeEmptyRowSet6</from-activity-id>
+      <control-flow-case id="__124">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewJobReturnRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__125">
+      <from-activity-id>executeEmptyRowSet7</from-activity-id>
+      <control-flow-case id="__126">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewDemandNoteRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__129">
+      <from-activity-id>executeEmptyRowSet8</from-activity-id>
+      <control-flow-case id="__130">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsertCIC_0028</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__131">
+      <from-activity-id>executeEmptyRowSet9</from-activity-id>
+      <control-flow-case id="__132">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsertCIC_0012</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__133">
+      <from-activity-id>SrvReceiptEmptyRowSet</from-activity-id>
+      <control-flow-case id="__134">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CIC_0016</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__135">
+      <from-activity-id>SrvJobSwapEmptyRowSet</from-activity-id>
+      <control-flow-case id="__136">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsert8</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__137">
+      <from-activity-id>SrvJobSolutionRowSet</from-activity-id>
+      <control-flow-case id="__138">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewJobSolRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__139">
+      <from-activity-id>SrvSetDeliveryRowSet</from-activity-id>
+      <control-flow-case id="__140">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsert2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__141">
+      <from-activity-id>SrvCourierDeliveryRowSet</from-activity-id>
+      <control-flow-case id="__142">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewCourierDelRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__143">
+      <from-activity-id>SrvJobComplainRowSet</from-activity-id>
+      <control-flow-case id="__144">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsert6</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__145">
+      <from-activity-id>SrvPurchaseOrderRowSet</from-activity-id>
+      <control-flow-case id="__146">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewPurchaseOrderRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__147">
+      <from-activity-id>executeEmptyRowSet10</from-activity-id>
+      <control-flow-case id="__148">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsert</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__149">
+      <from-activity-id>executeEmptyRowSet11</from-activity-id>
+      <control-flow-case id="__150">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateWithParameters</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__19">
+      <from-activity-id>doLogoutUser</from-activity-id>
+      <control-flow-case id="__20">
+        <from-outcome>doLogoutUser</from-outcome>
+        <to-activity-id>Logout</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__99">
+      <from-activity-id>doCreateNewJobSymRow</from-activity-id>
+      <control-flow-case id="__100">
+        <from-outcome>doCreateNewJobSymRow</from-outcome>
+        <to-activity-id>CIC_0002</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__163">
+      <from-activity-id>executeEmptyRowSet</from-activity-id>
+      <control-flow-case id="__164">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewJobCardRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__165">
+      <from-activity-id>doCreateNewJobCardRow</from-activity-id>
+      <control-flow-case id="__166">
+        <from-outcome>doCreateNewJobCardRow</from-outcome>
+        <to-activity-id>doCreateNewJobSymRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__167">
+      <from-activity-id>doCreateNewJobHORow</from-activity-id>
+      <control-flow-case id="__168">
+        <from-outcome>doCreateNewJobHORow</from-outcome>
+        <to-activity-id>doCreateNewJobHODetRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__169">
+      <from-activity-id>doCreateNewJobHODetRow</from-activity-id>
+      <control-flow-case id="__170">
+        <from-outcome>doCreateNewJobHODetRow</from-outcome>
+        <to-activity-id>CIC_0098</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__0171">
+      <from-activity-id>doCreateNewJobAssignRow</from-activity-id>
+      <control-flow-case id="__172">
+        <from-outcome>doCreateNewJobAssignRow</from-outcome>
+        <to-activity-id>doCreateNewJobAssignDetRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__173">
+      <from-activity-id>doCreateNewJobAssignDetRow</from-activity-id>
+      <control-flow-case id="__174">
+        <from-outcome>doCreateNewJobAssignDetRow</from-outcome>
+        <to-activity-id>CIC_0026</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__175">
+      <from-activity-id>CreateInsertCIC_0012</from-activity-id>
+      <control-flow-case id="__176">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CIC_0012</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__177">
+      <from-activity-id>doCreateNewIssuanceRow</from-activity-id>
+      <control-flow-case id="__178">
+        <from-outcome>doCreateNewIssuanceRow</from-outcome>
+        <to-activity-id>doCreateNewIssueDetDetRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__179">
+      <from-activity-id>doCreateNewIssueDetDetRow</from-activity-id>
+      <control-flow-case id="__180">
+        <from-outcome>doCreateNewIssueDetDetRow</from-outcome>
+        <to-activity-id>CIC_0013</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__181">
+      <from-activity-id>doCreateNewJobSolRow</from-activity-id>
+      <control-flow-case id="__182">
+        <from-outcome>doCreateNewJobSolRow</from-outcome>
+        <to-activity-id>doCreateNewJobFaultRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__183">
+      <from-activity-id>doCreateNewJobFaultRow</from-activity-id>
+      <control-flow-case id="__184">
+        <from-outcome>doCreateNewJobFaultRow</from-outcome>
+        <to-activity-id>doCreateNewJobActionRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__185">
+      <from-activity-id>doCreateNewJobActionRow</from-activity-id>
+      <control-flow-case id="__186">
+        <from-outcome>doCreateNewJobActionRow</from-outcome>
+        <to-activity-id>doCreateNewJsPartsNewRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__187">
+      <from-activity-id>executeEmptyRowSetCIC_0018</from-activity-id>
+      <control-flow-case id="__188">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsertCIC_0018</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__189">
+      <from-activity-id>CreateInsertCIC_0018</from-activity-id>
+      <control-flow-case id="__190">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CIC_0018</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__191">
+      <from-activity-id>doCreateNewDemandNoteRow</from-activity-id>
+      <control-flow-case id="__192">
+        <from-outcome>doCreateNewDemandNoteRow</from-outcome>
+        <to-activity-id>doCreateNewDemandLineRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__193">
+      <from-activity-id>doCreateNewDemandLineRow</from-activity-id>
+      <control-flow-case id="__194">
+        <from-outcome>doCreateNewDemandLineRow</from-outcome>
+        <to-activity-id>CIC_0021</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__195">
+      <from-activity-id>executeEmptyRowSetCIC_00208</from-activity-id>
+      <control-flow-case id="__196">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CIC_0208</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__202">
+      <from-activity-id>CreateInsertCIC_0028</from-activity-id>
+      <control-flow-case id="__203">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CIC_0028</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__204">
+      <from-activity-id>CreateInsert</from-activity-id>
+      <control-flow-case id="__205">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CIC_0031</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__208">
+      <from-activity-id>executeEmptyRowSetCIC_0032</from-activity-id>
+      <control-flow-case id="__209">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewJobTransferRow1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__216">
+      <from-activity-id>CreateInsert2</from-activity-id>
+      <control-flow-case id="__217">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CIC_0035</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__218">
+      <from-activity-id>executeEmptyRowSet13</from-activity-id>
+      <control-flow-case id="__219">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsert3</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__220">
+      <from-activity-id>CreateInsert3</from-activity-id>
+      <control-flow-case id="__221">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CIC_0039</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__222">
+      <from-activity-id>executeEmptyRowSet14</from-activity-id>
+      <control-flow-case id="__223">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsert4</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__226">
+      <from-activity-id>CreateInsert4</from-activity-id>
+      <control-flow-case id="__227">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CIC_0004</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__224">
+      <from-activity-id>executeEmptyRowSet15</from-activity-id>
+      <control-flow-case id="__225">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsert5</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__228">
+      <from-activity-id>CreateInsert5</from-activity-id>
+      <control-flow-case id="__229">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CIC_0045</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__230">
+      <from-activity-id>CreateInsert6</from-activity-id>
+      <control-flow-case id="__231">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CIC_0049</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__232">
+      <from-activity-id>executeEmptyRowSet16</from-activity-id>
+      <control-flow-case id="__233">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsert7</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__234">
+      <from-activity-id>CreateInsert7</from-activity-id>
+      <control-flow-case id="__235">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CIC_0053</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__236">
+      <from-activity-id>CreateInsert8</from-activity-id>
+      <control-flow-case id="__237">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>ACT-CIC_0054</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__238">
+      <from-activity-id>doCreateNewJobReturnRow</from-activity-id>
+      <control-flow-case id="__239">
+        <from-outcome>doCreateNewJobReturnRow</from-outcome>
+        <to-activity-id>doCreateNewJobRetDetRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__240">
+      <from-activity-id>doCreateNewJobRetDetRow</from-activity-id>
+      <control-flow-case id="__241">
+        <from-outcome>doCreateNewJobRetDetRow</from-outcome>
+        <to-activity-id>CIC_0055</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__242">
+      <from-activity-id>executeEmptyRowSet17</from-activity-id>
+      <control-flow-case id="__243">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewJobReturnRow1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__244">
+      <from-activity-id>doCreateNewJobReturnRow1</from-activity-id>
+      <control-flow-case id="__245">
+        <from-outcome>doCreateNewJobReturnRow</from-outcome>
+        <to-activity-id>doCreateNewJobRetDetRow1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__246">
+      <from-activity-id>doCreateNewJobRetDetRow1</from-activity-id>
+      <control-flow-case id="__247">
+        <from-outcome>doCreateNewJobRetDetRow</from-outcome>
+        <to-activity-id>CIC_0195</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__248">
+      <from-activity-id>executeEmptyRowSet18</from-activity-id>
+      <control-flow-case id="__249">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewStnRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__254">
+      <from-activity-id>doCreateNewStnDetRow</from-activity-id>
+      <control-flow-case id="__255">
+        <from-outcome>doCreateNewStnDetRow</from-outcome>
+        <to-activity-id>CIC_0065</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__250">
+      <from-activity-id>CreateInsert9</from-activity-id>
+      <control-flow-case id="__251">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CIC_0067</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__252">
+      <from-activity-id>doCreateNewCourierDelDetRow</from-activity-id>
+      <control-flow-case id="__253">
+        <from-outcome>doCreateNewCourierDelDetRow</from-outcome>
+        <to-activity-id>CIC_0072</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__256">
+      <from-activity-id>doCreateNewCourierDelRow</from-activity-id>
+      <control-flow-case id="__257">
+        <from-outcome>doCreateNewCourierDelRow</from-outcome>
+        <to-activity-id>doCreateNewCourierDelDetRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__258">
+      <from-activity-id>executeEmptyRowSet19</from-activity-id>
+      <control-flow-case id="__259">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewLogisticRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__260">
+      <from-activity-id>doCreateNewLogisticRow</from-activity-id>
+      <control-flow-case id="__261">
+        <from-outcome>doCreateNewLogisticRow</from-outcome>
+        <to-activity-id>doCreateNewLogisticDetRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__262">
+      <from-activity-id>doCreateNewLogisticDetRow</from-activity-id>
+      <control-flow-case id="__263">
+        <from-outcome>doCreateNewLogisticDetRow</from-outcome>
+        <to-activity-id>CIC_0082</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__264">
+      <from-activity-id>executeEmptyRowSet20</from-activity-id>
+      <control-flow-case id="__265">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewLogisticRow1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__266">
+      <from-activity-id>doCreateNewLogisticRow1</from-activity-id>
+      <control-flow-case id="__267">
+        <from-outcome>doCreateNewLogisticRow</from-outcome>
+        <to-activity-id>doCreateNewLogisticDetRow1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__268">
+      <from-activity-id>doCreateNewLogisticDetRow1</from-activity-id>
+      <control-flow-case id="__269">
+        <from-outcome>doCreateNewLogisticDetRow</from-outcome>
+        <to-activity-id>CIC_0194</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__270">
+      <from-activity-id>executeEmptyRowSet21</from-activity-id>
+      <control-flow-case id="__271">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewStockAdjRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__272">
+      <from-activity-id>doCreateNewStockAdjRow</from-activity-id>
+      <control-flow-case id="__273">
+        <from-outcome>doCreateNewStockAdjRow</from-outcome>
+        <to-activity-id>doCreateNewStockAdjDetRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__274">
+      <from-activity-id>doCreateNewStockAdjDetRow</from-activity-id>
+      <control-flow-case id="__275">
+        <from-outcome>doCreateNewStockAdjDetRow</from-outcome>
+        <to-activity-id>CIC_0085</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__276">
+      <from-activity-id>executeEmptyRowSet22</from-activity-id>
+      <control-flow-case id="__277">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewPartSaleRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__280">
+      <from-activity-id>doCreateNewPartSaleDetRow</from-activity-id>
+      <control-flow-case id="__281">
+        <from-outcome>doCreateNewPartSaleRow</from-outcome>
+        <to-activity-id>CIC_0086</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__282">
+      <from-activity-id>doCreateNewPartSaleRow</from-activity-id>
+      <control-flow-case id="__283">
+        <from-outcome>doCreateNewPartSaleRow</from-outcome>
+        <to-activity-id>doCreateNewPartSaleDetRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__284">
+      <from-activity-id>executeEmptyRowSet23</from-activity-id>
+      <control-flow-case id="__285">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsert11</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__286">
+      <from-activity-id>CreateInsert11</from-activity-id>
+      <control-flow-case id="__287">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CIC_0118</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__288">
+      <from-activity-id>executeEmptyRowSet24</from-activity-id>
+      <control-flow-case id="__289">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewJobTransferRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__290">
+      <from-activity-id>doCreateNewJobTransDetRow</from-activity-id>
+      <control-flow-case id="__291">
+        <from-outcome>doCreateNewJobTransDetRow</from-outcome>
+        <to-activity-id>CIC_0193</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__292">
+      <from-activity-id>doCreateNewJobTransferRow</from-activity-id>
+      <control-flow-case id="__293">
+        <from-outcome>doCreateNewJobTransferRow</from-outcome>
+        <to-activity-id>doCreateNewJobTransDetRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__294">
+      <from-activity-id>doCreateNewJobTransferRow1</from-activity-id>
+      <control-flow-case id="__295">
+        <from-outcome>doCreateNewJobTransferRow</from-outcome>
+        <to-activity-id>doCreateNewJobTransDetRow1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__296">
+      <from-activity-id>doCreateNewJobTransDetRow1</from-activity-id>
+      <control-flow-case id="__297">
+        <from-outcome>doCreateNewJobTransDetRow</from-outcome>
+        <to-activity-id>CIC_0032</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__300">
+      <from-activity-id>executeEmptyRowSet25</from-activity-id>
+      <control-flow-case id="__301">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewStnRow1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__302">
+      <from-activity-id>doCreateNewStnRow1</from-activity-id>
+      <control-flow-case id="__303">
+        <from-outcome>doCreateNewStnRow</from-outcome>
+        <to-activity-id>CIC_0044</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__206">
+      <from-activity-id>doCreateNewStnRow</from-activity-id>
+      <control-flow-case id="__207">
+        <from-outcome>doCreateNewStnRow</from-outcome>
+        <to-activity-id>doCreateNewStnDetRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__210">
+      <from-activity-id>executeEmptyRowSet12</from-activity-id>
+      <control-flow-case id="__211">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsert1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__212">
+      <from-activity-id>CreateInsert1</from-activity-id>
+      <control-flow-case id="__213">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CIC_0034</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__304">
+      <from-activity-id>doCreateNewPurchaseOrderRow</from-activity-id>
+      <control-flow-case id="__305">
+        <from-outcome>doCreateNewPurchaseOrderRow</from-outcome>
+        <to-activity-id>doCreatePurchaseDetailRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__306">
+      <from-activity-id>doCreatePurchaseDetailRow</from-activity-id>
+      <control-flow-case id="__307">
+        <from-outcome>doCreatePurchaseDetailRow</from-outcome>
+        <to-activity-id>CIC_0024</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__214">
+      <from-activity-id>CreateInsert12</from-activity-id>
+      <control-flow-case id="__215">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>CIC_0022</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__298">
+      <from-activity-id>SrvGrnRowSet</from-activity-id>
+      <control-flow-case id="__299">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CreateInsert12</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__127">
+      <from-activity-id>executeEmptyRowSet26</from-activity-id>
+      <control-flow-case id="__128">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewWarrantyRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__198">
+      <from-activity-id>doCreateNewWarrantyRow</from-activity-id>
+      <control-flow-case id="__199">
+        <from-outcome>doCreateNewWarrantyRow</from-outcome>
+        <to-activity-id>doCreateNewWarrantyDetRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__200">
+      <from-activity-id>doCreateNewWarrantyDetRow</from-activity-id>
+      <control-flow-case id="__201">
+        <from-outcome>doCreateNewWarrantyDetRow</from-outcome>
+        <to-activity-id>CIC_0196</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__278">
+      <from-activity-id>CreateWithParameters</from-activity-id>
+      <control-flow-case id="__279">
+        <from-outcome>CreateWithParams</from-outcome>
+        <to-activity-id>CIC_0087</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__310">
+      <from-activity-id>executeEmptyRowSet27</from-activity-id>
+      <control-flow-case id="__311">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>doCreateNewBOMRow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__312">
+      <from-activity-id>doCreateNewBOMRow</from-activity-id>
+      <control-flow-case id="__313">
+        <from-outcome>doCreateNewBOMRow</from-outcome>
+        <to-activity-id>CIC_0027</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__315">
+      <from-activity-id>executeEmptyRowSet28</from-activity-id>
+      <control-flow-case id="__316">
+        <from-outcome>executeEmptyRowSet</from-outcome>
+        <to-activity-id>CIC_0088</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__317">
+      <from-activity-id>doCreateNewJsPartsNewRow</from-activity-id>
+      <control-flow-case id="__318">
+        <from-outcome>doCreateNewJsPartsNewRow</from-outcome>
+        <to-activity-id>CIC_0015</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__320">
+      <from-activity-id>EXCEPTION_HANDLE</from-activity-id>
+      <control-flow-case id="__321">
+        <from-outcome>doGoToBack</from-outcome>
+        <to-activity-id>GoActivity</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+  </task-flow-definition>
+</adfc-config>

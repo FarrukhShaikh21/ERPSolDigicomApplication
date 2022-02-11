@@ -1,0 +1,84 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="CIC_0040.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:pageTemplate viewId="/tmpDigicomTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+                <f:facet name="left"/>
+                <f:facet name="middle">
+                    <af:panelFormLayout id="pfl1">
+                        <f:facet name="footer"/>
+                        <af:selectOneChoice value="#{bindings.AllProdcategoryRO.inputValue}"
+                                            label="#{bindings.AllProdcategoryRO.label}"
+                                            required="#{bindings.AllProdcategoryRO.hints.mandatory}"
+                                            shortDesc="#{bindings.AllProdcategoryRO.hints.tooltip}" id="soc1"
+                                            autoSubmit="true">
+                            <f:selectItems value="#{bindings.AllProdcategoryRO.items}" id="si1"/>
+                            <f:validator binding="#{bindings.AllProdcategoryRO.validator}"/>
+                        </af:selectOneChoice>
+                    </af:panelFormLayout>
+                    <af:panelCollection id="pc1" partialTriggers="b1 b2">
+                        <f:facet name="menus"/>
+                        <f:facet name="toolbar">
+                            <af:toolbar id="t2">
+                                <af:button actionListener="#{bindings.CreateInsert.execute}" text="New"
+                                           disabled="#{!bindings.CreateInsert.enabled}" id="b1" styleClass="CRUDButton"
+                                           accessKey="n" icon="#{resource['images:imgNewDocument4.png']}"/>
+                                <af:button actionListener="#{bindings.Commit.execute}" text="Save"
+                                           disabled="#{!bindings.Commit.enabled}" id="b3" styleClass="CRUDButton"
+                                           accessKey="s" icon="#{resource['images:imgSave.png']}"/>
+                                <af:button actionListener="#{bindings.Rollback.execute}" text="Undo"
+                                           disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b4"
+                                           accessKey="u" styleClass="CRUDButton"
+                                           icon="#{resource['images:imgUndo.png']}">
+                                    <af:resetActionListener/>
+                                </af:button>
+                                <af:button actionListener="#{bindings.Delete.execute}" text="Delete"
+                                           disabled="#{!bindings.Delete.enabled}" id="b2" accessKey="l"
+                                           styleClass="CRUDButton" icon="#{resource['images:ImgDelete.png']}"/>
+                            </af:toolbar>
+                        </f:facet>
+                        <f:facet name="statusbar"/>
+                        <af:table value="#{bindings.SrvFaultsDetCRUD.collectionModel}" var="row"
+                                  rows="#{bindings.SrvFaultsDetCRUD.rangeSize}"
+                                  emptyText="#{bindings.SrvFaultsDetCRUD.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0"
+                                  selectedRowKeys="#{bindings.SrvFaultsDetCRUD.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.SrvFaultsDetCRUD.collectionModel.makeCurrent}"
+                                  rowSelection="single" fetchSize="#{bindings.SrvFaultsDetCRUD.rangeSize}" id="t1"
+                                  displayRow="selected" scrollPolicy="scroll" autoHeightRows="20"
+                                  partialTriggers="::b1 ::b2">
+                            <af:column headerText="#{bindings.SrvFaultsDetCRUD.hints.Faultid.label}" id="c1"
+                                       align="center">
+                                <af:inputText value="#{row.bindings.Faultid.inputValue}"
+                                              label="#{bindings.SrvFaultsDetCRUD.hints.Faultid.label}"
+                                              required="#{bindings.SrvFaultsDetCRUD.hints.Faultid.mandatory}"
+                                              columns="#{bindings.SrvFaultsDetCRUD.hints.Faultid.displayWidth}"
+                                              maximumLength="#{bindings.SrvFaultsDetCRUD.hints.Faultid.precision}"
+                                              shortDesc="#{bindings.SrvFaultsDetCRUD.hints.Faultid.tooltip}" id="it1"
+                                              readOnly="true">
+                                    <f:validator binding="#{row.bindings.Faultid.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.SrvFaultsDetCRUD.hints.Description.label}" id="c2"
+                                       width="200" align="center">
+                                <af:inputText value="#{row.bindings.Description.inputValue}"
+                                              label="#{bindings.SrvFaultsDetCRUD.hints.Description.label}"
+                                              required="#{bindings.SrvFaultsDetCRUD.hints.Description.mandatory}"
+                                              columns="#{bindings.SrvFaultsDetCRUD.hints.Description.displayWidth}"
+                                              maximumLength="#{bindings.SrvFaultsDetCRUD.hints.Description.precision}"
+                                              shortDesc="#{bindings.SrvFaultsDetCRUD.hints.Description.tooltip}"
+                                              id="it2">
+                                    <f:validator binding="#{row.bindings.Description.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                        </af:table>
+                    </af:panelCollection>
+                </f:facet>
+                <f:facet name="toolbar"/>
+                <f:facet name="top"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

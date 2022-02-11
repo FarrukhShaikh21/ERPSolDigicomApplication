@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0038PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvJobconditionsCRUD" RangeSize="25" DataControl="modServiceSetupDataControl"
+              id="SrvJobconditionsCRUDIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SrvJobconditionsCRUDIterator" id="SrvJobconditionsCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJobconditionsVO" Name="SrvJobconditionsCRUD0">
+        <AttrNames>
+          <Item Value="Conditionid"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvJobconditionsCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="SrvJobconditionsCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="modServiceSetupDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceSetupDataControl"/>
+  </bindings>
+</pageDefinition>

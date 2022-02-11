@@ -1,0 +1,15 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="EXCEPTION_HANDLE.jsf" id="d1">
+        <af:form id="f1">
+            <af:panelFormLayout id="pfl1">
+                <f:facet name="footer"/>
+                <af:outputFormatted value="#{controllerContext.currentViewPort.exceptionData.localizedMessage}" id="of1"/>
+                <af:outputFormatted value="#{controllerContext.currentViewPort.exceptionData.message}" id="of2"/>
+                <af:outputFormatted value="#{controllerContext.currentViewPort.exceptionData.stackTrace}" id="of3"/>
+                <af:button text="Ok" id="b1" action="doGoToBack"/>
+            </af:panelFormLayout>
+        </af:form>
+    </af:document>
+</f:view>
