@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJccatVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvJccat.COMPCATID, 
+       SrvJccat.CREATEDBY, 
+       SrvJccat.CREATED_DATE, 
+       SrvJccat.MODIFIEDBY, 
+       SrvJccat.MODIFIED_DATE, 
+       SrvJccat.JCDETLID, 
+       SrvJccat.ROWID"
+  FromList="SRV_JCCAT SrvJccat"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvJccatVORowImpl"
+  ComponentClass="dgcom.model.stand.DigicomViewObjectImpl">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvCompcategory"
+    ViewObjectName="dgcom.model.vo.srv.SrvCompcategoryVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LovSrvCompcategory"
+    ListVOName="AccSrvCompcategory"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Compcatid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Compcatid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvJccat"
+    Entity="dgcom.model.eo.srv.SrvJccat"/>
+  <ViewAttribute
+    Name="Compcatid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Compcatid"
+    EntityUsage="SrvJccat"
+    AliasName="COMPCATID"
+    LOVName="LovSrvCompcategory">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvJccat"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvJccat"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvJccat"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvJccat"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Jcdetlid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jcdetlid"
+    EntityUsage="SrvJccat"
+    AliasName="JCDETLID"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="SrvJccat"
+    AliasName="ROWID"/>
+  <ViewLinkAccessor
+    Name="SrvJcdetlVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015293Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+</ViewObject>

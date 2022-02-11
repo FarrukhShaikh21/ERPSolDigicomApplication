@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="IMEINotQVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.IMEINotQVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_IMEI_NO"
+    Kind="where"
+    Type="java.lang.String">
+    <TransientExpression><![CDATA[adf.object.viewObject.applicationModule.findViewObject("SrvJobcardCRUD").getCurrentRow().getAttribute("ImeiNo")]]></TransientExpression>
+  </Variable>
+  <Variable
+    Name="P_ADF_JOBCARDNO"
+    Kind="where"
+    Type="java.lang.String">
+    <TransientExpression><![CDATA[adf.object.viewObject.applicationModule.findViewObject("SrvJobcardCRUD").getCurrentRow().getAttribute("Jobcardno")]]></TransientExpression>
+  </Variable>
+  <SQLQuery><![CDATA[select /*count(*)+1*/1 AS IMEI_NOT ,/*MAX*/(J.IMEI_NO)IMEI_NO       
+from SRV_JOBCARD  j      
+where IMEI_NO = :P_ADF_IMEI_NO        
+and JOBCARDNO <> nvl(:P_ADF_JOBCARDNO,'X')        
+/*and ((:P_ADF_LOCATION_ID = 'KHI' and BRANDID = '07') OR BRANDID <> '07')*/  
+and JOBTYPEID <> '002']]></SQLQuery>
+  <ViewAttribute
+    Name="ImeiNot"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="IMEI_NOT"
+    Expression="IMEI_NOT"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="ImeiNo"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="IMEI_NO"
+    Expression="IMEI_NO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="ImeiNo"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="SrvJobcardVO"
+    ViewLink="dgcom.model.vl.srv.SrvJobCardSrvImeiNotInfoImeiNoVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

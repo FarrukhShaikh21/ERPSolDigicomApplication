@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InItemPartMovement"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="IN_ITEM_PART_MOVEMENT"
+  AliasName="InItemPartMovement"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.eo.srv.InItemPartMovementImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="MappId"
+    Precision="15"
+    ColumnName="MAPP_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IN_ITEM_PART_MOVEMENT"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.InItemPartMovement.MappId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Locationid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="LOCATIONID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IN_ITEM_PART_MOVEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.InItemPartMovement.Locationid_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="FromStoreid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="FROM_STOREID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IN_ITEM_PART_MOVEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.InItemPartMovement.FromStoreid_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ToStoreid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="TO_STOREID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IN_ITEM_PART_MOVEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.InItemPartMovement.ToStoreid_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="MapDate"
+    ColumnName="MAP_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="IN_ITEM_PART_MOVEMENT">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.InItemPartMovement.MapDate_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <validation:ValidationBean
+      Name="DocumentDateEntryRights"
+      ResId="dgcom.model.eo.srv.SrvJobcard.Jobdate_Rule_0"
+      OnAttribute="MapDate"
+      Version="2"
+      OperandType="LITERAL"
+      Inverse="false"
+      DisplayName="RulCheckDateRights"
+      ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+      <validation:OnCondition><![CDATA[newValue!=null]]></validation:OnCondition>
+    </validation:ValidationBean>
+  </Attribute>
+  <Attribute
+    Name="Doctype"
+    IsNotNull="true"
+    Precision="10"
+    ColumnName="DOCTYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IN_ITEM_PART_MOVEMENT"
+    DefaultValue="PTI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Posted"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="POSTED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IN_ITEM_PART_MOVEMENT"
+    DefaultValue="N">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Postedby"
+    Precision="20"
+    ColumnName="POSTEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IN_ITEM_PART_MOVEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IN_ITEM_PART_MOVEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="IN_ITEM_PART_MOVEMENT">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IN_ITEM_PART_MOVEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="IN_ITEM_PART_MOVEMENT"/>
+  <Attribute
+    Name="Remarks"
+    Precision="500"
+    ColumnName="REMARKS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="IN_ITEM_PART_MOVEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="txtFromStoreName"
+    Precision="80"
+    ColumnName="TXT_FROM_STORE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[AllStores?.StoreName]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.InItemPartMovement.txtFromStoreName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="FromStoreid"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="txtToStoreName"
+    Precision="80"
+    ColumnName="TXT_TO_STORE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[AllStores1?.StoreName]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.InItemPartMovement.txtToStoreName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="ToStoreid"/>
+    </Dependencies>
+  </Attribute>
+  <AccessorAttribute
+    Name="InIpmDetail"
+    Association="dgcom.model.asso.srv.SysC0091846Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0091846Assoc.InIpmDetail"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0091846Assoc.InItemPartMovement"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="AllStores"
+    Association="dgcom.model.asso.srv.SysC0091838Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0091838Assoc.AllStores"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0091838Assoc.InItemPartMovement"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="AllStores1"
+    Association="dgcom.model.asso.srv.SysC0091839Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0091839Assoc.AllStores1"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0091839Assoc.InItemPartMovement1"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC0091836"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0091836"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.InItemPartMovement.MappId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0091837">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_LOCATIONS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0091837"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.InItemPartMovement.Locationid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0091838">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_STORES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0091838"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.InItemPartMovement.FromStoreid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0091839">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_STORES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0091839"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.InItemPartMovement.ToStoreid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_InItemPartMovement">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_STORES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_IN_ITEM_PART_MOVEMENT"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.InItemPartMovement.FromStoreid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_InItemPartMovement1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_STORES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_IN_ITEM_PART_MOVEMENT1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.InItemPartMovement.ToStoreid"/>
+    </AttrArray>
+  </Key>
+  <validation:ValidationBean
+    Name="BRCheckDocDateForSubmit"
+    ResId="dgcom.model.eo.srv.SrvDap_Rule_0"
+    Version="2"
+    OperandType="LITERAL"
+    Inverse="false"
+    DisplayName="RulCheckDateRights"
+    ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="Posted"/>
+    </validation:OnAttributes>
+    <validation:OnCondition><![CDATA[Posted=='Y']]></validation:OnCondition>
+  </validation:ValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

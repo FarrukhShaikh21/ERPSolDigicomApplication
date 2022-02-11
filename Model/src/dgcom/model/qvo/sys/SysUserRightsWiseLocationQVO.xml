@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SysUserRightsWiseLocationQVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.sys.SysUserRightsWiseLocationQVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_LOCATIONID"
+    Kind="where"
+    Type="java.lang.String">
+    <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.getUserLocation()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_REGIONID"
+    Kind="where"
+    Type="java.lang.String">
+    <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.getUserRegion()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_HL"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[SELECT LOC.LOCATIONID,LOC.LOCATION_DESCRIPTION ,LOC.REGIONID 
+FROM ALL_LOCATIONS LOC  
+WHERE ((LOC.LOCATIONID=:P_ADF_LOCATIONID AND :P_ADF_HL='U') OR (LOC.REGIONID=:P_ADF_REGIONID AND :P_ADF_HL='R') OR :P_ADF_HL='A')  
+ORDER BY LOC.LOCATIONID]]></SQLQuery>
+  <ViewAttribute
+    Name="Locationid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LOCATIONID"
+    Expression="LOCATIONID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <LABEL
+          ResId="dgcom.model.qvo.sys.SysUserRightsWiseLocationQVO.Locationid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LocationDescription"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LOCATION_DESCRIPTION"
+    Expression="LOCATION_DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.qvo.sys.SysUserRightsWiseLocationQVO.LocationDescription_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Regionid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="3"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="REGIONID"
+    Expression="REGIONID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="SysUserRightsWiseLocationRegionWiseVC"
+    ViewObjectName="dgcom.model.qvo.sys.SysUserRightsWiseLocationQVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SysUserRightsWiseLocationQVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Regionid"
+        ViewAttribute="Regionid"
+        Operator="="
+        Conjunction="AND"
+        Value=":P_ADF_REGIONID"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Locationid"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

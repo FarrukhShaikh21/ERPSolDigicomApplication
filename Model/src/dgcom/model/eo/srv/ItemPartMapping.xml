@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ItemPartMapping"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="ITEM_PART_MAPPING"
+  AliasName="ItemPartMapping"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.stand.DigicomEntityImpl">
+  <DesignTime>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+  </DesignTime>
+  <Attribute
+    Name="Itemid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="ITEMID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ITEM_PART_MAPPING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.ItemPartMapping.Itemid_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Partid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="PARTID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ITEM_PART_MAPPING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.ItemPartMapping.Partid_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ITEM_PART_MAPPING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="ITEM_PART_MAPPING"/>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ITEM_PART_MAPPING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="ITEM_PART_MAPPING"/>
+  <Attribute
+    Name="Rowid"
+    IsUpdateable="false"
+    ColumnName="ROWID"
+    SQLType="ROWID"
+    Type="oracle.jbo.domain.RowID"
+    ColumnType="ROWID"
+    TableName="ITEM_PART_MAPPING"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="txtModel"
+    Precision="80"
+    ColumnName="TXT_MODEL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ITEM_PART_MAPPING"
+    IsQueriable="false"
+    IsPersistent="false">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[InItems?.ModelNo]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.ItemPartMapping.txtModel_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="txtPartName"
+    Precision="80"
+    ColumnName="TXT_PART_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ITEM_PART_MAPPING"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[InParts?.Description]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.ItemPartMapping.txtPartName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="txtPartNo"
+    Precision="80"
+    ColumnName="TXT_PART_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[InParts?.Partno]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.ItemPartMapping.txtPartNo_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <AccessorAttribute
+    Name="InItems"
+    Association="dgcom.model.asso.srv.SysC0091572Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0091572Assoc.InItems"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0091572Assoc.ItemPartMapping"
+    Type="dgcom.model.eo.inv.InItemsImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="InParts"
+    Association="dgcom.model.asso.srv.SysC0091573Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0091573Assoc.InParts"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0091573Assoc.ItemPartMapping"
+    Type="dgcom.model.eo.srv.InPartsImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC0091571">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0091571"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.ItemPartMapping.Itemid"/>
+      <Item Value="dgcom.model.eo.srv.ItemPartMapping.Partid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0091572">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKIN_ITEMS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0091572"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.ItemPartMapping.Itemid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0091573">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014331"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0091573"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.ItemPartMapping.Partid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_ItemPartMapping">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKIN_ITEMS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_ITEM_PART_MAPPING"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.ItemPartMapping.Itemid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_ItemPartMapping1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014331"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_ITEM_PART_MAPPING1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.ItemPartMapping.Partid"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

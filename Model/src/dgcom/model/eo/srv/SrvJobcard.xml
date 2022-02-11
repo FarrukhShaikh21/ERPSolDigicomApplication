@@ -1,0 +1,1737 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobcard"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SRV_JOBCARD"
+  AliasName="SrvJobcard"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.eo.srv.SrvJobcardImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccInItems"
+    ViewObjectName="dgcom.model.vo.inv.InItemsVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="InItemsVOCriteria"
+      FullName="dgcom.model.vo.inv.InItemsVO.InItemsVOCriteria"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccItemImeiInfoPostQuery"
+    ViewObjectName="dgcom.model.vo.inv.ItemImeiInfoVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="ItemImeiInfoIMEIWiseDataVC"
+      FullName="dgcom.model.vo.inv.ItemImeiInfoVO.ItemImeiInfoIMEIWiseDataVC"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccBlockImeICheckJobCardMsg"
+    ViewObjectName="dgcom.model.qvo.srv.BlockImeICheckJobCardQVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="AccIMEIItemExistsInBOMQVO"
+    ViewObjectName="dgcom.model.qvo.srv.IMEIItemExistsInBOMQVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="AccIMEINotTotal"
+    ViewObjectName="dgcom.model.qvo.srv.IMEINotQVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="AccSrvJobCardImeiAlreadyInProcess"
+    ViewObjectName="dgcom.model.vo.srv.SrvJobcardVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvJobcardIsImeiAlreadyInProcessAgainstJobCard"
+      FullName="dgcom.model.vo.srv.SrvJobcardVO.SrvJobcardIsImeiAlreadyInProcessAgainstJobCard"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSrvBlockedIMEI"
+    ViewObjectName="dgcom.model.vo.srv.SrvBlockedImeiVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvBlockedImeiItemImeiWiseVC"
+      FullName="dgcom.model.vo.srv.SrvBlockedImeiVO.SrvBlockedImeiItemImeiWiseVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_IMEI_NO">
+        <TransientExpression><![CDATA[ImeiNo==null?"-1":ImeiNo]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_ITEM_ID">
+        <TransientExpression><![CDATA[Itemid==null?"-1":Itemid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <Attribute
+    Name="Jobcardno"
+    Precision="15"
+    ColumnName="JOBCARDNO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.Jobcardno_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Locationid"
+    Precision="15"
+    ColumnName="LOCATIONID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.Locationid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Fromlocationid"
+    Precision="15"
+    ColumnName="FROMLOCATIONID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="DealerId"
+    Precision="15"
+    ColumnName="DEALER_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.DealerId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Brandid"
+    Precision="15"
+    ColumnName="BRANDID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.Brandid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Itemid"
+    Precision="15"
+    ColumnName="ITEMID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.Itemid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="Brandid"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="Technicianid"
+    Precision="15"
+    ColumnName="TECHNICIANID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.Technicianid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Conditionid"
+    Precision="15"
+    ColumnName="CONDITIONID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD"
+    DefaultValue="001">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.Conditionid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Jobtypeid"
+    Precision="15"
+    ColumnName="JOBTYPEID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.Jobtypeid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Customer"
+    Precision="50"
+    ColumnName="CUSTOMER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Address"
+    Precision="100"
+    ColumnName="ADDRESS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Phoneno"
+    Precision="15"
+    ColumnName="PHONENO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <validation:ValidationBean
+      Name="BRPhoneno"
+      ResId="dgcom.model.eo.srv.SrvJobcard.Phoneno_Rule_0"
+      OnAttribute="Phoneno"
+      Version="2"
+      OperandType="LITERAL"
+      Inverse="false"
+      DisplayName="ValidPhoneNo"
+      ValidationBeanClass="dgcom.model.rules.ValidPhoneNo"/>
+  </Attribute>
+  <Attribute
+    Name="Mobileno"
+    Precision="15"
+    ColumnName="MOBILENO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.Mobileno_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <validation:ValidationBean
+      Name="JobCardMobilenoRule"
+      ResId="dgcom.model.eo.srv.SrvJobcard.Mobileno_Rule_0"
+      OnAttribute="Mobileno"
+      Version="2"
+      OperandType="LITERAL"
+      Inverse="false"
+      DisplayName="ValidMobileNo"
+      ValidationBeanClass="dgcom.model.rules.ValidMobileNo"/>
+  </Attribute>
+  <Attribute
+    Name="Jobdate"
+    ColumnName="JOBDATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_JOBCARD">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.Jobdate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <validation:ValidationBean
+      Name="JobdateEntryRights"
+      ResId="dgcom.model.eo.srv.SrvJobcard.Jobdate_Rule_0"
+      OnAttribute="Jobdate"
+      Version="2"
+      OperandType="LITERAL"
+      Inverse="false"
+      DisplayName="RulCheckDateRights"
+      ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+      <validation:OnCondition><![CDATA[newValue!=null]]></validation:OnCondition>
+    </validation:ValidationBean>
+  </Attribute>
+  <Attribute
+    Name="ComplainMedia"
+    Precision="5"
+    ColumnName="COMPLAIN_MEDIA"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD"
+    DefaultValue="CI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.ComplainMedia_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ImeiNo"
+    Precision="15"
+    ColumnName="IMEI_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.ImeiNo_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <validation:ValidationBean
+      Name="JobCardImeiNoRule"
+      ResId="dgcom.model.eo.srv.SrvJobcard.ImeiNo_Rule_0"
+      OnAttribute="ImeiNo"
+      Version="2"
+      OperandType="LITERAL"
+      Inverse="false"
+      DisplayName="ImeiLengthRule"
+      ValidationBeanClass="dgcom.model.rules.ImeiLengthRule"/>
+    <validation:ExpressionValidationBean
+      Name="ImeiNoImeiAlreadyInProcess"
+      OperandType="EXPR"
+      Inverse="false">
+      <validation:OnCondition><![CDATA[txtGetModuleID.equals("CIC-0002")]]></validation:OnCondition>
+      <validation:MsgIds>
+        <validation:Item
+          Value="errIdImeiAlreadyInProcess"/>
+      </validation:MsgIds>
+      <validation:ResExpressions>
+        <validation:Expression
+          Name="0"><![CDATA[AccSrvJobCardImeiAlreadyInProcess.first()?.getAttribute(0)]]></validation:Expression>
+      </validation:ResExpressions>
+      <validation:TransientExpression><![CDATA[AccSrvJobCardImeiAlreadyInProcess.setNamedWhereClauseParam("P_ADF_IMEI_NO", newValue);
+AccSrvJobCardImeiAlreadyInProcess.setNamedWhereClauseParam("P_ADF_JOBCARD_NO", getJobcardno());
+AccSrvJobCardImeiAlreadyInProcess.executeQuery();
+if (AccSrvJobCardImeiAlreadyInProcess?.getRowCount()>0)
+return false;
+else
+{       
+getAccItemImeiInfoPostQuery().setNamedWhereClauseParam("P_ADF_IMEI_NO", (newValue==null?"-1":newValue));
+getAccItemImeiInfoPostQuery().executeQuery();
+if (getAccItemImeiInfoPostQuery().getRowCount()>0) {
+String expDate=getAccItemImeiInfoPostQuery().first().getAttribute("ExpDate")?.toString();
+String purDate=getAccItemImeiInfoPostQuery().first().getAttribute("StartDate")?.toString();
+settxtExpDate(dgcom.model.stand.DigicomClass.doConvertStringToJboDate(expDate==null?"":expDate));
+setPurchDate(dgcom.model.stand.DigicomClass.doConvertStringToJboDate(purDate==null?"":purDate));
+setBrandid(getAccItemImeiInfoPostQuery().first().getAttribute("Brandid"));
+setItemid(getAccItemImeiInfoPostQuery().first().getAttribute("Itemid"));
+settxtModelNo(getAccItemImeiInfoPostQuery().first().getAttribute("ModelNo"));
+if(expDate!=null && dgcom.model.stand.DigicomClass.doConvertStringToJboDate(getJobdate().toString())>dgcom.model.stand.DigicomClass.doConvertStringToJboDate(expDate))
+{ 
+setCharges(250);
+/*setWarranty("NW");*/
+}
+}
+else
+{
+setBrandid(null);
+setItemid(null);
+settxtExpDate(null);
+setPurchDate(null);
+settxtModelNo(null);
+/*setWarranty("NW");*/
+}
+}
+return true;]]></validation:TransientExpression>
+    </validation:ExpressionValidationBean>
+    <validation:ExpressionValidationBean
+      Name="ImeiExpiryMessage"
+      Severity="Warning"
+      OperandType="EXPR"
+      Inverse="false">
+      <validation:OnCondition><![CDATA[Warranty!=null && txtGetModuleID.equals("CIC-0002")]]></validation:OnCondition>
+      <validation:MsgIds>
+        <validation:Item
+          Value="errorImeiExpiry"/>
+      </validation:MsgIds>
+      <validation:ResExpressions>
+        <validation:Expression
+          Name="0"><![CDATA[AccItemImeiInfoPostQuery?.first()?.getAttribute("ExpDate")]]></validation:Expression>
+      </validation:ResExpressions>
+      <validation:TransientExpression><![CDATA[getAccItemImeiInfoPostQuery().setNamedWhereClauseParam("P_ADF_IMEI_NO", (newValue==null?"-1":newValue));
+getAccItemImeiInfoPostQuery().executeQuery();
+if(dgcom.model.stand.DigicomClass.doConvertStringToJboDate(getJobdate()?.toString())>dgcom.model.stand.DigicomClass.doConvertStringToJboDate(getAccItemImeiInfoPostQuery().first()?.getAttribute("ExpDate")?.toString()))
+{
+setWarranty("NW");
+AccItemImeiInfoPostQuery?.setNamedWhereClauseParam("P_ADF_IMEI_NO", newValue);
+AccItemImeiInfoPostQuery?.executeQuery();
+setCharges(250);
+return false;
+}
+else
+setWarranty("IW");
+return true;]]></validation:TransientExpression>
+    </validation:ExpressionValidationBean>
+    <validation:ExpressionValidationBean
+      Name="ImeiItemInBOMExists"
+      OperandType="EXPR"
+      Inverse="false">
+      <validation:OnCondition><![CDATA[newValue!=null]]></validation:OnCondition>
+      <validation:MsgIds>
+        <validation:Item
+          Value="errorIDItemNotBOM"/>
+        <validation:Item
+          Value="errorId2EOLParts"/>
+      </validation:MsgIds>
+      <validation:ResExpressions>
+        <validation:Expression
+          Name="0"><![CDATA[AccIMEIItemExistsInBOMQVO?.first()?.getAttribute("EolDesc")]]></validation:Expression>
+      </validation:ResExpressions>
+      <validation:TransientExpression><![CDATA[AccItemImeiInfoPostQuery?.setNamedWhereClauseParam("P_ADF_IMEI_NO", newValue);
+AccItemImeiInfoPostQuery?.executeQuery();
+System.out.println(AccItemImeiInfoPostQuery?.first()?.getAttribute("Itemid")+" >"+AccItemImeiInfoPostQuery?.getRowCount()+ " thi sis block item");
+AccBlockImeICheckJobCardMsg.setNamedWhereClauseParam("P_ADF_IMEI_NO",newValue);
+AccBlockImeICheckJobCardMsg.executeQuery();
+if(AccItemImeiInfoPostQuery.getRowCount()==0 && AccBlockImeICheckJobCardMsg.getRowCount()==0)
+{
+return true;
+}
+String itemid1=AccItemImeiInfoPostQuery?.first()?.getAttribute("Itemid");
+String brand1=AccItemImeiInfoPostQuery?.first()?.getAttribute("Brandid");
+String itemid2=AccBlockImeICheckJobCardMsg?.first()?.getAttribute("Itemid");
+String brand2=AccBlockImeICheckJobCardMsg?.first()?.getAttribute("Brandid");
+itemid1=(itemid2!=null?itemid2:itemid1);
+brand1=(brand2!=null?brand2:brand1);
+AccIMEIItemExistsInBOMQVO.setNamedWhereClauseParam("P_ADF_ITEMID",itemid1);
+AccIMEIItemExistsInBOMQVO.setNamedWhereClauseParam("P_ADF_BRANDID",brand1);
+AccIMEIItemExistsInBOMQVO.executeQuery();
+if(AccIMEIItemExistsInBOMQVO.getRowCount()==0)
+return false;
+else
+{
+System.out.println("PRINTLN-");
+if(AccIMEIItemExistsInBOMQVO?.first()?.getAttribute("Discontinue")?.equals("Y") /*&& (DeliveryDate-(Jobdate==null?0:Jobdate))!=20*/)
+adf.error.warn("errorId2EOLParts");
+return true;
+}]]></validation:TransientExpression>
+    </validation:ExpressionValidationBean>
+    <validation:ExpressionValidationBean
+      Name="ImeiBlockChecking"
+      OperandType="EXPR"
+      Inverse="false"
+      Severity="Warning">
+      <validation:MsgIds>
+        <validation:Item
+          Value="errorBlockImei"/>
+        <validation:Item
+          Value="errorImeiBlockWarning"/>
+      </validation:MsgIds>
+      <validation:ResExpressions>
+        <validation:Expression
+          Name="0"><![CDATA[AccBlockImeICheckJobCardMsg?.first()?.getAttribute("Warning")]]></validation:Expression>
+      </validation:ResExpressions>
+      <validation:TransientExpression><![CDATA[AccBlockImeICheckJobCardMsg.setNamedWhereClauseParam("P_ADF_IMEI_NO",newValue);
+AccBlockImeICheckJobCardMsg.executeQuery();
+if(AccBlockImeICheckJobCardMsg.getRowCount()==0)
+{settxtWarning(null);return true;}
+if(AccBlockImeICheckJobCardMsg.first().getAttribute("Fixed")=='Y')
+{
+settxtWarning(AccBlockImeICheckJobCardMsg?.first()?.getAttribute("Warning"));
+adf.error.raise("errorBlockImei");
+}
+else
+{
+setBrandid(AccBlockImeICheckJobCardMsg?.first()?.getAttribute("Brandid"));
+setItemid(AccBlockImeICheckJobCardMsg?.first()?.getAttribute("Itemid"));
+setWarranty("NW");
+setCharges(250);
+settxtWarning(AccBlockImeICheckJobCardMsg?.first()?.getAttribute("Warning"));
+adf.error.warn("errorImeiBlockWarning");
+
+return true;
+}]]></validation:TransientExpression>
+    </validation:ExpressionValidationBean>
+  </Attribute>
+  <Attribute
+    Name="NewImeiNo"
+    Precision="15"
+    ColumnName="NEW_IMEI_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ImeiNot"
+    ColumnName="IMEI_NOT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_JOBCARD">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Warranty"
+    Precision="15"
+    ColumnName="WARRANTY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD"
+    DefaultValue="IW">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ReWarranty"
+    Precision="15"
+    ColumnName="RE_WARRANTY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.ReWarranty_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="SerialNo"
+    Precision="15"
+    ColumnName="SERIAL_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.SerialNo_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Levelno"
+    ColumnName="LEVELNO"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_JOBCARD"
+    DefaultValue="1">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.Levelno_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Lab"
+    Precision="15"
+    ColumnName="LAB"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD"
+    DefaultValue="Hand to hand">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="DeliveryDate"
+    ColumnName="DELIVERY_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_JOBCARD">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.DeliveryDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="RepDate"
+    ColumnName="REP_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_JOBCARD">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="PurchDate"
+    ColumnName="PURCH_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_JOBCARD">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Jobstatus"
+    Precision="10"
+    ColumnName="JOBSTATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD"
+    DefaultValue="FD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Refer"
+    Precision="30"
+    ColumnName="REFER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.Refer_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Charges"
+    ColumnName="CHARGES"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_JOBCARD">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Epcost"
+    ColumnName="EPCOST"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_JOBCARD">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.Epcost_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Apcost"
+    ColumnName="APCOST"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_JOBCARD">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.Apcost_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="SymRmks"
+    Precision="200"
+    ColumnName="SYM_RMKS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.SymRmks_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Remarks"
+    Precision="200"
+    ColumnName="REMARKS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD"
+    DefaultValue="Received only kit without battery and back cover">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Print"
+    ColumnName="PRINT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_JOBCARD"
+    DefaultValue="0">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Posted"
+    Precision="1"
+    ColumnName="POSTED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD"
+    DefaultValue="N">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.Posted_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Postedby"
+    Precision="20"
+    ColumnName="POSTEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_JOBCARD">
+    <TransientExpression><![CDATA[adf.currentDateTime]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_JOBCARD"/>
+  <Attribute
+    Name="PrevDoctype"
+    Precision="25"
+    ColumnName="PREV_DOCTYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD"
+    DefaultValue="JobCard">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="PrevDocid"
+    Precision="15"
+    ColumnName="PREV_DOCID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Assignid"
+    Precision="15"
+    ColumnName="ASSIGNID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Chkstatus"
+    Precision="5"
+    ColumnName="CHKSTATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Cdate"
+    ColumnName="CDATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_JOBCARD">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Mdate"
+    ColumnName="MDATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_JOBCARD">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Chk"
+    Precision="5"
+    ColumnName="CHK"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="TempImei"
+    Precision="100"
+    ColumnName="TEMP_IMEI"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="WCard"
+    Precision="5"
+    ColumnName="W_CARD"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD"
+    DefaultValue="N">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.WCard_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="IsMigrated"
+    Precision="1"
+    ColumnName="IS_MIGRATED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBCARD">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="MigratedDate"
+    ColumnName="MIGRATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_JOBCARD"/>
+  <Attribute
+    Name="txtExpDate"
+    ColumnName="TXT_EXP_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    IsQueriable="false"
+    IsPersistent="false">
+    <TransientExpression><![CDATA[ItemImeiInfo?.ExpDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="ImeiNo"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="txtTempBlockImei"
+    Precision="80"
+    ColumnName="TXT_TEMP_BLOCK_IMEI"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="txtPurchaseDate"
+    ColumnName="TXT_PURCHASE_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    IsQueriable="false"
+    IsPersistent="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="ImeiNo"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="txtWarning"
+    Precision="80"
+    ColumnName="TXT_WARNING"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.txtWarning_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="txtProdId"
+    Precision="80"
+    ColumnName="TXT_PROD_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <TransientExpression><![CDATA[InItems?.ProdId]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="txtGetModuleID"
+    Precision="80"
+    ColumnName="TXT_GET_MODULE_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.doGetModuleId()]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="txtStartDate"
+    ColumnName="TXT_START_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    IsQueriable="false"
+    IsPersistent="false">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[ItemImeiInfo?.StartDate]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="ImeiNo"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="txtDealerName"
+    Precision="80"
+    ColumnName="TXT_DEALER_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[(SrvDealers?.Name)]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="DealerId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.txtDealerName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="txtModelNo"
+    Precision="80"
+    ColumnName="TXT_MODEL_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <TransientExpression><![CDATA[InItems?.ModelNo]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobcard.txtModelNo_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="txtIsWarranty"
+    Precision="80"
+    ColumnName="TXT_IS_WARRANTY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <TransientExpression><![CDATA[if(Jobdate!=null && ImeiNo!=null)
+ return Jobdate > txtExpDate;
+else
+ return "false";]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="ImeiNo"/>
+      <Item
+        Value="Jobdate"/>
+      <Item
+        Value="txtExpDate"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="10"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <AccessorAttribute
+    Name="InItems"
+    Association="dgcom.model.asso.srv.InItemsSrvJobCardItemIDAsso"
+    AssociationEnd="dgcom.model.asso.srv.InItemsSrvJobCardItemIDAsso.InItems"
+    AssociationOtherEnd="dgcom.model.asso.srv.InItemsSrvJobCardItemIDAsso.SrvJobcard"
+    Type="dgcom.model.eo.inv.InItemsImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="SrvDealers"
+    Association="dgcom.model.asso.srv.SrvDealerIdSrvJobCardDealerID"
+    AssociationEnd="dgcom.model.asso.srv.SrvDealerIdSrvJobCardDealerID.SrvDealers"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvDealerIdSrvJobCardDealerID.SrvJobcard"
+    Type="dgcom.model.eo.srv.SrvDealersImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="SrvJobsymptom"
+    Association="dgcom.model.asso.srv.SrvJobCardSrvJobCardSymptonAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobCardSrvJobCardSymptonAsso.SrvJobsymptom"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobCardSrvJobCardSymptonAsso.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvIssuance"
+    Association="dgcom.model.asso.srv.SrvJobCardSrvJobIssuanceJobCard"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobCardSrvJobIssuanceJobCard.SrvIssuance"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobCardSrvJobIssuanceJobCard.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvJobsolution"
+    Association="dgcom.model.asso.srv.SrvJobCardSrvJobSolutionJobCardNoAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobCardSrvJobSolutionJobCardNoAsso.SrvJobsolution"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobCardSrvJobSolutionJobCardNoAsso.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvJobqc"
+    Association="dgcom.model.asso.srv.SrvJobQcSrvJobCardJobCardIdAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobQcSrvJobCardJobCardIdAsso.SrvJobqc"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobQcSrvJobCardJobCardIdAsso.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvJobtransferdetl"
+    Association="dgcom.model.asso.srv.SrvJobCardSrvJobTransferJobCardNoAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobCardSrvJobTransferJobCardNoAsso.SrvJobtransferdetl"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobCardSrvJobTransferJobCardNoAsso.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvJobswap"
+    Association="dgcom.model.asso.srv.SrvJobCardSrvJobSwapJobCardNoAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobCardSrvJobSwapJobCardNoAsso.SrvJobswap"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobCardSrvJobSwapJobCardNoAsso.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvReviewjobwarranty"
+    Association="dgcom.model.asso.srv.SrvJobCardSrvReviewWtyJobCardNoAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobCardSrvReviewWtyJobCardNoAsso.SrvReviewjobwarranty"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobCardSrvReviewWtyJobCardNoAsso.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvSetReplacement"
+    Association="dgcom.model.asso.srv.SrvJobCardSrtSetReplacementJobCardNoAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobCardSrtSetReplacementJobCardNoAsso.SrvSetReplacement"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobCardSrtSetReplacementJobCardNoAsso.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvJobcomplain"
+    Association="dgcom.model.asso.srv.SrvJobcardSrvJobcomplainJobCardNoAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobcardSrvJobcomplainJobCardNoAsso.SrvJobcomplain"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobcardSrvJobcomplainJobCardNoAsso.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="ItemImeiInfo"
+    Association="dgcom.model.asso.srv.ItemImeiInfoSrvJobCardImeiNoAsso"
+    AssociationEnd="dgcom.model.asso.srv.ItemImeiInfoSrvJobCardImeiNoAsso.ItemImeiInfo"
+    AssociationOtherEnd="dgcom.model.asso.srv.ItemImeiInfoSrvJobCardImeiNoAsso.SrvJobcard"
+    Type="dgcom.model.eo.inv.ItemImeiInfoImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="SrvJobestimation"
+    Association="dgcom.model.asso.srv.SrvJobCardSrvJobEstimationJobCardNoAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobCardSrvJobEstimationJobCardNoAsso.SrvJobestimation"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobCardSrvJobEstimationJobCardNoAsso.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvInvoice"
+    Association="dgcom.model.asso.srv.SrvJobCardSrvInvoiceJobcardNoAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobCardSrvInvoiceJobcardNoAsso.SrvInvoice"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobCardSrvInvoiceJobcardNoAsso.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvSetdelivery"
+    Association="dgcom.model.asso.srv.SrvJobCardSrvSetDeliveryJobcardNoAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobCardSrvSetDeliveryJobcardNoAsso.SrvSetdelivery"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobCardSrvSetDeliveryJobcardNoAsso.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvDap"
+    Association="dgcom.model.asso.srv.SysC0069068Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0069068Assoc.SrvDap"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0069068Assoc.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvRfwdetl"
+    Association="dgcom.model.asso.srv.SrvJobcardSrvRFWDetlJobcardNoAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobcardSrvRFWDetlJobcardNoAsso.SrvRfwdetl"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobcardSrvRFWDetlJobcardNoAsso.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvJobsinvDetl"
+    Association="dgcom.model.asso.srv.SysC0084120Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0084120Assoc.SrvJobsinvDetl"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0084120Assoc.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvJaadetl"
+    Association="dgcom.model.asso.srv.SysC00123561Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC00123561Assoc.SrvJaadetl"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC00123561Assoc.SrvJobcard"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="IMEINotQVO"
+    ViewLink="dgcom.model.vl.srv.SrvJobCardSrvImeiNotInfoImeiNoVL"
+    ViewLinkEnd="dgcom.model.vl.srv.SrvJobCardSrvImeiNotInfoImeiNoVL.IMEINotQVO"
+    ViewLinkOtherEnd="dgcom.model.vl.srv.SrvJobCardSrvImeiNotInfoImeiNoVL.SrvJobcardVO"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="SysC0014094"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0014094"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobcard.Jobcardno"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015137">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0013980"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015137"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobcard.DealerId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015138">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKSO_PRODUCT_BRANDS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015138"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobcard.Brandid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015139">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014313"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015139"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobcard.Technicianid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015140">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014095"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015140"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobcard.Conditionid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015141">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014082"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015141"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobcard.Jobtypeid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015142">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKIN_ITEMS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015142"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobcard.Itemid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015143">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_LOCATIONS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015143"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobcard.Locationid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015144">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_LOCATIONS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015144"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobcard.Fromlocationid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvJobcard">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKIN_ITEMS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_JOBCARD"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobcard.Itemid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvJobcard1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0013980"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_JOBCARD1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobcard.DealerId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvJobcard2">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKSO_PRODUCT_BRANDS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_JOBCARD2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobcard.Brandid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvJobcard3">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="UNQ_ITM_IMEI"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_JOBCARD3"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobcard.ImeiNo"/>
+    </AttrArray>
+  </Key>
+  <validation:ExpressionValidationBean
+    Name="SrvJobcarDSymptomExists"
+    OperandType="EXPR"
+    Inverse="false">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="Posted"/>
+    </validation:OnAttributes>
+    <validation:OnCondition><![CDATA[Posted=='Y']]></validation:OnCondition>
+    <validation:MsgIds>
+      <validation:Item
+        Value="errIDSymptomExists"/>
+    </validation:MsgIds>
+    <validation:TransientExpression><![CDATA[if (SrvJobsymptom.count("SymptomId")==0)
+return false;
+return true;]]></validation:TransientExpression>
+  </validation:ExpressionValidationBean>
+  <validation:ExpressionValidationBean
+    Name="SrvJobcardCustomerDealerExists"
+    OperandType="EXPR"
+    Inverse="false">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="Posted"/>
+    </validation:OnAttributes>
+    <validation:OnCondition><![CDATA[Posted=='Y']]></validation:OnCondition>
+    <validation:MsgIds>
+      <validation:Item
+        Value="errorICustDealer"/>
+    </validation:MsgIds>
+    <validation:TransientExpression><![CDATA[if(Customer==null && DealerId==null)
+return false;
+else
+return true;]]></validation:TransientExpression>
+  </validation:ExpressionValidationBean>
+  <validation:ExpressionValidationBean
+    Name="SrvJobImeiBlockWarranty"
+    OperandType="EXPR"
+    Inverse="false">
+    <validation:OnCondition><![CDATA[Warranty!=null && Warranty!='NW']]></validation:OnCondition>
+    <validation:MsgIds>
+      <validation:Item
+        Value="errorImeiBlockWarning"/>
+    </validation:MsgIds>
+    <validation:TransientExpression><![CDATA[AccSrvBlockedIMEI.executeQuery();
+if (AccSrvBlockedIMEI.getRowCount()>0)
+{
+return false;
+}
+return true;]]></validation:TransientExpression>
+  </validation:ExpressionValidationBean>
+  <validation:ExpressionValidationBean
+    Name="SrvJobcardWarrantyExpired"
+    OperandType="EXPR"
+    Inverse="false">
+    <validation:OnCondition><![CDATA[ImeiNo!=null && Warranty!=null && (Warranty=="IW"||Warranty=="OW"||Warranty=="CW")]]></validation:OnCondition>
+    <validation:MsgIds>
+      <validation:Item
+        Value="errorWartyExpir"/>
+    </validation:MsgIds>
+    <validation:TransientExpression><![CDATA[if (gettxtExpDate()==null)
+{
+return false;
+}
+
+if(dgcom.model.stand.DigicomClass.doConvertStringToJboDate(getJobdate().toString())>dgcom.model.stand.DigicomClass.doConvertStringToJboDate(gettxtExpDate().toString()))
+{
+return false;
+}
+else
+return true;]]></validation:TransientExpression>
+  </validation:ExpressionValidationBean>
+  <validation:ExpressionValidationBean
+    Name="SrvJobcardCharges"
+    OperandType="EXPR"
+    Inverse="false">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="Posted"/>
+    </validation:OnAttributes>
+    <validation:OnCondition><![CDATA[Warranty!=null && Posted=='Y']]></validation:OnCondition>
+    <validation:MsgIds>
+      <validation:Item
+        Value="errorChargesNonWty"/>
+      <validation:Item
+        Value="errorIPartCost"/>
+      <validation:Item
+        Value="errorIdWCadExists"/>
+    </validation:MsgIds>
+    <validation:TransientExpression><![CDATA[if(Warranty!='NW' && (WCard==null || WCard=='N'))
+{
+adf.error.raise("errorIdWCadExists");
+return false;
+}
+
+if (Warranty=='NW' && ((Charges==null||Charges==0)|| (Epcost==null||Epcost==0) ))
+{
+adf.error.raise("errorChargesNonWty");
+return false;
+}
+/*
+if (Warranty!="IW" && ((Charges==null?0:Charges)+(Epcost==null?0:Epcost))<=0)
+{
+adf.error.raise("errorChargesNonWty");
+return false;
+}
+*/
+else
+if(Warranty=='OW' &&(Epcost==null||Epcost<=0))
+{
+adf.error.raise("errorIPartCost");
+return false;
+}
+return true;]]></validation:TransientExpression>
+  </validation:ExpressionValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

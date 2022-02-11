@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobSolutionsIssuePartAgainstJobSubmitCIC_0015"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.SrvJobSolutionsIssuePartAgainstJobSubmitCIC_0015_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_TECHNICIANID"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="P_ADF_JOBCARDNO"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="P_ADF_JSOLUTION_ID"
+    Kind="where"
+    Type="java.lang.String"/>
+  <SQLQuery><![CDATA[Select 1 PK, 
+sum(d.QTY) -(Sum(nvl(d.PDQty, 0)) + nvl(MAX(vw_jp.JPQTY), 0) + sum(nvl(d.RetQty, 0))) Qty 
+From Srv_Issuance i, 
+Srv_Issuedetail d, 
+(select SUM(jp.qty) JPQTY 
+from srv_jsparts jp 
+where jp.JSOLUTION_ID = :P_ADF_JSOLUTION_ID) vw_jp 
+Where i.Issue_Id = d.Issue_Id and I.POSTED = 'Y'  
+and i.TechnicianId = :P_ADF_TECHNICIANID  
+and i.jobcardno = :P_ADF_JOBCARDNO]]></SQLQuery>
+  <ViewAttribute
+    Name="Pk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    AliasName="PK"
+    Expression="PK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Qty"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    AliasName="QTY"
+    Expression="QTY"
+    SQLType="NUMERIC"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Pk"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

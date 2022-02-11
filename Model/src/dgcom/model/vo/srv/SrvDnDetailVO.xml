@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvDnDetailVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvDnDetail.DNOTE_ID, 
+       SrvDnDetail.DOC_TYPE_ID, 
+       SrvDnDetail.DOCUMENTID, 
+       SrvDnDetail.DOC_AMOUNT, 
+       SrvDnDetail.DISC_AMOUNT, 
+       SrvDnDetail.CREATEDBY, 
+       SrvDnDetail.CREATED_DATE, 
+       SrvDnDetail.MODIFIEDBY, 
+       SrvDnDetail.MODIFIED_DATE, 
+       SrvDnDetail.ROWID"
+  FromList="SRV_DN_DETAIL SrvDnDetail"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvDnDetailVORowImpl"
+  ComponentClass="dgcom.model.stand.DigicomViewObjectImpl">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvDiscountNoteSrvInvoiceID"
+    ViewObjectName="dgcom.model.qvo.srv.SrvDiscountNoteSrvInvoiceIDCIC_0201QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_DEALER_ID">
+        <TransientExpression><![CDATA[SrvDiscountNoteVO?.DealerId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[SrvDiscountNoteVO?.Locationid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovSrvDiscountNoteSrvInvoiceID"
+    ListVOName="AccSrvDiscountNoteSrvInvoiceID"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Documentid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DocAmount"/>
+      <Item Value="DiscAmount"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SrvInvno"/>
+      <Item Value="Invoiceamount"/>
+      <Item Value="Discount"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="SrvInvno"/>
+      <Item Value="Jobcardno"/>
+      <Item Value="Referno"/>
+      <Item Value="Invoiceamount"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvDnDetail"
+    Entity="dgcom.model.eo.srv.SrvDnDetail"/>
+  <ViewAttribute
+    Name="DnoteId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DnoteId"
+    EntityUsage="SrvDnDetail"
+    AliasName="DNOTE_ID"/>
+  <ViewAttribute
+    Name="DocTypeId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DocTypeId"
+    EntityUsage="SrvDnDetail"
+    AliasName="DOC_TYPE_ID"/>
+  <ViewAttribute
+    Name="Documentid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Documentid"
+    EntityUsage="SrvDnDetail"
+    AliasName="DOCUMENTID"
+    LOVName="LovSrvDiscountNoteSrvInvoiceID">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocAmount"
+    PrecisionRule="true"
+    EntityAttrName="DocAmount"
+    EntityUsage="SrvDnDetail"
+    AliasName="DOC_AMOUNT"/>
+  <ViewAttribute
+    Name="DiscAmount"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DiscAmount"
+    EntityUsage="SrvDnDetail"
+    AliasName="DISC_AMOUNT"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvDnDetail"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvDnDetail"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvDnDetail"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvDnDetail"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="SrvDnDetail"
+    AliasName="ROWID"/>
+  <ViewLinkAccessor
+    Name="SrvDiscountNoteVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015377Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+</ViewObject>

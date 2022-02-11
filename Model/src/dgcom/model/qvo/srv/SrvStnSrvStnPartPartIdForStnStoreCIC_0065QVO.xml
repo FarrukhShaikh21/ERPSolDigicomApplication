@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvStnSrvStnPartPartIdForStnStoreCIC_0065QVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.SrvStnSrvStnPartPartIdForStnStoreCIC_0065QVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_CATID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_MODELID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_FROMSTOREID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[SELECT i.Model_No||':'||p.DESCRIPTION Part_Name, p.PARTID,    
+       p.partno, c.description category,    
+       (nvl(s.Qty_On_Hand,0)-nvl(U.USQty,0)) Stock,    
+       round(s.MOVINGRATE,2) Rate,    
+       p.ItemId   
+   
+FROM IN_PARTS p, srv_partcategory c, In_Items i,   
+   
+       (select StoreId, PartId, Qty_On_Hand, MOVINGRATE   
+        from In_Store_Parts   
+        where StoreId = :P_ADF_FROMSTOREID) s,   
+   
+       (select d.fromstoreid StoreId, d.PartId, sum(d.stnqty) USQty   
+        from SRV_STN m, SRV_STNPARTS d   
+        where m.stnno = d.stnno   
+          and m.posted = 'N'   
+          and m.STNTYPE = 'STORE'   
+          and d.FromStoreId = :P_ADF_FROMSTOREID   
+          and (d.ItemId = :P_ADF_MODELID or :P_ADF_MODELID is null)   
+        Group By d.fromstoreid, d.PartId) U   
+   
+where p.partcatid = c.partcatid   
+  and p.PARTID = s.PARTID    
+  and p.itemId = i.itemId   
+   
+  and s.StoreId = U.StoreId(+)   
+  and s.PartId = U.PartId(+)   
+   
+  and s.StoreId = :P_ADF_FROMSTOREID   
+  and (p.PartCatId = :P_ADF_CATID or :P_ADF_CATID is null)   
+  and (p.ItemId = :P_ADF_MODELID or :P_ADF_MODELID is null)   
+  and (nvl(s.Qty_On_Hand,0)-nvl(U.USQty,0)) >0]]></SQLQuery>
+  <ViewAttribute
+    Name="PartName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PART_NAME"
+    Expression="PART_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="121"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvStnSrvStnPartPartIdForStnStoreCIC_0065QVO.PartName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Partid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PARTID"
+    Expression="PARTID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Partno"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PARTNO"
+    Expression="PARTNO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvStnSrvStnPartPartIdForStnStoreCIC_0065QVO.Partno_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Category"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CATEGORY"
+    Expression="CATEGORY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Stock"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="STOCK"
+    Expression="STOCK"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Rate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="RATE"
+    Expression="RATE"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Itemid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ITEMID"
+    Expression="ITEMID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Partid"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

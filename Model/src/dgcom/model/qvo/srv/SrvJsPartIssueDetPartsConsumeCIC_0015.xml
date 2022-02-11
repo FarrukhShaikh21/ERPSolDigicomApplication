@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJsPartIssueDetPartsConsumeCIC_0015"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.SrvJsPartIssueDetPartsConsumeCIC_0015_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_TECHNICIANID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_JOBCARDNO"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[Select d.Issuedetlid, p.Description, (d.QTY-(nvl(d.PDQty,0)+nvl(d.RetQty,0)+nvl(us.USQty,0))) QTY, c.description category   
+From Srv_Issuance i, Srv_Issuedetail d, In_Parts p, srv_partcategory c ,  
+        (select issuedetlid, sum(qty) USQty  
+   from  
+    (SELECT D.ISSUEDETLID, D.QTY  
+           FROM SRV_JOBSOLUTION M, SRV_JSPARTS D  
+           WHERE M.JSOLUTION_ID=D.JSOLUTION_ID  
+             AND M.POSTED='N'  
+       AND M.JOBCARDNO = :P_ADF_JOBCARDNO  
+  
+     Union All  
+           SELECT D.ISSUEDETLID, D.QTY  
+            FROM SRV_ISSUERETURN M, SRV_IRETDETAIL D  
+           WHERE M.ISSUERETID=D.ISSUERETID  
+             AND M.ISSUE_ID IN(SELECT ISSUE_ID FROM SRV_ISSUANCE WHERE JOBCARDNO = :P_ADF_JOBCARDNO)  
+             AND M.POSTED='N'  
+    )  
+         group by issuedetlid) us  
+Where ((i.Issue_Id = d.Issue_Id)   
+ And (d.Partid = p.Partid)   
+ And (d.QTY-(nvl(d.PDQty,0)+nvl(d.RetQty,0)+nvl(us.USQty,0))>0)  
+ AND I.POSTED= 'Y'   
+ and p.partcatid = c.partcatid   
+ and d.issuedetlid = us.issuedetlid(+) 
+ and nvl(i.reverse_chk,'N') = 'N' 
+ and i.TechnicianId = :P_ADF_TECHNICIANID   
+ And (i.jobcardno = :P_ADF_JOBCARDNO))]]></SQLQuery>
+  <ViewAttribute
+    Name="Issuedetlid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ISSUEDETLID"
+    Expression="ISSUEDETLID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Description"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESCRIPTION"
+    Expression="DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Qty"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="QTY"
+    Expression="QTY"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Category"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CATEGORY"
+    Expression="CATEGORY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Issuedetlid"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

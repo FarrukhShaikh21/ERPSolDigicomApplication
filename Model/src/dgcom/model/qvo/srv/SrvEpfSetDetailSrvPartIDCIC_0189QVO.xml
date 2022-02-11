@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvEpfSetDetailSrvPartIDCIC_0189QVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.SrvEpfSetDetailSrvPartIDCIC_0189QVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_PART_ID"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="P_ADF_EDATE"
+    Kind="where"
+    Type="oracle.jbo.domain.Date"/>
+  <Variable
+    Name="P_ADF_ITEMID"
+    Kind="where"
+    Type="java.lang.String"/>
+  <SQLQuery><![CDATA[Select p.Description, PartNo, r.price,VW_LAST_PR.rate,p.partid ,vw_EX_QTY.EX_QTY 
+From In_parts p,   
+(select d.partid, d.price  
+from SRV_Parts_Price m, SRV_IPDetl d  
+where m.ip_id = d.ip_id   
+and d.partId = :P_ADF_PART_ID  
+and :P_ADF_EDATE between m.effect_from and m.effect_to) r,  
+(  
+select max(d.rate) rate,max(d.partid) partid  
+from srv_grn_parts d  
+where d.partid = :P_ADF_PART_ID  
+and to_number(substr(d.grn_id,-8)) =  
+(select max(to_number(substr(m.grn_id,-8)))  
+from srv_grn m, srv_grn_parts d  
+where m.grn_id=d.grn_id  
+and d.partid= :P_ADF_PART_ID  
+and m.posted = 'Y'  
+)  
+) VW_LAST_PR, 
+( 
+		select NVL(max(qty),0) EX_QTY 
+		from SRV_BOM m, SRV_BOMParts d 
+		where m.bom_id=d.bom_id  
+		  and m.itemid = :P_ADF_ITEMID 
+		  and d.partid = :P_ADF_PART_ID 
+)vw_EX_QTY 
+Where p.partId = r.partId(+)  
+and   p.partid=VW_LAST_PR.partid(+)  
+and p.partid = :P_ADF_PART_ID]]></SQLQuery>
+  <ViewAttribute
+    Name="Description"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESCRIPTION"
+    Expression="DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Partno"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PARTNO"
+    Expression="PARTNO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Price"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="12"
+    Scale="2"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PRICE"
+    Expression="PRICE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Rate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="RATE"
+    Expression="RATE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Partid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PARTID"
+    Expression="PARTID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ExQty"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    AliasName="EX_QTY"
+    Expression="EX_QTY"
+    SQLType="NUMERIC"/>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Partid"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvGrnPartsVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvGrnParts.GRNITEMID, 
+       SrvGrnParts.GRN_ID, 
+       SrvGrnParts.POITEMID, 
+       SrvGrnParts.PARTID, 
+       SrvGrnParts.STOREID, 
+       SrvGrnParts.GRN_QTY, 
+       SrvGrnParts.ISSUED_QTY, 
+       SrvGrnParts.RATE, 
+       SrvGrnParts.CREATEDBY, 
+       SrvGrnParts.CREATED_DATE, 
+       SrvGrnParts.MODIFIEDBY, 
+       SrvGrnParts.MODIFIED_DATE"
+  FromList="SRV_GRN_PARTS SrvGrnParts"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvGrnPartsVORowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvGrnPartsVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvGrnPartsVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvGrnPartsVOClient">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvGrnPartId"
+    ViewObjectName="dgcom.model.qvo.srv.SrvGrnPartIdCIC_0022QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_POID">
+        <TransientExpression><![CDATA[SrvGrnVO?.Poid==null?"-1":SrvGrnVO?.Poid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_CALL_FROM">
+        <TransientExpression><![CDATA['L']]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_GRNITEMID">
+        <TransientExpression><![CDATA['A']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSysUserStoreStoreid"
+    ViewObjectName="dgcom.model.vo.sys.SysUserStoreVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SysUserStoreUserLocationWiseStoreVC"
+      FullName="dgcom.model.vo.sys.SysUserStoreVO.SysUserStoreUserLocationWiseStoreVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[SrvGrnVO?.Locationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_USERID">
+        <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.getConnectedUser()]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovSrvGrnPartName"
+    ListVOName="AccSrvGrnPartId"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtPartName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Partid"/>
+      <Item Value="Poitemid"/>
+      <Item Value="Rate"/>
+      <Item Value="Storeid"/>
+      <Item Value="GrnQty"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Description"/>
+      <Item Value="Partid"/>
+      <Item Value="Poitemid"/>
+      <Item Value="Rate"/>
+      <Item Value="ReceStoreid"/>
+      <Item Value="Qty"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSysUserStoreStoreName"
+    ListVOName="AccSysUserStoreStoreid"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtStoreName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="StoreName"/>
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="StoreName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SysUserStoreUserLocationWiseStoreVC"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvGrnParts"
+    Entity="dgcom.model.eo.srv.SrvGrnParts"/>
+  <ViewAttribute
+    Name="Grnitemid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Grnitemid"
+    EntityUsage="SrvGrnParts"
+    AliasName="GRNITEMID"/>
+  <ViewAttribute
+    Name="GrnId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="GrnId"
+    EntityUsage="SrvGrnParts"
+    AliasName="GRN_ID"/>
+  <ViewAttribute
+    Name="Poitemid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Poitemid"
+    EntityUsage="SrvGrnParts"
+    AliasName="POITEMID"/>
+  <ViewAttribute
+    Name="Partid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Partid"
+    EntityUsage="SrvGrnParts"
+    AliasName="PARTID"/>
+  <ViewAttribute
+    Name="Storeid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Storeid"
+    EntityUsage="SrvGrnParts"
+    AliasName="STOREID"/>
+  <ViewAttribute
+    Name="GrnQty"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="GrnQty"
+    EntityUsage="SrvGrnParts"
+    AliasName="GRN_QTY"/>
+  <ViewAttribute
+    Name="IssuedQty"
+    PrecisionRule="true"
+    EntityAttrName="IssuedQty"
+    EntityUsage="SrvGrnParts"
+    AliasName="ISSUED_QTY"/>
+  <ViewAttribute
+    Name="Rate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Rate"
+    EntityUsage="SrvGrnParts"
+    AliasName="RATE"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvGrnParts"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvGrnParts"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvGrnParts"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvGrnParts"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="txtPartName"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtPartName"
+    EntityUsage="SrvGrnParts"
+    AliasName="TXT_PART_NAME"
+    LOVName="LovSrvGrnPartName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="txtPartNo"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtPartNo"
+    EntityUsage="SrvGrnParts"
+    AliasName="TXT_PART_NO"/>
+  <ViewAttribute
+    Name="txtStoreName"
+    PrecisionRule="true"
+    EntityAttrName="txtStoreName"
+    EntityUsage="SrvGrnParts"
+    AliasName="TXT_STORE_NAME"
+    LOVName="LovSysUserStoreStoreName"
+    IsQueriable="false"
+    IsPersistent="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="txtAmount"
+    PrecisionRule="true"
+    EntityAttrName="txtAmount"
+    EntityUsage="SrvGrnParts"
+    AliasName="TXT_AMOUNT"
+    IsQueriable="false"
+    IsPersistent="false"/>
+  <ViewLinkAccessor
+    Name="SrvGrnVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015104Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="AllStoresVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015107Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doCreateNewGRNDetRow"
+      MethodName="doCreateNewGRNDetRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

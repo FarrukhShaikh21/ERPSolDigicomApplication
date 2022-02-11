@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SysC0091846Assoc"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="InItemPartMovement"
+    Cardinality="1"
+    Source="true"
+    Owner="dgcom.model.eo.srv.InItemPartMovement"
+    LockLevel="NONE"
+    CascadeUpdate="true">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="InItemPartMovement"/>
+      <Attr Name="_foreignKey" Value="dgcom.model.eo.srv.InItemPartMovement.SysC0091836"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.InItemPartMovement.MappId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="InIpmDetail"
+    Cardinality="-1"
+    Owner="dgcom.model.eo.srv.InIpmDetail"
+    HasOwner="true">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="InIpmDetail"/>
+      <Attr Name="_foreignKey" Value="dgcom.model.eo.srv.InIpmDetail.SysC0091846"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.InIpmDetail.MappId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

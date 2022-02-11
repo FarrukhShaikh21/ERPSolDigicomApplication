@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobStatusInJobSolutionQVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.SrvJobStatusInJobSolutionQVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <SQLQuery><![CDATA[SELECT DISTINCT JS.jsstatus FROM SRV_JOBSOLUTION JS]]></SQLQuery>
+  <ViewAttribute
+    Name="Jsstatus"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="JSSTATUS"
+    Expression="JSSTATUS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="35"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Jsstatus"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

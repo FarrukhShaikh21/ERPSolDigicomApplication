@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobsinvDetlVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvJobsinvDetl.JINV_ID, 
+       SrvJobsinvDetl.JOBCARDNO, 
+       SrvJobsinvDetl.JOBSTATUS, 
+       SrvJobsinvDetl.PREV_DOCID, 
+       SrvJobsinvDetl.PREV_DOCTYPE, 
+       SrvJobsinvDetl.CREATEDBY, 
+       SrvJobsinvDetl.CREATED_DATE, 
+       SrvJobsinvDetl.MODIFIEDBY, 
+       SrvJobsinvDetl.MODIFIED_DATE, 
+       SrvJobsinvDetl.REVERSE_CHK, 
+       SrvJobsinvDetl.ROWID"
+  FromList="SRV_JOBSINV_DETL SrvJobsinvDetl"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.stand.DigicomViewRowImpl"
+  ComponentClass="dgcom.model.stand.DigicomViewObjectImpl">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvJobsInventorySrvJobcardno"
+    ViewObjectName="dgcom.model.qvo.srv.SrvJobsInventorySrvJobcardnoCIC_0206QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[SrvJobsinventoryVO?.Locationid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovSrvJobsInventorySrvJobcardno"
+    ListVOName="AccSrvJobsInventorySrvJobcardno"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Jobcardno"/>
+      <Item Value="Model"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvJobsinvDetl"
+    Entity="dgcom.model.eo.srv.SrvJobsinvDetl"/>
+  <ViewAttribute
+    Name="JinvId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="JinvId"
+    EntityUsage="SrvJobsinvDetl"
+    AliasName="JINV_ID"/>
+  <ViewAttribute
+    Name="Jobcardno"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobcardno"
+    EntityUsage="SrvJobsinvDetl"
+    AliasName="JOBCARDNO"
+    LOVName="LovSrvJobsInventorySrvJobcardno">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Jobstatus"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobstatus"
+    EntityUsage="SrvJobsinvDetl"
+    AliasName="JOBSTATUS"/>
+  <ViewAttribute
+    Name="PrevDocid"
+    PrecisionRule="true"
+    EntityAttrName="PrevDocid"
+    EntityUsage="SrvJobsinvDetl"
+    AliasName="PREV_DOCID"/>
+  <ViewAttribute
+    Name="PrevDoctype"
+    PrecisionRule="true"
+    EntityAttrName="PrevDoctype"
+    EntityUsage="SrvJobsinvDetl"
+    AliasName="PREV_DOCTYPE"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvJobsinvDetl"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvJobsinvDetl"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvJobsinvDetl"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvJobsinvDetl"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="ReverseChk"
+    PrecisionRule="true"
+    EntityAttrName="ReverseChk"
+    EntityUsage="SrvJobsinvDetl"
+    AliasName="REVERSE_CHK"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="SrvJobsinvDetl"
+    AliasName="ROWID"/>
+  <ViewAttribute
+    Name="txtModelNo"
+    PrecisionRule="true"
+    EntityAttrName="txtModelNo"
+    EntityUsage="SrvJobsinvDetl"
+    AliasName="TXT_MODEL_NO"
+    IsQueriable="false"
+    IsPersistent="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.vo.srv.SrvJobsinvDetlVO.txtModelNo_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="SrvJobsinventoryVO"
+    ViewLink="dgcom.model.vl.srv.SysC0084119Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SrvJobcardVO"
+    ViewLink="dgcom.model.vl.srv.SysC0084120Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AllDeliveryTermsVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="AllDeliveryTerms.DELIVERYTERMID, 
+       AllDeliveryTerms.DESCRIPTION, 
+       AllDeliveryTerms.CREATEDBY, 
+       AllDeliveryTerms.CREATED_DATE, 
+       AllDeliveryTerms.MODIFIEDBY, 
+       AllDeliveryTerms.MODIFIED_DATE, 
+       AllDeliveryTerms.DAYS"
+  FromList="ALL_DELIVERY_TERMS AllDeliveryTerms"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full">
+  <EntityUsage
+    Name="AllDeliveryTerms"
+    Entity="dgcom.model.eo.set.AllDeliveryTerms"/>
+  <ViewAttribute
+    Name="Deliverytermid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Deliverytermid"
+    EntityUsage="AllDeliveryTerms"
+    AliasName="DELIVERYTERMID"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="AllDeliveryTerms"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="AllDeliveryTerms"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="AllDeliveryTerms"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="AllDeliveryTerms"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="AllDeliveryTerms"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Days"
+    PrecisionRule="true"
+    EntityAttrName="Days"
+    EntityUsage="AllDeliveryTerms"
+    AliasName="DAYS"/>
+</ViewObject>

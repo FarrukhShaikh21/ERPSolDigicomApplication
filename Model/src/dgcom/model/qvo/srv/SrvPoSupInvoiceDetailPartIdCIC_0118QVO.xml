@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvPoSupInvoiceDetailPartIdCIC_0118QVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.SrvPoSupInvoiceDetailPartIdCIC_0118QVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_RNOTENO"
+    Kind="where"
+    Type="java.lang.String"/>
+  <SQLQuery><![CDATA[SELECT SUBSTR(GRN.GRNITEMID, (INSTR(GRN.GRNITEMID, '-') + 1)) LINENO,       
+       NVL(PO.ITEM_TYPE, 'PARTS') ITEM_TYPE,       
+       PO.ITEMID,       
+       GRN.PARTID PARTID,       
+       PARTS.DESCRIPTION ITEMDESC, --PARTS.ITEM_REF_ID,        
+       GRN.GRN_QTY GRN_QTY,       
+       UNIT_PRICE_IN_BCURR RATE,       
+       GRN.GRNITEMID   ,    
+       GRN.GRN_ID    
+  FROM SRV_GRN_PARTS GRN, IN_PARTS PARTS, PU_PO_LINES PO       
+ WHERE (PARTS.PARTID = GRN.PARTID)       
+   AND PO.PARTID = GRN.PARTID       
+   AND GRN.POITEMID = PO.POITEMID       
+   AND PO.POITEMID = GRN.POITEMID       
+   AND GRN.GRN_ID = :P_ADF_RNOTENO]]></SQLQuery>
+  <ViewAttribute
+    Name="Lineno"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.Integer"
+    ColumnType="VARCHAR2"
+    AliasName="LINENO"
+    Expression="LINENO"
+    SQLType="INTEGER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ItemType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ITEM_TYPE"
+    Expression="ITEM_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Itemid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ITEMID"
+    Expression="ITEMID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Partid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PARTID"
+    Expression="PARTID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Itemdesc"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ITEMDESC"
+    Expression="ITEMDESC"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="GrnQty"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="GRN_QTY"
+    Expression="GRN_QTY"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Rate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="12"
+    Scale="2"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="RATE"
+    Expression="RATE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Grnitemid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="GRNITEMID"
+    Expression="GRNITEMID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="GrnId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="GRN_ID"
+    Expression="GRN_ID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Grnitemid"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RSud370Link"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  EntityAssociation="dgcom.model.asso.srv.RSud370Assoc">
+  <ViewLinkDefEnd
+    Name="SysProgramVO"
+    Cardinality="1"
+    Source="true"
+    Owner="dgcom.model.vo.srv.SysProgramVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SysProgramVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.SysProgramVO.Moduleid"/>
+      <Item Value="dgcom.model.vo.srv.SysProgramVO.Levelid"/>
+      <Item Value="dgcom.model.vo.srv.SysProgramVO.Projectid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="SysUsersDetailVO"
+    Cardinality="-1"
+    Owner="dgcom.model.vo.srv.SysUsersDetailVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SysUsersDetailVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.SysUsersDetailVO.Moduleid"/>
+      <Item Value="dgcom.model.vo.srv.SysUsersDetailVO.Levelid"/>
+      <Item Value="dgcom.model.vo.srv.SysUsersDetailVO.Projectid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

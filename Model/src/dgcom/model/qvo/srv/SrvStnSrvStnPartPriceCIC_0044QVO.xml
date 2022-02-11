@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvStnSrvStnPartPriceCIC_0044QVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.SrvStnSrvStnPartPriceCIC_0044QVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_PART_ID"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="P_ADF_STNDATE"
+    Kind="where"
+    Type="oracle.jbo.domain.Date"/>
+  <SQLQuery><![CDATA[select d.price,D.PARTID 
+from SRV_Parts_Price m, SRV_IPDetl d 
+where m.ip_id = d.ip_id  
+and d.partId = :P_ADF_PART_ID 
+and :P_ADF_STNDATE between m.effect_from and m.effect_to]]></SQLQuery>
+  <ViewAttribute
+    Name="Price"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="12"
+    Scale="2"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PRICE"
+    Expression="PRICE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Partid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PARTID"
+    Expression="PARTID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Partid"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

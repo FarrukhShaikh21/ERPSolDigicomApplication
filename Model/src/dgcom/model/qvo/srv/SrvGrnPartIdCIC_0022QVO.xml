@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvGrnPartIdCIC_0022QVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.SrvGrnPartIdCIC_0022QVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_POID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_POITEMID"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="P_ADF_CALL_FROM"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_GRNITEMID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[SELECT d.POITEMID,            
+       d.partID,            
+       m.Rece_StoreId,            
+       nvl(d.ORDER_QTY - (nvl(d.grn_qty, 0) + nvl(US_GRN.grn_qty, 0)),0) Qty,            
+       round(d.UNIT_PRICE_IN_BCURR,2) Rate,   
+       ip.description   
+  FROM PU_PURCHASE_ORDERS m,            
+       PU_PO_lines d,    
+       IN_PARTS IP,   
+       (select d.POItemId, Sum(d.GRN_Qty) GRN_Qty            
+          from SRV_GRN m, SRV_GRN_Parts d            
+         where m.grn_id = d.grn_id            
+           and Posted = 'N'            
+           and m.poid = :P_ADF_POID     
+           AND (d.GRNITEMID !=:P_GRNITEMID   OR :P_GRNITEMID='A')    
+         Group by d.POItemId) US_GRN            
+ WHERE m.POID = d.POID   
+   and ip.partid=d.partid   
+   and m.POID = :P_ADF_POID            
+   AND d.POItemId = US_GRN.POItemId(+)            
+   and (((d.ORDER_QTY - (nvl(d.grn_qty, 0) + nvl(US_GRN.grn_qty, 0))) > 0 AND :P_ADF_CALL_FROM='L') OR :P_ADF_CALL_FROM='V')]]></SQLQuery>
+  <ViewAttribute
+    Name="Poitemid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="POITEMID"
+    Expression="POITEMID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Partid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PARTID"
+    Expression="PARTID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReceStoreid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="RECE_STOREID"
+    Expression="RECE_STOREID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Qty"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="QTY"
+    Expression="QTY"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Rate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Scale="7"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="RATE"
+    Expression="RATE"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Description"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESCRIPTION"
+    Expression="DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="SrvGrnPartIdPOITEMIDWiseQtyVC"
+    ViewObjectName="dgcom.model.qvo.srv.SrvGrnPartIdCIC_0022QVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SrvGrnPartIdCIC_0022QVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Poitemid"
+        ViewAttribute="Poitemid"
+        Operator="="
+        Conjunction="AND"
+        Value=":P_ADF_POITEMID"
+        GenerateIsNullClauseForBindVars="false"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Poitemid"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SysReportParameterVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SysReportParameter.REPORT_ID, 
+       SysReportParameter.PARAM_ID, 
+       SysReportParameter.REP_PARAM, 
+       SysReportParameter.ROWID, 
+       SysReportParameter.PARAM_TYPE"
+  FromList="SYS_REPORT_PARAMETER SysReportParameter"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full">
+  <EntityUsage
+    Name="SysReportParameter"
+    Entity="dgcom.model.eo.sys.SysReportParameter"/>
+  <ViewAttribute
+    Name="ReportId"
+    PrecisionRule="true"
+    EntityAttrName="ReportId"
+    EntityUsage="SysReportParameter"
+    AliasName="REPORT_ID"/>
+  <ViewAttribute
+    Name="ParamId"
+    PrecisionRule="true"
+    EntityAttrName="ParamId"
+    EntityUsage="SysReportParameter"
+    AliasName="PARAM_ID"/>
+  <ViewAttribute
+    Name="RepParam"
+    PrecisionRule="true"
+    EntityAttrName="RepParam"
+    EntityUsage="SysReportParameter"
+    AliasName="REP_PARAM"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="SysReportParameter"
+    AliasName="ROWID"/>
+  <ViewAttribute
+    Name="ParamType"
+    PrecisionRule="true"
+    EntityAttrName="ParamType"
+    EntityUsage="SysReportParameter"
+    AliasName="PARAM_TYPE"/>
+</ViewObject>

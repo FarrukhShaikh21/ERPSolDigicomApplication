@@ -1,0 +1,217 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobsinvDetl"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SRV_JOBSINV_DETL"
+  AliasName="SrvJobsinvDetl"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.stand.DigicomEntityImpl">
+  <DesignTime>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+  </DesignTime>
+  <Attribute
+    Name="JinvId"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="JINV_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBSINV_DETL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Jobcardno"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="JOBCARDNO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBSINV_DETL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Jobstatus"
+    IsNotNull="true"
+    Precision="5"
+    ColumnName="JOBSTATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBSINV_DETL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PrevDocid"
+    Precision="15"
+    ColumnName="PREV_DOCID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBSINV_DETL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PrevDoctype"
+    Precision="10"
+    ColumnName="PREV_DOCTYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBSINV_DETL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBSINV_DETL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_JOBSINV_DETL"/>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBSINV_DETL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_JOBSINV_DETL"/>
+  <Attribute
+    Name="ReverseChk"
+    Precision="1"
+    ColumnName="REVERSE_CHK"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBSINV_DETL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Rowid"
+    IsUpdateable="false"
+    ColumnName="ROWID"
+    SQLType="ROWID"
+    Type="oracle.jbo.domain.RowID"
+    ColumnType="ROWID"
+    TableName="SRV_JOBSINV_DETL"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="txtModelNo"
+    Precision="80"
+    ColumnName="TXT_MODEL_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[SrvJobcard?.txtModelNo]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobsinvDetl.txtModelNo_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <AccessorAttribute
+    Name="SrvJobsinventory"
+    Association="dgcom.model.asso.srv.SysC0084119Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0084119Assoc.SrvJobsinventory"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0084119Assoc.SrvJobsinvDetl"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="SrvJobcard"
+    Association="dgcom.model.asso.srv.SysC0084120Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0084120Assoc.SrvJobcard"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0084120Assoc.SrvJobsinvDetl"
+    Type="dgcom.model.eo.srv.SrvJobcardImpl"
+    IsUpdateable="true"/>
+  <ViewLinkAccessor
+    Name="SrvJobcardVO"
+    ViewLink="dgcom.model.vl.srv.SysC0084120Link"
+    ViewLinkEnd="dgcom.model.vl.srv.SysC0084120Link.SrvJobcardVO"
+    ViewLinkOtherEnd="dgcom.model.vl.srv.SysC0084120Link.SrvJobsinvDetlVO"
+    Type="dgcom.model.vo.srv.SrvJobcardVORowImpl"
+    IsUpdateable="false"/>
+  <Key
+    Name="SysC0084119">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0084113"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0084119"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobsinvDetl.JinvId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0084120">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014094"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0084120"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobsinvDetl.Jobcardno"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvJobsinvDetl">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014094"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_JOBSINV_DETL"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobsinvDetl.Jobcardno"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

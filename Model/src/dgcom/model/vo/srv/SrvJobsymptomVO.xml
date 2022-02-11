@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobsymptomVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvJobsymptom.SYMPTOM_ID, 
+       SrvJobsymptom.JOBCARDNO, 
+       SrvJobsymptom.CREATEDBY, 
+       SrvJobsymptom.CREATED_DATE, 
+       SrvJobsymptom.MODIFIEDBY, 
+       SrvJobsymptom.MODIFIED_DATE, 
+       SrvJobsymptom.ROWID"
+  FromList="SRV_JOBSYMPTOM SrvJobsymptom"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="dgcom.model.vo.srv.SrvJobsymptomVORowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvJobsymptomVOImpl"
+  PageIterMode="Full"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvJobsymptomVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvJobsymptomVOClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvSymptomsSymptomId"
+    ViewObjectName="dgcom.model.vo.srv.SrvSymptomsVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvSymptomsByProdIDVC"
+      FullName="dgcom.model.vo.srv.SrvSymptomsVO.SrvSymptomsByProdIDVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_PROD_ID">
+        <TransientExpression><![CDATA[SrvJobcardVO?.ProdId==null?"-1":SrvJobcardVO?.ProdId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovSrvSymptomsSymptomId"
+    ListVOName="AccSrvSymptomsSymptomId"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SymptomId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="SymptomId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+      <Item Value="SymptomId"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SrvSymptomsByProdIDVC"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSrvSymptomsSymptomDescr"
+    ListVOName="AccSrvSymptomsSymptomId"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtSymptomDescription"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="SymptomId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Description"/>
+      <Item Value="SymptomId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+      <Item Value="SymptomId"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SrvSymptomsByProdIDVC"/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvJobsymptom"
+    Entity="dgcom.model.eo.srv.SrvJobsymptom"/>
+  <ViewAttribute
+    Name="SymptomId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SymptomId"
+    EntityUsage="SrvJobsymptom"
+    AliasName="SYMPTOM_ID"
+    LOVName="LovSrvSymptomsSymptomId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Jobcardno"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobcardno"
+    EntityUsage="SrvJobsymptom"
+    AliasName="JOBCARDNO"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvJobsymptom"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvJobsymptom"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvJobsymptom"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvJobsymptom"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="txtSymptomDescription"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LovSrvSymptomsSymptomDescr">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[SrvSymptomsVO?.Description]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="SymptomId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.vo.srv.SrvJobsymptomVO.txtSymptomDescription_LABEL"/>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RowID"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="RowID"
+    EntityUsage="SrvJobsymptom"
+    AliasName="ROWID"/>
+  <ViewLinkAccessor
+    Name="SrvJobcardVO"
+    ViewLink="dgcom.model.vl.srv.SrvJobCardSrvJobCardSymptonVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SrvSymptomsVO"
+    ViewLink="dgcom.model.vl.srv.SrvSymptomSrvJobCardSymptonVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SrvJobsolutionVO"
+    ViewLink="dgcom.model.vl.srv.SrvJobSolutionsSrvJobSymptonJobCardVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SrvJobqcVO"
+    ViewLink="dgcom.model.vl.srv.SrvJobQcSrvJobJobSymptomJobCardNoVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SrvIssuanceVO"
+    ViewLink="dgcom.model.vl.srv.SrvIssuanceSrvJobSymptomJobcardnoVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doCreateNewJobSymRow"
+      MethodName="doCreateNewJobSymRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

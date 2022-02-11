@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvCourierdeliVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvCourierdeli.CDID, 
+       SrvCourierdeli.LOCATIONID, 
+       SrvCourierdeli.CDDATE, 
+       SrvCourierdeli.REMARKS, 
+       SrvCourierdeli.POSTED, 
+       SrvCourierdeli.POSTEDBY, 
+       SrvCourierdeli.CREATEDBY, 
+       SrvCourierdeli.CREATED_DATE, 
+       SrvCourierdeli.MODIFIEDBY, 
+       SrvCourierdeli.MODIFIED_DATE, 
+       SrvCourierdeli.DEALER_ID, 
+       SrvCourierdeli.IS_MIGRATED, 
+       SrvCourierdeli.MIGRATED_DATE"
+  FromList="SRV_COURIERDELI SrvCourierdeli"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvCourierdeliVORowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvCourierdeliVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvCourierdeliVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvCourierdeliVOClient">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvDealersDealerID"
+    ViewObjectName="dgcom.model.vo.srv.SrvDealersVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvDealersLocationWiseVC"
+      FullName="dgcom.model.vo.srv.SrvDealersVO.SrvDealersLocationWiseVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[Locationid==null?"-1":Locationid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSysUserRightsWiseLocation"
+    ViewObjectName="dgcom.model.qvo.sys.SysUserRightsWiseLocationQVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_HL">
+        <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.isOperationAllowed("HLevel")]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSubmitYesNo"
+    ViewObjectName="dgcom.model.qvo.sys.YesNoQVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LovSrvDealersDealerID"
+    ListVOName="AccSrvDealersDealerID"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DealerId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DealerId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DealerId"/>
+      <Item Value="Name"/>
+      <Item Value="Address"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SrvDealersLocationWiseVC"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSysUserRightsWiseLocation"
+    ListVOName="AccSysUserRightsWiseLocation"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Locationid"/>
+      <Item Value="LocationDescription"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSubmitYesNo"
+    ListVOName="AccSubmitYesNo"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Posted"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ID"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSrvDealersDealerName"
+    ListVOName="AccSrvDealersDealerID"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtDealerName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="DealerId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Name"/>
+      <Item Value="DealerId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Name"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SrvDealersLocationWiseVC"/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvCourierdeli"
+    Entity="dgcom.model.eo.srv.SrvCourierdeli"/>
+  <ViewAttribute
+    Name="Cdid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Cdid"
+    EntityUsage="SrvCourierdeli"
+    AliasName="CDID"/>
+  <ViewAttribute
+    Name="Locationid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Locationid"
+    EntityUsage="SrvCourierdeli"
+    AliasName="LOCATIONID"
+    LOVName="LovSysUserRightsWiseLocation">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Cddate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Cddate"
+    EntityUsage="SrvCourierdeli"
+    AliasName="CDDATE"/>
+  <ViewAttribute
+    Name="Remarks"
+    PrecisionRule="true"
+    EntityAttrName="Remarks"
+    EntityUsage="SrvCourierdeli"
+    AliasName="REMARKS"/>
+  <ViewAttribute
+    Name="Posted"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Posted"
+    EntityUsage="SrvCourierdeli"
+    AliasName="POSTED"
+    LOVName="LovSubmitYesNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Postedby"
+    PrecisionRule="true"
+    EntityAttrName="Postedby"
+    EntityUsage="SrvCourierdeli"
+    AliasName="POSTEDBY"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvCourierdeli"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvCourierdeli"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvCourierdeli"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvCourierdeli"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="DealerId"
+    PrecisionRule="true"
+    EntityAttrName="DealerId"
+    EntityUsage="SrvCourierdeli"
+    AliasName="DEALER_ID"
+    LOVName="LovSrvDealersDealerID">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IsMigrated"
+    PrecisionRule="true"
+    EntityAttrName="IsMigrated"
+    EntityUsage="SrvCourierdeli"
+    AliasName="IS_MIGRATED"/>
+  <ViewAttribute
+    Name="MigratedDate"
+    PrecisionRule="true"
+    EntityAttrName="MigratedDate"
+    EntityUsage="SrvCourierdeli"
+    AliasName="MIGRATED_DATE"/>
+  <ViewAttribute
+    Name="txtDealerName"
+    PrecisionRule="true"
+    EntityAttrName="txtDealerName"
+    EntityUsage="SrvCourierdeli"
+    AliasName="TXT_DEALER_NAME"
+    LOVName="LovSrvDealersDealerName"
+    IsQueriable="false"
+    IsPersistent="false">
+    <TransientExpression><![CDATA[SrvDealers?.Name]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="SrvCourierdeliFindVC"
+    ViewObjectName="dgcom.model.vo.srv.SrvCourierdeliVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SrvCourierdeliVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Cdid"
+        ViewAttribute="Cdid"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="SrvCourierdeliVOCriteria_SrvCourierdeliVOCriteria_row_0_Cddate"
+        ViewAttribute="Cddate"
+        Operator="="
+        Conjunction="AND"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="Posted"
+        ViewAttribute="Posted"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="DealerId"
+        ViewAttribute="DealerId"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="SrvCddetailVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015085Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doSubmitCourDelivery"
+      MethodName="doSubmitCourDelivery">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="executeEmptyRowSet"
+      MethodName="executeEmptyRowSet">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="doCreateNewCourierDelRow"
+      MethodName="doCreateNewCourierDelRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

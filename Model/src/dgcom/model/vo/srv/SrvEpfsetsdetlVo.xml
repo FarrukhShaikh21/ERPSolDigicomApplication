@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvEpfsetsdetlVo"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvEpfsetsdetl.EXT_ID, 
+       SrvEpfsetsdetl.STOREID, 
+       SrvEpfsetsdetl.PARTID, 
+       SrvEpfsetsdetl.EXQTY, 
+       SrvEpfsetsdetl.RATE, 
+       SrvEpfsetsdetl.CREATEDBY, 
+       SrvEpfsetsdetl.CREATED_DATE, 
+       SrvEpfsetsdetl.MODIFIEDBY, 
+       SrvEpfsetsdetl.MODIFIED_DATE, 
+       SrvEpfsetsdetl.PURCHASE_RATE, 
+       SrvEpfsetsdetl.ROWID"
+  FromList="SRV_EPFSETSDETL SrvEpfsetsdetl"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvEpfsetsdetlVoRowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvEpfsetsdetlVoImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvEpfsetsdetlVo"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvEpfsetsdetlVoClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvEpfSetDetailSrvStoreId"
+    ViewObjectName="dgcom.model.qvo.srv.SrvEpfSetDetailSrvStoreIdCIC_0034QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[SrvEpfsetsVO?.Locationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_PARTCATID">
+        <TransientExpression><![CDATA[txtPartCategoryId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccInParts"
+    ViewObjectName="dgcom.model.vo.srv.InPartsVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="InPartsPartExistsInBOMWithItemVC"
+      FullName="dgcom.model.vo.srv.InPartsVO.InPartsPartExistsInBOMWithItemVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_ITEMID">
+        <TransientExpression><![CDATA[SrvEpfsetsVO?.Itemid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSysUserStoreForDismentalPart"
+    ViewObjectName="dgcom.model.vo.sys.SysUserStoreVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SysUserStoreUserLocationWiseStoreVC"
+      FullName="dgcom.model.vo.sys.SysUserStoreVO.SysUserStoreUserLocationWiseStoreVC"/>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovSysUserStoreStoreName"
+    ListVOName="AccSrvEpfSetDetailSrvStoreId"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtStoreName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="StoreName"/>
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="StoreName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovInPartsName"
+    ListVOName="AccInParts"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtPartName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Partid"/>
+      <Item Value="txtPartNo"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Description"/>
+      <Item Value="Partid"/>
+      <Item Value="Partno"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="InPartsPartExistsInBOMWithItemVC"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSysUserStoreForDismentalPart"
+    ListVOName="AccSysUserStoreForDismentalPart"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtStoreNameDismPart"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="StoreName"/>
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="StoreName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SysUserStoreUserLocationWiseStoreVC"/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvEpfsetsdetl"
+    Entity="dgcom.model.eo.srv.SrvEpfsetsdetl"/>
+  <ViewAttribute
+    Name="ExtId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ExtId"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="EXT_ID"/>
+  <ViewAttribute
+    Name="Storeid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Storeid"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="STOREID"/>
+  <ViewAttribute
+    Name="Partid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Partid"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="PARTID"/>
+  <ViewAttribute
+    Name="Exqty"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Exqty"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="EXQTY"/>
+  <ViewAttribute
+    Name="Rate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Rate"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="RATE"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="PurchaseRate"
+    PrecisionRule="true"
+    EntityAttrName="PurchaseRate"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="PURCHASE_RATE"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="ROWID"/>
+  <ViewAttribute
+    Name="txtPartCategoryId"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtPartCategoryId"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="TXT_PART_CATEGORY_ID"/>
+  <ViewAttribute
+    Name="txtPartName"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtPartName"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="TXT_PART_NAME"
+    LOVName="LovInPartsName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="txtPartNo"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtPartNo"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="TXT_PART_NO"/>
+  <ViewAttribute
+    Name="txtStoreName"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtStoreName"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="TXT_STORE_NAME"
+    LOVName="LovSysUserStoreStoreName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="txtStoreNameDismPart"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtStoreName"
+    EntityUsage="SrvEpfsetsdetl"
+    AliasName="TXT_STORE_NAME1"
+    LOVName="LovSysUserStoreForDismentalPart">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="SrvEpfsetsVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015096Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="AllStoresVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015095Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doCreateNewExtractDetRow"
+      MethodName="doCreateNewExtractDetRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

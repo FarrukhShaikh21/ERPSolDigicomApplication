@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvStockopening"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SRV_STOCKOPENING"
+  AliasName="SrvStockopening"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.eo.srv.SrvStockopeningImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="Sopngid"
+    Precision="15"
+    ColumnName="SOPNGID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STOCKOPENING"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Locationid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="LOCATIONID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STOCKOPENING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Odate"
+    IsNotNull="true"
+    ColumnName="ODATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_STOCKOPENING">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <validation:ValidationBean
+      Name="DocumentDateEntryRights"
+      ResId="dgcom.model.eo.srv.SrvJobcard.Jobdate_Rule_0"
+      OnAttribute="Odate"
+      Version="2"
+      OperandType="LITERAL"
+      Inverse="false"
+      DisplayName="RulCheckDateRights"
+      ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+      <validation:OnCondition><![CDATA[newValue!=null]]></validation:OnCondition>
+    </validation:ValidationBean>
+  </Attribute>
+  <Attribute
+    Name="Remarks"
+    Precision="200"
+    ColumnName="REMARKS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STOCKOPENING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Posted"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="POSTED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STOCKOPENING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvStockopening.Posted_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Postedby"
+    Precision="20"
+    ColumnName="POSTEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STOCKOPENING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STOCKOPENING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_STOCKOPENING">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STOCKOPENING">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_STOCKOPENING"/>
+  <Attribute
+    Name="txtItemId"
+    Precision="80"
+    ColumnName="TXT_ITEM_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false"/>
+  <Attribute
+    Name="txtPartCategory"
+    Precision="80"
+    ColumnName="TXT_PART_CATEGORY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false"/>
+  <AccessorAttribute
+    Name="SrvOpenparts"
+    Association="dgcom.model.asso.srv.SysC0015179Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0015179Assoc.SrvOpenparts"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0015179Assoc.SrvStockopening"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="SysC0014310"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0014310"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvStockopening.Sopngid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015224">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_LOCATIONS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015224"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvStockopening.Locationid"/>
+    </AttrArray>
+  </Key>
+  <validation:ValidationBean
+    Name="BRCheckDocDateForSubmit"
+    ResId="dgcom.model.eo.srv.SrvDap_Rule_0"
+    OnAttribute="SrvStockopening"
+    Version="2"
+    OperandType="LITERAL"
+    Inverse="false"
+    DisplayName="RulCheckDateRights"
+    ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+    <validation:OnCondition><![CDATA[Posted=='Y']]></validation:OnCondition>
+  </validation:ValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

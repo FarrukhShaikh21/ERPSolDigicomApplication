@@ -1,0 +1,402 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvIssuereturn"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SRV_ISSUERETURN"
+  AliasName="SrvIssuereturn"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.eo.srv.SrvIssuereturnImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvIssueReturnSrvIssueDetailParts"
+    ViewObjectName="dgcom.model.qvo.srv.SrvIssueReturnSrvIssueDetailPartsCIC_0028QVO"
+    RowLevelBinds="true"/>
+  <Attribute
+    Name="Issueretid"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="ISSUERETID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUERETURN"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Locationid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="LOCATIONID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUERETURN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Technicianid"
+    Precision="15"
+    ColumnName="TECHNICIANID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUERETURN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="Locationid"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="IssueId"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="ISSUE_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUERETURN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Retdate"
+    IsNotNull="true"
+    ColumnName="RETDATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_ISSUERETURN">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <validation:ValidationBean
+      Name="DocumentDateEntryRights"
+      ResId="dgcom.model.eo.srv.SrvJobcard.Jobdate_Rule_0"
+      OnAttribute="Retdate"
+      Version="2"
+      OperandType="LITERAL"
+      Inverse="false"
+      DisplayName="RulCheckDateRights"
+      ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+      <validation:OnCondition><![CDATA[newValue!=null]]></validation:OnCondition>
+    </validation:ValidationBean>
+  </Attribute>
+  <Attribute
+    Name="Remarks"
+    Precision="100"
+    ColumnName="REMARKS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUERETURN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Posted"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="POSTED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUERETURN"
+    DefaultValue="N">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvIssuereturn.Posted_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Postedby"
+    Precision="20"
+    ColumnName="POSTEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUERETURN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUERETURN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_ISSUERETURN"/>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUERETURN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_ISSUERETURN"/>
+  <Attribute
+    Name="PrevDoctype"
+    Precision="25"
+    ColumnName="PREV_DOCTYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUERETURN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PrevDocid"
+    Precision="15"
+    ColumnName="PREV_DOCID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUERETURN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IsMigrated"
+    Precision="1"
+    ColumnName="IS_MIGRATED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUERETURN">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="MigratedDate"
+    ColumnName="MIGRATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_ISSUERETURN"/>
+  <Attribute
+    Name="txtJobcardno"
+    Precision="80"
+    ColumnName="TXT_JOBCARDNO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[SrvIssuance?.Jobcardno]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="IssueId"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvIssuereturn.txtJobcardno_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="txtTechnicianName"
+    Precision="80"
+    ColumnName="TXT_TECHNICIAN_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <TransientExpression><![CDATA[SrvTechnician?.Techician]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvIssuereturn.txtTechnicianName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <AccessorAttribute
+    Name="SrvIretdetail"
+    Association="dgcom.model.asso.srv.SysC0015117Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0015117Assoc.SrvIretdetail"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0015117Assoc.SrvIssuereturn"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvIssuance"
+    Association="dgcom.model.asso.srv.SrvJobCardSrvIssuanceIssueIDAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobCardSrvIssuanceIssueIDAsso.SrvIssuance"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobCardSrvIssuanceIssueIDAsso.SrvIssuereturn"
+    Type="dgcom.model.eo.srv.SrvIssuanceImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="SrvTechnician"
+    Association="dgcom.model.asso.srv.SysC0015126Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0015126Assoc.SrvTechnician"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0015126Assoc.SrvIssuereturn"
+    Type="dgcom.model.eo.srv.SrvTechnicianImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC0014202"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0014202"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvIssuereturn.Issueretid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015126">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014313"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015126"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvIssuereturn.Technicianid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015127">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014199"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015127"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvIssuereturn.IssueId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015128">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_LOCATIONS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015128"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvIssuereturn.Locationid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvIssuereturn">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014199"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_ISSUERETURN"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvIssuereturn.IssueId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvIssuereturn1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014313"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_ISSUERETURN1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvIssuereturn.Technicianid"/>
+    </AttrArray>
+  </Key>
+  <validation:ValidationBean
+    Name="BRCheckDocDateForSubmit"
+    ResId="dgcom.model.eo.srv.SrvDap_Rule_0"
+    OnAttribute="SrvIssuereturn"
+    Version="2"
+    OperandType="LITERAL"
+    Inverse="false"
+    DisplayName="RulCheckDateRights"
+    ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="Posted"/>
+    </validation:OnAttributes>
+    <validation:OnCondition><![CDATA[Posted=='Y']]></validation:OnCondition>
+  </validation:ValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

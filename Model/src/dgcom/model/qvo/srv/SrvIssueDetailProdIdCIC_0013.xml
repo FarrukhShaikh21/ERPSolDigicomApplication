@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvIssueDetailProdIdCIC_0013"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  FetchMode="FETCH_ALL">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.SrvIssueDetailProdIdCIC_0013_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_JOBDATE"
+    Kind="where"
+    Type="oracle.jbo.domain.Date">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_ISSUEDETLID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_LOCATIONID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_USERID"
+    Kind="where"
+    Type="java.lang.String">
+    <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.getConnectedUser()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_APPROVED_PART"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_PROD_ID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_ITEMID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[SELECT P.PARTID, P.PARTNO, P.DESCRIPTION||'('||S.STORE_NAME||')' DESCRIPTION, NVL(PRICE.PRICE,1) PRICE, C.DESCRIPTION CATEGORY,            
+       S.STOCK, S.STOREID, S.STORE_NAME   ,  1 Default_Qty       
+FROM IN_PARTS P, SRV_PARTCATEGORY C,              
+            
+    (SELECT D.PARTID, D.PRICE            
+     FROM SRV_PARTS_PRICE M, SRV_IPDETL D            
+     WHERE M.IP_ID = D.IP_ID             
+     AND :P_ADF_JOBDATE BETWEEN M.EFFECT_FROM AND M.EFFECT_TO) PRICE,            
+             
+(SELECT S.STOREID, ST.STORE_NAME, S.PARTID, (NVL(S.QTY_ON_HAND,0)-NVL(U.USQTY,0)) STOCK            
+ FROM IN_STORE_PARTS S, ALL_STORES ST, SYS_USER_STORE US,            
+       (SELECT STOREID, PARTID, SUM(QTY) USQTY            
+        FROM VIEW_US_STOCK            
+        WHERE NOT (DOCTYPEID = 'ISSUE' AND DOCDETLID = NVL(:P_ADF_ISSUEDETLID,'X'))            
+        GROUP BY STOREID, PARTID) U            
+ WHERE S.STOREID = ST.STOREID            
+   AND S.STOREID = U.STOREID(+)            
+   AND S.PARTID = U.PARTID(+)            
+   AND ST.LOCATIONID = :P_ADF_LOCATIONID             
+            
+   AND US.STOREID = ST.STOREID             
+   AND US.USERID = :P_ADF_USERID            
+   AND NVL(ST.TRANS_ALLOW, 'N') = 'Y') S            
+            
+WHERE EXISTS           
+  (           
+  SELECT '' FROM            
+  SRV_BOM M, SRV_BOMPARTS D           
+  WHERE M.BOM_ID = D.BOM_ID            
+  AND   D.PARTID=P.PARTID           
+  AND M.ITEMID = :P_ADF_ITEMID           
+  )              
+  AND P.PARTCATID = C.PARTCATID            
+            
+  AND P.PARTID = PRICE.PARTID(+)             
+  AND P.PARTID = S.PARTID            
+            
+  AND (P.NEEDAPPROVAL = 'N' OR P.PARTID = NVL(:P_ADF_APPROVED_PART,'X'))            
+  AND P.PROD_ID = :P_ADF_PROD_ID            
+  AND S.STOCK >0            
+  /*AND P.ITEMID = :P_ADF_ITEMID*/]]></SQLQuery>
+  <ViewAttribute
+    Name="Partid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PARTID"
+    Expression="PARTID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvIssueDetailProdIdCIC_0013.Partid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Partno"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PARTNO"
+    Expression="PARTNO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvIssueDetailProdIdCIC_0013.Partno_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Description"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DESCRIPTION"
+    Expression="DESCRIPTION"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Price"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PRICE"
+    Expression="PRICE"
+    SQLType="NUMERIC"
+    IsQueriable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="8"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Category"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CATEGORY"
+    Expression="CATEGORY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="15"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Stock"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="STOCK"
+    Expression="STOCK"
+    SQLType="NUMERIC"
+    IsQueriable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="8"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Storeid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STOREID"
+    Expression="STOREID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StoreName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="75"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="STORE_NAME"
+    Expression="STORE_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="75"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DefaultQty"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DEFAULT_QTY"
+    Expression="DEFAULT_QTY"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvIssueDetailProdIdCIC_0013.DefaultQty_LABEL"/>
+        <DISPLAYWIDTH
+          Value="10"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Partid"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

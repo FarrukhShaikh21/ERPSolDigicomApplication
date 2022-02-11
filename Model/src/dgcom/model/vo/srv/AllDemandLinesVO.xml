@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AllDemandLinesVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="AllDemandLines.DMDITEMID, 
+       AllDemandLines.DEMAND_ID, 
+       AllDemandLines.ITEMID, 
+       AllDemandLines.ORDER_QTY, 
+       AllDemandLines.GRIN_QTY, 
+       AllDemandLines.ISSUED_QTY, 
+       AllDemandLines.CANCEL_QTY, 
+       AllDemandLines.CREATEDBY, 
+       AllDemandLines.CREATED_DATE, 
+       AllDemandLines.MODIFIEDBY, 
+       AllDemandLines.MODIFIED_DATE, 
+       AllDemandLines.PARTID, 
+       AllDemandLines.DEMAND_QTY, 
+       AllDemandLines.USED_QTY"
+  FromList="ALL_DEMAND_LINES AllDemandLines"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.AllDemandLinesVORowImpl"
+  ComponentClass="dgcom.model.vo.srv.AllDemandLinesVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.AllDemandLinesVO"
+  ClientProxyName="dgcom.model.vo.srv.client.AllDemandLinesVOClient">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvAllDemantNoteLinInPart"
+    ViewObjectName="dgcom.model.qvo.srv.SrvAllDemantNoteLinInPartCIC_0021QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_DEMAND_ID">
+        <TransientExpression><![CDATA[AllDemandNoteVO?.DemandId==null?"-1":AllDemandNoteVO?.DemandId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_MODEL_NO">
+        <TransientExpression><![CDATA[AllDemandNoteVO?.txtModel==null?"":AllDemandNoteVO?.txtModel]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_PROD_ID">
+        <TransientExpression><![CDATA[AllDemandNoteVO?.ProdId==null?"-1":AllDemandNoteVO?.ProdId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovSrvAllDemantNoteLinInPartName"
+    ListVOName="AccSrvAllDemantNoteLinInPart"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtPartName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Partid"/>
+      <Item Value="txtPartNo"/>
+      <Item Value="Itemid"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Partdesc"/>
+      <Item Value="Partid"/>
+      <Item Value="Partno"/>
+      <Item Value="Itemid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Partdesc"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="AllDemandLines"
+    Entity="dgcom.model.eo.srv.AllDemandLines"/>
+  <ViewAttribute
+    Name="Dmditemid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Dmditemid"
+    EntityUsage="AllDemandLines"
+    AliasName="DMDITEMID"/>
+  <ViewAttribute
+    Name="DemandId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="DemandId"
+    EntityUsage="AllDemandLines"
+    AliasName="DEMAND_ID"/>
+  <ViewAttribute
+    Name="Itemid"
+    IsUnique="true"
+    PrecisionRule="true"
+    EntityAttrName="Itemid"
+    EntityUsage="AllDemandLines"
+    AliasName="ITEMID">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[AllDemandNoteVO?.txtModel]]></TransientExpression>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrderQty"
+    PrecisionRule="true"
+    EntityAttrName="OrderQty"
+    EntityUsage="AllDemandLines"
+    AliasName="ORDER_QTY"/>
+  <ViewAttribute
+    Name="GrinQty"
+    PrecisionRule="true"
+    EntityAttrName="GrinQty"
+    EntityUsage="AllDemandLines"
+    AliasName="GRIN_QTY"/>
+  <ViewAttribute
+    Name="IssuedQty"
+    PrecisionRule="true"
+    EntityAttrName="IssuedQty"
+    EntityUsage="AllDemandLines"
+    AliasName="ISSUED_QTY"/>
+  <ViewAttribute
+    Name="CancelQty"
+    PrecisionRule="true"
+    EntityAttrName="CancelQty"
+    EntityUsage="AllDemandLines"
+    AliasName="CANCEL_QTY"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="AllDemandLines"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="AllDemandLines"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="AllDemandLines"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="AllDemandLines"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Partid"
+    IsUnique="true"
+    PrecisionRule="true"
+    EntityAttrName="Partid"
+    EntityUsage="AllDemandLines"
+    AliasName="PARTID"/>
+  <ViewAttribute
+    Name="DemandQty"
+    PrecisionRule="true"
+    EntityAttrName="DemandQty"
+    EntityUsage="AllDemandLines"
+    AliasName="DEMAND_QTY"/>
+  <ViewAttribute
+    Name="UsedQty"
+    PrecisionRule="true"
+    EntityAttrName="UsedQty"
+    EntityUsage="AllDemandLines"
+    AliasName="USED_QTY"/>
+  <ViewAttribute
+    Name="txtPartName"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="txtPartName"
+    EntityUsage="AllDemandLines"
+    AliasName="TXT_PART_NAME"
+    LOVName="LovSrvAllDemantNoteLinInPartName"
+    IsPersistent="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="txtPartNo"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="txtPartNo"
+    EntityUsage="AllDemandLines"
+    AliasName="TXT_PART_NO"
+    IsPersistent="false"/>
+  <ViewAttribute
+    Name="txtModelNo"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtModelNo"
+    EntityUsage="AllDemandLines"
+    AliasName="TXT_MODEL_NO"/>
+  <ViewLinkAccessor
+    Name="AllDemandNoteVO"
+    ViewLink="dgcom.model.vl.srv.SysC0014612Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="InPartsVO"
+    ViewLink="dgcom.model.vl.srv.SysC0014611Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="InItemsVO"
+    ViewLink="dgcom.model.vl.srv.SysC0014613Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doCreateNewDemandLineRow"
+      MethodName="doCreateNewDemandLineRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

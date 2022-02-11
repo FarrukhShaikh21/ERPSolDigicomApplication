@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvBlockedImei"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SRV_BLOCKED_IMEI"
+  AliasName="SrvBlockedImei"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.eo.srv.SrvBlockedImeiImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+  </DesignTime>
+  <Attribute
+    Name="Locationid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="LOCATIONID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BLOCKED_IMEI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.getUserLocation()]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="Brandid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="BRANDID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BLOCKED_IMEI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvBlockedImei.Brandid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Itemid"
+    Precision="15"
+    ColumnName="ITEMID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BLOCKED_IMEI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Blockid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="BLOCKID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BLOCKED_IMEI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="BlkDate"
+    IsNotNull="true"
+    ColumnName="BLK_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_BLOCKED_IMEI">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="ImeiNo"
+    IsUnique="true"
+    Precision="15"
+    ColumnName="IMEI_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BLOCKED_IMEI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvBlockedImei.ImeiNo_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="SerialNo"
+    Precision="15"
+    ColumnName="SERIAL_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BLOCKED_IMEI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvBlockedImei.SerialNo_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Remarks"
+    Precision="200"
+    ColumnName="REMARKS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BLOCKED_IMEI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BLOCKED_IMEI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_BLOCKED_IMEI"/>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BLOCKED_IMEI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_BLOCKED_IMEI"/>
+  <Attribute
+    Name="Fixed"
+    Precision="1"
+    ColumnName="FIXED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BLOCKED_IMEI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Tmpfed"
+    Precision="1"
+    ColumnName="TMPFED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BLOCKED_IMEI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Rowid"
+    IsUpdateable="false"
+    ColumnName="ROWID"
+    SQLType="ROWID"
+    Type="oracle.jbo.domain.RowID"
+    ColumnType="ROWID"
+    TableName="SRV_BLOCKED_IMEI"
+    PrimaryKey="true"
+    RetrievedOnInsert="true"
+    RetrievedOnUpdate="true"/>
+  <Key
+    Name="AltKeySrvImeiBlockIMEI"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SRV_BLOCKED_IMEI"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvBlockedImei.ImeiNo"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0013973">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0013973"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvBlockedImei.ImeiNo"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015077">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKSO_PRODUCT_BRANDS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015077"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvBlockedImei.Brandid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015078">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014194"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015078"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvBlockedImei.Blockid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015079">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKIN_ITEMS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015079"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvBlockedImei.Itemid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015080">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_LOCATIONS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015080"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvBlockedImei.Locationid"/>
+    </AttrArray>
+  </Key>
+  <validation:UniqueKeyValidationBean
+    Name="SrvBlockedImeiImeiExists"
+    ResId="dgcom.model.eo.srv.SrvBlockedImei_Rule_0"
+    KeyName="AltKeySrvImeiBlockIMEI">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="ImeiNo"/>
+    </validation:OnAttributes>
+    <validation:ResExpressions>
+      <validation:Expression
+        Name="0"><![CDATA[ImeiNo]]></validation:Expression>
+    </validation:ResExpressions>
+  </validation:UniqueKeyValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

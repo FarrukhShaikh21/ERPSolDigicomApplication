@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvAllProdCatSrvSymptomsProdIDAsso"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="AllProdcategory"
+    Cardinality="1"
+    Source="true"
+    Owner="dgcom.model.eo.inv.AllProdcategory"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="AllProdcategory"/>
+      <Attr Name="_foreignKey" Value="dgcom.model.eo.inv.AllProdcategory.SysC0014065"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.inv.AllProdcategory.ProdId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="SrvSymptoms"
+    Cardinality="-1"
+    Owner="dgcom.model.eo.srv.SrvSymptoms">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="SrvSymptoms"/>
+      <Attr Name="_foreignKey" Value="dgcom.model.eo.srv.SrvSymptoms.fk_SrvSymptoms"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvSymptoms.ProdId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

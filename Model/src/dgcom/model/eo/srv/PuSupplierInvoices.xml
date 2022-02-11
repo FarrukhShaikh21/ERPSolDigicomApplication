@@ -1,0 +1,950 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PuSupplierInvoices"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="PU_SUPPLIER_INVOICES"
+  AliasName="PuSupplierInvoices"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.eo.srv.PuSupplierInvoicesImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvPoSupInvoiceDetailPartId"
+    ViewObjectName="dgcom.model.qvo.srv.SrvPoSupInvoiceDetailPartIdCIC_0118QVO"
+    RowLevelBinds="true"/>
+  <Attribute
+    Name="Suppinvoiceid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="SUPPINVOICEID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.PuSupplierInvoices.Suppinvoiceid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Companyid"
+    Precision="15"
+    ColumnName="COMPANYID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES"
+    DefaultValue="2">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Locationid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="LOCATIONID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Supplierid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="SUPPLIERID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Lcno"
+    Precision="20"
+    ColumnName="LCNO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Packtypeid"
+    Precision="15"
+    ColumnName="PACKTYPEID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Currcode"
+    IsNotNull="true"
+    Precision="3"
+    ColumnName="CURRCODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES"
+    DefaultValue="PKR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Departingportid"
+    Precision="15"
+    ColumnName="DEPARTINGPORTID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Arrivingportid"
+    Precision="15"
+    ColumnName="ARRIVINGPORTID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Deliverytermid"
+    Precision="15"
+    ColumnName="DELIVERYTERMID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Paymenttermid"
+    Precision="15"
+    ColumnName="PAYMENTTERMID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="DocTypeId"
+    IsNotNull="true"
+    Precision="5"
+    ColumnName="DOC_TYPE_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES"
+    DefaultValue="SINV">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ExchangeRate"
+    ColumnName="EXCHANGE_RATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="PU_SUPPLIER_INVOICES">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="SuppRefno"
+    IsUnique="true"
+    Precision="20"
+    ColumnName="SUPP_REFNO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.PuSupplierInvoices.SuppRefno_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="SuppRefDate"
+    ColumnName="SUPP_REF_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PU_SUPPLIER_INVOICES">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ArrivDate"
+    ColumnName="ARRIV_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PU_SUPPLIER_INVOICES"/>
+  <Attribute
+    Name="NetWeight"
+    ColumnName="NET_WEIGHT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="PU_SUPPLIER_INVOICES">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.PuSupplierInvoices.NetWeight_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="GrossWeight"
+    ColumnName="GROSS_WEIGHT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="PU_SUPPLIER_INVOICES">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.PuSupplierInvoices.GrossWeight_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="TotalPackages"
+    ColumnName="TOTAL_PACKAGES"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="PU_SUPPLIER_INVOICES">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="BlNo"
+    Precision="20"
+    ColumnName="BL_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BlDate"
+    ColumnName="BL_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PU_SUPPLIER_INVOICES"/>
+  <Attribute
+    Name="OriginCountry"
+    Precision="20"
+    ColumnName="ORIGIN_COUNTRY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ImpBase"
+    Precision="15"
+    ColumnName="IMP_BASE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="VesselAircraft"
+    Precision="20"
+    ColumnName="VESSEL_AIRCRAFT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="BankRefno"
+    Precision="20"
+    ColumnName="BANK_REFNO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Modeofshipment"
+    Precision="10"
+    ColumnName="MODEOFSHIPMENT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="InvoiceType"
+    Precision="5"
+    ColumnName="INVOICE_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES"
+    DefaultValue="L">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="InvoiceDate"
+    ColumnName="INVOICE_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PU_SUPPLIER_INVOICES">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <validation:ValidationBean
+      Name="DocumentDateEntryRights"
+      ResId="dgcom.model.eo.srv.SrvJobcard.Jobdate_Rule_0"
+      OnAttribute="InvoiceDate"
+      Version="2"
+      OperandType="LITERAL"
+      Inverse="false"
+      DisplayName="RulCheckDateRights"
+      ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+      <validation:OnCondition><![CDATA[newValue!=null]]></validation:OnCondition>
+    </validation:ValidationBean>
+  </Attribute>
+  <Attribute
+    Name="Detlseq"
+    IsNotNull="true"
+    ColumnName="DETLSEQ"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="PU_SUPPLIER_INVOICES"
+    DefaultValue="1">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Posted"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="POSTED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES"
+    DefaultValue="N">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.PuSupplierInvoices.Posted_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Postedby"
+    Precision="20"
+    ColumnName="POSTEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PU_SUPPLIER_INVOICES"/>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PU_SUPPLIER_INVOICES"/>
+  <Attribute
+    Name="TaxFg"
+    Precision="1"
+    ColumnName="TAX_FG"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="StTaxCodeLocal"
+    ColumnName="ST_TAX_CODE_LOCAL"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="PU_SUPPLIER_INVOICES">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="TaxCode"
+    ColumnName="TAX_CODE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="PU_SUPPLIER_INVOICES">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="SpNarr"
+    Precision="100"
+    ColumnName="SP_NARR"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="PostGl"
+    Precision="1"
+    ColumnName="POST_GL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ApPosted"
+    Precision="1"
+    ColumnName="AP_POSTED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Rnoteno"
+    Precision="15"
+    ColumnName="RNOTENO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.PuSupplierInvoices.Rnoteno_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="StPer"
+    ColumnName="ST_PER"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="PU_SUPPLIER_INVOICES">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Remarks"
+    Precision="300"
+    ColumnName="REMARKS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="300"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="PoFor"
+    Precision="1"
+    ColumnName="PO_FOR"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES"
+    DefaultValue="P">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="IsMigrated"
+    Precision="1"
+    ColumnName="IS_MIGRATED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PU_SUPPLIER_INVOICES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="MigratedDate"
+    ColumnName="MIGRATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PU_SUPPLIER_INVOICES"/>
+  <Attribute
+    Name="txtPoid"
+    Precision="80"
+    ColumnName="TXT_POID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[SrvGrn?.Poid]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="Rnoteno"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.PuSupplierInvoices.txtPoid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <AccessorAttribute
+    Name="PuSuppInvPiLinks"
+    Association="dgcom.model.asso.srv.SysC0014904Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0014904Assoc.PuSuppInvPiLinks"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0014904Assoc.PuSupplierInvoices"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvGrn"
+    Association="dgcom.model.asso.srv.SrvGrnPuSupplierInvoicePOIDAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvGrnPuSupplierInvoicePOIDAsso.SrvGrn"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvGrnPuSupplierInvoicePOIDAsso.PuSupplierInvoices"
+    Type="dgcom.model.eo.srv.SrvGrnImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC0014291"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0014291"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.PuSupplierInvoices.Suppinvoiceid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014292">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014292"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.PuSupplierInvoices.SuppRefno"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014890">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014171"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014890"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.PuSupplierInvoices.Lcno"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014891">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKPU_PACKING_TYPES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014891"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.PuSupplierInvoices.Packtypeid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014892">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKPU_PORTS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014892"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.PuSupplierInvoices.Departingportid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014893">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKPU_PORTS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014893"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.PuSupplierInvoices.Arrivingportid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014894">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKPU_SUPPLIERS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014894"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.PuSupplierInvoices.Supplierid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014895">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKDOCUMENT_TYPES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014895"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.PuSupplierInvoices.DocTypeId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014896">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_LOCATIONS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014896"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.PuSupplierInvoices.Locationid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014897">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_PAYMENT_TERMS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014897"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.PuSupplierInvoices.Paymenttermid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014898">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_CURRENCIES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014898"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.PuSupplierInvoices.Currcode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014899">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_DELIVERY_TERMS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014899"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.PuSupplierInvoices.Deliverytermid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_PuSupplierInvoices">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014191"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_PU_SUPPLIER_INVOICES"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.PuSupplierInvoices.Rnoteno"/>
+    </AttrArray>
+  </Key>
+  <validation:ValidationBean
+    Name="BRCheckDocDateForSubmit"
+    ResId="dgcom.model.eo.srv.SrvDap_Rule_0"
+    OnAttribute="PuSupplierInvoices"
+    Version="2"
+    OperandType="LITERAL"
+    Inverse="false"
+    DisplayName="RulCheckDateRights"
+    ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="Posted"/>
+    </validation:OnAttributes>
+    <validation:OnCondition><![CDATA[Posted=='Y']]></validation:OnCondition>
+  </validation:ValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

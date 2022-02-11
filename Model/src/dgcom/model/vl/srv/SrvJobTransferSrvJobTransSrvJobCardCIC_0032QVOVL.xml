@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobTransferSrvJobTransSrvJobCardCIC_0032QVOVL"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.vl.srv.SrvJobTransferSrvJobTransSrvJobCardCIC_0032QVOVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="SrvJobTransferSrvJobCardNoCIC_0032QVO"
+    Cardinality="1"
+    Source="true"
+    Owner="dgcom.model.qvo.srv.SrvJobTransferSrvJobCardNoCIC_0032QVO">
+    <DesignTime>
+      <Attr Name="_accessor" Value="true"/>
+      <Attr Name="_finderName" Value="SrvJobTransferSrvJobCardNoCIC_0032QVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.qvo.srv.SrvJobTransferSrvJobCardNoCIC_0032QVO.Jobcardno"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="SrvJobtransferdetlVO"
+    Cardinality="-1"
+    Owner="dgcom.model.vo.srv.SrvJobtransferdetlVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SrvJobtransferdetlVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.SrvJobtransferdetlVO.Jobcardno"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

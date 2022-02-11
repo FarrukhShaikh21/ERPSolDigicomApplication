@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvCourierdeli"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SRV_COURIERDELI"
+  AliasName="SrvCourierdeli"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.eo.srv.SrvCourierdeliImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+  </DesignTime>
+  <Attribute
+    Name="Cdid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="CDID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_COURIERDELI"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvCourierdeli.Cdid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Locationid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="LOCATIONID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_COURIERDELI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvCourierdeli.Locationid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Cddate"
+    IsNotNull="true"
+    ColumnName="CDDATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_COURIERDELI">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvCourierdeli.Cddate_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <validation:ValidationBean
+      Name="DocumentDateEntryRights"
+      ResId="dgcom.model.eo.srv.SrvJobcard.Jobdate_Rule_0"
+      OnAttribute="Cddate"
+      Version="2"
+      OperandType="LITERAL"
+      Inverse="false"
+      DisplayName="RulCheckDateRights"
+      ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+      <validation:OnCondition><![CDATA[newValue!=null]]></validation:OnCondition>
+    </validation:ValidationBean>
+  </Attribute>
+  <Attribute
+    Name="Remarks"
+    Precision="100"
+    ColumnName="REMARKS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_COURIERDELI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Posted"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="POSTED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_COURIERDELI"
+    DefaultValue="N">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvCourierdeli.Posted_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Postedby"
+    Precision="50"
+    ColumnName="POSTEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_COURIERDELI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_COURIERDELI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_COURIERDELI"/>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_COURIERDELI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_COURIERDELI"/>
+  <Attribute
+    Name="DealerId"
+    Precision="15"
+    ColumnName="DEALER_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_COURIERDELI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvCourierdeli.DealerId_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="txtDealerName"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="IsMigrated"
+    Precision="1"
+    ColumnName="IS_MIGRATED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_COURIERDELI">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="MigratedDate"
+    ColumnName="MIGRATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_COURIERDELI"/>
+  <Attribute
+    Name="txtDealerName"
+    Precision="80"
+    ColumnName="TXT_DEALER_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <TransientExpression><![CDATA[SrvDealers?.Name]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvCourierdeli.txtDealerName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="Locationid"/>
+    </Dependencies>
+  </Attribute>
+  <AccessorAttribute
+    Name="SrvCddetail"
+    Association="dgcom.model.asso.srv.SysC0015085Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0015085Assoc.SrvCddetail"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0015085Assoc.SrvCourierdeli"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvDealers"
+    Association="dgcom.model.asso.srv.SrvDealerSrvCourierDelDealerIDAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvDealerSrvCourierDelDealerIDAsso.SrvDealers"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvDealerSrvCourierDelDealerIDAsso.SrvCourierdeli"
+    Type="dgcom.model.eo.srv.SrvDealersImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC0013979"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0013979"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvCourierdeli.Cdid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015088">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0013980"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015088"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvCourierdeli.DealerId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015089">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_LOCATIONS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015089"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvCourierdeli.Locationid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvCourierdeli">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0013980"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_COURIERDELI"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvCourierdeli.DealerId"/>
+    </AttrArray>
+  </Key>
+  <validation:ValidationBean
+    Name="BRCheckDocDateForSubmit"
+    ResId="dgcom.model.eo.srv.SrvDap_Rule_0"
+    OnAttribute="SrvCourierdeli"
+    Version="2"
+    OperandType="LITERAL"
+    Inverse="false"
+    DisplayName="RulCheckDateRights"
+    ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+    <validation:OnCondition><![CDATA[Posted=='Y']]></validation:OnCondition>
+  </validation:ValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvIssuedetailVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvIssuedetail.ISSUEDETLID, 
+       SrvIssuedetail.ISSUE_ID, 
+       SrvIssuedetail.STOREID, 
+       SrvIssuedetail.PARTID, 
+       SrvIssuedetail.REASONID, 
+       SrvIssuedetail.QTY, 
+       SrvIssuedetail.REJECT_QTY, 
+       SrvIssuedetail.PDQTY, 
+       SrvIssuedetail.RETQTY, 
+       SrvIssuedetail.RETREJECTQTY, 
+       SrvIssuedetail.RATE, 
+       SrvIssuedetail.SYSTEMRATE, 
+       SrvIssuedetail.CREATEDBY, 
+       SrvIssuedetail.CREATED_DATE, 
+       SrvIssuedetail.MODIFIEDBY, 
+       SrvIssuedetail.MODIFIED_DATE, 
+       SrvIssuedetail.RB_REJQTY, 
+       SrvIssuedetail.PURCHRATE, 
+       InParts.PARTNO, 
+       InParts.PARTID AS PARTID1, 
+       InParts.DESCRIPTION"
+  FromList="SRV_ISSUEDETAIL SrvIssuedetail, IN_PARTS InParts"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="dgcom.model.vo.srv.SrvIssuedetailVORowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvIssuedetailVOImpl"
+  PageIterMode="Full"
+  Where="SrvIssuedetail.PARTID = InParts.PARTID"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvIssuedetailVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvIssuedetailVOClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="P_ADF_JOBCARDNO"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="AccIssuanceJobSwapCIC_0013"
+    ViewObjectName="dgcom.model.qvo.srv.SrvIssuanceJobSwapCIC_0013QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_JOBCARDNO">
+        <TransientExpression><![CDATA[SrvIssuanceVO?.Jobcardno==null?"-1":SrvIssuanceVO?.Jobcardno]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[SrvIssuanceVO?.Locationid==null?"-1":SrvIssuanceVO?.Locationid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSrvReasonsReasonId"
+    ViewObjectName="dgcom.model.vo.srv.SrvReasonsVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvReasonsRtypeVC"
+      FullName="dgcom.model.vo.srv.SrvReasonsVO.SrvReasonsRtypeVC"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSysUserStore"
+    ViewObjectName="dgcom.model.vo.sys.SysUserStoreVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SysUserStoreUserLocationWiseStoreVC"
+      FullName="dgcom.model.vo.sys.SysUserStoreVO.SysUserStoreUserLocationWiseStoreVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[SrvIssuanceVO?.Locationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_USERID">
+        <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.getConnectedUser()]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSrvIssueDetailProdIdCIC_0013PartName"
+    ViewObjectName="dgcom.model.qvo.srv.SrvIssueDetailProdIdCIC_0013"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_APPROVED_PART">
+        <TransientExpression><![CDATA[SrvIssuanceVO?.txtApprovedPart]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_ISSUEDETLID">
+        <TransientExpression><![CDATA[Issuedetlid==null?"-1":Issuedetlid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_ITEMID">
+        <TransientExpression><![CDATA[SrvIssuanceVO?.txtItemId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_JOBDATE">
+        <TransientExpression><![CDATA[SrvIssuanceVO?.txtJobDate]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[SrvIssuanceVO?.Locationid==null?"-1":SrvIssuanceVO?.Locationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_PROD_ID">
+        <TransientExpression><![CDATA[SrvIssuanceVO?.txtProdId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovSrvReasonsReasonId"
+    ListVOName="AccSrvReasonsReasonId"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Reasonid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Reasonid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSysUserStore"
+    ListVOName="AccSysUserStore"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="StoreName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SysUserStoreUserLocationWiseStoreVC"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSrvIssueDetailProdCIC_0013PartName"
+    ListVOName="AccSrvIssueDetailProdIdCIC_0013PartName"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0"
+    ComboRowCountHint="10">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtPartName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Partid"/>
+      <Item Value="Systemrate"/>
+      <Item Value="Rate"/>
+      <Item Value="Qty"/>
+      <Item Value="RejectQty"/>
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Description"/>
+      <Item Value="Partid"/>
+      <Item Value="Price"/>
+      <Item Value="Price"/>
+      <Item Value="DefaultQty"/>
+      <Item Value="DefaultQty"/>
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+      <Item Value="Partno"/>
+      <Item Value="Category"/>
+      <Item Value="StoreName"/>
+      <Item Value="Stock"/>
+      <Item Value="Price"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvIssuedetail"
+    Entity="dgcom.model.eo.srv.SrvIssuedetail"/>
+  <EntityUsage
+    Name="InParts"
+    Entity="dgcom.model.eo.srv.InParts"
+    Association="dgcom.model.asso.srv.InPartsSrvIssuancDetailPartIDAsso"
+    AssociationEnd="dgcom.model.asso.srv.InPartsSrvIssuancDetailPartIDAsso.InParts"
+    SourceUsage="dgcom.model.vo.srv.SrvIssuedetailVO.SrvIssuedetail"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="dgcom.model.eo.srv.SrvIssuedetail.Partid"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="dgcom.model.eo.srv.InParts.Partid"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="Issuedetlid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Issuedetlid"
+    EntityUsage="SrvIssuedetail"
+    AliasName="ISSUEDETLID"/>
+  <ViewAttribute
+    Name="IssueId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="IssueId"
+    EntityUsage="SrvIssuedetail"
+    AliasName="ISSUE_ID"/>
+  <ViewAttribute
+    Name="Storeid"
+    IsUnique="true"
+    PrecisionRule="true"
+    EntityAttrName="Storeid"
+    EntityUsage="SrvIssuedetail"
+    AliasName="STOREID"
+    LOVName="LovSysUserStore">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Partid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Partid"
+    EntityUsage="SrvIssuedetail"
+    AliasName="PARTID"/>
+  <ViewAttribute
+    Name="Reasonid"
+    PrecisionRule="true"
+    EntityAttrName="Reasonid"
+    EntityUsage="SrvIssuedetail"
+    AliasName="REASONID"
+    LOVName="LovSrvReasonsReasonId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Qty"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Qty"
+    EntityUsage="SrvIssuedetail"
+    AliasName="QTY"/>
+  <ViewAttribute
+    Name="RejectQty"
+    PrecisionRule="true"
+    EntityAttrName="RejectQty"
+    EntityUsage="SrvIssuedetail"
+    AliasName="REJECT_QTY"/>
+  <ViewAttribute
+    Name="Pdqty"
+    PrecisionRule="true"
+    EntityAttrName="Pdqty"
+    EntityUsage="SrvIssuedetail"
+    AliasName="PDQTY"/>
+  <ViewAttribute
+    Name="Retqty"
+    PrecisionRule="true"
+    EntityAttrName="Retqty"
+    EntityUsage="SrvIssuedetail"
+    AliasName="RETQTY"/>
+  <ViewAttribute
+    Name="Retrejectqty"
+    PrecisionRule="true"
+    EntityAttrName="Retrejectqty"
+    EntityUsage="SrvIssuedetail"
+    AliasName="RETREJECTQTY"/>
+  <ViewAttribute
+    Name="Rate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Rate"
+    EntityUsage="SrvIssuedetail"
+    AliasName="RATE"/>
+  <ViewAttribute
+    Name="Systemrate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Systemrate"
+    EntityUsage="SrvIssuedetail"
+    AliasName="SYSTEMRATE"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvIssuedetail"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvIssuedetail"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvIssuedetail"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvIssuedetail"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="RbRejqty"
+    PrecisionRule="true"
+    EntityAttrName="RbRejqty"
+    EntityUsage="SrvIssuedetail"
+    AliasName="RB_REJQTY"/>
+  <ViewAttribute
+    Name="Purchrate"
+    PrecisionRule="true"
+    EntityAttrName="Purchrate"
+    EntityUsage="SrvIssuedetail"
+    AliasName="PURCHRATE"/>
+  <ViewAttribute
+    Name="Partno"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Partno"
+    EntityUsage="InParts"
+    AliasName="PARTNO">
+    <Dependencies>
+      <Item
+        Value="Partid"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="MastPartid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Partid"
+    EntityUsage="InParts"
+    AliasName="PARTID1"/>
+  <ViewAttribute
+    Name="Description"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="InParts"
+    AliasName="DESCRIPTION">
+    <Dependencies>
+      <Item
+        Value="Partid"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="txtAmount"
+    PrecisionRule="true"
+    EntityAttrName="txtAmount"
+    EntityUsage="SrvIssuedetail"
+    AliasName="TXT_AMOUNT"
+    IsQueriable="false"
+    IsPersistent="false"/>
+  <ViewAttribute
+    Name="txtPartName"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtPartName"
+    EntityUsage="SrvIssuedetail"
+    AliasName="TXT_PART_NAME"
+    LOVName="LovSrvIssueDetailProdCIC_0013PartName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="SrvIssuedetailSumPDQTYByJobcardVC"
+    ViewObjectName="dgcom.model.vo.srv.SrvIssuedetailVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SrvIssuedetailVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="SrvIssuanceVO"
+        ViewAttribute="SrvIssuanceVO"
+        Operator="EXISTS"
+        Conjunction="AND"
+        IsNestedCriteria="true"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <ViewCriteria
+          Name="SrvIssuanceVONestedCriteria"
+          ViewObjectName="dgcom.model.vo.srv.SrvIssuanceVO"
+          Conjunction="AND">
+          <ViewCriteriaRow
+            Name="SrvIssuanceVONestedCriteria_row_0"
+            UpperColumns="1">
+            <ViewCriteriaItem
+              Name="Jobcardno"
+              ViewAttribute="Jobcardno"
+              Operator="="
+              Conjunction="AND"
+              Value=":P_ADF_JOBCARDNO"
+              GenerateIsNullClauseForBindVars="false"
+              IsBindVarValue="true"
+              Required="Optional"/>
+          </ViewCriteriaRow>
+        </ViewCriteria>
+      </ViewCriteriaItem>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Issuedetlid"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="SrvIssuanceVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015123Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doCreateNewIssueDetDetRow"
+      MethodName="doCreateNewIssueDetDetRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

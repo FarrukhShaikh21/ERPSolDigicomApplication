@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="RPstoreLink"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  EntityAssociation="dgcom.model.asso.set.RPstoreAssoc">
+  <ViewLinkDefEnd
+    Name="ParentStoreAllStoresVO"
+    Cardinality="1"
+    Source="true"
+    Owner="dgcom.model.vo.set.AllStoresVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="ParentStoreAllStoresVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.set.AllStoresVO.Storeid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="AllStoresVO"
+    Cardinality="-1"
+    Owner="dgcom.model.vo.set.AllStoresVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="AllStoresVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.set.AllStoresVO.ParentStore"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

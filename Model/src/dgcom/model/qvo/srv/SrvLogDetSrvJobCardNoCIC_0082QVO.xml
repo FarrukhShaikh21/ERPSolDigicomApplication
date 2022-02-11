@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvLogDetSrvJobCardNoCIC_0082QVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  RowClass="dgcom.model.qvo.srv.SrvLogDetSrvJobCardNoCIC_0082QVORowImpl"
+  RowInterface="dgcom.model.qvo.srv.common.SrvLogDetSrvJobCardNoCIC_0082QVORow"
+  ClientRowProxyName="dgcom.model.qvo.srv.client.SrvLogDetSrvJobCardNoCIC_0082QVORowClient"
+  ComponentClass="dgcom.model.qvo.srv.SrvLogDetSrvJobCardNoCIC_0082QVOImpl"
+  ComponentInterface="dgcom.model.qvo.srv.common.SrvLogDetSrvJobCardNoCIC_0082QVO"
+  ClientProxyName="dgcom.model.qvo.srv.client.SrvLogDetSrvJobCardNoCIC_0082QVOClient">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.SrvLogDetSrvJobCardNoCIC_0082QVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_DOCTYPEID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_DOCID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_TRANSFER_TYPE"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_RET_TYPE"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_LOGID"
+    Kind="viewcriteria"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_MODULE_ID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[SELECT Doc.JOBCARDNO,Doc.IMEI_NO ,               
+substr(JOBCARDNO,0,0)||b.BRAND_NAME||' ,'||i.description Models ,jobdate ,doc.DOCID             
+FROM so_product_brands b, in_items i,                 
+     (select t.TRANSFERID docid,j.brandid, j.ItemId, t.jobcardno,J.Imei_No  ,j.jobdate              
+      from SRV_JOBTRANSFERDETL t, srv_jobcard j                
+      where t.jobcardno = j.jobcardno                 
+        and ( (j.JobStatus ='TLG' AND :P_ADF_MODULE_ID='CIC-0082') OR  (j.JobStatus IN('TIP','TDP') AND :P_ADF_MODULE_ID='CIC-0194'))               
+        and j.prev_doctype = :P_ADF_TRANSFER_TYPE              
+        and j.TECHNICIANID is null and j.posted = 'Y'                
+        and transferid = j.prev_docid                 
+        and :P_ADF_DOCTYPEID = 'JT'                 
+        and transferid = :P_ADF_DOCID                
+                        
+      UNION ALL                
+                      
+      select r.JOBRETID,j.brandid, j.ItemId, j.jobcardno,J.Imei_No   ,j.jobdate             
+      from SRV_JOBRETDETL r, srv_jobcard j                
+      where r.jobcardno = j.jobcardno                 
+      and ((j.JobStatus = 'RLG'  AND :P_ADF_MODULE_ID='CIC-0082') OR  (j.JobStatus IN('RDP','RCP') AND :P_ADF_MODULE_ID='CIC-0194'))  
+        and j.prev_doctype = :P_ADF_RET_TYPE                
+  and j.TECHNICIANID is null and j.posted = 'Y'                
+  and jobretid = j.prev_docid                
+  and :P_ADF_DOCTYPEID = 'JR'                 
+  and jobretid = :P_ADF_DOCID                
+  ) doc                
+where Doc.brandid = b.Pbrandid                 
+  and Doc.ItemId = i.ItemId                
+  and (Doc.jobcardno NOT IN (SELECT d.jobcardno FROM SRV_LOGISTIC m, SRV_LOGDETL d                 
+                             WHERE m.logid = d.logid AND m.posted = 'N'))                
+order by to_number(substr(Doc.jobcardno,-8))]]></SQLQuery>
+  <ViewAttribute
+    Name="Jobcardno"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="JOBCARDNO"
+    Expression="JOBCARDNO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvLogDetSrvJobCardNoCIC_0082QVO.Jobcardno_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ImeiNo"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="IMEI_NO"
+    Expression="IMEI_NO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvLogDetSrvJobCardNoCIC_0082QVO.ImeiNo_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Models"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="MODELS"
+    Expression="MODELS"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Jobdate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="JOBDATE"
+    Expression="JOBDATE"
+    SQLType="DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvLogDetSrvJobCardNoCIC_0082QVO.Jobdate_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Docid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DOCID"
+    Expression="DOCID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="SrvLogDetSrvJobCardNoNotExistsInCurrentDocVC"
+    ViewObjectName="dgcom.model.qvo.srv.SrvLogDetSrvJobCardNoCIC_0082QVO"
+    Conjunction="AND"
+    Mode="2">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SrvLogDetSrvJobCardNoCIC_0082QVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Jobcardno"
+        ViewAttribute="Jobcardno"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="SrvLogdetlVO"
+        ViewAttribute="SrvLogdetlVO"
+        Operator="NOT EXISTS"
+        Conjunction="AND"
+        IsNestedCriteria="true"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <ViewCriteria
+          Name="SrvLogdetlVONestedCriteria"
+          ViewObjectName="dgcom.model.vo.srv.SrvLogdetlVO"
+          Conjunction="AND">
+          <ViewCriteriaRow
+            Name="SrvLogdetlVONestedCriteria_row_0"
+            UpperColumns="1">
+            <ViewCriteriaItem
+              Name="Logid"
+              ViewAttribute="Logid"
+              Operator="="
+              Conjunction="AND"
+              Value=":P_ADF_LOGID"
+              UpperColumns="0"
+              GenerateIsNullClauseForBindVars="false"
+              IsBindVarValue="true"
+              Required="Optional"/>
+          </ViewCriteriaRow>
+        </ViewCriteria>
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="renderedMode"
+              Value="Never"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Jobcardno"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="SrvLogdetlVO"
+    ViewLink="dgcom.model.vl.srv.SrvLogisticSrvLogDetJobCardNoCIC_0082QVOVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SrvLogisticVO"
+    ViewLink="dgcom.model.vl.srv.SrvLogisticSrvLogDetSrvJobCardNoCIC_0082VL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doSelectAllDocument"
+      MethodName="doSelectAllDocument">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+  <ClientRowInterface
+    Name="__rowClientInterface">
+    <Method
+      Name="doSelectDocument"
+      MethodName="doSelectDocument">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientRowInterface>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

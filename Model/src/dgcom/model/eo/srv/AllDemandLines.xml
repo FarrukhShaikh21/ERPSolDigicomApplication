@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AllDemandLines"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="ALL_DEMAND_LINES"
+  AliasName="AllDemandLines"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.eo.srv.AllDemandLinesImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvAllDemandLinesDemandQuantityChecking"
+    ViewObjectName="dgcom.model.qvo.srv.SrvAllDemandLinesDemandQuantityCheckingCIC_0021QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_DEMAND_DATE">
+        <TransientExpression><![CDATA[AllDemandNote?.DemandDate]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_DEMAND_QTY">
+        <TransientExpression><![CDATA[DemandQty==null?"0":DemandQty]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_DMDITEMID">
+        <TransientExpression><![CDATA[Dmditemid==null?"-1":Dmditemid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[AllDemandNote?.Locationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_PARTID">
+        <TransientExpression><![CDATA[Partid==null?"-1":Partid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <Attribute
+    Name="Dmditemid"
+    IsNotNull="true"
+    Precision="25"
+    ColumnName="DMDITEMID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ALL_DEMAND_LINES"
+    PrimaryKey="true"
+    RetrievedOnInsert="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DemandId"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="DEMAND_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ALL_DEMAND_LINES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Itemid"
+    Precision="15"
+    ColumnName="ITEMID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ALL_DEMAND_LINES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="OrderQty"
+    ColumnName="ORDER_QTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="ALL_DEMAND_LINES"/>
+  <Attribute
+    Name="GrinQty"
+    ColumnName="GRIN_QTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="ALL_DEMAND_LINES"/>
+  <Attribute
+    Name="IssuedQty"
+    ColumnName="ISSUED_QTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="ALL_DEMAND_LINES"/>
+  <Attribute
+    Name="CancelQty"
+    ColumnName="CANCEL_QTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="ALL_DEMAND_LINES"/>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ALL_DEMAND_LINES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="ALL_DEMAND_LINES"/>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ALL_DEMAND_LINES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="ALL_DEMAND_LINES"/>
+  <Attribute
+    Name="Partid"
+    IsUnique="true"
+    Precision="15"
+    ColumnName="PARTID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ALL_DEMAND_LINES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.AllDemandLines.Partid_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="DemandQty"
+    Precision="20"
+    Scale="6"
+    ColumnName="DEMAND_QTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="ALL_DEMAND_LINES"/>
+  <Attribute
+    Name="UsedQty"
+    ColumnName="USED_QTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="ALL_DEMAND_LINES"/>
+  <Attribute
+    Name="txtPartNo"
+    Precision="80"
+    ColumnName="TXT_PART_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <TransientExpression><![CDATA[InParts?.Partno]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.AllDemandLines.txtPartNo_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="Partid"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="txtPartName"
+    Precision="80"
+    ColumnName="TXT_PART_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <TransientExpression><![CDATA[if(Partid != null)
+return InItems?.ModelNo+":"+InParts?.Description;
+else
+return null;]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="40"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.AllDemandLines.txtPartName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="Partid"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="txtModelNo"
+    Precision="80"
+    ColumnName="TXT_MODEL_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[if(Itemid!=null)
+return InItems?.ModelNo;
+else
+return null;]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="Itemid"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.AllDemandLines.txtModelNo_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <AccessorAttribute
+    Name="AllDemandNote"
+    Association="dgcom.model.asso.srv.SysC0014612Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0014612Assoc.AllDemandNote"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0014612Assoc.AllDemandLines"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="InParts"
+    Association="dgcom.model.asso.srv.SysC0014611Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0014611Assoc.InParts"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0014611Assoc.AllDemandLines"
+    Type="dgcom.model.eo.srv.InPartsImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="InItems"
+    Association="dgcom.model.asso.srv.SysC0014613Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0014613Assoc.InItems"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0014613Assoc.AllDemandLines"
+    Type="dgcom.model.eo.inv.InItemsImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="SrvStnparts"
+    Association="dgcom.model.asso.srv.SrvAllDemandItemSrvStnPartDemandItemIDAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvAllDemandItemSrvStnPartDemandItemIDAsso.SrvStnparts"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvAllDemandItemSrvStnPartDemandItemIDAsso.AllDemandLines"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="AltKeyDemandItemPart"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="ALL_DEMAND_LINES"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.AllDemandLines.Itemid"/>
+      <Item Value="dgcom.model.eo.srv.AllDemandLines.DemandId"/>
+      <Item Value="dgcom.model.eo.srv.AllDemandLines.Partid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014455"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0014455"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.AllDemandLines.Dmditemid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014456">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014456"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.AllDemandLines.DemandId"/>
+      <Item Value="dgcom.model.eo.srv.AllDemandLines.Itemid"/>
+      <Item Value="dgcom.model.eo.srv.AllDemandLines.Partid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014611">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014331"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014611"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.AllDemandLines.Partid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014612">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014457"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014612"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.AllDemandLines.DemandId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014613">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKIN_ITEMS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014613"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.AllDemandLines.Itemid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_AllDemandLines">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKIN_ITEMS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_ALL_DEMAND_LINES"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.AllDemandLines.Itemid"/>
+    </AttrArray>
+  </Key>
+  <validation:ExpressionValidationBean
+    Name="DemandQuantityCheckingBR"
+    OperandType="EXPR"
+    Inverse="false">
+    <validation:OnCondition><![CDATA[DemandQty!=null]]></validation:OnCondition>
+    <validation:MsgIds>
+      <validation:Item
+        Value="errorIDAllDmndDemandQty"/>
+    </validation:MsgIds>
+    <validation:ResExpressions>
+      <validation:Expression
+        Name="0"><![CDATA[AccSrvAllDemandLinesDemandQuantityChecking.first().getAttribute("DemandMessage")]]></validation:Expression>
+    </validation:ResExpressions>
+    <validation:TransientExpression><![CDATA[AccSrvAllDemandLinesDemandQuantityChecking?.executeQuery();
+
+if(AccSrvAllDemandLinesDemandQuantityChecking.first().getAttribute("DemandMessage").equals("0"))
+return true;
+else
+return false;]]></validation:TransientExpression>
+  </validation:ExpressionValidationBean>
+  <validation:UniqueKeyValidationBean
+    Name="AllDemandDetPartExists"
+    ResId="dgcom.model.eo.srv.AllDemandLines_Rule_1"
+    KeyName="AltKeyDemandItemPart">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="Itemid"/>
+      <validation:Item
+        Value="DemandId"/>
+      <validation:Item
+        Value="Partid"/>
+    </validation:OnAttributes>
+    <validation:OnCondition><![CDATA[Partid!=null]]></validation:OnCondition>
+    <validation:ResExpressions>
+      <validation:Expression
+        Name="0"><![CDATA[txtPartName]]></validation:Expression>
+    </validation:ResExpressions>
+  </validation:UniqueKeyValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

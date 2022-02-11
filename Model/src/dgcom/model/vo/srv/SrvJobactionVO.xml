@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobactionVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvJobaction.JSOLUTION_ID, 
+       SrvJobaction.ACTION_ID, 
+       SrvJobaction.CREATEDBY, 
+       SrvJobaction.CREATED_DATE, 
+       SrvJobaction.MODIFIEDBY, 
+       SrvJobaction.MODIFIED_DATE, 
+       SrvJobaction.ROWID, 
+       SrvJobsolution.JOBCARDNO, 
+       SrvJobsolution.JSOLUTION_ID AS JSOLUTION_ID1"
+  FromList="SRV_JOBACTION SrvJobaction, SRV_JOBSOLUTION SrvJobsolution"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvJobactionVORowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvJobactionVOImpl"
+  Where="SrvJobaction.JSOLUTION_ID = SrvJobsolution.JSOLUTION_ID"
+  OrderBy="SrvJobaction.ACTION_ID"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvJobactionVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvJobactionVOClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvAction"
+    ViewObjectName="dgcom.model.vo.srv.SrvActionVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvActionByProdIdVC"
+      FullName="dgcom.model.vo.srv.SrvActionVO.SrvActionByProdIdVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_PROD_ID">
+        <TransientExpression><![CDATA[SrvJobsolutionVO?.txtProdId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSrvActionActionId"
+    ViewObjectName="dgcom.model.vo.srv.SrvActionVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvActionByProdIdVC"
+      FullName="dgcom.model.vo.srv.SrvActionVO.SrvActionByProdIdVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_PROD_ID">
+        <TransientExpression><![CDATA[SrvJobsolutionVO?.txtProdId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovAccSrvActionName"
+    ListVOName="AccSrvAction"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtActionName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="ActionId"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Description"/>
+      <Item Value="ActionId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SrvActionByProdIdVC"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSrvActionId"
+    ListVOName="AccSrvActionActionId"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0"
+    ComboRowCountHint="10">
+    <AttrArray Name="AttrNames">
+      <Item Value="ActionId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ActionId"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvJobaction"
+    Entity="dgcom.model.eo.srv.SrvJobaction"/>
+  <EntityUsage
+    Name="SrvJobsolution"
+    Entity="dgcom.model.eo.srv.SrvJobsolution"
+    Association="dgcom.model.asso.srv.SysC0015132Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0015132Assoc.SrvJobsolution"
+    SourceUsage="dgcom.model.vo.srv.SrvJobactionVO.SrvJobaction"
+    ReadOnly="true"
+    Reference="true"
+    DeleteParticipant="false"
+    JoinType="INNER JOIN">
+    <DesignTime>
+      <AttrArray Name="_srcAttributes">
+        <Item Value="dgcom.model.eo.srv.SrvJobaction.JsolutionId"/>
+      </AttrArray>
+      <AttrArray Name="_dstAttributes">
+        <Item Value="dgcom.model.eo.srv.SrvJobsolution.JsolutionId"/>
+        <Item Value="dgcom.model.eo.srv.SrvJobsolution.JsolutionId"/>
+      </AttrArray>
+    </DesignTime>
+  </EntityUsage>
+  <ViewAttribute
+    Name="JsolutionId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="JsolutionId"
+    EntityUsage="SrvJobaction"
+    AliasName="JSOLUTION_ID"/>
+  <ViewAttribute
+    Name="ActionId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ActionId"
+    EntityUsage="SrvJobaction"
+    AliasName="ACTION_ID"
+    LOVName="LovSrvActionId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvJobaction"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvJobaction"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvJobaction"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvJobaction"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="SrvJobaction"
+    AliasName="ROWID"/>
+  <ViewAttribute
+    Name="Jobcardno"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobcardno"
+    EntityUsage="SrvJobsolution"
+    AliasName="JOBCARDNO"/>
+  <ViewAttribute
+    Name="MastJsolutionId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="JsolutionId"
+    EntityUsage="SrvJobsolution"
+    AliasName="JSOLUTION_ID1"/>
+  <ViewAttribute
+    Name="txtActionName"
+    PrecisionRule="true"
+    EntityAttrName="txtActionName"
+    EntityUsage="SrvJobaction"
+    AliasName="TXT_ACTION_NAME"
+    LOVName="LovAccSrvActionName"
+    IsQueriable="false"
+    IsPersistent="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Rowid"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="SrvJobsolutionVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015132Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SrvJobqcVO"
+    ViewLink="dgcom.model.vl.srv.SrvJobQcSrvJobActionJobCardNoVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doCreateNewJobActionRow"
+      MethodName="doCreateNewJobActionRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

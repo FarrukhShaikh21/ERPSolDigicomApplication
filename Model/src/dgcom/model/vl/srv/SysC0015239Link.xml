@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SysC0015239Link"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  EntityAssociation="dgcom.model.asso.srv.SysC0015239Assoc">
+  <ViewLinkDefEnd
+    Name="SysUsersVO"
+    Cardinality="1"
+    Source="true"
+    Owner="dgcom.model.vo.srv.SysUsersVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SysUsersVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.SysUsersVO.Userid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="SysUsersDetailVO"
+    Cardinality="-1"
+    Owner="dgcom.model.vo.srv.SysUsersDetailVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SysUsersDetailVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.SysUsersDetailVO.Userid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

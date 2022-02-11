@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvLogdetlVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvLogdetl.JOBCARDNO, 
+       SrvLogdetl.LOGID, 
+       SrvLogdetl.CREATEDBY, 
+       SrvLogdetl.CREATED_DATE, 
+       SrvLogdetl.MODIFIEDBY, 
+       SrvLogdetl.MODIFIED_DATE, 
+       SrvLogdetl.PREV_DOCTYPE, 
+       SrvLogdetl.PREV_DOCID, 
+       SrvLogdetl.CDATE, 
+       SrvLogdetl.MDATE, 
+       SrvLogdetl.JOBSTATUS, 
+       SrvLogdetl.ROWID"
+  FromList="SRV_LOGDETL SrvLogdetl"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvLogdetlVORowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvLogdetlVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvLogdetlVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvLogdetlVOClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvLogDetSrvJobCardNo"
+    ViewObjectName="dgcom.model.qvo.srv.SrvLogDetSrvJobCardNoCIC_0082QVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvLogDetSrvJobCardNoNotExistsInCurrentDocVC"
+      FullName="dgcom.model.qvo.srv.SrvLogDetSrvJobCardNoCIC_0082QVO.SrvLogDetSrvJobCardNoNotExistsInCurrentDocVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_DOCID">
+        <TransientExpression><![CDATA[SrvLogisticVO?.Docid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_DOCTYPEID">
+        <TransientExpression><![CDATA[SrvLogisticVO?.Doctypeid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_RET_TYPE">
+        <TransientExpression><![CDATA['JRet']]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_TRANSFER_TYPE">
+        <TransientExpression><![CDATA['JTrans']]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_LOGID">
+        <TransientExpression><![CDATA[Logid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_MODULE_ID">
+        <TransientExpression><![CDATA["CIC-0082"]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSrvLogDetSrvJobCardNoPendingJobReceive"
+    ViewObjectName="dgcom.model.qvo.srv.SrvLogDetSrvJobCardNoCIC_0082QVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvLogDetSrvJobCardNoNotExistsInCurrentDocVC"
+      FullName="dgcom.model.qvo.srv.SrvLogDetSrvJobCardNoCIC_0082QVO.SrvLogDetSrvJobCardNoNotExistsInCurrentDocVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_RET_TYPE">
+        <TransientExpression><![CDATA['DPJRet']]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_TRANSFER_TYPE">
+        <TransientExpression><![CDATA['DPTrans']]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_DOCID">
+        <TransientExpression><![CDATA[SrvLogisticVO?.Docid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_DOCTYPEID">
+        <TransientExpression><![CDATA[SrvLogisticVO?.Doctypeid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_LOGID">
+        <TransientExpression><![CDATA[Logid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_MODULE_ID">
+        <TransientExpression><![CDATA["CIC-0194"]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovSrvLogDetSrvJobCardNo"
+    ListVOName="AccSrvLogDetSrvJobCardNo"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Jobcardno"/>
+      <Item Value="Models"/>
+      <Item Value="ImeiNo"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSrvLogDetSrvJobCardNoPendingJobReceive"
+    ListVOName="AccSrvLogDetSrvJobCardNoPendingJobReceive"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvLogdetl"
+    Entity="dgcom.model.eo.srv.SrvLogdetl"/>
+  <ViewAttribute
+    Name="Jobcardno"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobcardno"
+    EntityUsage="SrvLogdetl"
+    AliasName="JOBCARDNO"
+    LOVName="LovSrvLogDetSrvJobCardNo"
+    LOVFinder="txtLovName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Logid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Logid"
+    EntityUsage="SrvLogdetl"
+    AliasName="LOGID"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvLogdetl"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvLogdetl"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvLogdetl"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvLogdetl"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="PrevDoctype"
+    PrecisionRule="true"
+    EntityAttrName="PrevDoctype"
+    EntityUsage="SrvLogdetl"
+    AliasName="PREV_DOCTYPE"/>
+  <ViewAttribute
+    Name="PrevDocid"
+    PrecisionRule="true"
+    EntityAttrName="PrevDocid"
+    EntityUsage="SrvLogdetl"
+    AliasName="PREV_DOCID"/>
+  <ViewAttribute
+    Name="Cdate"
+    PrecisionRule="true"
+    EntityAttrName="Cdate"
+    EntityUsage="SrvLogdetl"
+    AliasName="CDATE"/>
+  <ViewAttribute
+    Name="Mdate"
+    PrecisionRule="true"
+    EntityAttrName="Mdate"
+    EntityUsage="SrvLogdetl"
+    AliasName="MDATE"/>
+  <ViewAttribute
+    Name="Jobstatus"
+    PrecisionRule="true"
+    EntityAttrName="Jobstatus"
+    EntityUsage="SrvLogdetl"
+    AliasName="JOBSTATUS"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="SrvLogdetl"
+    AliasName="ROWID"/>
+  <ViewAttribute
+    Name="txtLovName"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[if (SrvLogisticVO?.Doctype=='Log')
+ return 'LovSrvLogDetSrvJobCardNo'
+else
+ return 'LovSrvLogDetSrvJobCardNoPendingJobReceive']]></TransientExpression>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="SrvLogisticVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015177Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SrvLogDetSrvJobCardNoCIC_0082QVO"
+    ViewLink="dgcom.model.vl.srv.SrvLogisticSrvLogDetJobCardNoCIC_0082QVOVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doCreateNewLogisticDetRow"
+      MethodName="doCreateNewLogisticDetRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

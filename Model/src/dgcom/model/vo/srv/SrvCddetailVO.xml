@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvCddetailVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvCddetail.CDID, 
+       SrvCddetail.JOBCARDNO, 
+       SrvCddetail.CREATEDBY, 
+       SrvCddetail.CREATED_DATE, 
+       SrvCddetail.MODIFIEDBY, 
+       SrvCddetail.MODIFIED_DATE, 
+       SrvCddetail.PREV_DOCTYPE, 
+       SrvCddetail.PREV_DOCID, 
+       SrvCddetail.CDATE, 
+       SrvCddetail.MDATE, 
+       SrvCddetail.ROWID"
+  FromList="SRV_CDDETAIL SrvCddetail"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvCddetailVORowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvCddetailVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvCddetailVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvCddetailVOClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvCouriedDeliverJobCardNo"
+    ViewObjectName="dgcom.model.qvo.srv.SrvCouriedDeliverJobCardNoCIC_0072QVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvCouriedDeliverJobCardNoJobEnteredInCurRecordVC"
+      FullName="dgcom.model.qvo.srv.SrvCouriedDeliverJobCardNoCIC_0072QVO.SrvCouriedDeliverJobCardNoJobEnteredInCurRecordVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_DEALER_ID">
+        <TransientExpression><![CDATA[SrvCourierdeliVO?.DealerId==null?"-1":SrvCourierdeliVO?.DealerId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[SrvCourierdeliVO?.Locationid==null?"-1":SrvCourierdeliVO?.Locationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_CDID">
+        <TransientExpression><![CDATA[Cdid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovSrvCouriedDeliverJobCardNo"
+    ListVOName="AccSrvCouriedDeliverJobCardNo"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Jobcardno"/>
+      <Item Value="Customer"/>
+      <Item Value="Model"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvCddetail"
+    Entity="dgcom.model.eo.srv.SrvCddetail"/>
+  <ViewAttribute
+    Name="Cdid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Cdid"
+    EntityUsage="SrvCddetail"
+    AliasName="CDID"/>
+  <ViewAttribute
+    Name="Jobcardno"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobcardno"
+    EntityUsage="SrvCddetail"
+    AliasName="JOBCARDNO"
+    LOVName="LovSrvCouriedDeliverJobCardNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvCddetail"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvCddetail"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvCddetail"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvCddetail"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="PrevDoctype"
+    PrecisionRule="true"
+    EntityAttrName="PrevDoctype"
+    EntityUsage="SrvCddetail"
+    AliasName="PREV_DOCTYPE"/>
+  <ViewAttribute
+    Name="PrevDocid"
+    PrecisionRule="true"
+    EntityAttrName="PrevDocid"
+    EntityUsage="SrvCddetail"
+    AliasName="PREV_DOCID"/>
+  <ViewAttribute
+    Name="Cdate"
+    PrecisionRule="true"
+    EntityAttrName="Cdate"
+    EntityUsage="SrvCddetail"
+    AliasName="CDATE"/>
+  <ViewAttribute
+    Name="Mdate"
+    PrecisionRule="true"
+    EntityAttrName="Mdate"
+    EntityUsage="SrvCddetail"
+    AliasName="MDATE"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="SrvCddetail"
+    AliasName="ROWID"/>
+  <ViewLinkAccessor
+    Name="SrvCourierdeliVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015085Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SrvCouriedDeliverJobCardNoCIC_0072QVO"
+    ViewLink="dgcom.model.vl.srv.SrvCDDetailSrvCourierDeliveryJobCardNoQVOCIC_0072VL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doCreateNewCourierDelDetRow"
+      MethodName="doCreateNewCourierDelDetRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

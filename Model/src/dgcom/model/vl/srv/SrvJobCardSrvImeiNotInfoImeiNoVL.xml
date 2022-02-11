@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobCardSrvImeiNotInfoImeiNoVL"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.vl.srv.SrvJobCardSrvImeiNotInfoImeiNoVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="SrvJobcardVO"
+    Cardinality="1"
+    Source="true"
+    Owner="dgcom.model.vo.srv.SrvJobcardVO">
+    <DesignTime>
+      <Attr Name="_accessor" Value="true"/>
+      <Attr Name="_finderName" Value="SrvJobcardVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.SrvJobcardVO.ImeiNo"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="IMEINotQVO"
+    Cardinality="-1"
+    Owner="dgcom.model.qvo.srv.IMEINotQVO">
+    <DesignTime>
+      <Attr Name="_entityAccessor" Value="true"/>
+      <Attr Name="_finderName" Value="IMEINotQVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.qvo.srv.IMEINotQVO.ImeiNo"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

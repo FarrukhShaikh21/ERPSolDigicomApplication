@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SysReportConditionDetail"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SYS_REPORT_CONDITION_DETAIL"
+  AliasName="SysReportConditionDetail"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.stand.DigicomEntityImpl">
+  <DesignTime>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+  </DesignTime>
+  <Attribute
+    Name="ReportConditionSno"
+    IsNotNull="true"
+    Precision="6"
+    Scale="0"
+    ColumnName="REPORT_CONDITION_SNO"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SYS_REPORT_CONDITION_DETAIL"/>
+  <Attribute
+    Name="ConditionDetailSno"
+    Precision="6"
+    Scale="0"
+    ColumnName="CONDITION_DETAIL_SNO"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SYS_REPORT_CONDITION_DETAIL"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="ModuleId"
+    Precision="30"
+    ColumnName="MODULE_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SYS_REPORT_CONDITION_DETAIL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="txtAdfComponentId"
+    Precision="80"
+    ColumnName="TXT_ADF_COMPONENT_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[SysReportCondition?.AdfComponentId]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="txtAdfBindingName"
+    Precision="80"
+    ColumnName="TXT_ADF_BINDING_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[SysReportCondition?.AdfBindingName]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="txtColumnName"
+    Precision="80"
+    ColumnName="TXT_COLUMN_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[SysReportCondition?.ColumnName]]></TransientExpression>
+  </Attribute>
+  <AccessorAttribute
+    Name="SysReportCondition"
+    Association="dgcom.model.asso.sys.FkRptConDtlReptCondSnoAssoc"
+    AssociationEnd="dgcom.model.asso.sys.FkRptConDtlReptCondSnoAssoc.SysReportCondition"
+    AssociationOtherEnd="dgcom.model.asso.sys.FkRptConDtlReptCondSnoAssoc.SysReportConditionDetail"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="PkSysReportConditionDetail"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PK_SYS_REPORT_CONDITION_DETAIL"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.sys.SysReportConditionDetail.ConditionDetailSno"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="FkRptConDtlReptCondSno">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PK_SYS_REPORT_CONDITION"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_RPT_CON_DTL_REPT_COND_SNO"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.sys.SysReportConditionDetail.ReportConditionSno"/>
+    </AttrArray>
+  </Key>
+</Entity>

@@ -1,0 +1,536 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvReviewjobwarranty"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SRV_REVIEWJOBWARRANTY"
+  AliasName="SrvReviewjobwarranty"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.eo.srv.SrvReviewjobwarrantyImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+<ViewAccessor
+    Name="AccSrvBlockedImei"
+    ViewObjectName="dgcom.model.vo.srv.SrvBlockedImeiVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvBlockedImeiItemImeiWiseVC"
+      FullName="dgcom.model.vo.srv.SrvBlockedImeiVO.SrvBlockedImeiItemImeiWiseVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_IMEI_NO">
+        <TransientExpression><![CDATA[txtImeiNo==null?"-1":txtImeiNo]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_ITEM_ID">
+        <TransientExpression><![CDATA[txtItemid==null?"-1":txtItemid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>  
+  <Attribute
+    Name="Reviewid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="REVIEWID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvReviewjobwarranty.Reviewid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Locationid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="LOCATIONID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvReviewjobwarranty.Locationid_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Jobcardno"
+    Precision="15"
+    ColumnName="JOBCARDNO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvReviewjobwarranty.Jobcardno_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="RvDate"
+    IsNotNull="true"
+    ColumnName="RV_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvReviewjobwarranty.RvDate_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <validation:ValidationBean
+      Name="DocumentDateEntryRights"
+      ResId="dgcom.model.eo.srv.SrvJobcard.Jobdate_Rule_0"
+      OnAttribute="RvDate"
+      Version="2"
+      OperandType="LITERAL"
+      Inverse="false"
+      DisplayName="RulCheckDateRights"
+      ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+      <validation:OnCondition><![CDATA[newValue!=null]]></validation:OnCondition>
+    </validation:ValidationBean>
+  </Attribute>
+  <Attribute
+    Name="Warranty"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="WARRANTY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Charges"
+    ColumnName="CHARGES"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvReviewjobwarranty.Charges_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Epcost"
+    ColumnName="EPCOST"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvReviewjobwarranty.Epcost_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Lastcharges"
+    ColumnName="LASTCHARGES"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvReviewjobwarranty.Lastcharges_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Lastepcost"
+    ColumnName="LASTEPCOST"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvReviewjobwarranty.Lastepcost_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Remarks"
+    Precision="200"
+    ColumnName="REMARKS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Posted"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="POSTED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY"
+    DefaultValue="N">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvReviewjobwarranty.Posted_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Postedby"
+    Precision="20"
+    ColumnName="POSTEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_REVIEWJOBWARRANTY"/>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_REVIEWJOBWARRANTY"/>
+  <Attribute
+    Name="PrevDoctype"
+    Precision="25"
+    ColumnName="PREV_DOCTYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PrevDocid"
+    Precision="15"
+    ColumnName="PREV_DOCID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Assignid"
+    Precision="15"
+    ColumnName="ASSIGNID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Jobstatus"
+    IsNotNull="true"
+    Precision="5"
+    ColumnName="JOBSTATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="5"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Cdate"
+    ColumnName="CDATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_REVIEWJOBWARRANTY"/>
+  <Attribute
+    Name="Mdate"
+    ColumnName="MDATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_REVIEWJOBWARRANTY"/>
+  <Attribute
+    Name="IsMigrated"
+    Precision="1"
+    ColumnName="IS_MIGRATED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="MigratedDate"
+    ColumnName="MIGRATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_REVIEWJOBWARRANTY"/>
+  <Attribute
+    Name="txtImeiNo"
+    Precision="80"
+    ColumnName="TXT_IMEI_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[SrvJobcard?.ImeiNo]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="txtItemid"
+    Precision="80"
+    ColumnName="TXT_ITEMID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[SrvJobcard?.Itemid]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="CurrentWarranty"
+    Precision="15"
+    ColumnName="CURRENT_WARRANTY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ReverseChk"
+    Precision="1"
+    ColumnName="REVERSE_CHK"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_REVIEWJOBWARRANTY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="SrvJobcard"
+    Association="dgcom.model.asso.srv.SrvJobCardSrvReviewWtyJobCardNoAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobCardSrvReviewWtyJobCardNoAsso.SrvJobcard"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobCardSrvReviewWtyJobCardNoAsso.SrvReviewjobwarranty"
+    Type="dgcom.model.eo.srv.SrvJobcardImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC0013964"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0013964"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvReviewjobwarranty.Reviewid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015201">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014094"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015201"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvReviewjobwarranty.Jobcardno"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015202">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_LOCATIONS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015202"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvReviewjobwarranty.Locationid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvReviewjobwarranty">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014094"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_REVIEWJOBWARRANTY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvReviewjobwarranty.Jobcardno"/>
+    </AttrArray>
+  </Key>
+  <validation:ExpressionValidationBean
+    Name="SrvReviewWarrantyServiceCharges"
+    OperandType="EXPR"
+    Inverse="false">
+    <validation:OnCondition><![CDATA[Warranty!=null && (Warranty=='NW' || Warranty=='OW')]]></validation:OnCondition>
+    <validation:MsgIds>
+      <validation:Item
+        Value="errorChargesNonWty"/>
+      <validation:Item
+        Value="errorIPartCost"/>
+    </validation:MsgIds>
+    <validation:TransientExpression><![CDATA[if (Warranty=='NW' && ((Charges==null?0:Charges)+(Epcost==null?0:Epcost))<=0)
+{
+adf.error.raise("errorChargesNonWty");
+return false;
+}
+else
+if(Warranty=='OW' &&(Epcost==null||Epcost<=0))
+{
+adf.error.raise("errorIPartCost");
+return false;
+}
+return true;]]></validation:TransientExpression>
+  </validation:ExpressionValidationBean>
+  <validation:ExpressionValidationBean
+    Name="SrvJobImeiBlockWarranty"
+    OperandType="EXPR"
+    Inverse="false">
+    <validation:OnCondition><![CDATA[Warranty!=null && Warranty!='NW']]></validation:OnCondition>
+    <validation:MsgIds>
+      <validation:Item
+        Value="errorImeiBlockWarning"/>
+    </validation:MsgIds>
+    <validation:TransientExpression><![CDATA[AccSrvBlockedImei.executeQuery();
+
+if (AccSrvBlockedImei.getRowCount()>0)
+{
+return false;
+}
+return true;]]></validation:TransientExpression>
+  </validation:ExpressionValidationBean>
+  <validation:ValidationBean
+    Name="BRCheckDocDateForSubmit"
+    ResId="dgcom.model.eo.srv.SrvDap_Rule_0"
+    Version="2"
+    OperandType="LITERAL"
+    Inverse="false"
+    DisplayName="RulCheckDateRights"
+    ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="Posted"/>
+    </validation:OnAttributes>
+    <validation:OnCondition><![CDATA[Posted=='Y']]></validation:OnCondition>
+  </validation:ValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

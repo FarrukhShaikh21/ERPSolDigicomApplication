@@ -1,0 +1,632 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvSetReplacementVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvSetReplacement.SR_ID, 
+       SrvSetReplacement.LOCATIONID, 
+       SrvSetReplacement.JOBCARDNO, 
+       SrvSetReplacement.ITEMID, 
+       SrvSetReplacement.SR_DATE, 
+       SrvSetReplacement.NEW_IMEI_NO, 
+       SrvSetReplacement.AMOUNT, 
+       SrvSetReplacement.REMARKS, 
+       SrvSetReplacement.PREV_DOCTYPE, 
+       SrvSetReplacement.PREV_DOCID, 
+       SrvSetReplacement.POSTED, 
+       SrvSetReplacement.POSTEDBY, 
+       SrvSetReplacement.CREATEDBY, 
+       SrvSetReplacement.CREATED_DATE, 
+       SrvSetReplacement.MODIFIEDBY, 
+       SrvSetReplacement.MODIFIED_DATE, 
+       SrvSetReplacement.IS_MIGRATED, 
+       SrvSetReplacement.MIGRATED_DATE, 
+       SrvSetReplacement.OUT_STOREID, 
+       SrvSetReplacement.OUT_RATE, 
+       SrvSetReplacement.IN_RATE, 
+       SrvSetReplacement.IN_STOREID"
+  FromList="SRV_SET_REPLACEMENT SrvSetReplacement"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.stand.DigicomViewRowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvSetReplacementVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvSetReplacementVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvSetReplacementVOClient">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Coll|VarAccess"/>
+  </DesignTime>
+  <Variable
+    Name="P_ADF_JOBCARD_NO"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <ViewAccessor
+    Name="AccSrvSetReplacementSrvJobCardNo"
+    ViewObjectName="dgcom.model.qvo.srv.SrvSetReplacementSrvJobCardNoCIC_0198QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[Locationid==null?"-1":Locationid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccInItemsItemId"
+    ViewObjectName="dgcom.model.vo.inv.InItemsVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="InItemsExistsInServiceAndSrvBOM"
+      FullName="dgcom.model.vo.inv.InItemsVO.InItemsExistsInServiceAndSrvBOM"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_PROD_ID">
+        <TransientExpression><![CDATA[txtProdId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSubmitYesNo"
+    ViewObjectName="dgcom.model.qvo.sys.YesNoQVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="AccSysUserStoreOutStoreid"
+    ViewObjectName="dgcom.model.vo.sys.SysUserStoreVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SysUserStoreUserLocationWiseStoreVC"
+      FullName="dgcom.model.vo.sys.SysUserStoreVO.SysUserStoreUserLocationWiseStoreVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[Locationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_USERID">
+        <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.getConnectedUser()]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovSrvSetReplacementSrvJobCardNo"
+    ListVOName="AccSrvSetReplacementSrvJobCardNo"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="PrevDocid"/>
+      <Item Value="PrevDoctype"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Jobcardno"/>
+      <Item Value="PrevDocid"/>
+      <Item Value="PrevDoctype"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Jobcardno"/>
+      <Item Value="Model"/>
+      <Item Value="Jobdate"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovInItemsItemId"
+    ListVOName="AccInItemsItemId"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Itemid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Itemid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Itemid"/>
+      <Item Value="Description"/>
+      <Item Value="Productid"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="InItemsExistsInServiceAndSrvBOM"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSubmitYesNo"
+    ListVOName="AccSubmitYesNo"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Posted"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ID"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSysUserStoreOutStoreid"
+    ListVOName="AccSysUserStoreOutStoreid"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="OutStoreid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Storeid"/>
+      <Item Value="StoreName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SysUserStoreUserLocationWiseStoreVC"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSysUserStoreOutStoreName"
+    ListVOName="AccSysUserStoreOutStoreid"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtOutStoreName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="OutStoreid"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="StoreName"/>
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="StoreName"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="SysUserStoreUserLocationWiseStoreVC"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovInItemsItemName"
+    ListVOName="AccInItemsItemId"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtModelName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Itemid"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ModelNo"/>
+      <Item Value="Itemid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ModelNo"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="InItemsExistsInServiceAndSrvBOM"/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvSetReplacement"
+    Entity="dgcom.model.eo.srv.SrvSetReplacement"/>
+  <ViewAttribute
+    Name="SrId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SrId"
+    EntityUsage="SrvSetReplacement"
+    AliasName="SR_ID"/>
+  <ViewAttribute
+    Name="Locationid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Locationid"
+    EntityUsage="SrvSetReplacement"
+    AliasName="LOCATIONID"/>
+  <ViewAttribute
+    Name="Jobcardno"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobcardno"
+    EntityUsage="SrvSetReplacement"
+    AliasName="JOBCARDNO"
+    LOVName="LovSrvSetReplacementSrvJobCardNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Itemid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Itemid"
+    EntityUsage="SrvSetReplacement"
+    AliasName="ITEMID"
+    LOVName="LovInItemsItemId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="Jobcardno"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="SrDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SrDate"
+    EntityUsage="SrvSetReplacement"
+    AliasName="SR_DATE"/>
+  <ViewAttribute
+    Name="NewImeiNo"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="NewImeiNo"
+    EntityUsage="SrvSetReplacement"
+    AliasName="NEW_IMEI_NO"/>
+  <ViewAttribute
+    Name="Amount"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Amount"
+    EntityUsage="SrvSetReplacement"
+    AliasName="AMOUNT"/>
+  <ViewAttribute
+    Name="Remarks"
+    PrecisionRule="true"
+    EntityAttrName="Remarks"
+    EntityUsage="SrvSetReplacement"
+    AliasName="REMARKS"/>
+  <ViewAttribute
+    Name="PrevDoctype"
+    PrecisionRule="true"
+    EntityAttrName="PrevDoctype"
+    EntityUsage="SrvSetReplacement"
+    AliasName="PREV_DOCTYPE"/>
+  <ViewAttribute
+    Name="PrevDocid"
+    PrecisionRule="true"
+    EntityAttrName="PrevDocid"
+    EntityUsage="SrvSetReplacement"
+    AliasName="PREV_DOCID"/>
+  <ViewAttribute
+    Name="Posted"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Posted"
+    EntityUsage="SrvSetReplacement"
+    AliasName="POSTED"
+    LOVName="LovSubmitYesNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Postedby"
+    PrecisionRule="true"
+    EntityAttrName="Postedby"
+    EntityUsage="SrvSetReplacement"
+    AliasName="POSTEDBY"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvSetReplacement"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvSetReplacement"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvSetReplacement"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvSetReplacement"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="IsMigrated"
+    PrecisionRule="true"
+    EntityAttrName="IsMigrated"
+    EntityUsage="SrvSetReplacement"
+    AliasName="IS_MIGRATED"/>
+  <ViewAttribute
+    Name="MigratedDate"
+    PrecisionRule="true"
+    EntityAttrName="MigratedDate"
+    EntityUsage="SrvSetReplacement"
+    AliasName="MIGRATED_DATE"/>
+  <ViewAttribute
+    Name="txtProdId"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtProdId"
+    EntityUsage="SrvSetReplacement"
+    AliasName="TXT_PROD_ID"/>
+  <ViewAttribute
+    Name="OutStoreid"
+    PrecisionRule="true"
+    EntityAttrName="OutStoreid"
+    EntityUsage="SrvSetReplacement"
+    AliasName="OUT_STOREID"
+    LOVName="LovSysUserStoreOutStoreid">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OutRate"
+    PrecisionRule="true"
+    EntityAttrName="OutRate"
+    EntityUsage="SrvSetReplacement"
+    AliasName="OUT_RATE"/>
+  <ViewAttribute
+    Name="InRate"
+    PrecisionRule="true"
+    EntityAttrName="InRate"
+    EntityUsage="SrvSetReplacement"
+    AliasName="IN_RATE"/>
+  <ViewAttribute
+    Name="InStoreid"
+    PrecisionRule="true"
+    EntityAttrName="InStoreid"
+    EntityUsage="SrvSetReplacement"
+    AliasName="IN_STOREID"/>
+  <ViewAttribute
+    Name="txtInStoreName"
+    PrecisionRule="true"
+    EntityAttrName="txtInStoreName"
+    EntityUsage="SrvSetReplacement"
+    AliasName="TXT_IN_STORE_NAME"
+    IsQueriable="false"
+    IsPersistent="false"/>
+  <ViewAttribute
+    Name="txtOutStoreName"
+    PrecisionRule="true"
+    EntityAttrName="txtOutStoreName"
+    EntityUsage="SrvSetReplacement"
+    AliasName="TXT_OUT_STORE_NAME"
+    IsQueriable="false"
+    IsPersistent="false"
+    LOVName="LovSysUserStoreOutStoreName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="txtModelName"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="txtModelName"
+    EntityUsage="SrvSetReplacement"
+    AliasName="TXT_MODEL_NAME"
+    LOVName="LovInItemsItemName"
+    IsPersistent="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="SrvSetReplacementByJobcardNo"
+    ViewObjectName="dgcom.model.vo.srv.SrvSetReplacementVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SrvSetReplacementVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Jobcardno"
+        ViewAttribute="Jobcardno"
+        Operator="="
+        Conjunction="AND"
+        Value=":P_ADF_JOBCARD_NO"
+        GenerateIsNullClauseForBindVars="false"
+        IsBindVarValue="true"
+        Required="Optional">
+        <Properties>
+          <CustomProperties>
+            <Property
+              Name="renderedMode"
+              Value="Never"/>
+          </CustomProperties>
+        </Properties>
+      </ViewCriteriaItem>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="SrvSetReplacementFindVC"
+    ViewObjectName="dgcom.model.vo.srv.SrvSetReplacementVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SrvSetReplacementVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="SrId"
+        ViewAttribute="SrId"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="SrDate"
+        ViewAttribute="SrDate"
+        Operator="="
+        Conjunction="AND"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="Posted"
+        ViewAttribute="Posted"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="SrvJobcardVO"
+        ViewAttribute="SrvJobcardVO"
+        Operator="EXISTS"
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional"
+        IsNestedCriteria="true">
+        <ViewCriteria
+          Name="SrvJobcardVONestedCriteria"
+          ViewObjectName="dgcom.model.vo.srv.SrvJobcardVO"
+          Conjunction="AND">
+          <ViewCriteriaRow
+            Name="SrvJobcardVONestedCriteria_row_0"
+            UpperColumns="1">
+            <ViewCriteriaItem
+              Name="SrvJobcardVONestedCriteria_SrvJobcardVONestedCriteria_row_0_Jobcardno"
+              ViewAttribute="Jobcardno"
+              Operator="="
+              Conjunction="AND"
+              UpperColumns="0"
+              GenerateIsNullClauseForBindVars="false"
+              Required="Optional"/>
+          </ViewCriteriaRow>
+        </ViewCriteria>
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="SrvJobcardVO"
+    ViewLink="dgcom.model.vl.srv.SrvJobcardSrvSetReplacementJobCardNoVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="AllStoresVO"
+    ViewLink="dgcom.model.vl.srv.AllStoreSrvSetReplacementOutStoreIDVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="AllStoresVO1"
+    ViewLink="dgcom.model.vl.srv.AllStoreSrvSetReplacementInStoreIDVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="InItemsVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015356Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doSubmitSetReplacement"
+      MethodName="doSubmitSetReplacement">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

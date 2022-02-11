@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SysC0014611Link"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  EntityAssociation="dgcom.model.asso.srv.SysC0014611Assoc">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.vl.srv.SysC0014611Link_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="InPartsVO"
+    Cardinality="1"
+    Source="true"
+    Owner="dgcom.model.vo.srv.InPartsVO">
+    <DesignTime>
+      <Attr Name="_accessor" Value="true"/>
+      <Attr Name="_finderName" Value="InPartsVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.InPartsVO.Partid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="AllDemandLinesVO"
+    Cardinality="-1"
+    Owner="dgcom.model.vo.srv.AllDemandLinesVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="AllDemandLinesVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.AllDemandLinesVO.Partid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobtransferdetlVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvJobtransferdetl.TRANSFERID, 
+       SrvJobtransferdetl.JOBCARDNO, 
+       SrvJobtransferdetl.CREATEDBY, 
+       SrvJobtransferdetl.CREATED_DATE, 
+       SrvJobtransferdetl.MODIFIEDBY, 
+       SrvJobtransferdetl.MODIFIED_DATE, 
+       SrvJobtransferdetl.JOBSTATUS, 
+       SrvJobtransferdetl.PREV_DOCTYPE, 
+       SrvJobtransferdetl.PREV_DOCID, 
+       SrvJobtransferdetl.CDATE, 
+       SrvJobtransferdetl.MDATE, 
+       SrvJobtransferdetl.ROWID"
+  FromList="SRV_JOBTRANSFERDETL SrvJobtransferdetl"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvJobtransferdetlVORowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvJobtransferdetlVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvJobtransferdetlVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvJobtransferdetlVOClient">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvJobTransferSrvJobCardNo"
+    ViewObjectName="dgcom.model.qvo.srv.SrvJobTransferSrvJobCardNoCIC_0032QVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvJobTransferSrvJobCardNoJobNotExistsInCurDocVC"
+      FullName="dgcom.model.qvo.srv.SrvJobTransferSrvJobCardNoCIC_0032QVO.SrvJobTransferSrvJobCardNoJobNotExistsInCurDocVC"/>
+    <ViewCriteriaUsage
+      Name="SrvJobTransferSrvJobCardNoJobTransferVC"
+      FullName="dgcom.model.qvo.srv.SrvJobTransferSrvJobCardNoCIC_0032QVO.SrvJobTransferSrvJobCardNoJobTransferVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[SrvJobtransferVO?.Locationid==null?"-1":SrvJobtransferVO?.Locationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_TOLOCATIONID">
+        <TransientExpression><![CDATA[SrvJobtransferVO?.Tolocationid==null?"-1":SrvJobtransferVO?.Tolocationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_TRANSFERID">
+        <TransientExpression><![CDATA[Transferid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_DOC_TYPE">
+        <TransientExpression><![CDATA[SrvJobtransferVO?.Doctype]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSrvJobTransferSrvJobCardNoPendJobTransfer"
+    ViewObjectName="dgcom.model.qvo.srv.SrvJobTransferSrvJobCardNoCIC_0032QVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvJobTransferSrvJobCardNoJobNotExistsInCurDocVC"
+      FullName="dgcom.model.qvo.srv.SrvJobTransferSrvJobCardNoCIC_0032QVO.SrvJobTransferSrvJobCardNoJobNotExistsInCurDocVC"/>
+    <ViewCriteriaUsage
+      Name="SrvJobTransferSrvJobCardNoPendingJobTransferVC"
+      FullName="dgcom.model.qvo.srv.SrvJobTransferSrvJobCardNoCIC_0032QVO.SrvJobTransferSrvJobCardNoPendingJobTransferVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[SrvJobtransferVO?.Locationid==null?"-1":SrvJobtransferVO?.Locationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_TOLOCATIONID">
+        <TransientExpression><![CDATA[SrvJobtransferVO?.Tolocationid==null?"-1":SrvJobtransferVO?.Tolocationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_TRANSFERID">
+        <TransientExpression><![CDATA[Transferid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_DOC_TYPE">
+        <TransientExpression><![CDATA[SrvJobtransferVO?.Doctype]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovSrvJobTransferSrvJobCardNo"
+    ListVOName="AccSrvJobTransferSrvJobCardNo"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Jobstatus"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Jobcardno"/>
+      <Item Value="Jobstatus"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Jobcardno"/>
+      <Item Value="Model"/>
+      <Item Value="Jobtype"/>
+      <Item Value="ImeiNo"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"
+      Name="SrvJobTransferSrvJobCardNoJobTransferVC"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSrvJobTransferSrvJobCardNoPendJobTransfer"
+    ListVOName="AccSrvJobTransferSrvJobCardNoPendJobTransfer"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Jobstatus"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Jobcardno"/>
+      <Item Value="Jobstatus"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"
+      Name="SrvJobTransferSrvJobCardNoPendingJobTransferVC"/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvJobtransferdetl"
+    Entity="dgcom.model.eo.srv.SrvJobtransferdetl"/>
+  <ViewAttribute
+    Name="Transferid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Transferid"
+    EntityUsage="SrvJobtransferdetl"
+    AliasName="TRANSFERID"/>
+  <ViewAttribute
+    Name="Jobcardno"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobcardno"
+    EntityUsage="SrvJobtransferdetl"
+    AliasName="JOBCARDNO"
+    LOVName="LovSrvJobTransferSrvJobCardNo"
+    LOVFinder="txtLovName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvJobtransferdetl"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvJobtransferdetl"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvJobtransferdetl"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvJobtransferdetl"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Jobstatus"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobstatus"
+    EntityUsage="SrvJobtransferdetl"
+    AliasName="JOBSTATUS"/>
+  <ViewAttribute
+    Name="PrevDoctype"
+    PrecisionRule="true"
+    EntityAttrName="PrevDoctype"
+    EntityUsage="SrvJobtransferdetl"
+    AliasName="PREV_DOCTYPE"/>
+  <ViewAttribute
+    Name="PrevDocid"
+    PrecisionRule="true"
+    EntityAttrName="PrevDocid"
+    EntityUsage="SrvJobtransferdetl"
+    AliasName="PREV_DOCID"/>
+  <ViewAttribute
+    Name="Cdate"
+    PrecisionRule="true"
+    EntityAttrName="Cdate"
+    EntityUsage="SrvJobtransferdetl"
+    AliasName="CDATE"/>
+  <ViewAttribute
+    Name="Mdate"
+    PrecisionRule="true"
+    EntityAttrName="Mdate"
+    EntityUsage="SrvJobtransferdetl"
+    AliasName="MDATE"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="SrvJobtransferdetl"
+    AliasName="ROWID"/>
+  <ViewAttribute
+    Name="txtLovName"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[if (SrvJobtransferVO?.Doctype=='JTrans')
+ return 'LovSrvJobTransferSrvJobCardNo'
+else
+ return 'LovSrvJobTransferSrvJobCardNoPendJobTransfer']]></TransientExpression>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="SrvJobtransferVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015172Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SrvJobTransferSrvJobCardNoCIC_0032QVO"
+    ViewLink="dgcom.model.vl.srv.SrvJobTransferSrvJobTransSrvJobCardCIC_0032QVOVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doCreateNewJobTransDetRow"
+      MethodName="doCreateNewJobTransDetRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

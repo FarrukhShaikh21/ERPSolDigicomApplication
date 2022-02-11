@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SysC0015222Assoc"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="AllStores"
+    Cardinality="1"
+    Source="true"
+    Owner="dgcom.model.eo.set.AllStores"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="AllStores"/>
+      <Attr Name="_foreignKey" Value="dgcom.model.eo.set.AllStores.XpkallStores"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.set.AllStores.Storeid"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="SrvStnreceparts"
+    Cardinality="-1"
+    Owner="dgcom.model.eo.srv.SrvStnreceparts">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="SrvStnreceparts"/>
+      <Attr Name="_foreignKey" Value="dgcom.model.eo.srv.SrvStnreceparts.fk_SrvStnreceparts2"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvStnreceparts.Storeid"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

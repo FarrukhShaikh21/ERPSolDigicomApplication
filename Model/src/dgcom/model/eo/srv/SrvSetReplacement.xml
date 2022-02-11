@@ -1,0 +1,626 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvSetReplacement"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SRV_SET_REPLACEMENT"
+  AliasName="SrvSetReplacement"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.eo.srv.SrvSetReplacementImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccAllStoresInStoreId"
+    ViewObjectName="dgcom.model.vo.set.AllStoresVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="AllStoresStoreIdByLocation"
+      FullName="dgcom.model.vo.set.AllStoresVO.AllStoresStoreIdByLocation"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSoProdLocPriceProductLocation"
+    ViewObjectName="dgcom.model.qvo.inv.SoProdLocPriceProductLocationWiseQVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA['HO1']]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_SR_DATE">
+        <TransientExpression><![CDATA[SrDate]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccItemImeiInfo"
+    ViewObjectName="dgcom.model.vo.inv.ItemImeiInfoVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="ItemImeiInfoAvailableNotRestrictItemWise"
+      FullName="dgcom.model.vo.inv.ItemImeiInfoVO.ItemImeiInfoAvailableNotRestrictItemWise"/>
+    <ViewCriteriaUsage
+      Name="ItemImeiInfoIMEIWiseDataVC"
+      FullName="dgcom.model.vo.inv.ItemImeiInfoVO.ItemImeiInfoIMEIWiseDataVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_IMEI_NO">
+        <TransientExpression><![CDATA[NewImeiNo]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_ITEMID">
+        <TransientExpression><![CDATA[Itemid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_STOREID">
+        <TransientExpression><![CDATA[OutStoreid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <Attribute
+    Name="SrId"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="SR_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Locationid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="LOCATIONID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Jobcardno"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="JOBCARDNO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Itemid"
+    Precision="15"
+    ColumnName="ITEMID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="SrDate"
+    IsNotNull="true"
+    ColumnName="SR_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_SET_REPLACEMENT">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <validation:ValidationBean
+      Name="DocumentDateEntryRights"
+      ResId="dgcom.model.eo.srv.SrvJobcard.Jobdate_Rule_0"
+      OnAttribute="SrDate"
+      Version="2"
+      OperandType="LITERAL"
+      Inverse="false"
+      DisplayName="RulCheckDateRights"
+      ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+      <validation:OnCondition><![CDATA[newValue!=null]]></validation:OnCondition>
+    </validation:ValidationBean>
+  </Attribute>
+  <Attribute
+    Name="NewImeiNo"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="NEW_IMEI_NO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <validation:ValidationBean
+      Name="BRImeiLength"
+      ResId="dgcom.model.eo.srv.SrvJobcard.ImeiNo_Rule_0"
+      OnAttribute="NewImeiNo"
+      Version="2"
+      OperandType="LITERAL"
+      Inverse="false"
+      DisplayName="ImeiLengthRule"
+      ValidationBeanClass="dgcom.model.rules.ImeiLengthRule">
+      <validation:OnCondition><![CDATA[newValue!=null]]></validation:OnCondition>
+    </validation:ValidationBean>
+  </Attribute>
+  <Attribute
+    Name="Amount"
+    IsNotNull="true"
+    ColumnName="AMOUNT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_SET_REPLACEMENT">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Remarks"
+    Precision="200"
+    ColumnName="REMARKS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="PrevDoctype"
+    Precision="15"
+    ColumnName="PREV_DOCTYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PrevDocid"
+    Precision="15"
+    ColumnName="PREV_DOCID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Posted"
+    IsNotNull="true"
+    Precision="1"
+    ColumnName="POSTED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT"
+    DefaultValue="N">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvSetReplacement.Posted_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Postedby"
+    Precision="20"
+    ColumnName="POSTEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_SET_REPLACEMENT"/>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_SET_REPLACEMENT"/>
+  <Attribute
+    Name="IsMigrated"
+    Precision="1"
+    ColumnName="IS_MIGRATED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="MigratedDate"
+    ColumnName="MIGRATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_SET_REPLACEMENT"/>
+  <Attribute
+    Name="txtProdId"
+    Precision="80"
+    ColumnName="TXT_PROD_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[SrvJobcard?.txtProdId]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="Jobcardno"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="InRate"
+    ColumnName="IN_RATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_SET_REPLACEMENT"/>
+  <Attribute
+    Name="InStoreid"
+    Precision="15"
+    ColumnName="IN_STOREID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="OutRate"
+    ColumnName="OUT_RATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_SET_REPLACEMENT"/>
+  <Attribute
+    Name="OutStoreid"
+    Precision="15"
+    ColumnName="OUT_STOREID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_SET_REPLACEMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="txtOutStoreName"
+    Precision="80"
+    ColumnName="TXT_OUT_STORE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[AllStores1?.StoreName]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="OutStoreid"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvSetReplacement.txtOutStoreName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="txtInStoreName"
+    Precision="80"
+    ColumnName="TXT_IN_STORE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[AllStores?.StoreName]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="InStoreid"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvSetReplacement.txtInStoreName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="txtJobcardItemId"
+    Precision="80"
+    ColumnName="TXT_JOBCARD_ITEM_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[SrvJobcard?.Itemid]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="Jobcardno"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="txtModelName"
+    Precision="80"
+    ColumnName="TXT_MODEL_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <TransientExpression><![CDATA[InItems?.ModelNo]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvSetReplacement.txtModelName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <AccessorAttribute
+    Name="SrvJobcard"
+    Association="dgcom.model.asso.srv.SrvJobCardSrtSetReplacementJobCardNoAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvJobCardSrtSetReplacementJobCardNoAsso.SrvJobcard"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvJobCardSrtSetReplacementJobCardNoAsso.SrvSetReplacement"
+    Type="dgcom.model.eo.srv.SrvJobcardImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="AllStores"
+    Association="dgcom.model.asso.srv.AllStoreSrvSetReplacementInStoreIDAsso"
+    AssociationEnd="dgcom.model.asso.srv.AllStoreSrvSetReplacementInStoreIDAsso.AllStores"
+    AssociationOtherEnd="dgcom.model.asso.srv.AllStoreSrvSetReplacementInStoreIDAsso.SrvSetReplacement"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="AllStores1"
+    Association="dgcom.model.asso.srv.AllStoreSrvSetReplacementOutStoreIDAsso"
+    AssociationEnd="dgcom.model.asso.srv.AllStoreSrvSetReplacementOutStoreIDAsso.AllStores1"
+    AssociationOtherEnd="dgcom.model.asso.srv.AllStoreSrvSetReplacementOutStoreIDAsso.SrvSetReplacement1"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="InItems"
+    Association="dgcom.model.asso.srv.SysC0015356Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0015356Assoc.InItems"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0015356Assoc.SrvSetReplacement"
+    Type="dgcom.model.eo.inv.InItemsImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC0014541"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0014541"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvSetReplacement.SrId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015355">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014094"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015355"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvSetReplacement.Jobcardno"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015356">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKIN_ITEMS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015356"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvSetReplacement.Itemid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015357">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_LOCATIONS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015357"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvSetReplacement.Locationid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvSetReplacement">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014094"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_SET_REPLACEMENT"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvSetReplacement.Jobcardno"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvSetReplacement1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_STORES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_SET_REPLACEMENT1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvSetReplacement.InStoreid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvSetReplacement2">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_STORES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_SET_REPLACEMENT2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvSetReplacement.OutStoreid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvSetReplacement3">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKIN_ITEMS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_SET_REPLACEMENT3"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvSetReplacement.Itemid"/>
+    </AttrArray>
+  </Key>
+  <validation:ExpressionValidationBean
+    Name="BRSrvSetReplacementImeiExists"
+    OperandType="EXPR"
+    Inverse="false">
+    <validation:MsgIds>
+      <validation:Item
+        Value="errorId2ImeiNotIssuance"/>
+    </validation:MsgIds>
+    <validation:TransientExpression><![CDATA[AccItemImeiInfo.executeQuery();
+if(AccItemImeiInfo.getRowCount()==0)
+{
+return false;
+}
+else
+return true;]]></validation:TransientExpression>
+  </validation:ExpressionValidationBean>
+  <validation:ValidationBean
+    Name="BRCheckDocDateForSubmit"
+    ResId="dgcom.model.eo.srv.SrvDap_Rule_0"
+    OnAttribute="SrvSetReplacement"
+    Version="2"
+    OperandType="LITERAL"
+    Inverse="false"
+    DisplayName="RulCheckDateRights"
+    ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="Posted"/>
+    </validation:OnAttributes>
+    <validation:OnCondition><![CDATA[Posted=='Y']]></validation:OnCondition>
+  </validation:ValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

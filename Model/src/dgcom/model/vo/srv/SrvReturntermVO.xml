@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvReturntermVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvReturnterm.RETTERMID, 
+       SrvReturnterm.DESCRIPTION, 
+       SrvReturnterm.CREATEDBY, 
+       SrvReturnterm.CREATED_DATE, 
+       SrvReturnterm.MODIFIEDBY, 
+       SrvReturnterm.MODIFIED_DATE"
+  FromList="SRV_RETURNTERM SrvReturnterm"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.stand.DigicomViewRowImpl"
+  ComponentClass="dgcom.model.stand.DigicomViewObjectImpl">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+  </DesignTime>
+  <EntityUsage
+    Name="SrvReturnterm"
+    Entity="dgcom.model.eo.srv.SrvReturnterm"/>
+  <ViewAttribute
+    Name="Rettermid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Rettermid"
+    EntityUsage="SrvReturnterm"
+    AliasName="RETTERMID"/>
+  <ViewAttribute
+    Name="Description"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="SrvReturnterm"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvReturnterm"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvReturnterm"
+    AliasName="CREATED_DATE"
+    IsUpdateable="while_insert"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvReturnterm"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvReturnterm"
+    AliasName="MODIFIED_DATE"
+    IsUpdateable="while_insert"/>
+</ViewObject>
