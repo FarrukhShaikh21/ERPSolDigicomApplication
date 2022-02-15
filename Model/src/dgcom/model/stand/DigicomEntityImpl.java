@@ -116,9 +116,9 @@ public class DigicomEntityImpl extends EntityImpl {
     protected void create(AttributeList attributeList) {
         // TODO Implement this method
         super.create(attributeList);
-        if (1==1) {
-            return;
-       }
+//        if (1==1) {
+//            return;
+//       }
         int noofpk=0;
         String pkName="";
         for (int ii = 0; ii < this.getEntityDef().getAttributeCount(); ii++) {
