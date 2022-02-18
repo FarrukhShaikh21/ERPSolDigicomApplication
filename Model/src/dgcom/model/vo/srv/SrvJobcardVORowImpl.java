@@ -98,6 +98,7 @@ public class SrvJobcardVORowImpl extends DigicomViewRowImpl {
         txtModelNo,
         txtIsWarranty,
         txtTotalImei,
+        Jobcardseq,
         SrvJobsymptomVO,
         SrvJobassdetlVO,
         SrvJhotldetlVO,
@@ -221,6 +222,7 @@ public class SrvJobcardVORowImpl extends DigicomViewRowImpl {
     public static final int TXTMODELNO = AttributesEnum.txtModelNo.index();
     public static final int TXTISWARRANTY = AttributesEnum.txtIsWarranty.index();
     public static final int TXTTOTALIMEI = AttributesEnum.txtTotalImei.index();
+    public static final int JOBCARDSEQ = AttributesEnum.Jobcardseq.index();
     public static final int SRVJOBSYMPTOMVO = AttributesEnum.SrvJobsymptomVO.index();
     public static final int SRVJOBASSDETLVO = AttributesEnum.SrvJobassdetlVO.index();
     public static final int SRVJHOTLDETLVO = AttributesEnum.SrvJhotldetlVO.index();
@@ -1383,6 +1385,22 @@ public class SrvJobcardVORowImpl extends DigicomViewRowImpl {
      */
     public String gettxtTotalImei() {
         return (String) getAttributeInternal(TXTTOTALIMEI);
+    }
+
+    /**
+     * Gets the attribute value for JOBCARDSEQ using the alias name Jobcardseq.
+     * @return the JOBCARDSEQ
+     */
+    public Integer getJobcardseq() {
+        return (Integer) getAttributeInternal(JOBCARDSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for JOBCARDSEQ using the alias name Jobcardseq.
+     * @param value value to set the JOBCARDSEQ
+     */
+    public void setJobcardseq(Integer value) {
+        setAttributeInternal(JOBCARDSEQ, value);
     }
 
     /**

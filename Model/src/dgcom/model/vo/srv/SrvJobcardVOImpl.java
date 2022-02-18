@@ -94,9 +94,9 @@ public class SrvJobcardVOImpl extends DigicomViewObjectImpl implements SrvJobcar
         return super.createRow();
     }
     public void doCreateNewJobCardRow() {
-        //Row r=this.createRow();
-        //r.setNewRowState(Row.STATUS_NEW);
-        //this.insertRow(r);
+        Row r=this.createRow();
+        r.setNewRowState(Row.STATUS_NEW);
+        this.insertRow(r);
     }
     @Override
     public void setWhereClause(String string) {

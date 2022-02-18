@@ -29,6 +29,7 @@ public class SrvJobcardImpl extends DigicomEntityImpl {
      * @param attributeList list of attribute names/values to initialize the row
      */
     protected void create(AttributeList attributeList) {
+        setSrvSequenceName("SRV_JOBCARD_SEQ");
         super.create(attributeList);
     }
 
@@ -65,15 +66,21 @@ public class SrvJobcardImpl extends DigicomEntityImpl {
                                                 "Where to_char(JOBDATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getJobdate().toString(), "yyMM")+"' \n"+
                                                 "and nvl(FromLocationId,locationid) = '"+getLocationid()+"'");
             vo.executeQuery();
-            setJobcardno(vo.first().getAttribute(0).toString());
-            setPrevDocid(vo.first().getAttribute(0).toString());
-            setPurchDate(gettxtStartDate());
+            populateAttributeAsChanged(JOBCARDNO, vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(PREVDOCID, vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(PURCHDATE, gettxtStartDate());
+//            setJobcardno(vo.first().getAttribute(0).toString());
+//            setPrevDocid(vo.first().getAttribute(0).toString());
+//            setPurchDate(gettxtStartDate());
          
        }
         
         else
             if(operation==DML_UPDATE)
-        {settxtStartDate(gettxtExpDate());}
+        {
+//            settxtStartDate(gettxtExpDate());
+             populateAttributeAsChanged(TXTSTARTDATE, gettxtExpDate());
+         }
         super.doDML(operation, e);
     }
 
@@ -142,6 +149,7 @@ public class SrvJobcardImpl extends DigicomEntityImpl {
         txtDealerName,
         txtModelNo,
         txtIsWarranty,
+        Jobcardseq,
         InItems,
         SrvDealers,
         SrvJobsymptom,
@@ -254,6 +262,7 @@ public class SrvJobcardImpl extends DigicomEntityImpl {
     public static final int TXTDEALERNAME = AttributesEnum.txtDealerName.index();
     public static final int TXTMODELNO = AttributesEnum.txtModelNo.index();
     public static final int TXTISWARRANTY = AttributesEnum.txtIsWarranty.index();
+    public static final int JOBCARDSEQ = AttributesEnum.Jobcardseq.index();
     public static final int INITEMS = AttributesEnum.InItems.index();
     public static final int SRVDEALERS = AttributesEnum.SrvDealers.index();
     public static final int SRVJOBSYMPTOM = AttributesEnum.SrvJobsymptom.index();
@@ -1346,6 +1355,22 @@ public class SrvJobcardImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Jobcardseq, using the alias name Jobcardseq.
+     * @return the value of Jobcardseq
+     */
+    public Integer getJobcardseq() {
+        return (Integer) getAttributeInternal(JOBCARDSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Jobcardseq.
+     * @param value value to set the Jobcardseq
+     */
+    public void setJobcardseq(Integer value) {
+        setAttributeInternal(JOBCARDSEQ, value);
+    }
+
+    /**
      * @return the associated entity dgcom.model.eo.inv.InItemsImpl.
      */
     public InItemsImpl getInItems() {
@@ -1558,12 +1583,12 @@ public class SrvJobcardImpl extends DigicomEntityImpl {
     }
 
     /**
-     * @param jobcardno key constituent
+     * @param jobcardseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String jobcardno) {
-        return new Key(new Object[] { jobcardno });
+    public static Key createPrimaryKey(Integer jobcardseq) {
+        return new Key(new Object[] { jobcardseq });
     }
 
 
