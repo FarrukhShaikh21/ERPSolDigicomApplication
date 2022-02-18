@@ -3,7 +3,10 @@ package dgcom.model.eo.srv;
 import dgcom.model.stand.DigicomClass;
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.ApplicationModule;
+import oracle.jbo.AttributeList;
 import oracle.jbo.Key;
 import oracle.jbo.RowIterator;
 import oracle.jbo.ViewObject;
@@ -34,6 +37,7 @@ public class SrvJobhandovertolabImpl extends DigicomEntityImpl {
         ModifiedDate,
         IsMigrated,
         MigratedDate,
+        Jhoseq,
         SrvJhotldetl;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
@@ -57,6 +61,8 @@ public class SrvJobhandovertolabImpl extends DigicomEntityImpl {
             return vals;
         }
     }
+
+
     public static final int JHOID = AttributesEnum.Jhoid.index();
     public static final int LOCATIONID = AttributesEnum.Locationid.index();
     public static final int HODATE = AttributesEnum.Hodate.index();
@@ -69,6 +75,7 @@ public class SrvJobhandovertolabImpl extends DigicomEntityImpl {
     public static final int MODIFIEDDATE = AttributesEnum.ModifiedDate.index();
     public static final int ISMIGRATED = AttributesEnum.IsMigrated.index();
     public static final int MIGRATEDDATE = AttributesEnum.MigratedDate.index();
+    public static final int JHOSEQ = AttributesEnum.Jhoseq.index();
     public static final int SRVJHOTLDETL = AttributesEnum.SrvJhotldetl.index();
 
     /**
@@ -76,6 +83,14 @@ public class SrvJobhandovertolabImpl extends DigicomEntityImpl {
      */
     public SrvJobhandovertolabImpl() {
     }
+
+    /**
+     * @return the definition object for this instance class.
+     */
+    public static synchronized EntityDefImpl getDefinitionObject() {
+        return EntityDefImpl.findDefObject("dgcom.model.eo.srv.SrvJobhandovertolab");
+    }
+
 
     /**
      * Gets the attribute value for Jhoid, using the alias name Jhoid.
@@ -270,26 +285,36 @@ public class SrvJobhandovertolabImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Jhoseq, using the alias name Jhoseq.
+     * @return the value of Jhoseq
+     */
+    public Integer getJhoseq() {
+        return (Integer) getAttributeInternal(JHOSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Jhoseq.
+     * @param value value to set the Jhoseq
+     */
+    public void setJhoseq(Integer value) {
+        setAttributeInternal(JHOSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getSrvJhotldetl() {
         return (RowIterator) getAttributeInternal(SRVJHOTLDETL);
     }
 
+
     /**
-     * @param jhoid key constituent
+     * @param jhoseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String jhoid) {
-        return new Key(new Object[] { jhoid });
-    }
-
-    /**
-     * @return the definition object for this instance class.
-     */
-    public static synchronized EntityDefImpl getDefinitionObject() {
-        return EntityDefImpl.findDefObject("dgcom.model.eo.srv.SrvJobhandovertolab");
+    public static Key createPrimaryKey(Integer jhoseq) {
+        return new Key(new Object[] { jhoseq });
     }
 
     /**
@@ -298,7 +323,12 @@ public class SrvJobhandovertolabImpl extends DigicomEntityImpl {
     public void lock() {
         super.lock();
     }
-
+    @Override
+    protected void create(AttributeList attributeList) {
+        // TODO Implement this method
+        setSrvSequenceName("SRV_JOBHANDOVERTOLAB_SEQ");
+        super.create(attributeList);
+    }
     /**
      * Custom DML update/insert/delete logic here.
      * @param operation the operation type
@@ -318,7 +348,8 @@ public class SrvJobhandovertolabImpl extends DigicomEntityImpl {
                                                "Where to_char(HODATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getHodate().toString(), "yyMM")+"' \n"+
                                                "and LOCATIONID = '"+getLocationid()+"'");
            vo.executeQuery();
-           setJhoid(vo.first().getAttribute(0).toString());
+           populateAttributeAsChanged(JHOID, vo.first().getAttribute(0).toString());
+//           setJhoid(vo.first().getAttribute(0).toString());
        }
         super.doDML(operation, e);
     }

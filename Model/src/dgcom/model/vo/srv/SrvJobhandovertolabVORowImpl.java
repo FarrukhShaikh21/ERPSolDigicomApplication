@@ -4,6 +4,8 @@ import dgcom.model.eo.srv.SrvJobhandovertolabImpl;
 
 import dgcom.model.stand.DigicomViewRowImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.RowIterator;
 import oracle.jbo.RowSet;
 import oracle.jbo.domain.Date;
@@ -35,6 +37,7 @@ public class SrvJobhandovertolabVORowImpl extends DigicomViewRowImpl {
         ModifiedDate,
         IsMigrated,
         MigratedDate,
+        Jhoseq,
         SrvJhotldetlVO,
         AccSysUserRightsWiseLocation,
         AccSubmitYesNo;
@@ -75,6 +78,7 @@ public class SrvJobhandovertolabVORowImpl extends DigicomViewRowImpl {
     public static final int MODIFIEDDATE = AttributesEnum.ModifiedDate.index();
     public static final int ISMIGRATED = AttributesEnum.IsMigrated.index();
     public static final int MIGRATEDDATE = AttributesEnum.MigratedDate.index();
+    public static final int JHOSEQ = AttributesEnum.Jhoseq.index();
     public static final int SRVJHOTLDETLVO = AttributesEnum.SrvJhotldetlVO.index();
     public static final int ACCSYSUSERRIGHTSWISELOCATION = AttributesEnum.AccSysUserRightsWiseLocation.index();
     public static final int ACCSUBMITYESNO = AttributesEnum.AccSubmitYesNo.index();
@@ -290,6 +294,22 @@ public class SrvJobhandovertolabVORowImpl extends DigicomViewRowImpl {
      */
     public void setMigratedDate(Date value) {
         setAttributeInternal(MIGRATEDDATE, value);
+    }
+
+    /**
+     * Gets the attribute value for JHOSEQ using the alias name Jhoseq.
+     * @return the JHOSEQ
+     */
+    public Integer getJhoseq() {
+        return (Integer) getAttributeInternal(JHOSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for JHOSEQ using the alias name Jhoseq.
+     * @param value value to set the JHOSEQ
+     */
+    public void setJhoseq(Integer value) {
+        setAttributeInternal(JHOSEQ, value);
     }
 
     /**
