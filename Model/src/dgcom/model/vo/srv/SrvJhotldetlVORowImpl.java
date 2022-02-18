@@ -4,6 +4,8 @@ import dgcom.model.eo.srv.SrvJhotldetlImpl;
 
 import dgcom.model.stand.DigicomViewRowImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.ApplicationModule;
 import oracle.jbo.Row;
 import oracle.jbo.RowSet;
@@ -37,6 +39,7 @@ public class SrvJhotldetlVORowImpl extends DigicomViewRowImpl {
         ModifiedDate,
         Rowid,
         txtModelName,
+        Jhoseq,
         SrvJobhandovertolabVO,
         SrvJobcardVO,
         AssignJobCardToCROQVO,
@@ -77,6 +80,7 @@ public class SrvJhotldetlVORowImpl extends DigicomViewRowImpl {
     public static final int MODIFIEDDATE = AttributesEnum.ModifiedDate.index();
     public static final int ROWID = AttributesEnum.Rowid.index();
     public static final int TXTMODELNAME = AttributesEnum.txtModelName.index();
+    public static final int JHOSEQ = AttributesEnum.Jhoseq.index();
     public static final int SRVJOBHANDOVERTOLABVO = AttributesEnum.SrvJobhandovertolabVO.index();
     public static final int SRVJOBCARDVO = AttributesEnum.SrvJobcardVO.index();
     public static final int ASSIGNJOBCARDTOCROQVO = AttributesEnum.AssignJobCardToCROQVO.index();
@@ -272,6 +276,22 @@ public class SrvJhotldetlVORowImpl extends DigicomViewRowImpl {
             return null;
         } */
         return (String) getAttributeInternal(TXTMODELNAME);
+    }
+
+    /**
+     * Gets the attribute value for JHOSEQ using the alias name Jhoseq.
+     * @return the JHOSEQ
+     */
+    public Integer getJhoseq() {
+        return (Integer) getAttributeInternal(JHOSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for JHOSEQ using the alias name Jhoseq.
+     * @param value value to set the JHOSEQ
+     */
+    public void setJhoseq(Integer value) {
+        setAttributeInternal(JHOSEQ, value);
     }
 
     /**

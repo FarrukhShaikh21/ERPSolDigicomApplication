@@ -2,6 +2,8 @@ package dgcom.model.eo.srv;
 
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.AttributeList;
 import oracle.jbo.RowSet;
 import oracle.jbo.domain.Date;
@@ -30,6 +32,7 @@ public class SrvJhotldetlImpl extends DigicomEntityImpl {
         Modifiedby,
         ModifiedDate,
         Rowid,
+        Jhoseq,
         SrvJobhandovertolab,
         AccSrvJobhandovertolabJobCardExists;
         private static AttributesEnum[] vals = null;
@@ -66,6 +69,7 @@ public class SrvJhotldetlImpl extends DigicomEntityImpl {
     public static final int MODIFIEDBY = AttributesEnum.Modifiedby.index();
     public static final int MODIFIEDDATE = AttributesEnum.ModifiedDate.index();
     public static final int ROWID = AttributesEnum.Rowid.index();
+    public static final int JHOSEQ = AttributesEnum.Jhoseq.index();
     public static final int SRVJOBHANDOVERTOLAB = AttributesEnum.SrvJobhandovertolab.index();
     public static final int ACCSRVJOBHANDOVERTOLABJOBCARDEXISTS =
         AttributesEnum.AccSrvJobhandovertolabJobCardExists.index();
@@ -237,6 +241,22 @@ public class SrvJhotldetlImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Jhoseq, using the alias name Jhoseq.
+     * @return the value of Jhoseq
+     */
+    public Integer getJhoseq() {
+        return (Integer) getAttributeInternal(JHOSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Jhoseq.
+     * @param value value to set the Jhoseq
+     */
+    public void setJhoseq(Integer value) {
+        setAttributeInternal(JHOSEQ, value);
+    }
+
+    /**
      * @return the associated entity SrvJobhandovertolabImpl.
      */
     public SrvJobhandovertolabImpl getSrvJobhandovertolab() {
@@ -290,6 +310,9 @@ public class SrvJhotldetlImpl extends DigicomEntityImpl {
             remove();
             return;
        }
+        if(operation==DML_INSERT) {
+            populateAttributeAsChanged(JHOID, getSrvJobhandovertolab().getAttribute("Jhoid"));
+        }
         super.doDML(operation, e);
     }
 }
