@@ -38,6 +38,7 @@ public class SrvJobassdetlVORowImpl extends ViewRowImpl {
         Mdate,
         Rowid,
         txtModelNo,
+        Assignseq,
         SrvJobassignVO,
         SrvJobcardVO,
         SrvJobAssignJobCardQVO,
@@ -80,6 +81,7 @@ public class SrvJobassdetlVORowImpl extends ViewRowImpl {
     public static final int MDATE = AttributesEnum.Mdate.index();
     public static final int ROWID = AttributesEnum.Rowid.index();
     public static final int TXTMODELNO = AttributesEnum.txtModelNo.index();
+    public static final int ASSIGNSEQ = AttributesEnum.Assignseq.index();
     public static final int SRVJOBASSIGNVO = AttributesEnum.SrvJobassignVO.index();
     public static final int SRVJOBCARDVO = AttributesEnum.SrvJobcardVO.index();
     public static final int SRVJOBASSIGNJOBCARDQVO = AttributesEnum.SrvJobAssignJobCardQVO.index();
@@ -298,6 +300,22 @@ public class SrvJobassdetlVORowImpl extends ViewRowImpl {
      */
     public void settxtModelNo(String value) {
         setAttributeInternal(TXTMODELNO, value);
+    }
+
+    /**
+     * Gets the attribute value for ASSIGNSEQ using the alias name Assignseq.
+     * @return the ASSIGNSEQ
+     */
+    public Integer getAssignseq() {
+        return (Integer) getAttributeInternal(ASSIGNSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for ASSIGNSEQ using the alias name Assignseq.
+     * @param value value to set the ASSIGNSEQ
+     */
+    public void setAssignseq(Integer value) {
+        setAttributeInternal(ASSIGNSEQ, value);
     }
 
     /**

@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvJobassdetlVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="SrvJobassdetl.JOBCARDNO, 
        SrvJobassdetl.ASSIGNID, 
@@ -17,7 +17,8 @@
        SrvJobassdetl.PREV_DOCID, 
        SrvJobassdetl.CDATE, 
        SrvJobassdetl.MDATE, 
-       SrvJobassdetl.ROWID"
+       SrvJobassdetl.ROWID, 
+       SrvJobassdetl.ASSIGNSEQ"
   FromList="SRV_JOBASSDETL SrvJobassdetl"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -163,8 +164,8 @@
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR">
+    <TransientExpression><![CDATA[SrvJobcardVO?.ModelNo]]></TransientExpression>
     <RecalcCondition><![CDATA[true]]></RecalcCondition>
-    <TransientExpression><![CDATA[SrvJobcardVO?.ModelNo]]></TransientExpression>\
     <Dependencies>
       <Item
         Value="Jobcardno"/>
@@ -178,6 +179,12 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewAttribute
+    Name="Assignseq"
+    PrecisionRule="true"
+    EntityAttrName="Assignseq"
+    EntityUsage="SrvJobassdetl"
+    AliasName="ASSIGNSEQ"/>
   <ViewLinkAccessor
     Name="SrvJobassignVO"
     ViewLink="dgcom.model.vl.srv.SysC0015133Link"

@@ -345,6 +345,9 @@ public class SrvJobassdetlImpl extends DigicomEntityImpl {
             remove();
             return;
         }        
+        if (operation==DML_INSERT) {
+            populateAttributeAsChanged(ASSIGNID, getSrvJobassign().getAttribute("Assignid"));
+       }
         super.doDML(operation, e);
     }
 }
