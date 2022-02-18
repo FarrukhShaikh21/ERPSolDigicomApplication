@@ -3,6 +3,8 @@ package dgcom.model.eo.srv;
 import dgcom.model.stand.DigicomClass;
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import java.sql.Timestamp;
 
 import oracle.jbo.ApplicationModule;
@@ -26,6 +28,7 @@ public class SrvJobassignImpl extends DigicomEntityImpl {
      * @param attributeList list of attribute names/values to initialize the row
      */
     protected void create(AttributeList attributeList) {
+        setSrvSequenceName("SRV_JOBASSIGN_SEQ");
         super.create(attributeList);
     }
 
@@ -63,7 +66,8 @@ public class SrvJobassignImpl extends DigicomEntityImpl {
                       " Where to_char(ASSDATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getAssdate().toString(), "yyMM")+"'"+
                   " and locationid ='"+getLocationid()+"'");
             vo.executeQuery();
-            setAssignid(vo.first().getAttribute(0).toString());
+//            setAssignid(vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(ASSIGNID, vo.first().getAttribute(0).toString());
         }
         super.doDML(operation, e);
     }
@@ -86,6 +90,7 @@ public class SrvJobassignImpl extends DigicomEntityImpl {
         IsMigrated,
         MigratedDate,
         txtTechnicianName,
+        Assignseq,
         SrvJobassdetl,
         SrvTechnician;
         private static AttributesEnum[] vals = null;
@@ -126,6 +131,7 @@ public class SrvJobassignImpl extends DigicomEntityImpl {
     public static final int ISMIGRATED = AttributesEnum.IsMigrated.index();
     public static final int MIGRATEDDATE = AttributesEnum.MigratedDate.index();
     public static final int TXTTECHNICIANNAME = AttributesEnum.txtTechnicianName.index();
+    public static final int ASSIGNSEQ = AttributesEnum.Assignseq.index();
     public static final int SRVJOBASSDETL = AttributesEnum.SrvJobassdetl.index();
     public static final int SRVTECHNICIAN = AttributesEnum.SrvTechnician.index();
 
@@ -368,6 +374,22 @@ public class SrvJobassignImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Assignseq, using the alias name Assignseq.
+     * @return the value of Assignseq
+     */
+    public Integer getAssignseq() {
+        return (Integer) getAttributeInternal(ASSIGNSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Assignseq.
+     * @param value value to set the Assignseq
+     */
+    public void setAssignseq(Integer value) {
+        setAttributeInternal(ASSIGNSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getSrvJobassdetl() {
@@ -389,12 +411,12 @@ public class SrvJobassignImpl extends DigicomEntityImpl {
     }
 
     /**
-     * @param assignid key constituent
+     * @param assignseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String assignid) {
-        return new Key(new Object[] { assignid });
+    public static Key createPrimaryKey(Integer assignseq) {
+        return new Key(new Object[] { assignseq });
     }
 
 

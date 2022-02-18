@@ -39,6 +39,7 @@ public class SrvJobassignVORowImpl extends DigicomViewRowImpl {
         IsMigrated,
         MigratedDate,
         txtTechnicianName,
+        Assignseq,
         SrvJobassdetlVO,
         AccTechnitionJobAssignTechnitionID,
         AccSysUserRightsWiseLocation,
@@ -82,6 +83,7 @@ public class SrvJobassignVORowImpl extends DigicomViewRowImpl {
     public static final int ISMIGRATED = AttributesEnum.IsMigrated.index();
     public static final int MIGRATEDDATE = AttributesEnum.MigratedDate.index();
     public static final int TXTTECHNICIANNAME = AttributesEnum.txtTechnicianName.index();
+    public static final int ASSIGNSEQ = AttributesEnum.Assignseq.index();
     public static final int SRVJOBASSDETLVO = AttributesEnum.SrvJobassdetlVO.index();
     public static final int ACCTECHNITIONJOBASSIGNTECHNITIONID =
         AttributesEnum.AccTechnitionJobAssignTechnitionID.index();
@@ -324,6 +326,22 @@ public class SrvJobassignVORowImpl extends DigicomViewRowImpl {
      */
     public void settxtTechnicianName(String value) {
         setAttributeInternal(TXTTECHNICIANNAME, value);
+    }
+
+    /**
+     * Gets the attribute value for ASSIGNSEQ using the alias name Assignseq.
+     * @return the ASSIGNSEQ
+     */
+    public Integer getAssignseq() {
+        return (Integer) getAttributeInternal(ASSIGNSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for ASSIGNSEQ using the alias name Assignseq.
+     * @param value value to set the ASSIGNSEQ
+     */
+    public void setAssignseq(Integer value) {
+        setAttributeInternal(ASSIGNSEQ, value);
     }
 
     /**
