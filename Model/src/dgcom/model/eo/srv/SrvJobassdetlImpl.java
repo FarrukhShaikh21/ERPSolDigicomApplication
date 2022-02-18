@@ -2,6 +2,8 @@ package dgcom.model.eo.srv;
 
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.AttributeList;
 import oracle.jbo.RowSet;
 import oracle.jbo.domain.Date;
@@ -32,6 +34,7 @@ public class SrvJobassdetlImpl extends DigicomEntityImpl {
         Cdate,
         Mdate,
         Rowid,
+        Assignseq,
         SrvJobassign,
         AccSrvIssueDetailProdIdCIC_0013;
         private static AttributesEnum[] vals = null;
@@ -70,6 +73,7 @@ public class SrvJobassdetlImpl extends DigicomEntityImpl {
     public static final int CDATE = AttributesEnum.Cdate.index();
     public static final int MDATE = AttributesEnum.Mdate.index();
     public static final int ROWID = AttributesEnum.Rowid.index();
+    public static final int ASSIGNSEQ = AttributesEnum.Assignseq.index();
     public static final int SRVJOBASSIGN = AttributesEnum.SrvJobassign.index();
     public static final int ACCSRVISSUEDETAILPRODIDCIC_0013 = AttributesEnum.AccSrvIssueDetailProdIdCIC_0013.index();
 
@@ -269,6 +273,22 @@ public class SrvJobassdetlImpl extends DigicomEntityImpl {
      */
     public RowID getRowid() {
         return (RowID) getAttributeInternal(ROWID);
+    }
+
+    /**
+     * Gets the attribute value for Assignseq, using the alias name Assignseq.
+     * @return the value of Assignseq
+     */
+    public Integer getAssignseq() {
+        return (Integer) getAttributeInternal(ASSIGNSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Assignseq.
+     * @param value value to set the Assignseq
+     */
+    public void setAssignseq(Integer value) {
+        setAttributeInternal(ASSIGNSEQ, value);
     }
 
     /**
