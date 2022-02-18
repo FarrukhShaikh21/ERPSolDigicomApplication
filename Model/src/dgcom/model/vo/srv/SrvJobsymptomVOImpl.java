@@ -19,10 +19,10 @@ public class SrvJobsymptomVOImpl extends ViewObjectImpl implements SrvJobsymptom
     public void doCreateNewJobSymRow() {
        //ViewObject vo= this.getRootApplicationModule().findViewObject("SrvJobcardCRUD");
         
-                 /*for (int i = 0; i < 5; i++) {
+                 for (int i = 0; i < 5; i++) {
             this.createRow();
             this.insertRow(this.createRow());
-       } */
+       } 
 
     }
 }

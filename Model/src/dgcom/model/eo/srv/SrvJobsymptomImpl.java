@@ -2,6 +2,8 @@ package dgcom.model.eo.srv;
 
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.RowSet;
 import oracle.jbo.domain.Date;
 import oracle.jbo.domain.RowID;
@@ -26,6 +28,7 @@ public class SrvJobsymptomImpl extends DigicomEntityImpl {
         Modifiedby,
         ModifiedDate,
         RowID,
+        Jobcardseq,
         SrvJobcard,
         SrvIssuance,
         SrvJobsymptomSEQ;
@@ -60,6 +63,7 @@ public class SrvJobsymptomImpl extends DigicomEntityImpl {
     public static final int MODIFIEDBY = AttributesEnum.Modifiedby.index();
     public static final int MODIFIEDDATE = AttributesEnum.ModifiedDate.index();
     public static final int ROWID = AttributesEnum.RowID.index();
+    public static final int JOBCARDSEQ = AttributesEnum.Jobcardseq.index();
     public static final int SRVJOBCARD = AttributesEnum.SrvJobcard.index();
     public static final int SRVISSUANCE = AttributesEnum.SrvIssuance.index();
     public static final int SRVJOBSYMPTOMSEQ = AttributesEnum.SrvJobsymptomSEQ.index();
@@ -183,6 +187,22 @@ public class SrvJobsymptomImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Jobcardseq, using the alias name Jobcardseq.
+     * @return the value of Jobcardseq
+     */
+    public Integer getJobcardseq() {
+        return (Integer) getAttributeInternal(JOBCARDSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Jobcardseq.
+     * @param value value to set the Jobcardseq
+     */
+    public void setJobcardseq(Integer value) {
+        setAttributeInternal(JOBCARDSEQ, value);
+    }
+
+    /**
      * @return the associated entity SrvJobcardImpl.
      */
     public SrvJobcardImpl getSrvJobcard() {
@@ -236,9 +256,13 @@ public class SrvJobsymptomImpl extends DigicomEntityImpl {
                return;
           }       
           
-        /* if (operation==DML_INSERT && getJobcardno().contains("-")) {
-            setJobcardno(this.getDBTransaction().getRootApplicationModule().findViewObject("SrvJobcardCRUD").getCurrentRow().getAttribute("Jobcardno").toString());
-       } */
+         if (operation==DML_INSERT /*&& getJobcardno().contains("-")*/) {
+             System.out.println("one");
+             populateAttributeAsChanged(JOBCARDNO, getSrvJobcard().getAttribute("Jobcardno"));
+           System.out.println("two");
+             
+//            setJobcardno(this.getDBTransaction().getRootApplicationModule().findViewObject("SrvJobcardCRUD").getCurrentRow().getAttribute("Jobcardno").toString());
+       } 
         super.doDML(operation, e);
     }
 }

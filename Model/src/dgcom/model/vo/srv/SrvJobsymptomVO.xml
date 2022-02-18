@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvJobsymptomVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="SrvJobsymptom.SYMPTOM_ID, 
        SrvJobsymptom.JOBCARDNO, 
@@ -12,7 +12,8 @@
        SrvJobsymptom.CREATED_DATE, 
        SrvJobsymptom.MODIFIEDBY, 
        SrvJobsymptom.MODIFIED_DATE, 
-       SrvJobsymptom.ROWID"
+       SrvJobsymptom.ROWID, 
+       SrvJobsymptom.JOBCARDSEQ"
   FromList="SRV_JOBSYMPTOM SrvJobsymptom"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -146,8 +147,8 @@
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR"
     LOVName="LovSrvSymptomsSymptomDescr">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[SrvSymptomsVO?.Description]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Dependencies>
       <Item
         Value="SymptomId"/>
@@ -168,6 +169,12 @@
     EntityAttrName="RowID"
     EntityUsage="SrvJobsymptom"
     AliasName="ROWID"/>
+  <ViewAttribute
+    Name="Jobcardseq"
+    PrecisionRule="true"
+    EntityAttrName="Jobcardseq"
+    EntityUsage="SrvJobsymptom"
+    AliasName="JOBCARDSEQ"/>
   <ViewLinkAccessor
     Name="SrvJobcardVO"
     ViewLink="dgcom.model.vl.srv.SrvJobCardSrvJobCardSymptonVL"

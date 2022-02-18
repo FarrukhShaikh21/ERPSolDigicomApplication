@@ -35,6 +35,7 @@ public class SrvJobsymptomVORowImpl extends ViewRowImpl {
         ModifiedDate,
         txtSymptomDescription,
         RowID,
+        Jobcardseq,
         SrvJobcardVO,
         SrvSymptomsVO,
         SrvJobsolutionVO,
@@ -74,6 +75,7 @@ public class SrvJobsymptomVORowImpl extends ViewRowImpl {
     public static final int MODIFIEDDATE = AttributesEnum.ModifiedDate.index();
     public static final int TXTSYMPTOMDESCRIPTION = AttributesEnum.txtSymptomDescription.index();
     public static final int ROWID = AttributesEnum.RowID.index();
+    public static final int JOBCARDSEQ = AttributesEnum.Jobcardseq.index();
     public static final int SRVJOBCARDVO = AttributesEnum.SrvJobcardVO.index();
     public static final int SRVSYMPTOMSVO = AttributesEnum.SrvSymptomsVO.index();
     public static final int SRVJOBSOLUTIONVO = AttributesEnum.SrvJobsolutionVO.index();
@@ -223,6 +225,22 @@ public class SrvJobsymptomVORowImpl extends ViewRowImpl {
      */
     public RowID getRowID() {
         return (RowID) getAttributeInternal(ROWID);
+    }
+
+    /**
+     * Gets the attribute value for JOBCARDSEQ using the alias name Jobcardseq.
+     * @return the JOBCARDSEQ
+     */
+    public Integer getJobcardseq() {
+        return (Integer) getAttributeInternal(JOBCARDSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for JOBCARDSEQ using the alias name Jobcardseq.
+     * @param value value to set the JOBCARDSEQ
+     */
+    public void setJobcardseq(Integer value) {
+        setAttributeInternal(JOBCARDSEQ, value);
     }
 
     /**
