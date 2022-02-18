@@ -31,9 +31,9 @@ public class DigicomClass {
     }
  String uname;
     public static String getUserLocation() {
-             if (1==1) {
+/*             if (1==1) {
         return "KSD"    ;
-       }   
+       }   */
         BindingContext      bc  =   BindingContext.getCurrent();
         DCBindingContainer dcb  =   bc.findBindingContainer("dgcom_view_LoginPageDef");
         DCDataControl       dc  =   dcb.findDataControl("modLoginDataControl");
@@ -52,9 +52,9 @@ public class DigicomClass {
     }
   
     public static String getUserRegion() {
-       if (1==1) {
+       /*if (1==1) {
         return "S"    ;
-       }   
+       } */  
                 BindingContext      bc  =   BindingContext.getCurrent();
                 DCBindingContainer dcb  =   bc.findBindingContainer("dgcom_view_LoginPageDef");
                 DCDataControl       dc  =   dcb.findDataControl("modLoginDataControl");
@@ -74,9 +74,9 @@ public class DigicomClass {
   
     
      public static String getLocationName(String pLocId,String pValueType) {
-         if (1==1) {
+         /*if (1==1) {
         return "LOCATION"    ;
-       }    
+       }    */
          //pValueType=L=Location Description
          BindingContext      bc  =   BindingContext.getCurrent();
          DCBindingContainer dcb  =   bc.findBindingContainer("dgcom_view_LoginPageDef");
@@ -104,9 +104,9 @@ public class DigicomClass {
      }
      
     public static String getConnectedUser() {
-          if (1==1) {
+          /*if (1==1) {
           return "ORACLE"  ;
-       }    
+       }   */ 
         BindingContext      bc  =   BindingContext.getCurrent();
         DCBindingContainer dcb  =   bc.findBindingContainer("dgcom_view_LoginPageDef");
         DCDataControl       dc  =   dcb.findDataControl("modLoginDataControl");
@@ -261,9 +261,9 @@ public class DigicomClass {
     
      
     public  String myConnectedUser() {
-    if (1==1) {
+    /*if (1==1) {
             return "ORACLE";
-       }
+       }*/
         BindingContext      bc  =   BindingContext.getCurrent();
         DCBindingContainer dcb  =   bc.findBindingContainer("dgcom_view_LoginPageDef");
         DCDataControl       dc  =   dcb.findDataControl("modLoginDataControl");
@@ -297,9 +297,9 @@ public class DigicomClass {
     }
 
     public static String doGetModuleId() {
-       if (1==1) {
-        return "CIC_0013"    ;
-       }    
+        /* if (1==1) {
+         return "CIC-0002"    ;
+        }  */
         BindingContext bindingContext = BindingContext.getCurrent();
         DCBindingContainer dcbMod = bindingContext.findBindingContainer("dgcom_view_tmpDigicomTemplatePageDef");
         DCIteratorBinding ib = dcbMod.findIteratorBinding("ApplicationActivityQVO1Iterator"); //can be used

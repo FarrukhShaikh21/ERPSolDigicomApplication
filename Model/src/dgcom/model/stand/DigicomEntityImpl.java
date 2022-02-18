@@ -21,6 +21,7 @@ public class DigicomEntityImpl extends EntityImpl {
     Date   Createddate;
     String Posted;
     String IsMigrated;
+    String SrvSequenceName="ADF_TEMP_PK_SEQ";
 
     public void setIsMigrated(String IsMigrated) {
         this.IsMigrated = IsMigrated;
@@ -135,7 +136,13 @@ public class DigicomEntityImpl extends EntityImpl {
             if (this.getEntityDef().getAttributeDefs()[ii].isPrimaryKey()) {
                 if (this.getEntityDef().getAttributeDef(ii).getJavaType().getName().toUpperCase().contains("STRING")) {
                     setAttribute(this.getEntityDef().getAttributeDef(ii).getIndex(),
-                                 tmpAdfPK("ADF_TEMP_PK_SEQ").toString());
+                                 tmpAdfPK(getSrvSequenceName()).toString());
+                }
+                else {
+                    System.out.println("creating pk");
+                    System.out.println(this.getEntityDef().getAttributeDef(ii).getName());
+                    setAttribute(this.getEntityDef().getAttributeDef(ii).getIndex(),
+                                 Math.abs(Integer.parseInt(tmpAdfPK(getSrvSequenceName()).toString())) ); 
                 }
 
 
@@ -199,5 +206,13 @@ public class DigicomEntityImpl extends EntityImpl {
     
     public void doCheckDateRight(){
         System.out.println("PAKISTAN-doCheckDateRight");
+    }
+
+    public void setSrvSequenceName(String SrvSequenceName) {
+        this.SrvSequenceName = SrvSequenceName;
+    }
+
+    public String getSrvSequenceName() {
+        return SrvSequenceName;
     }
 }
