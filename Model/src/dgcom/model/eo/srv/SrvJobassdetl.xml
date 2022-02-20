@@ -44,7 +44,6 @@
   </Attribute>
   <Attribute
     Name="Assignid"
-    IsNotNull="true"
     Precision="15"
     ColumnName="ASSIGNID"
     SQLType="VARCHAR"
