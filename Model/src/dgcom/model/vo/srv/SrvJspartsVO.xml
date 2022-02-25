@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvJspartsVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="SrvJsparts.JSOLUTION_ID, 
        SrvJsparts.ISSUEDETLID, 
@@ -15,7 +15,9 @@
        SrvJsparts.MODIFIED_DATE, 
        SrvJsparts.ROWID, 
        SrvJobsolution.JSOLUTION_ID AS JSOLUTION_ID1, 
-       SrvJobsolution.JOBCARDNO"
+       SrvJobsolution.JOBCARDNO, 
+       SrvJsparts.JSOLUTIONSEQ, 
+       SrvJobsolution.JSOLUTIONSEQ AS JSOLUTIONSEQ1"
   FromList="SRV_JSPARTS SrvJsparts, SRV_JOBSOLUTION SrvJobsolution"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -177,6 +179,18 @@
     EntityAttrName="txtPartName"
     EntityUsage="SrvJsparts"
     AliasName="TXT_PART_DESCRIPTION"/>
+  <ViewAttribute
+    Name="Jsolutionseq"
+    PrecisionRule="true"
+    EntityAttrName="Jsolutionseq"
+    EntityUsage="SrvJsparts"
+    AliasName="JSOLUTIONSEQ"/>
+  <ViewAttribute
+    Name="Jsolutionseq1"
+    PrecisionRule="true"
+    EntityAttrName="Jsolutionseq"
+    EntityUsage="SrvJobsolution"
+    AliasName="JSOLUTIONSEQ1"/>
   <ViewCriteria
     Name="SrvJspartsPostedJobSolutionsVC"
     ViewObjectName="dgcom.model.vo.srv.SrvJspartsVO"
@@ -209,7 +223,6 @@
         Operator="EXISTS"
         Conjunction="AND"
         IsNestedCriteria="true"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <ViewCriteria
           Name="SrvJobsolutionVONestedCriteria"
@@ -225,7 +238,6 @@
               Conjunction="AND"
               Value="Y"
               UpperColumns="0"
-              GenerateIsNullClauseForBindVars="false"
               Required="Optional">
               <Properties>
                 <SchemaBasedProperties>

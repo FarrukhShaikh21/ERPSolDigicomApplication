@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvJsprepairVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="SrvJsprepair.JSOLUTION_ID, 
        SrvJsprepair.PARTID, 
@@ -15,7 +15,9 @@
        SrvJsprepair.MODIFIED_DATE, 
        SrvJsprepair.ROWID, 
        SrvJobsolution.JOBCARDNO, 
-       SrvJobsolution.JSOLUTION_ID AS JSOLUTION_ID1"
+       SrvJobsolution.JSOLUTION_ID AS JSOLUTION_ID1, 
+       SrvJsprepair.JSOLUTIONSEQ, 
+       SrvJobsolution.JSOLUTIONSEQ AS JSOLUTIONSEQ1"
   FromList="SRV_JSPREPAIR SrvJsprepair, SRV_JOBSOLUTION SrvJobsolution"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -169,6 +171,18 @@
     EntityAttrName="txtPartName"
     EntityUsage="SrvJsprepair"
     AliasName="TXT_PART_NAME"/>
+  <ViewAttribute
+    Name="Jsolutionseq"
+    PrecisionRule="true"
+    EntityAttrName="Jsolutionseq"
+    EntityUsage="SrvJsprepair"
+    AliasName="JSOLUTIONSEQ"/>
+  <ViewAttribute
+    Name="Jsolutionseq1"
+    PrecisionRule="true"
+    EntityAttrName="Jsolutionseq"
+    EntityUsage="SrvJobsolution"
+    AliasName="JSOLUTIONSEQ1"/>
   <AttrArray Name="KeyAttributes">
     <Item Value="Rowid"/>
   </AttrArray>

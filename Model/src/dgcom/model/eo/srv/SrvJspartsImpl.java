@@ -30,6 +30,7 @@ public class SrvJspartsImpl extends DigicomEntityImpl {
         ModifiedDate,
         Rowid,
         txtPartName,
+        Jsolutionseq,
         SrvJobsolution,
         SrvIssuedetail,
         AccSrvIssueDetailQtyRemainingPart;
@@ -66,6 +67,7 @@ public class SrvJspartsImpl extends DigicomEntityImpl {
     public static final int MODIFIEDDATE = AttributesEnum.ModifiedDate.index();
     public static final int ROWID = AttributesEnum.Rowid.index();
     public static final int TXTPARTNAME = AttributesEnum.txtPartName.index();
+    public static final int JSOLUTIONSEQ = AttributesEnum.Jsolutionseq.index();
     public static final int SRVJOBSOLUTION = AttributesEnum.SrvJobsolution.index();
     public static final int SRVISSUEDETAIL = AttributesEnum.SrvIssuedetail.index();
     public static final int ACCSRVISSUEDETAILQTYREMAININGPART =
@@ -222,6 +224,22 @@ public class SrvJspartsImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Jsolutionseq, using the alias name Jsolutionseq.
+     * @return the value of Jsolutionseq
+     */
+    public Integer getJsolutionseq() {
+        return (Integer) getAttributeInternal(JSOLUTIONSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Jsolutionseq.
+     * @param value value to set the Jsolutionseq
+     */
+    public void setJsolutionseq(Integer value) {
+        setAttributeInternal(JSOLUTIONSEQ, value);
+    }
+
+    /**
      * @return the associated entity SrvJobsolutionImpl.
      */
     public SrvJobsolutionImpl getSrvJobsolution() {
@@ -289,6 +307,9 @@ public class SrvJspartsImpl extends DigicomEntityImpl {
             remove();
             return;
        }
+        if (operation==DML_INSERT) {
+            populateAttributeAsChanged(JSOLUTIONID, getSrvJobsolution().getAttribute("JsolutionId"));
+        }
         super.doDML(operation, e);
     }
 }
