@@ -230,7 +230,7 @@
             <af:panelSplitter id="pt_ps2" disabled="true">
                 <f:facet name="first">
                     <af:panelGroupLayout id="pt_pgl1" layout="horizontal">
-                        <af:image source="#{resource['images:digicom.jpg']}" id="pt_i1"/>
+                        <af:image id="pt_i1" source="#{resource['images:imgTheCompanyLogo.png']}"/>
                     </af:panelGroupLayout>
                 </f:facet>
                 <f:facet name="second">
