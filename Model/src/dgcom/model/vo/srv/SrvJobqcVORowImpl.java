@@ -50,6 +50,7 @@ public class SrvJobqcVORowImpl extends DigicomViewRowImpl {
         txtTechnicianName,
         txtImeiNo,
         txtLovName,
+        Qcdocseq,
         SrvJspartsVO,
         SrvJsprepairVO,
         SrvJobsymptomVO,
@@ -116,6 +117,7 @@ public class SrvJobqcVORowImpl extends DigicomViewRowImpl {
     public static final int TXTTECHNICIANNAME = AttributesEnum.txtTechnicianName.index();
     public static final int TXTIMEINO = AttributesEnum.txtImeiNo.index();
     public static final int TXTLOVNAME = AttributesEnum.txtLovName.index();
+    public static final int QCDOCSEQ = AttributesEnum.Qcdocseq.index();
     public static final int SRVJSPARTSVO = AttributesEnum.SrvJspartsVO.index();
     public static final int SRVJSPREPAIRVO = AttributesEnum.SrvJsprepairVO.index();
     public static final int SRVJOBSYMPTOMVO = AttributesEnum.SrvJobsymptomVO.index();
@@ -566,6 +568,22 @@ public class SrvJobqcVORowImpl extends DigicomViewRowImpl {
      */
     public String gettxtLovName() {
         return (String) getAttributeInternal(TXTLOVNAME);
+    }
+
+    /**
+     * Gets the attribute value for QCDOCSEQ using the alias name Qcdocseq.
+     * @return the QCDOCSEQ
+     */
+    public Integer getQcdocseq() {
+        return (Integer) getAttributeInternal(QCDOCSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for QCDOCSEQ using the alias name Qcdocseq.
+     * @param value value to set the QCDOCSEQ
+     */
+    public void setQcdocseq(Integer value) {
+        setAttributeInternal(QCDOCSEQ, value);
     }
 
     /**

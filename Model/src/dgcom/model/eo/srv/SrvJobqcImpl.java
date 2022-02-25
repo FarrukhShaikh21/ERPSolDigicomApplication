@@ -3,6 +3,8 @@ package dgcom.model.eo.srv;
 import dgcom.model.stand.DigicomClass;
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.ApplicationModule;
 import oracle.jbo.AttributeList;
 import oracle.jbo.Key;
@@ -47,6 +49,7 @@ public class SrvJobqcImpl extends DigicomEntityImpl {
         MigratedDate,
         txtTechnicianName,
         txtImeiNo,
+        Qcdocseq,
         SrvJobcard,
         SrvTechnician;
         private static AttributesEnum[] vals = null;
@@ -98,6 +101,7 @@ public class SrvJobqcImpl extends DigicomEntityImpl {
     public static final int MIGRATEDDATE = AttributesEnum.MigratedDate.index();
     public static final int TXTTECHNICIANNAME = AttributesEnum.txtTechnicianName.index();
     public static final int TXTIMEINO = AttributesEnum.txtImeiNo.index();
+    public static final int QCDOCSEQ = AttributesEnum.Qcdocseq.index();
     public static final int SRVJOBCARD = AttributesEnum.SrvJobcard.index();
     public static final int SRVTECHNICIAN = AttributesEnum.SrvTechnician.index();
 
@@ -516,6 +520,22 @@ public class SrvJobqcImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Qcdocseq, using the alias name Qcdocseq.
+     * @return the value of Qcdocseq
+     */
+    public Integer getQcdocseq() {
+        return (Integer) getAttributeInternal(QCDOCSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Qcdocseq.
+     * @param value value to set the Qcdocseq
+     */
+    public void setQcdocseq(Integer value) {
+        setAttributeInternal(QCDOCSEQ, value);
+    }
+
+    /**
      * @return the associated entity SrvJobcardImpl.
      */
     public SrvJobcardImpl getSrvJobcard() {
@@ -546,12 +566,12 @@ public class SrvJobqcImpl extends DigicomEntityImpl {
 
 
     /**
-     * @param qcdocid key constituent
+     * @param qcdocseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String qcdocid) {
-        return new Key(new Object[] { qcdocid });
+    public static Key createPrimaryKey(Integer qcdocseq) {
+        return new Key(new Object[] { qcdocseq });
     }
 
     /**
@@ -595,7 +615,8 @@ public class SrvJobqcImpl extends DigicomEntityImpl {
                                                 "Where to_char(qcdate,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getQcdate().toString(), "yyMM")+"' \n"+
                                                 "and locationid = '"+getLocationid()+"'");
             vo.executeQuery();
-            setQcdocid(vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(QCDOCID, vo.first().getAttribute(0).toString());
+//            setQcdocid(vo.first().getAttribute(0).toString());
         }
         super.doDML(operation, e);
     }
