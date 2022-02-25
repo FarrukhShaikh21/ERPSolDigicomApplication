@@ -4,7 +4,7 @@
 <Association
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SysC0015148Assoc"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge">
   <DesignTime>
     <Attr Name="_isCodegen" Value="true"/>
@@ -19,27 +19,24 @@
     <DesignTime>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="SrvJobsolution"/>
-      <Attr Name="_foreignKey" Value="dgcom.model.eo.srv.SrvJobsolution.SysC0014102"/>
       <Attr Name="_isUpdateable" Value="true"/>
       <Attr Name="_minCardinality" Value="1"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="dgcom.model.eo.srv.SrvJobsolution.JsolutionId"/>
+      <Item Value="dgcom.model.eo.srv.SrvJobsolution.Jsolutionseq"/>
     </AttrArray>
   </AssociationEnd>
   <AssociationEnd
     Name="SrvJobfault"
     Cardinality="-1"
-    Owner="dgcom.model.eo.srv.SrvJobfault"
-    HasOwner="true">
+    Owner="dgcom.model.eo.srv.SrvJobfault">
     <DesignTime>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="SrvJobfault"/>
-      <Attr Name="_foreignKey" Value="dgcom.model.eo.srv.SrvJobfault.SysC0015148"/>
       <Attr Name="_isUpdateable" Value="true"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="dgcom.model.eo.srv.SrvJobfault.JsolutionId"/>
+      <Item Value="dgcom.model.eo.srv.SrvJobfault.Jsolutionseq"/>
     </AttrArray>
   </AssociationEnd>
 </Association>
