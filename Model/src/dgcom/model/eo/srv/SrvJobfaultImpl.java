@@ -2,6 +2,8 @@ package dgcom.model.eo.srv;
 
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.AttributeList;
 import oracle.jbo.domain.Date;
 import oracle.jbo.domain.RowID;
@@ -26,6 +28,7 @@ public class SrvJobfaultImpl extends DigicomEntityImpl {
         ModifiedDate,
         Rowid,
         txtFaultDescription,
+        Jsolutionseq,
         SrvJobsolution,
         SrvFaults;
         private static AttributesEnum[] vals = null;
@@ -60,6 +63,7 @@ public class SrvJobfaultImpl extends DigicomEntityImpl {
     public static final int MODIFIEDDATE = AttributesEnum.ModifiedDate.index();
     public static final int ROWID = AttributesEnum.Rowid.index();
     public static final int TXTFAULTDESCRIPTION = AttributesEnum.txtFaultDescription.index();
+    public static final int JSOLUTIONSEQ = AttributesEnum.Jsolutionseq.index();
     public static final int SRVJOBSOLUTION = AttributesEnum.SrvJobsolution.index();
     public static final int SRVFAULTS = AttributesEnum.SrvFaults.index();
 
@@ -198,6 +202,22 @@ public class SrvJobfaultImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Jsolutionseq, using the alias name Jsolutionseq.
+     * @return the value of Jsolutionseq
+     */
+    public Integer getJsolutionseq() {
+        return (Integer) getAttributeInternal(JSOLUTIONSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Jsolutionseq.
+     * @param value value to set the Jsolutionseq
+     */
+    public void setJsolutionseq(Integer value) {
+        setAttributeInternal(JSOLUTIONSEQ, value);
+    }
+
+    /**
      * @return the associated entity SrvJobsolutionImpl.
      */
     public SrvJobsolutionImpl getSrvJobsolution() {
@@ -257,6 +277,9 @@ public class SrvJobfaultImpl extends DigicomEntityImpl {
         if (operation==DML_INSERT && getFaultid()==null) {
             remove();
             return;
+       }
+        if (operation==DML_INSERT) {
+            populateAttributeAsChanged(JSOLUTIONID, getSrvJobsolution().getAttribute("JsolutionId"));
        }
         super.doDML(operation, e);
     }
