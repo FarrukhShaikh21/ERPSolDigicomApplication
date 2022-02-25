@@ -1,5 +1,7 @@
 package dgcom.model.eo.srv;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.AttributeList;
 import oracle.jbo.domain.Date;
 import oracle.jbo.domain.RowID;
@@ -25,6 +27,7 @@ public class SrvJobactionImpl extends EntityImpl {
         ModifiedDate,
         Rowid,
         txtActionName,
+        Jsolutionseq,
         SrvJobsolution,
         SrvAction;
         private static AttributesEnum[] vals = null;
@@ -59,6 +62,7 @@ public class SrvJobactionImpl extends EntityImpl {
     public static final int MODIFIEDDATE = AttributesEnum.ModifiedDate.index();
     public static final int ROWID = AttributesEnum.Rowid.index();
     public static final int TXTACTIONNAME = AttributesEnum.txtActionName.index();
+    public static final int JSOLUTIONSEQ = AttributesEnum.Jsolutionseq.index();
     public static final int SRVJOBSOLUTION = AttributesEnum.SrvJobsolution.index();
     public static final int SRVACTION = AttributesEnum.SrvAction.index();
 
@@ -197,6 +201,22 @@ public class SrvJobactionImpl extends EntityImpl {
     }
 
     /**
+     * Gets the attribute value for Jsolutionseq, using the alias name Jsolutionseq.
+     * @return the value of Jsolutionseq
+     */
+    public Integer getJsolutionseq() {
+        return (Integer) getAttributeInternal(JSOLUTIONSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Jsolutionseq.
+     * @param value value to set the Jsolutionseq
+     */
+    public void setJsolutionseq(Integer value) {
+        setAttributeInternal(JSOLUTIONSEQ, value);
+    }
+
+    /**
      * @return the associated entity SrvJobsolutionImpl.
      */
     public SrvJobsolutionImpl getSrvJobsolution() {
@@ -256,7 +276,10 @@ public class SrvJobactionImpl extends EntityImpl {
         if (operation==DML_INSERT  && getActionId()==null) {
             remove();
              return;
-        }      
+        }    
+        if (operation==DML_INSERT) {
+            populateAttributeAsChanged(JSOLUTIONID, getSrvJobsolution().getAttribute("JsolutionId"));
+        }
         super.doDML(operation, e);
     }
 }

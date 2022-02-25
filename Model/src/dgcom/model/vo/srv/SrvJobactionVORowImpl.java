@@ -36,6 +36,8 @@ public class SrvJobactionVORowImpl extends DigicomViewRowImpl {
         Jobcardno,
         MastJsolutionId,
         txtActionName,
+        Jsolutionseq,
+        Jsolutionseq1,
         SrvJobsolutionVO,
         SrvJobqcVO,
         AccSrvAction,
@@ -75,6 +77,8 @@ public class SrvJobactionVORowImpl extends DigicomViewRowImpl {
     public static final int JOBCARDNO = AttributesEnum.Jobcardno.index();
     public static final int MASTJSOLUTIONID = AttributesEnum.MastJsolutionId.index();
     public static final int TXTACTIONNAME = AttributesEnum.txtActionName.index();
+    public static final int JSOLUTIONSEQ = AttributesEnum.Jsolutionseq.index();
+    public static final int JSOLUTIONSEQ1 = AttributesEnum.Jsolutionseq1.index();
     public static final int SRVJOBSOLUTIONVO = AttributesEnum.SrvJobsolutionVO.index();
     public static final int SRVJOBQCVO = AttributesEnum.SrvJobqcVO.index();
     public static final int ACCSRVACTION = AttributesEnum.AccSrvAction.index();
@@ -253,6 +257,38 @@ public class SrvJobactionVORowImpl extends DigicomViewRowImpl {
      */
     public void settxtActionName(String value) {
         setAttributeInternal(TXTACTIONNAME, value);
+    }
+
+    /**
+     * Gets the attribute value for JSOLUTIONSEQ using the alias name Jsolutionseq.
+     * @return the JSOLUTIONSEQ
+     */
+    public Integer getJsolutionseq() {
+        return (Integer) getAttributeInternal(JSOLUTIONSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for JSOLUTIONSEQ using the alias name Jsolutionseq.
+     * @param value value to set the JSOLUTIONSEQ
+     */
+    public void setJsolutionseq(Integer value) {
+        setAttributeInternal(JSOLUTIONSEQ, value);
+    }
+
+    /**
+     * Gets the attribute value for JSOLUTIONSEQ using the alias name Jsolutionseq1.
+     * @return the JSOLUTIONSEQ
+     */
+    public Integer getJsolutionseq1() {
+        return (Integer) getAttributeInternal(JSOLUTIONSEQ1);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for JSOLUTIONSEQ using the alias name Jsolutionseq1.
+     * @param value value to set the JSOLUTIONSEQ
+     */
+    public void setJsolutionseq1(Integer value) {
+        setAttributeInternal(JSOLUTIONSEQ1, value);
     }
 
     /**
