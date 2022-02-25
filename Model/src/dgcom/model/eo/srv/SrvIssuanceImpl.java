@@ -3,9 +3,12 @@ package dgcom.model.eo.srv;
 import dgcom.model.stand.DigicomClass;
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import java.sql.Timestamp;
 
 import oracle.jbo.ApplicationModule;
+import oracle.jbo.AttributeList;
 import oracle.jbo.Key;
 import oracle.jbo.RowIterator;
 import oracle.jbo.RowSet;
@@ -27,7 +30,12 @@ public class SrvIssuanceImpl extends DigicomEntityImpl {
     public void lock() {
         super.lock();
     }
-
+    @Override
+    protected void create(AttributeList attributeList) {
+        // TODO Implement this method
+        setSrvSequenceName("SRV_ISSUANCE_SEQ");
+        super.create(attributeList);
+    }
     /**
      * Custom DML update/insert/delete logic here.
      * @param operation the operation type
@@ -47,7 +55,9 @@ public class SrvIssuanceImpl extends DigicomEntityImpl {
             "	Where to_char(ISSUEDATE,'rrmm') = '"+DigicomClass.doGetFormattedDate(getIssuedate().toString(), "yyMM")+"'\n" + 
             "   and locationid = '"+getLocationid()+"'");
             vo.executeQuery();
-            setIssueId(vo.first().getAttribute(0).toString());
+//            setIssueId(vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(ISSUEID, vo.first().getAttribute(0).toString());
+            
         }        
         super.doDML(operation, e);
     }
@@ -83,6 +93,7 @@ public class SrvIssuanceImpl extends DigicomEntityImpl {
         txtModelNo,
         txtImeiNo,
         txtTechnicianName,
+        Issueseq,
         SrvIssuedetail,
         SrvJobcard,
         SrvIssuereturn,
@@ -142,6 +153,7 @@ public class SrvIssuanceImpl extends DigicomEntityImpl {
     public static final int TXTMODELNO = AttributesEnum.txtModelNo.index();
     public static final int TXTIMEINO = AttributesEnum.txtImeiNo.index();
     public static final int TXTTECHNICIANNAME = AttributesEnum.txtTechnicianName.index();
+    public static final int ISSUESEQ = AttributesEnum.Issueseq.index();
     public static final int SRVISSUEDETAIL = AttributesEnum.SrvIssuedetail.index();
     public static final int SRVJOBCARD = AttributesEnum.SrvJobcard.index();
     public static final int SRVISSUERETURN = AttributesEnum.SrvIssuereturn.index();
@@ -598,6 +610,22 @@ public class SrvIssuanceImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Issueseq, using the alias name Issueseq.
+     * @return the value of Issueseq
+     */
+    public Integer getIssueseq() {
+        return (Integer) getAttributeInternal(ISSUESEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Issueseq.
+     * @param value value to set the Issueseq
+     */
+    public void setIssueseq(Integer value) {
+        setAttributeInternal(ISSUESEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getSrvIssuedetail() {
@@ -668,12 +696,12 @@ public class SrvIssuanceImpl extends DigicomEntityImpl {
     }
 
     /**
-     * @param issueId key constituent
+     * @param issueseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String issueId) {
-        return new Key(new Object[] { issueId });
+    public static Key createPrimaryKey(Integer issueseq) {
+        return new Key(new Object[] { issueseq });
     }
 
 

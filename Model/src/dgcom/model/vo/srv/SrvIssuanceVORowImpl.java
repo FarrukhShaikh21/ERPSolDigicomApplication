@@ -53,6 +53,7 @@ public class SrvIssuanceVORowImpl extends DigicomViewRowImpl {
         txtImeiNo,
         txtWarranty,
         txtTechnicianName,
+        Issueseq,
         SrvIssuedetailVO,
         SrvJobcardVO,
         SrvJobsymptomVO,
@@ -113,6 +114,7 @@ public class SrvIssuanceVORowImpl extends DigicomViewRowImpl {
     public static final int TXTIMEINO = AttributesEnum.txtImeiNo.index();
     public static final int TXTWARRANTY = AttributesEnum.txtWarranty.index();
     public static final int TXTTECHNICIANNAME = AttributesEnum.txtTechnicianName.index();
+    public static final int ISSUESEQ = AttributesEnum.Issueseq.index();
     public static final int SRVISSUEDETAILVO = AttributesEnum.SrvIssuedetailVO.index();
     public static final int SRVJOBCARDVO = AttributesEnum.SrvJobcardVO.index();
     public static final int SRVJOBSYMPTOMVO = AttributesEnum.SrvJobsymptomVO.index();
@@ -559,6 +561,22 @@ public class SrvIssuanceVORowImpl extends DigicomViewRowImpl {
      */
     public void settxtTechnicianName(String value) {
         setAttributeInternal(TXTTECHNICIANNAME, value);
+    }
+
+    /**
+     * Gets the attribute value for ISSUESEQ using the alias name Issueseq.
+     * @return the ISSUESEQ
+     */
+    public Integer getIssueseq() {
+        return (Integer) getAttributeInternal(ISSUESEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for ISSUESEQ using the alias name Issueseq.
+     * @param value value to set the ISSUESEQ
+     */
+    public void setIssueseq(Integer value) {
+        setAttributeInternal(ISSUESEQ, value);
     }
 
     /**

@@ -63,10 +63,12 @@ public class SrvIssuedetailImpl extends DigicomEntityImpl {
             vo=am.createViewObjectFromQueryStmt("myIssuanceDetPK",
             "  	select '"+getIssueId()+"'||'-'||nvl(max(to_number(substr(ISSUEDETLID, length(ISSUE_ID)+2)))+1,1) \n" + 
             "  	from SRV_ISSUEDETAIL\n" + 
-            "  	where ISSUE_ID ='"+ getIssueId()+"'"
+            "  	where ISSUE_ID ='"+ getSrvIssuance().getAttribute("IssueId")+"'"
                                                 );
             vo.executeQuery();
-            setIssuedetlid(vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(ISSUEID, getSrvIssuance().getAttribute("IssueId"));
+            populateAttributeAsChanged(ISSUEDETLID, vo.first().getAttribute(0).toString());
+//            setIssuedetlid(vo.first().getAttribute(0).toString());
         }        
         super.doDML(operation, e);
     }
@@ -96,6 +98,7 @@ public class SrvIssuedetailImpl extends DigicomEntityImpl {
         txtStoreTransTypeId,
         txtPartName,
         txtAmount,
+        Issueseq,
         SrvIssuance,
         InParts,
         AllStores,
@@ -148,6 +151,7 @@ public class SrvIssuedetailImpl extends DigicomEntityImpl {
     public static final int TXTSTORETRANSTYPEID = AttributesEnum.txtStoreTransTypeId.index();
     public static final int TXTPARTNAME = AttributesEnum.txtPartName.index();
     public static final int TXTAMOUNT = AttributesEnum.txtAmount.index();
+    public static final int ISSUESEQ = AttributesEnum.Issueseq.index();
     public static final int SRVISSUANCE = AttributesEnum.SrvIssuance.index();
     public static final int INPARTS = AttributesEnum.InParts.index();
     public static final int ALLSTORES = AttributesEnum.AllStores.index();
@@ -515,6 +519,22 @@ public class SrvIssuedetailImpl extends DigicomEntityImpl {
      */
     public void settxtAmount(BigDecimal value) {
         setAttributeInternal(TXTAMOUNT, value);
+    }
+
+    /**
+     * Gets the attribute value for Issueseq, using the alias name Issueseq.
+     * @return the value of Issueseq
+     */
+    public Integer getIssueseq() {
+        return (Integer) getAttributeInternal(ISSUESEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Issueseq.
+     * @param value value to set the Issueseq
+     */
+    public void setIssueseq(Integer value) {
+        setAttributeInternal(ISSUESEQ, value);
     }
 
     /**

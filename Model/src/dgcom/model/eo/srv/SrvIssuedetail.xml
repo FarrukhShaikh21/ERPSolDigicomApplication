@@ -4,7 +4,7 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvIssuedetail"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="SRV_ISSUEDETAIL"
@@ -51,7 +51,6 @@
   </ViewAccessor>
   <Attribute
     Name="Issuedetlid"
-    IsNotNull="true"
     Precision="20"
     ColumnName="ISSUEDETLID"
     SQLType="VARCHAR"
@@ -146,7 +145,8 @@
       Inverse="false"
       CompareType="LESSTHANEQUALTO"
       CompareValue="2">
-      <validation:OnCondition><![CDATA[newValue!=null]]></validation:OnCondition>
+      <validation:OnCondition
+        Name="OnConditionExpr"><![CDATA[newValue!=null]]></validation:OnCondition>
     </validation:CompareValidationBean>
     <validation:CompareValidationBean
       Name="CheckingAvailQtyBR"
@@ -157,16 +157,22 @@
       ViewAccAttrName="AvailQty"
       ViewAccName="AccSrvIssuanceDetailAvailQty"
       ResId="dgcom.model.eo.srv.SrvIssuedetail.Qty_Rule_0">
-      <validation:OnCondition><![CDATA[if (newValue!=null && Partid !=null && Storeid!=null)
+      <validation:OnCondition
+        Name="OnConditionExpr"><![CDATA[if (newValue!=null && Partid !=null && Storeid!=null)
 {
 AccSrvIssuanceDetailAvailQty.executeQuery();
 return true;
 }
 else 
 return false;]]></validation:OnCondition>
-      <validation:ResExpressions>
+      <validation:ResExpressions
+        Name="CheckingAvailQtyBR_ResExprList">
         <validation:Expression
-          Name="0"><![CDATA[AccSrvIssuanceDetailAvailQty?.first()?.getAttribute(1)]]></validation:Expression>
+          Name="0"><![CDATA[
+
+AccSrvIssuanceDetailAvailQty?.first()?.getAttribute(1)
+            
+            ]]></validation:Expression>
       </validation:ResExpressions>
     </validation:CompareValidationBean>
     <validation:CompareValidationBean
@@ -176,7 +182,8 @@ return false;]]></validation:OnCondition>
       OperandType="EXPR"
       Inverse="false"
       CompareType="LESSTHANEQUALTO">
-      <validation:OnCondition><![CDATA[newValue!=null && RejectQty!=null && RejectQty > newValue]]></validation:OnCondition>
+      <validation:OnCondition
+        Name="OnConditionExpr"><![CDATA[newValue!=null && RejectQty!=null && RejectQty > newValue]]></validation:OnCondition>
       <validation:TransientExpression><![CDATA[return RejectQty;]]></validation:TransientExpression>
     </validation:CompareValidationBean>
   </Attribute>
@@ -196,7 +203,8 @@ return false;]]></validation:OnCondition>
       OperandType="EXPR"
       Inverse="false"
       CompareType="LESSTHANEQUALTO">
-      <validation:OnCondition><![CDATA[Qty!=null && newValue!=null]]></validation:OnCondition>
+      <validation:OnCondition
+        Name="OnConditionExpr"><![CDATA[Qty!=null && newValue!=null]]></validation:OnCondition>
       <validation:TransientExpression><![CDATA[return Qty;]]></validation:TransientExpression>
     </validation:CompareValidationBean>
     <Properties>
@@ -335,8 +343,8 @@ return Systemrate;]]></validation:TransientExpression>
     ColumnType="VARCHAR2"
     IsQueriable="false"
     IsPersistent="false">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[AllStores?.StoreTransTypeId]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Dependencies>
       <Item
         Value="Storeid"/>
@@ -351,11 +359,11 @@ return Systemrate;]]></validation:TransientExpression>
     ColumnType="VARCHAR2"
     IsPersistent="false"
     IsQueriable="false">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[if (Partid!=null)
 return InParts?.Description+"("+AllStores?.StoreName+")"
 else
 return null;]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Dependencies>
       <Item
         Value="Partid"/>
@@ -398,6 +406,13 @@ return 0;]]></TransientExpression>
         Value="Rate"/>
     </Dependencies>
   </Attribute>
+  <Attribute
+    Name="Issueseq"
+    ColumnName="ISSUESEQ"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SRV_ISSUEDETAIL"/>
   <AccessorAttribute
     Name="SrvIssuance"
     Association="dgcom.model.asso.srv.SysC0015123Assoc"
@@ -525,14 +540,15 @@ return 0;]]></TransientExpression>
     Name="BRReasonIssuedetailRule0"
     OperandType="EXPR"
     Inverse="false">
-    <validation:OnCondition><![CDATA[Partid!=null]]></validation:OnCondition>
+    <validation:OnCondition
+      Name="OnConditionExpr"><![CDATA[Partid!=null]]></validation:OnCondition>
     <validation:MsgIds>
+      <validation:Item
+        Value="errorId2PartAlreadyUsed"/>
       <validation:Item
         Value="errorId2ReasonEnter"/>
       <validation:Item
         Value="errorId3ReasonDontEnter"/>
-      <validation:Item
-        Value="errorId2PartAlreadyUsed"/>
     </validation:MsgIds>
     <validation:TransientExpression><![CDATA[if(SrvIssuance?.txtWarranty=='IW')
 {

@@ -52,6 +52,7 @@ public class SrvIssuedetailVORowImpl extends ViewRowImpl {
         Description,
         txtAmount,
         txtPartName,
+        Issueseq,
         SrvIssuanceVO,
         AccIssuanceJobSwapCIC_0013,
         AccSrvReasonsReasonId,
@@ -105,6 +106,7 @@ public class SrvIssuedetailVORowImpl extends ViewRowImpl {
     public static final int DESCRIPTION = AttributesEnum.Description.index();
     public static final int TXTAMOUNT = AttributesEnum.txtAmount.index();
     public static final int TXTPARTNAME = AttributesEnum.txtPartName.index();
+    public static final int ISSUESEQ = AttributesEnum.Issueseq.index();
     public static final int SRVISSUANCEVO = AttributesEnum.SrvIssuanceVO.index();
     public static final int ACCISSUANCEJOBSWAPCIC_0013 = AttributesEnum.AccIssuanceJobSwapCIC_0013.index();
     public static final int ACCSRVREASONSREASONID = AttributesEnum.AccSrvReasonsReasonId.index();
@@ -500,6 +502,22 @@ public class SrvIssuedetailVORowImpl extends ViewRowImpl {
      */
     public void settxtPartName(String value) {
         setAttributeInternal(TXTPARTNAME, value);
+    }
+
+    /**
+     * Gets the attribute value for ISSUESEQ using the alias name Issueseq.
+     * @return the ISSUESEQ
+     */
+    public Integer getIssueseq() {
+        return (Integer) getAttributeInternal(ISSUESEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for ISSUESEQ using the alias name Issueseq.
+     * @param value value to set the ISSUESEQ
+     */
+    public void setIssueseq(Integer value) {
+        setAttributeInternal(ISSUESEQ, value);
     }
 
     /**
