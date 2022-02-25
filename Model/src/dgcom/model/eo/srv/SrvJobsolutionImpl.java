@@ -58,6 +58,7 @@ public class SrvJobsolutionImpl extends DigicomEntityImpl {
         txtItemId,
         txtProdId,
         txtIsWarranty,
+        Jsolutionseq,
         SrvJsparts,
         SrvJsprepair,
         SrvJobfault,
@@ -123,6 +124,7 @@ public class SrvJobsolutionImpl extends DigicomEntityImpl {
     public static final int TXTITEMID = AttributesEnum.txtItemId.index();
     public static final int TXTPRODID = AttributesEnum.txtProdId.index();
     public static final int TXTISWARRANTY = AttributesEnum.txtIsWarranty.index();
+    public static final int JSOLUTIONSEQ = AttributesEnum.Jsolutionseq.index();
     public static final int SRVJSPARTS = AttributesEnum.SrvJsparts.index();
     public static final int SRVJSPREPAIR = AttributesEnum.SrvJsprepair.index();
     public static final int SRVJOBFAULT = AttributesEnum.SrvJobfault.index();
@@ -662,6 +664,22 @@ public class SrvJobsolutionImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Jsolutionseq, using the alias name Jsolutionseq.
+     * @return the value of Jsolutionseq
+     */
+    public Integer getJsolutionseq() {
+        return (Integer) getAttributeInternal(JSOLUTIONSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Jsolutionseq.
+     * @param value value to set the Jsolutionseq
+     */
+    public void setJsolutionseq(Integer value) {
+        setAttributeInternal(JSOLUTIONSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getSrvJsparts() {
@@ -736,12 +754,12 @@ public class SrvJobsolutionImpl extends DigicomEntityImpl {
 
 
     /**
-     * @param jsolutionId key constituent
+     * @param jsolutionseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String jsolutionId) {
-        return new Key(new Object[] { jsolutionId });
+    public static Key createPrimaryKey(Integer jsolutionseq) {
+        return new Key(new Object[] { jsolutionseq });
     }
 
     /**
@@ -749,6 +767,7 @@ public class SrvJobsolutionImpl extends DigicomEntityImpl {
      * @param attributeList list of attribute names/values to initialize the row
      */
     protected void create(AttributeList attributeList) {
+        setSrvSequenceName("SRV_JOBSOLUTION_SEQ");
         super.create(attributeList);
     }
 

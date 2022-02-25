@@ -57,6 +57,7 @@ public class SrvJobsolutionVORowImpl extends DigicomViewRowImpl {
         txtImeiNo,
         txtItemId,
         txtProdId,
+        Jsolutionseq,
         SrvJspartsVO,
         SrvJsprepairVO,
         SrvJobfaultVO,
@@ -123,6 +124,7 @@ public class SrvJobsolutionVORowImpl extends DigicomViewRowImpl {
     public static final int TXTIMEINO = AttributesEnum.txtImeiNo.index();
     public static final int TXTITEMID = AttributesEnum.txtItemId.index();
     public static final int TXTPRODID = AttributesEnum.txtProdId.index();
+    public static final int JSOLUTIONSEQ = AttributesEnum.Jsolutionseq.index();
     public static final int SRVJSPARTSVO = AttributesEnum.SrvJspartsVO.index();
     public static final int SRVJSPREPAIRVO = AttributesEnum.SrvJsprepairVO.index();
     public static final int SRVJOBFAULTVO = AttributesEnum.SrvJobfaultVO.index();
@@ -627,6 +629,22 @@ public class SrvJobsolutionVORowImpl extends DigicomViewRowImpl {
      */
     public void settxtProdId(String value) {
         setAttributeInternal(TXTPRODID, value);
+    }
+
+    /**
+     * Gets the attribute value for JSOLUTIONSEQ using the alias name Jsolutionseq.
+     * @return the JSOLUTIONSEQ
+     */
+    public Integer getJsolutionseq() {
+        return (Integer) getAttributeInternal(JSOLUTIONSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for JSOLUTIONSEQ using the alias name Jsolutionseq.
+     * @param value value to set the JSOLUTIONSEQ
+     */
+    public void setJsolutionseq(Integer value) {
+        setAttributeInternal(JSOLUTIONSEQ, value);
     }
 
     /**
