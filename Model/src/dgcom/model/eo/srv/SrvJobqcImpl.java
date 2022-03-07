@@ -574,11 +574,12 @@ public class SrvJobqcImpl extends DigicomEntityImpl {
         return new Key(new Object[] { qcdocseq });
     }
 
-    /**
+   /*
      * Add attribute defaulting logic in this method.
      * @param attributeList list of attribute names/values to initialize the row
      */
     protected void create(AttributeList attributeList) {
+        setSrvSequenceName("SRV_JOBQC_SEQ");
         super.create(attributeList);
     }
 

@@ -4,7 +4,7 @@
 <Association
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SysC0015112Assoc"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge">
   <DesignTime>
     <Attr Name="_isCodegen" Value="true"/>
@@ -19,27 +19,24 @@
     <DesignTime>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="SrvInvoice"/>
-      <Attr Name="_foreignKey" Value="dgcom.model.eo.srv.SrvInvoice.SysC0014195"/>
       <Attr Name="_isUpdateable" Value="true"/>
       <Attr Name="_minCardinality" Value="1"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="dgcom.model.eo.srv.SrvInvoice.SrvInvno"/>
+      <Item Value="dgcom.model.eo.srv.SrvInvoice.SrvInvseq"/>
     </AttrArray>
   </AssociationEnd>
   <AssociationEnd
     Name="SrvInvItems"
     Cardinality="-1"
-    Owner="dgcom.model.eo.srv.SrvInvItems"
-    HasOwner="true">
+    Owner="dgcom.model.eo.srv.SrvInvItems">
     <DesignTime>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="SrvInvItems"/>
-      <Attr Name="_foreignKey" Value="dgcom.model.eo.srv.SrvInvItems.SysC0015112"/>
       <Attr Name="_isUpdateable" Value="true"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="dgcom.model.eo.srv.SrvInvItems.SrvInvno"/>
+      <Item Value="dgcom.model.eo.srv.SrvInvItems.SrvInvseq"/>
     </AttrArray>
   </AssociationEnd>
 </Association>
