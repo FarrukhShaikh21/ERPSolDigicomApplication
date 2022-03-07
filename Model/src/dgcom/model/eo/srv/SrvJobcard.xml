@@ -1695,14 +1695,14 @@ return true;]]></validation:TransientExpression>
         Value="Warranty"/>
     </validation:OnAttributes>
     <validation:OnCondition
-      trustMode="untrusted"
+      trustMode="trusted"
       Name="OnConditionExpr"><![CDATA[ImeiNo!=null && Warranty!=null && (Warranty=="IW"||Warranty=="OW"||Warranty=="CW")]]></validation:OnCondition>
     <validation:MsgIds>
       <validation:Item
         Value="errorWartyExpir"/>
     </validation:MsgIds>
     <validation:TransientExpression
-      trustMode="untrusted"><![CDATA[if (gettxtExpDate()==null)
+      trustMode="trusted"><![CDATA[if (gettxtExpDate()==null)
 {
 return false;
 }
