@@ -61,6 +61,7 @@ public class SrvInvoiceVORowImpl extends DigicomViewRowImpl {
         txtDiscount,
         txtTotal,
         txtReceived,
+        SrvInvseq,
         SrvInvItemsVO,
         DocGlTransTypeDVO,
         SrvJobcardVO,
@@ -128,6 +129,7 @@ public class SrvInvoiceVORowImpl extends DigicomViewRowImpl {
     public static final int TXTDISCOUNT = AttributesEnum.txtDiscount.index();
     public static final int TXTTOTAL = AttributesEnum.txtTotal.index();
     public static final int TXTRECEIVED = AttributesEnum.txtReceived.index();
+    public static final int SRVINVSEQ = AttributesEnum.SrvInvseq.index();
     public static final int SRVINVITEMSVO = AttributesEnum.SrvInvItemsVO.index();
     public static final int DOCGLTRANSTYPEDVO = AttributesEnum.DocGlTransTypeDVO.index();
     public static final int SRVJOBCARDVO = AttributesEnum.SrvJobcardVO.index();
@@ -706,6 +708,22 @@ public class SrvInvoiceVORowImpl extends DigicomViewRowImpl {
      */
     public void settxtReceived(BigDecimal value) {
         setAttributeInternal(TXTRECEIVED, value);
+    }
+
+    /**
+     * Gets the attribute value for SRV_INVSEQ using the alias name SrvInvseq.
+     * @return the SRV_INVSEQ
+     */
+    public Integer getSrvInvseq() {
+        return (Integer) getAttributeInternal(SRVINVSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SRV_INVSEQ using the alias name SrvInvseq.
+     * @param value value to set the SRV_INVSEQ
+     */
+    public void setSrvInvseq(Integer value) {
+        setAttributeInternal(SRVINVSEQ, value);
     }
 
     /**

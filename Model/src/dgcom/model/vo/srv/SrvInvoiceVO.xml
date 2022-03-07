@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvInvoiceVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="SrvInvoice.SRV_INVNO, 
        SrvInvoice.LOCATIONID, 
@@ -35,7 +35,8 @@
        SrvInvoice.CHK, 
        SrvInvoice.REPLACE_AMOUNT, 
        SrvInvoice.IS_MIGRATED, 
-       SrvInvoice.MIGRATED_DATE"
+       SrvInvoice.MIGRATED_DATE, 
+       SrvInvoice.SRV_INVSEQ"
   FromList="SRV_INVOICE SrvInvoice"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -436,6 +437,12 @@
     EntityAttrName="txtReceived"
     EntityUsage="SrvInvoice"
     AliasName="TXT_RECEIVED"/>
+  <ViewAttribute
+    Name="SrvInvseq"
+    PrecisionRule="true"
+    EntityAttrName="SrvInvseq"
+    EntityUsage="SrvInvoice"
+    AliasName="SRV_INVSEQ"/>
   <ViewCriteria
     Name="SrvInvoiceFindVC"
     ViewObjectName="dgcom.model.vo.srv.SrvInvoiceVO"
@@ -468,7 +475,6 @@
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -482,7 +488,6 @@
         ViewAttribute="InvDate"
         Operator="="
         Conjunction="AND"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -497,7 +502,6 @@
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -512,7 +516,6 @@
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional"/>
       <ViewCriteriaItem
         Name="SrvJobcardVO"
@@ -520,7 +523,6 @@
         Operator="EXISTS"
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional"
         IsNestedCriteria="true">
         <ViewCriteria
@@ -536,7 +538,6 @@
               Operator="="
               Conjunction="AND"
               UpperColumns="0"
-              GenerateIsNullClauseForBindVars="false"
               Required="Optional">
               <Properties>
                 <SchemaBasedProperties>

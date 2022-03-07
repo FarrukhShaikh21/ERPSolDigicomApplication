@@ -60,6 +60,7 @@ public class SrvInvoiceImpl extends DigicomEntityImpl {
         txtDiscount,
         txtReceived,
         txtTotal,
+        SrvInvseq,
         SrvInvItems,
         SrvJobcard,
         AccSrvInvoiceItemSrvPartDetail;
@@ -121,6 +122,7 @@ public class SrvInvoiceImpl extends DigicomEntityImpl {
     public static final int TXTDISCOUNT = AttributesEnum.txtDiscount.index();
     public static final int TXTRECEIVED = AttributesEnum.txtReceived.index();
     public static final int TXTTOTAL = AttributesEnum.txtTotal.index();
+    public static final int SRVINVSEQ = AttributesEnum.SrvInvseq.index();
     public static final int SRVINVITEMS = AttributesEnum.SrvInvItems.index();
     public static final int SRVJOBCARD = AttributesEnum.SrvJobcard.index();
     public static final int ACCSRVINVOICEITEMSRVPARTDETAIL = AttributesEnum.AccSrvInvoiceItemSrvPartDetail.index();
@@ -721,6 +723,22 @@ public class SrvInvoiceImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for SrvInvseq, using the alias name SrvInvseq.
+     * @return the value of SrvInvseq
+     */
+    public Integer getSrvInvseq() {
+        return (Integer) getAttributeInternal(SRVINVSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for SrvInvseq.
+     * @param value value to set the SrvInvseq
+     */
+    public void setSrvInvseq(Integer value) {
+        setAttributeInternal(SRVINVSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getSrvInvItems() {
@@ -751,12 +769,12 @@ public class SrvInvoiceImpl extends DigicomEntityImpl {
 
 
     /**
-     * @param srvInvno key constituent
+     * @param srvInvseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String srvInvno) {
-        return new Key(new Object[] { srvInvno });
+    public static Key createPrimaryKey(Integer srvInvseq) {
+        return new Key(new Object[] { srvInvseq });
     }
 
     /**
@@ -764,6 +782,7 @@ public class SrvInvoiceImpl extends DigicomEntityImpl {
      * @param attributeList list of attribute names/values to initialize the row
      */
     protected void create(AttributeList attributeList) {
+        setSrvSequenceName("SRV_INVOICE_SEQ");
         super.create(attributeList);
     }
 

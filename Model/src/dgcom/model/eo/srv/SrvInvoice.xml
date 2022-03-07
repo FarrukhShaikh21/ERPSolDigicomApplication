@@ -4,7 +4,7 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvInvoice"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="SRV_INVOICE"
@@ -23,14 +23,12 @@
     RowLevelBinds="true"/>
   <Attribute
     Name="SrvInvno"
-    IsNotNull="true"
     Precision="15"
     ColumnName="SRV_INVNO"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="SRV_INVOICE"
-    PrimaryKey="true">
+    TableName="SRV_INVOICE">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="15"/>
     </DesignTime>
@@ -129,7 +127,8 @@
       Inverse="false"
       DisplayName="RulCheckDateRights"
       ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
-      <validation:OnCondition><![CDATA[newValue!=null]]></validation:OnCondition>
+      <validation:OnCondition
+        Name="OnConditionExpr"><![CDATA[newValue!=null]]></validation:OnCondition>
     </validation:ValidationBean>
   </Attribute>
   <Attribute
@@ -460,8 +459,8 @@
     ColumnType="INTEGER"
     IsPersistent="false"
     IsQueriable="false">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[(ChrgesDiscount==null?0:ChrgesDiscount)+(PartDiscount==null?0:PartDiscount)]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Dependencies>
       <Item
         Value="ChrgesDiscount"/>
@@ -485,11 +484,11 @@
     ColumnType="NUMBER"
     IsQueriable="false"
     IsPersistent="false">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[if (Rcptmode=='Cash')
 return txtTotal;
 else
 return 0;]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Dependencies>
       <Item
         Value="Jobcardno"/>
@@ -511,8 +510,8 @@ return 0;]]></TransientExpression>
     ColumnType="INTEGER"
     IsPersistent="false"
     IsQueriable="false">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[((Charges==null?0:Charges)+(SrvInvItems?.sum("(Qty==null?0:Qty)*(Rate==null?0:Rate)")==null?0:SrvInvItems?.sum("(Qty==null?0:Qty)*(Rate==null?0:Rate)"))+(ReplaceAmount==null?0:ReplaceAmount))-(txtDiscount==null?0:txtDiscount)]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Dependencies>
       <Item
         Value="Charges"/>
@@ -532,6 +531,14 @@ return 0;]]></TransientExpression>
       </SchemaBasedProperties>
     </Properties>
   </Attribute>
+  <Attribute
+    Name="SrvInvseq"
+    ColumnName="SRV_INVSEQ"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SRV_INVOICE"
+    PrimaryKey="true"/>
   <AccessorAttribute
     Name="SrvInvItems"
     Association="dgcom.model.asso.srv.SysC0015112Assoc"
@@ -553,7 +560,7 @@ return 0;]]></TransientExpression>
       <Attr Name="_DBObjectName" Value="SYS_C0014195"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="dgcom.model.eo.srv.SrvInvoice.SrvInvno"/>
+      <Item Value="dgcom.model.eo.srv.SrvInvoice.SrvInvseq"/>
     </AttrArray>
   </Key>
   <Key
@@ -665,7 +672,8 @@ return true;]]></validation:TransientExpression>
       <validation:Item
         Value="Posted"/>
     </validation:OnAttributes>
-    <validation:OnCondition><![CDATA[Posted=='Y']]></validation:OnCondition>
+    <validation:OnCondition
+      Name="OnConditionExpr"><![CDATA[Posted=='Y']]></validation:OnCondition>
     <validation:MsgIds>
       <validation:Item
         Value="errorIdRefNoEntered"/>
@@ -678,7 +686,6 @@ return true;]]></validation:TransientExpression>
   <validation:ValidationBean
     Name="BRCheckDocDateForSubmit"
     ResId="dgcom.model.eo.srv.SrvDap_Rule_0"
-    OnAttribute="SrvInvoice"
     Version="2"
     OperandType="LITERAL"
     Inverse="false"
@@ -688,7 +695,8 @@ return true;]]></validation:TransientExpression>
       <validation:Item
         Value="Posted"/>
     </validation:OnAttributes>
-    <validation:OnCondition><![CDATA[Posted=='Y']]></validation:OnCondition>
+    <validation:OnCondition
+      Name="OnConditionExpr"><![CDATA[Posted=='Y']]></validation:OnCondition>
   </validation:ValidationBean>
   <ResourceBundle>
     <PropertiesBundle

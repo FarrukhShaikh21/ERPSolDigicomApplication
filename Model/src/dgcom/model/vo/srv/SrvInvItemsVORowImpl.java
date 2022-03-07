@@ -17,6 +17,7 @@ import oracle.jbo.server.AttributeDefImpl;
 // ---------------------------------------------------------------------
 public class SrvInvItemsVORowImpl extends DigicomViewRowImpl {
 
+
     public static final int ENTITY_SRVINVITEMS = 0;
 
     /**
@@ -35,6 +36,7 @@ public class SrvInvItemsVORowImpl extends DigicomViewRowImpl {
         txtAmount,
         txtPartName,
         txtPartNo,
+        SrvInvseq,
         SrvInvoiceVO;
         static AttributesEnum[] vals = null;
         ;
@@ -60,6 +62,7 @@ public class SrvInvItemsVORowImpl extends DigicomViewRowImpl {
         }
     }
 
+
     public static final int SRVINVNO = AttributesEnum.SrvInvno.index();
     public static final int PARTID = AttributesEnum.Partid.index();
     public static final int QTY = AttributesEnum.Qty.index();
@@ -72,6 +75,7 @@ public class SrvInvItemsVORowImpl extends DigicomViewRowImpl {
     public static final int TXTAMOUNT = AttributesEnum.txtAmount.index();
     public static final int TXTPARTNAME = AttributesEnum.txtPartName.index();
     public static final int TXTPARTNO = AttributesEnum.txtPartNo.index();
+    public static final int SRVINVSEQ = AttributesEnum.SrvInvseq.index();
     public static final int SRVINVOICEVO = AttributesEnum.SrvInvoiceVO.index();
 
     /**
@@ -262,6 +266,22 @@ public class SrvInvItemsVORowImpl extends DigicomViewRowImpl {
      */
     public void settxtPartNo(String value) {
         setAttributeInternal(TXTPARTNO, value);
+    }
+
+    /**
+     * Gets the attribute value for SRV_INVSEQ using the alias name SrvInvseq.
+     * @return the SRV_INVSEQ
+     */
+    public Integer getSrvInvseq() {
+        return (Integer) getAttributeInternal(SRVINVSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SRV_INVSEQ using the alias name SrvInvseq.
+     * @param value value to set the SRV_INVSEQ
+     */
+    public void setSrvInvseq(Integer value) {
+        setAttributeInternal(SRVINVSEQ, value);
     }
 
     /**
