@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvInvItemsVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="SrvInvItems.SRV_INVNO, 
        SrvInvItems.PARTID, 
@@ -14,7 +14,8 @@
        SrvInvItems.CREATED_DATE, 
        SrvInvItems.MODIFIEDBY, 
        SrvInvItems.MODIFIED_DATE, 
-       SrvInvItems.ROWID"
+       SrvInvItems.ROWID, 
+       SrvInvItems.SRV_INVSEQ"
   FromList="SRV_INV_ITEMS SrvInvItems"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -101,11 +102,11 @@
     ColumnType="INTEGER"
     AliasName="VIEW_ATTR"
     SQLType="INTEGER">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[if (Qty!=null && Rate !=null)
 return Qty*Rate;
 else
 return 0;]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -135,6 +136,12 @@ return 0;]]></TransientExpression>
     EntityAttrName="txtPartNo"
     EntityUsage="SrvInvItems"
     AliasName="TXT_PART_NO"/>
+  <ViewAttribute
+    Name="SrvInvseq"
+    PrecisionRule="true"
+    EntityAttrName="SrvInvseq"
+    EntityUsage="SrvInvItems"
+    AliasName="SRV_INVSEQ"/>
   <AttrArray Name="KeyAttributes">
     <Item Value="Rowid"/>
   </AttrArray>

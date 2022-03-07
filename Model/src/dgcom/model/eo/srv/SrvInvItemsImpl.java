@@ -32,6 +32,7 @@ public class SrvInvItemsImpl extends DigicomEntityImpl {
         Rowid,
         txtPartNo,
         txtPartName,
+        SrvInvseq,
         SrvInvoice,
         InParts;
         private static AttributesEnum[] vals = null;
@@ -69,6 +70,7 @@ public class SrvInvItemsImpl extends DigicomEntityImpl {
     public static final int ROWID = AttributesEnum.Rowid.index();
     public static final int TXTPARTNO = AttributesEnum.txtPartNo.index();
     public static final int TXTPARTNAME = AttributesEnum.txtPartName.index();
+    public static final int SRVINVSEQ = AttributesEnum.SrvInvseq.index();
     public static final int SRVINVOICE = AttributesEnum.SrvInvoice.index();
     public static final int INPARTS = AttributesEnum.InParts.index();
 
@@ -258,6 +260,22 @@ public class SrvInvItemsImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for SrvInvseq, using the alias name SrvInvseq.
+     * @return the value of SrvInvseq
+     */
+    public Integer getSrvInvseq() {
+        return (Integer) getAttributeInternal(SRVINVSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for SrvInvseq.
+     * @param value value to set the SrvInvseq
+     */
+    public void setSrvInvseq(Integer value) {
+        setAttributeInternal(SRVINVSEQ, value);
+    }
+
+    /**
      * @return the associated entity SrvInvoiceImpl.
      */
     public SrvInvoiceImpl getSrvInvoice() {
@@ -314,6 +332,9 @@ public class SrvInvItemsImpl extends DigicomEntityImpl {
      * @param e the transaction event
      */
     protected void doDML(int operation, TransactionEvent e) {
+        if (operation==DML_INSERT) {
+            populateAttributeAsChanged(SRVINVNO, getSrvInvoice().getAttribute("SrvInvno"));
+       }
         super.doDML(operation, e);
     }
 }
