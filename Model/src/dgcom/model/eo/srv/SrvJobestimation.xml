@@ -4,7 +4,7 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvJobestimation"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="SRV_JOBESTIMATION"
@@ -19,14 +19,12 @@
   </DesignTime>
   <Attribute
     Name="EstId"
-    IsNotNull="true"
     Precision="15"
     ColumnName="EST_ID"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="SRV_JOBESTIMATION"
-    PrimaryKey="true">
+    TableName="SRV_JOBESTIMATION">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="15"/>
     </DesignTime>
@@ -85,8 +83,8 @@
     Type="oracle.jbo.domain.Date"
     ColumnType="DATE"
     TableName="SRV_JOBESTIMATION">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Properties>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
@@ -104,7 +102,8 @@
       Inverse="false"
       DisplayName="RulCheckDateRights"
       ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
-      <validation:OnCondition><![CDATA[newValue!=null]]></validation:OnCondition>
+      <validation:OnCondition
+        Name="OnConditionExpr"><![CDATA[newValue!=null]]></validation:OnCondition>
     </validation:ValidationBean>
   </Attribute>
   <Attribute
@@ -363,8 +362,8 @@
     ColumnType="VARCHAR2"
     IsQueriable="false"
     IsPersistent="false">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[SrvJobcard?.ImeiNo]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Dependencies>
       <Item
         Value="Jobcardno"/>
@@ -387,8 +386,8 @@
     ColumnType="VARCHAR2"
     IsQueriable="false"
     IsPersistent="false">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[SrvJobcard?.Phoneno]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -430,8 +429,8 @@
     ColumnType="VARCHAR2"
     IsPersistent="false"
     IsQueriable="false">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[(SrvJobcard?.Customer==null?SrvJobcard?.txtDealerName:SrvJobcard?.Customer)]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Dependencies>
       <Item
         Value="Jobcardno"/>
@@ -452,8 +451,8 @@
     ColumnType="VARCHAR2"
     IsQueriable="false"
     IsPersistent="false">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[SrvJobcard?.Warranty]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Dependencies>
       <Item
         Value="Jobcardno"/>
@@ -467,6 +466,14 @@
       </SchemaBasedProperties>
     </Properties>
   </Attribute>
+  <Attribute
+    Name="Estseq"
+    ColumnName="ESTSEQ"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SRV_JOBESTIMATION"
+    PrimaryKey="true"/>
   <AccessorAttribute
     Name="SrvEstdetl"
     Association="dgcom.model.asso.srv.SysC0015098Assoc"
@@ -488,7 +495,7 @@
       <Attr Name="_DBObjectName" Value="SYS_C0014096"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="dgcom.model.eo.srv.SrvJobestimation.EstId"/>
+      <Item Value="dgcom.model.eo.srv.SrvJobestimation.Estseq"/>
     </AttrArray>
   </Key>
   <Key
@@ -528,7 +535,6 @@
   <validation:ValidationBean
     Name="BRCheckDocDateForSubmit"
     ResId="dgcom.model.eo.srv.SrvDap_Rule_0"
-    OnAttribute="SrvJobestimation"
     Version="2"
     OperandType="LITERAL"
     Inverse="false"
@@ -538,7 +544,8 @@
       <validation:Item
         Value="Posted"/>
     </validation:OnAttributes>
-    <validation:OnCondition><![CDATA[Posted=='Y']]></validation:OnCondition>
+    <validation:OnCondition
+      Name="OnConditionExpr"><![CDATA[Posted=='Y']]></validation:OnCondition>
   </validation:ValidationBean>
   <ResourceBundle>
     <PropertiesBundle

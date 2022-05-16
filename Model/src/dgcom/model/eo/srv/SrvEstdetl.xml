@@ -4,19 +4,20 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvEstdetl"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="SRV_ESTDETL"
   AliasName="SrvEstdetl"
   BindingStyle="OracleName"
-  RowClass="dgcom.model.stand.DigicomEntityImpl">
+  RowClass="dgcom.model.eo.srv.SrvEstdetlImpl">
   <DesignTime>
     <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <Attribute
     Name="EstId"
-    IsNotNull="true"
     Precision="15"
     ColumnName="EST_ID"
     SQLType="VARCHAR"
@@ -54,8 +55,8 @@
     Type="oracle.jbo.domain.Date"
     ColumnType="DATE"
     TableName="SRV_ESTDETL">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[adf.currentDateTime]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -123,6 +124,13 @@
     TableName="SRV_ESTDETL"
     PrimaryKey="true"
     RetrievedOnInsert="true"/>
+  <Attribute
+    Name="Estseq"
+    ColumnName="ESTSEQ"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SRV_ESTDETL"/>
   <AccessorAttribute
     Name="SrvJobestimation"
     Association="dgcom.model.asso.srv.SysC0015098Assoc"

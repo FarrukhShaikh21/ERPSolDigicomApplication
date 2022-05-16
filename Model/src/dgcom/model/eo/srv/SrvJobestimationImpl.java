@@ -54,6 +54,7 @@ public class SrvJobestimationImpl extends DigicomEntityImpl {
         txtMobile,
         txtCustomer,
         txtWarranty,
+        Estseq,
         SrvEstdetl,
         SrvJobcard;
         private static AttributesEnum[] vals = null;
@@ -110,6 +111,7 @@ public class SrvJobestimationImpl extends DigicomEntityImpl {
     public static final int TXTMOBILE = AttributesEnum.txtMobile.index();
     public static final int TXTCUSTOMER = AttributesEnum.txtCustomer.index();
     public static final int TXTWARRANTY = AttributesEnum.txtWarranty.index();
+    public static final int ESTSEQ = AttributesEnum.Estseq.index();
     public static final int SRVESTDETL = AttributesEnum.SrvEstdetl.index();
     public static final int SRVJOBCARD = AttributesEnum.SrvJobcard.index();
 
@@ -667,6 +669,22 @@ public class SrvJobestimationImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Estseq, using the alias name Estseq.
+     * @return the value of Estseq
+     */
+    public Integer getEstseq() {
+        return (Integer) getAttributeInternal(ESTSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Estseq.
+     * @param value value to set the Estseq
+     */
+    public void setEstseq(Integer value) {
+        setAttributeInternal(ESTSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getSrvEstdetl() {
@@ -689,12 +707,12 @@ public class SrvJobestimationImpl extends DigicomEntityImpl {
 
 
     /**
-     * @param estId key constituent
+     * @param estseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String estId) {
-        return new Key(new Object[] { estId });
+    public static Key createPrimaryKey(Integer estseq) {
+        return new Key(new Object[] { estseq });
     }
 
     /**
@@ -702,6 +720,7 @@ public class SrvJobestimationImpl extends DigicomEntityImpl {
      * @param attributeList list of attribute names/values to initialize the row
      */
     protected void create(AttributeList attributeList) {
+        setSrvSequenceName("SRV_JOBCARD_SEQ");
         super.create(attributeList);
     }
 
@@ -738,7 +757,8 @@ public class SrvJobestimationImpl extends DigicomEntityImpl {
                                                 "Where to_char(ESDATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getEsdate().toString(), "yyMM")+"' \n"+
                                                 "and locationid = '"+getLocationid()+"'");
             vo.executeQuery();
-            setEstId(vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(ESTID, vo.first().getAttribute(0).toString());
+//            setEstId(vo.first().getAttribute(0).toString());
          
         }
         super.doDML(operation, e);
