@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="ApplicationActivityQVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="true"
@@ -17,8 +17,11 @@
   <Variable
     Name="P_ADF_USER_CODE"
     Kind="where"
-    Type="java.lang.String"
-    DefaultValue="ORACLE"/>
+    Type="java.lang.String">
+    <TransientExpression
+      trustMode="untrusted"
+      Name="expression"><![CDATA[dgcom.model.stand.DigicomClass.getConnectedUser()]]></TransientExpression>
+  </Variable>
   <SQLQuery><![CDATA[SELECT MODULEID,                       
        ROWNUM -1 RN,                       
        LVL,                       
@@ -68,7 +71,7 @@ SELECT A.MODULEID MODULEID,
         )                                    
                                               
 CONNECT BY PRIOR A.MODULEID = A.PARENTID                                            
- START WITH A.PARENTID IS NULL                       
+ START WITH A.PARENTID ='-1' 
  )                       
  ORDER BY LVL,SEQ_NO,MODULE_NAME                 
  )]]></SQLQuery>
