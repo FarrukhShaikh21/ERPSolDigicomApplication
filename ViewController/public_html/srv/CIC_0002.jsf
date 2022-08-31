@@ -580,8 +580,7 @@
                                              layout="horizontal">
                             <af:button text="Print" id="b12" binding="#{backingBeanScope.backing_CIC_0002.b12}"
                                        styleClass="CRUDButton" action="#{backingBeanScope.backing_CIC_0002.doPrintJC}"
-                                       accessKey="r" icon="#{resource['images:imgPrintPreview.png']}"
-                                       disabled="#{bindings.Posted.inputValue!='Y'}"/>
+                                       accessKey="r" icon="#{resource['images:imgPrintPreview.png']}"/>
                             <af:button text="Find" id="b11" binding="#{backingBeanScope.backing_CIC_0002.b11}"
                                        styleClass="CRUDButton" icon="#{resource['images:imgFind.png']}" accessKey="i">
                                 <af:showPopupBehavior triggerType="action" popupId="::p3"/>

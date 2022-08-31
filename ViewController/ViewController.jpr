@@ -112,7 +112,7 @@
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
-         <hash n="DgcomApp">
+         <hash n="DeployService">
             <hash n="appletArchives"/>
             <hash n="appletFiles">
                <value n="autoInclude" v="true"/>
@@ -123,8 +123,8 @@
             <hash n="archiveOptions">
                <value n="hasManifest" v="false"/>
             </hash>
-            <value n="contextRoot" v="DgcomApp"/>
-            <value n="enterpriseAppName" v="DgcomApp"/>
+            <value n="contextRoot" v="DeployService"/>
+            <value n="enterpriseAppName" v="DeployService"/>
             <hash n="fileGroups">
                <list n="groups">
                   <hash>
@@ -183,13 +183,13 @@
                   </hash>
                </list>
             </hash>
-            <url n="jarURL" path="deploy/DgcomApp.war"/>
+            <url n="jarURL" path="deploy/DeployService.war"/>
             <value n="profileClass" v="oracle.jdeveloper.deploy.war.WarProfile"/>
-            <value n="profileName" v="DgcomApp"/>
+            <value n="profileName" v="DeployService"/>
          </hash>
       </hash>
       <list n="profileList">
-         <string v="DgcomApp"/>
+         <string v="DeployService"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">
