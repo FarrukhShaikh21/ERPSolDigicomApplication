@@ -591,7 +591,7 @@ public class CIC_0031 {
     public String doPrint() {
         // Add event code here...
         OracleReport reportBean =
-        new OracleReport("www01.qapp.com.pk", "10000", null);
+        new OracleReport("app.deploy.com.pk", "55000", null);
         reportBean.setReportServerParam(OracleReport.RS_PARAM_DESTYPE,"cache");// which will be one of the [cashe - file - mail - printer]
         reportBean.setReportServerParam(OracleReport.RS_PARAM_DESFORMAT,"PDF"); // Which will be onr of the [HTML - HTML CSS - PDF - SPREADSHEET- RTF].
         reportBean.setReportServerParam(OracleReport.RS_PARAM_REPORT,"Z:\\\\SERVICE\\\\reports\\\\JobcardQC.rep");

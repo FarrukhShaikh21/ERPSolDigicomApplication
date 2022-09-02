@@ -180,13 +180,19 @@ public class Login {
     public String doLogin() 
         {
             // Add event code here...
-            
+            System.out.println("one");
             DCBindingContainer bc=(DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+            System.out.println("two");
             DCIteratorBinding    ib=bc.findIteratorBinding("SysUsersVO1Iterator");
+            System.out.println("three");
             ViewObject           vo=ib.getViewObject();
+            System.out.println("four");
             vo.reset();
+            System.out.println("five");
              vo.setWhereClause("UPPER(USERID)=UPPER('"+this.getIt1().getValue()+"') and UPPER(Password)=UPPER('"+this.getIt2().getValue()+"') AND ACTIVE_STATUS='Y'");
+            System.out.println("six");
             vo.executeQuery();
+            System.out.println("seven");
             if (vo.getRowCount()>0) {
                 DigicomClass.doSetTHeUser(this.getIt1().getValue().toString());
                return "taskFlowCall";

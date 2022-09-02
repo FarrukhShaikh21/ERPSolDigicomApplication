@@ -25,7 +25,7 @@ public class OracleReport {
     private String http_port = null;
 
     /* Default path as per generic Oracle Appserver install */
-    private String servlet_path = "/reports/rwservlet?dgcom";
+    private String servlet_path = "/reports/rwservlet?qshop";
 
     /* Report Servlet URL params */
     public static final String RS_PARAM_SERVER = "server";

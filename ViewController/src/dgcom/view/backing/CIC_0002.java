@@ -1120,20 +1120,20 @@ public class CIC_0002 {
         vo.executeQuery();
         
         if (getIt6().getValue().toString().equals("0") || vo.first().getAttribute(0).toString().equals("Y")|| vo.first().getAttribute(1).toString().equals("A")) {
-            OracleReport reportBean = new OracleReport("www01.qapp.com.pk", "10000", null);
+            OracleReport reportBean = new OracleReport("app.deploy.com.pk", "55000", null);
             reportBean.setReportServerParam(OracleReport.RS_PARAM_DESTYPE,
                                             "cache"); // which will be one of the [cashe - file - mail - printer]
             reportBean.setReportServerParam(OracleReport.RS_PARAM_DESFORMAT,
                                             "PDF"); // Which will be onr of the [HTML - HTML CSS - PDF - SPREADSHEET- RTF].
-            reportBean.setReportServerParam(OracleReport.RS_PARAM_REPORT, "Z:\\\\SERVICE\\\\reports\\\\01_JOBCARD.rep");
-            reportBean.setReportParameter("JOB", getIt1().getValue().toString());
+            reportBean.setReportServerParam(OracleReport.RS_PARAM_REPORT, "R:\\\\SERVICE\\\\reports\\\\01_JOBCARD.rep");
+           /* reportBean.setReportParameter("JOB", getIt1().getValue().toString());
             reportBean.setReportParameter("USER", DigicomClass.getConnectedUser());
-            reportBean.setReportParameter("Printno", getIt6().getValue().toString());
+            reportBean.setReportParameter("Printno", getIt6().getValue().toString());*/
             String url = reportBean.getReportServerURL();
 
             reportBean.openUrlInNewWindow(url);
-            DigicomClass.doExecutePLSQL("begin update SRV_JOBCARD set Print = Print+1  where JOBCARDNO ='" + getIt1().getValue() +
-                                        "'; commit; END;");
+            /*DigicomClass.doExecutePLSQL("begin update SRV_JOBCARD set Print = Print+1  where JOBCARDNO ='" + getIt1().getValue() +
+                                        "'; commit; END;");*/
 
         }
         else {
