@@ -336,7 +336,7 @@ public class SrvLogdetlImpl extends DigicomEntityImpl {
             return;
         }
             if (operation==DML_INSERT ) {
-            populateAttributeAsChanged(LOGIDSEQ, getSrvLogistic().getAttribute("Logid"));
+            populateAttributeAsChanged(LOGID, getSrvLogistic().getAttribute("Logid"));
         }
         super.doDML(operation, e);
     }

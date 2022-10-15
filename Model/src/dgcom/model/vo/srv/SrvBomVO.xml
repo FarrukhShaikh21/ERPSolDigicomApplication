@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvBomVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="SrvBom.BOM_ID, 
        SrvBom.ITEMID, 
@@ -15,7 +15,8 @@
        SrvBom.CREATED_DATE, 
        SrvBom.MODIFIEDBY, 
        SrvBom.MODIFIED_DATE, 
-       SrvBom.SUPPLIERID"
+       SrvBom.SUPPLIERID, 
+       SrvBom.BOMSEQ"
   FromList="SRV_BOM SrvBom"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -209,8 +210,8 @@
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR"
     LOVName="LovModelBom">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[InItemsVO?.ModelNo]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Dependencies>
       <Item
         Value="Itemid"/>
@@ -253,8 +254,8 @@
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[InItemsVO?.Discontinue]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -279,8 +280,8 @@
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[InItemsVO?.EolDesc]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -294,6 +295,12 @@
         Value="Itemid"/>
     </Dependencies>
   </ViewAttribute>
+  <ViewAttribute
+    Name="Bomseq"
+    PrecisionRule="true"
+    EntityAttrName="Bomseq"
+    EntityUsage="SrvBom"
+    AliasName="BOMSEQ"/>
   <ViewCriteria
     Name="SrvBomItemWiseVC"
     ViewObjectName="dgcom.model.vo.srv.SrvBomVO"
@@ -326,7 +333,6 @@
         Operator="="
         Conjunction="AND"
         Value=":P_ADF_ITEMID"
-        GenerateIsNullClauseForBindVars="false"
         IsBindVarValue="true"
         Required="Optional"/>
     </ViewCriteriaRow>
@@ -363,7 +369,6 @@
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional"/>
       <ViewCriteriaItem
         Name="Itemid"
@@ -371,21 +376,18 @@
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional"/>
       <ViewCriteriaItem
         Name="Levelno"
         ViewAttribute="Levelno"
         Operator="="
         Conjunction="AND"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional"/>
       <ViewCriteriaItem
         Name="SrvBomVOCriteria_SrvBomVOCriteria_row_0_Bomdate"
         ViewAttribute="Bomdate"
         Operator="="
         Conjunction="AND"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>

@@ -37,6 +37,7 @@ public class SrvJobreturnVORowImpl extends DigicomViewRowImpl {
         Doctype,
         IsMigrated,
         MigratedDate,
+        Jobretidseq,
         SrvJobretdetlVO,
         AccToAllLocations,
         AccSysUserRightsWiseLocation,
@@ -81,6 +82,7 @@ public class SrvJobreturnVORowImpl extends DigicomViewRowImpl {
     public static final int DOCTYPE = AttributesEnum.Doctype.index();
     public static final int ISMIGRATED = AttributesEnum.IsMigrated.index();
     public static final int MIGRATEDDATE = AttributesEnum.MigratedDate.index();
+    public static final int JOBRETIDSEQ = AttributesEnum.Jobretidseq.index();
     public static final int SRVJOBRETDETLVO = AttributesEnum.SrvJobretdetlVO.index();
     public static final int ACCTOALLLOCATIONS = AttributesEnum.AccToAllLocations.index();
     public static final int ACCSYSUSERRIGHTSWISELOCATION = AttributesEnum.AccSysUserRightsWiseLocation.index();
@@ -338,6 +340,22 @@ public class SrvJobreturnVORowImpl extends DigicomViewRowImpl {
      */
     public void setMigratedDate(Date value) {
         setAttributeInternal(MIGRATEDDATE, value);
+    }
+
+    /**
+     * Gets the attribute value for JOBRETIDSEQ using the alias name Jobretidseq.
+     * @return the JOBRETIDSEQ
+     */
+    public Integer getJobretidseq() {
+        return (Integer) getAttributeInternal(JOBRETIDSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for JOBRETIDSEQ using the alias name Jobretidseq.
+     * @param value value to set the JOBRETIDSEQ
+     */
+    public void setJobretidseq(Integer value) {
+        setAttributeInternal(JOBRETIDSEQ, value);
     }
 
     /**

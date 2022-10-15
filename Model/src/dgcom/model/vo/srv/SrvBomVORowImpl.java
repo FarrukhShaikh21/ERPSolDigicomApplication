@@ -42,6 +42,7 @@ public class SrvBomVORowImpl extends DigicomViewRowImpl {
         txtSupplier,
         txtEOL,
         txtEOLRemarks,
+        Bomseq,
         InItemsVO,
         SrvBompartsVO,
         PuSuppliersVO,
@@ -86,6 +87,7 @@ public class SrvBomVORowImpl extends DigicomViewRowImpl {
     public static final int TXTSUPPLIER = AttributesEnum.txtSupplier.index();
     public static final int TXTEOL = AttributesEnum.txtEOL.index();
     public static final int TXTEOLREMARKS = AttributesEnum.txtEOLRemarks.index();
+    public static final int BOMSEQ = AttributesEnum.Bomseq.index();
     public static final int INITEMSVO = AttributesEnum.InItemsVO.index();
     public static final int SRVBOMPARTSVO = AttributesEnum.SrvBompartsVO.index();
     public static final int PUSUPPLIERSVO = AttributesEnum.PuSuppliersVO.index();
@@ -314,6 +316,22 @@ public class SrvBomVORowImpl extends DigicomViewRowImpl {
      */
     public String gettxtEOLRemarks() {
         return (String) getAttributeInternal(TXTEOLREMARKS);
+    }
+
+    /**
+     * Gets the attribute value for BOMSEQ using the alias name Bomseq.
+     * @return the BOMSEQ
+     */
+    public Integer getBomseq() {
+        return (Integer) getAttributeInternal(BOMSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for BOMSEQ using the alias name Bomseq.
+     * @param value value to set the BOMSEQ
+     */
+    public void setBomseq(Integer value) {
+        setAttributeInternal(BOMSEQ, value);
     }
 
     /**

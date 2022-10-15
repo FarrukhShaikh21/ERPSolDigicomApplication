@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvJobreturnVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="SrvJobreturn.JOBRETID, 
        SrvJobreturn.LOCATIONID, 
@@ -20,7 +20,8 @@
        SrvJobreturn.STATUS, 
        SrvJobreturn.DOCTYPE, 
        SrvJobreturn.IS_MIGRATED, 
-       SrvJobreturn.MIGRATED_DATE"
+       SrvJobreturn.MIGRATED_DATE, 
+       SrvJobreturn.JOBRETIDSEQ"
   FromList="SRV_JOBRETURN SrvJobreturn"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -244,6 +245,12 @@
     EntityAttrName="MigratedDate"
     EntityUsage="SrvJobreturn"
     AliasName="MIGRATED_DATE"/>
+  <ViewAttribute
+    Name="Jobretidseq"
+    PrecisionRule="true"
+    EntityAttrName="Jobretidseq"
+    EntityUsage="SrvJobreturn"
+    AliasName="JOBRETIDSEQ"/>
   <ViewCriteria
     Name="SrvJobreturnFindVC"
     ViewObjectName="dgcom.model.vo.srv.SrvJobreturnVO"
@@ -276,7 +283,6 @@
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -291,7 +297,6 @@
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -305,7 +310,6 @@
         ViewAttribute="Jrdate"
         Operator="="
         Conjunction="AND"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -320,7 +324,6 @@
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>

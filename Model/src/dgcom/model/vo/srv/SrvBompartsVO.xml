@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvBompartsVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="SrvBomparts.PARTID, 
        SrvBomparts.BOM_ID, 
@@ -13,7 +13,8 @@
        SrvBomparts.CREATED_DATE, 
        SrvBomparts.MODIFIEDBY, 
        SrvBomparts.MODIFIED_DATE, 
-       SrvBomparts.ROWID"
+       SrvBomparts.ROWID, 
+       SrvBomparts.BOMSEQ"
   FromList="SRV_BOMPARTS SrvBomparts"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -124,8 +125,8 @@
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[InPartsVO?.Partno]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -150,8 +151,8 @@
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR"
     LOVName="LovPartDescription">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[InPartsVO?.Description]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -167,6 +168,12 @@
         Value="Partid"/>
     </Dependencies>
   </ViewAttribute>
+  <ViewAttribute
+    Name="Bomseq"
+    PrecisionRule="true"
+    EntityAttrName="Bomseq"
+    EntityUsage="SrvBomparts"
+    AliasName="BOMSEQ"/>
   <ViewCriteria
     Name="SrvBomPartItemItemWiseVC"
     ViewObjectName="dgcom.model.vo.srv.SrvBompartsVO"
@@ -198,7 +205,6 @@
         ViewAttribute="Partid"
         Operator="="
         Conjunction="AND"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -212,7 +218,6 @@
         ViewAttribute="Qty"
         Operator="="
         Conjunction="AND"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>

@@ -439,7 +439,7 @@ public class SrvLogisticImpl extends DigicomEntityImpl {
                                                 "Where to_char(LogDATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getLogdate().toString(), "yyMM")+"' \n"+
                                                 "and locationid = '"+getLocationid()+"'");
             vo.executeQuery();
-            populateAttributeAsChanged(LOGIDSEQ,vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(LOGID,vo.first().getAttribute(0).toString());
         }
         super.doDML(operation, e);
     }

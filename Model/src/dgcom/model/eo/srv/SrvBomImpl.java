@@ -28,6 +28,7 @@ public class SrvBomImpl extends DigicomEntityImpl {
      * @param attributeList list of attribute names/values to initialize the row
      */
     protected void create(AttributeList attributeList) {
+        setSrvSequenceName("SRV_BOM_SEQ");
         super.create(attributeList);
     }
 
@@ -61,10 +62,10 @@ public class SrvBomImpl extends DigicomEntityImpl {
         ModifiedDate,
         Supplierid,
         txtSupplier,
+        Bomseq,
         SrvBomparts,
         PuSuppliers;
-        static AttributesEnum[] vals = null;
-        ;
+        private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -99,6 +100,7 @@ public class SrvBomImpl extends DigicomEntityImpl {
     public static final int MODIFIEDDATE = AttributesEnum.ModifiedDate.index();
     public static final int SUPPLIERID = AttributesEnum.Supplierid.index();
     public static final int TXTSUPPLIER = AttributesEnum.txtSupplier.index();
+    public static final int BOMSEQ = AttributesEnum.Bomseq.index();
     public static final int SRVBOMPARTS = AttributesEnum.SrvBomparts.index();
     public static final int PUSUPPLIERS = AttributesEnum.PuSuppliers.index();
 
@@ -294,6 +296,22 @@ public class SrvBomImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Bomseq, using the alias name Bomseq.
+     * @return the value of Bomseq
+     */
+    public Integer getBomseq() {
+        return (Integer) getAttributeInternal(BOMSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Bomseq.
+     * @param value value to set the Bomseq
+     */
+    public void setBomseq(Integer value) {
+        setAttributeInternal(BOMSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getSrvBomparts() {
@@ -317,12 +335,12 @@ public class SrvBomImpl extends DigicomEntityImpl {
 
 
     /**
-     * @param bomId key constituent
+     * @param bomseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String bomId) {
-        return new Key(new Object[] { bomId });
+    public static Key createPrimaryKey(Integer bomseq) {
+        return new Key(new Object[] { bomseq });
     }
 
     /**
@@ -341,7 +359,7 @@ public class SrvBomImpl extends DigicomEntityImpl {
                }
                vo = am.createViewObjectFromQueryStmt("PKbom","select LPAD(to_char(nvl(max(bom_id),0)+1),5,'0') as  PKbom from srv_bom");
                vo.executeQuery();
-               setBomId(vo.first().getAttribute(0).toString());
+               populateAttributeAsChanged(BOMID, vo.first().getAttribute(0).toString());
            }            
         super.doDML(operation, e);
     }

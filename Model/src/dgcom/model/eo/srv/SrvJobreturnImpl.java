@@ -3,6 +3,8 @@ package dgcom.model.eo.srv;
 import dgcom.model.stand.DigicomClass;
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.ApplicationModule;
 import oracle.jbo.AttributeList;
 import oracle.jbo.Key;
@@ -38,6 +40,7 @@ public class SrvJobreturnImpl extends DigicomEntityImpl {
         Doctype,
         IsMigrated,
         MigratedDate,
+        Jobretidseq,
         SrvJobretdetl;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
@@ -61,6 +64,8 @@ public class SrvJobreturnImpl extends DigicomEntityImpl {
             return vals;
         }
     }
+
+
     public static final int JOBRETID = AttributesEnum.Jobretid.index();
     public static final int LOCATIONID = AttributesEnum.Locationid.index();
     public static final int TOLOCATIONID = AttributesEnum.Tolocationid.index();
@@ -76,6 +81,7 @@ public class SrvJobreturnImpl extends DigicomEntityImpl {
     public static final int DOCTYPE = AttributesEnum.Doctype.index();
     public static final int ISMIGRATED = AttributesEnum.IsMigrated.index();
     public static final int MIGRATEDDATE = AttributesEnum.MigratedDate.index();
+    public static final int JOBRETIDSEQ = AttributesEnum.Jobretidseq.index();
     public static final int SRVJOBRETDETL = AttributesEnum.SrvJobretdetl.index();
 
     /**
@@ -83,6 +89,14 @@ public class SrvJobreturnImpl extends DigicomEntityImpl {
      */
     public SrvJobreturnImpl() {
     }
+
+    /**
+     * @return the definition object for this instance class.
+     */
+    public static synchronized EntityDefImpl getDefinitionObject() {
+        return EntityDefImpl.findDefObject("dgcom.model.eo.srv.SrvJobreturn");
+    }
+
 
     /**
      * Gets the attribute value for Jobretid, using the alias name Jobretid.
@@ -325,26 +339,36 @@ public class SrvJobreturnImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Jobretidseq, using the alias name Jobretidseq.
+     * @return the value of Jobretidseq
+     */
+    public Integer getJobretidseq() {
+        return (Integer) getAttributeInternal(JOBRETIDSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Jobretidseq.
+     * @param value value to set the Jobretidseq
+     */
+    public void setJobretidseq(Integer value) {
+        setAttributeInternal(JOBRETIDSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getSrvJobretdetl() {
         return (RowIterator) getAttributeInternal(SRVJOBRETDETL);
     }
 
+
     /**
-     * @param jobretid key constituent
+     * @param jobretidseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String jobretid) {
-        return new Key(new Object[] { jobretid });
-    }
-
-    /**
-     * @return the definition object for this instance class.
-     */
-    public static synchronized EntityDefImpl getDefinitionObject() {
-        return EntityDefImpl.findDefObject("dgcom.model.eo.srv.SrvJobreturn");
+    public static Key createPrimaryKey(Integer jobretidseq) {
+        return new Key(new Object[] { jobretidseq });
     }
 
     /**

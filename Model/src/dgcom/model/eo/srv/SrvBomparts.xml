@@ -4,15 +4,17 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvBomparts"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="SRV_BOMPARTS"
   AliasName="SrvBomparts"
   BindingStyle="OracleName"
-  RowClass="dgcom.model.stand.DigicomEntityImpl">
+  RowClass="dgcom.model.eo.srv.SrvBompartsImpl">
   <DesignTime>
     <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Init|Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <Attribute
     Name="Partid"
@@ -29,7 +31,6 @@
   </Attribute>
   <Attribute
     Name="BomId"
-    IsNotNull="true"
     Precision="15"
     ColumnName="BOM_ID"
     SQLType="VARCHAR"
@@ -98,6 +99,13 @@
     ColumnType="ROWID"
     TableName="SRV_BOMPARTS"
     PrimaryKey="true"/>
+  <Attribute
+    Name="Bomseq"
+    ColumnName="BOMSEQ"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SRV_BOMPARTS"/>
   <AccessorAttribute
     Name="SrvBom"
     Association="dgcom.model.asso.srv.SysC0015083Assoc"
