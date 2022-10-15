@@ -61,7 +61,7 @@ public class SrvIssuedetailImpl extends DigicomEntityImpl {
                    vo.remove();     
                 }
             vo=am.createViewObjectFromQueryStmt("myIssuanceDetPK",
-            "  	select '"+getIssueId()+"'||'-'||nvl(max(to_number(substr(ISSUEDETLID, length(ISSUE_ID)+2)))+1,1) \n" + 
+            "  	select '"+getSrvIssuance().getAttribute("IssueId")+"'||'-'||nvl(max(to_number(substr(ISSUEDETLID, length(ISSUE_ID)+2)))+1,1) \n" + 
             "  	from SRV_ISSUEDETAIL\n" + 
             "  	where ISSUE_ID ='"+ getSrvIssuance().getAttribute("IssueId")+"'"
                                                 );

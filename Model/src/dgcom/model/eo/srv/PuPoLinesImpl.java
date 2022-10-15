@@ -55,6 +55,7 @@ public class PuPoLinesImpl extends DigicomEntityImpl {
         txtPartName,
         txtModelNo,
         txtUnitPriceInBcurr,
+        Poseq,
         PuPurchaseOrders,
         InParts,
         InItems;
@@ -115,6 +116,7 @@ public class PuPoLinesImpl extends DigicomEntityImpl {
     public static final int TXTPARTNAME = AttributesEnum.txtPartName.index();
     public static final int TXTMODELNO = AttributesEnum.txtModelNo.index();
     public static final int TXTUNITPRICEINBCURR = AttributesEnum.txtUnitPriceInBcurr.index();
+    public static final int POSEQ = AttributesEnum.Poseq.index();
     public static final int PUPURCHASEORDERS = AttributesEnum.PuPurchaseOrders.index();
     public static final int INPARTS = AttributesEnum.InParts.index();
     public static final int INITEMS = AttributesEnum.InItems.index();
@@ -662,6 +664,22 @@ public class PuPoLinesImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Poseq, using the alias name Poseq.
+     * @return the value of Poseq
+     */
+    public Integer getPoseq() {
+        return (Integer) getAttributeInternal(POSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Poseq.
+     * @param value value to set the Poseq
+     */
+    public void setPoseq(Integer value) {
+        setAttributeInternal(POSEQ, value);
+    }
+
+    /**
      * @return the associated entity PuPurchaseOrdersImpl.
      */
     public PuPurchaseOrdersImpl getPuPurchaseOrders() {
@@ -747,6 +765,7 @@ public class PuPoLinesImpl extends DigicomEntityImpl {
             setPoitemid(vo.first().getAttribute(0).toString());
         } 
         if (operation!=DML_DELETE) {
+           populateAttributeAsChanged(POID,getPuPurchaseOrders().getAttribute("Poid")); 
            setUnitPriceInBcurr(gettxtUnitPriceInBcurr());
        }
         super.doDML(operation, e);

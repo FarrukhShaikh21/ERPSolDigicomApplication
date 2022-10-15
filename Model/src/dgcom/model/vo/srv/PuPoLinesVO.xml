@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="PuPoLinesVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="PuPoLines.POITEMID, 
        PuPoLines.POID, 
@@ -33,7 +33,8 @@
        PuPoLines.AIRWAYS_BILLNO, 
        PuPoLines.GRN_NO, 
        PuPoLines.FOC_QTY, 
-       PuPoLines.EXTRA_QTY"
+       PuPoLines.EXTRA_QTY, 
+       PuPoLines.POSEQ"
   FromList="PU_PO_LINES PuPoLines"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -180,8 +181,8 @@
     EntityAttrName="Itemid"
     EntityUsage="PuPoLines"
     AliasName="ITEMID">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[PuPurchaseOrdersVO?.txtItemID]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
   </ViewAttribute>
   <ViewAttribute
     Name="ItemType"
@@ -346,12 +347,12 @@
     Type="java.math.BigDecimal"
     ColumnType="INTEGER"
     AliasName="VIEW_ATTR"
-    SQLType="INTEGER">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    SQLType="NUMERIC">
     <TransientExpression><![CDATA[if(OrderQty!=null && UnitPriceInFcurr!=null)
 return OrderQty * UnitPriceInFcurr;
 else
 return 0;]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -380,12 +381,12 @@ return 0;]]></TransientExpression>
     Type="java.math.BigDecimal"
     ColumnType="INTEGER"
     AliasName="VIEW_ATTR"
-    SQLType="INTEGER">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    SQLType="NUMERIC">
     <TransientExpression><![CDATA[if(OrderQty!=null && txtUnitPriceInBcurr!=null)
 return OrderQty * txtUnitPriceInBcurr;
 else
 return 0;]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -449,6 +450,12 @@ return 0;]]></TransientExpression>
     EntityUsage="PuPoLines"
     AliasName="TXT_UNIT_PRICE_IN_BCURR"
     IsPersistent="false"/>
+  <ViewAttribute
+    Name="Poseq"
+    PrecisionRule="true"
+    EntityAttrName="Poseq"
+    EntityUsage="PuPoLines"
+    AliasName="POSEQ"/>
   <ViewLinkAccessor
     Name="PuPurchaseOrdersVO"
     ViewLink="dgcom.model.qvo.srv.SysC0014867Link"

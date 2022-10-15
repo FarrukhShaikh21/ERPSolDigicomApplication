@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="PuPurchaseOrdersVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="PuPurchaseOrders.POID, 
        PuPurchaseOrders.LOCATIONID, 
@@ -35,7 +35,8 @@
        PuPurchaseOrders.IS_MIGRATED, 
        PuPurchaseOrders.MIGRATED_DATE, 
        AllProdcategory.DESCRIPTION, 
-       AllProdcategory.PROD_ID AS PROD_ID1"
+       AllProdcategory.PROD_ID AS PROD_ID1, 
+       PuPurchaseOrders.POSEQ"
   FromList="PU_PURCHASE_ORDERS PuPurchaseOrders, ALL_PRODCATEGORY AllProdcategory"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -641,6 +642,12 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewAttribute
+    Name="Poseq"
+    PrecisionRule="true"
+    EntityAttrName="Poseq"
+    EntityUsage="PuPurchaseOrders"
+    AliasName="POSEQ"/>
   <ViewCriteria
     Name="PuPurchaseOrdersSupplierWiseVC"
     ViewObjectName="dgcom.model.vo.srv.PuPurchaseOrdersVO"
@@ -672,7 +679,6 @@
         ViewAttribute="Poid"
         Operator="CONTAINS"
         Conjunction="AND"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -688,7 +694,6 @@
         Conjunction="AND"
         Value=":P_ADF_SUPPLIER_ID"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         IsBindVarValue="true"
         Required="Optional">
         <Properties>
@@ -704,7 +709,6 @@
         ViewAttribute="PoDate"
         Operator="="
         Conjunction="AND"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -714,7 +718,8 @@
         </Properties>
       </ViewCriteriaItem>
       <ViewCriteriaItemCompound
-        ViewAttribute="Postatus">
+        ViewAttribute="Postatus"
+        Name="Postatus">
         <ViewCriteria
           Name="PuPurchaseOrdersVOCriteria_PuPurchaseOrdersVOCriteria_row_0_Postatus_itemHolder"
           ViewObjectName="dgcom.model.vo.srv.PuPurchaseOrdersVO"
@@ -729,7 +734,6 @@
               Conjunction="AND"
               Value="CA"
               UpperColumns="0"
-              GenerateIsNullClauseForBindVars="false"
               Required="Optional">
               <Properties>
                 <CustomProperties>
@@ -750,7 +754,6 @@
               Conjunction="OR"
               Value="CO"
               UpperColumns="0"
-              GenerateIsNullClauseForBindVars="false"
               Required="Optional">
               <Properties>
                 <CustomProperties>
@@ -770,7 +773,6 @@
         Conjunction="AND"
         Value="P"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <CustomProperties>
@@ -785,7 +787,6 @@
         ViewAttribute="Description"
         Operator="CONTAINS"
         Conjunction="AND"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -828,7 +829,6 @@
         Operator="="
         Conjunction="AND"
         Value="P"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <CustomProperties>
@@ -872,7 +872,6 @@
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -886,7 +885,6 @@
         ViewAttribute="PoDate"
         Operator="="
         Conjunction="AND"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -901,7 +899,6 @@
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -916,12 +913,11 @@
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
   <AttrArray Name="KeyAttributes">
-    <Item Value="Poid"/>
+    <Item Value="Poseq"/>
   </AttrArray>
   <ViewLinkAccessor
     Name="PuPoLinesVO"

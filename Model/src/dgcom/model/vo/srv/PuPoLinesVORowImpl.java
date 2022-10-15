@@ -61,6 +61,7 @@ public class PuPoLinesVORowImpl extends DigicomViewRowImpl {
         txtPartNo,
         txtModelNo,
         txtUnitPriceInBcurr,
+        Poseq,
         PuPurchaseOrdersVO,
         AccSrvPuPoLinesPartIDWithOutDemant,
         AccSrvPuPoLinesDemandID;
@@ -124,6 +125,7 @@ public class PuPoLinesVORowImpl extends DigicomViewRowImpl {
     public static final int TXTPARTNO = AttributesEnum.txtPartNo.index();
     public static final int TXTMODELNO = AttributesEnum.txtModelNo.index();
     public static final int TXTUNITPRICEINBCURR = AttributesEnum.txtUnitPriceInBcurr.index();
+    public static final int POSEQ = AttributesEnum.Poseq.index();
     public static final int PUPURCHASEORDERSVO = AttributesEnum.PuPurchaseOrdersVO.index();
     public static final int ACCSRVPUPOLINESPARTIDWITHOUTDEMANT =
         AttributesEnum.AccSrvPuPoLinesPartIDWithOutDemant.index();
@@ -685,6 +687,22 @@ public class PuPoLinesVORowImpl extends DigicomViewRowImpl {
      */
     public void settxtUnitPriceInBcurr(BigDecimal value) {
         setAttributeInternal(TXTUNITPRICEINBCURR, value);
+    }
+
+    /**
+     * Gets the attribute value for POSEQ using the alias name Poseq.
+     * @return the POSEQ
+     */
+    public Integer getPoseq() {
+        return (Integer) getAttributeInternal(POSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for POSEQ using the alias name Poseq.
+     * @param value value to set the POSEQ
+     */
+    public void setPoseq(Integer value) {
+        setAttributeInternal(POSEQ, value);
     }
 
     /**

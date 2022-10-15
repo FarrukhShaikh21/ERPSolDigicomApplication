@@ -58,6 +58,7 @@ public class PuPurchaseOrdersImpl extends DigicomEntityImpl {
         txtRecStoreName,
         txtSupplierName,
         txtModelName,
+        Poseq,
         PuPoLines,
         AllProdcategory,
         AllStores,
@@ -118,6 +119,7 @@ public class PuPurchaseOrdersImpl extends DigicomEntityImpl {
     public static final int TXTRECSTORENAME = AttributesEnum.txtRecStoreName.index();
     public static final int TXTSUPPLIERNAME = AttributesEnum.txtSupplierName.index();
     public static final int TXTMODELNAME = AttributesEnum.txtModelName.index();
+    public static final int POSEQ = AttributesEnum.Poseq.index();
     public static final int PUPOLINES = AttributesEnum.PuPoLines.index();
     public static final int ALLPRODCATEGORY = AttributesEnum.AllProdcategory.index();
     public static final int ALLSTORES = AttributesEnum.AllStores.index();
@@ -650,6 +652,22 @@ public class PuPurchaseOrdersImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Poseq, using the alias name Poseq.
+     * @return the value of Poseq
+     */
+    public Integer getPoseq() {
+        return (Integer) getAttributeInternal(POSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Poseq.
+     * @param value value to set the Poseq
+     */
+    public void setPoseq(Integer value) {
+        setAttributeInternal(POSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getPuPoLines() {
@@ -703,12 +721,12 @@ public class PuPurchaseOrdersImpl extends DigicomEntityImpl {
 
 
     /**
-     * @param poid key constituent
+     * @param poseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String poid) {
-        return new Key(new Object[] { poid });
+    public static Key createPrimaryKey(Integer poseq) {
+        return new Key(new Object[] { poseq });
     }
 
     /**
@@ -716,6 +734,7 @@ public class PuPurchaseOrdersImpl extends DigicomEntityImpl {
      * @param attributeList list of attribute names/values to initialize the row
      */
     protected void create(AttributeList attributeList) {
+        setSrvSequenceName("PU_PURCHASE_ORDERS_SEQ");
         super.create(attributeList);
     }
 
@@ -757,7 +776,7 @@ public class PuPurchaseOrdersImpl extends DigicomEntityImpl {
                                                 "Where to_char(PO_DATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getPoDate().toString(), "yyMM")+"' \n"+
                                                 "and locationid = '"+getLocationid()+"'");
             vo.executeQuery();
-            setPoid(vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(POID,vo.first().getAttribute(0).toString());
         }  
         super.doDML(operation, e);
         }
