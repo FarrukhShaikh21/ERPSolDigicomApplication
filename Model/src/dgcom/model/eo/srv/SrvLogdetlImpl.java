@@ -2,6 +2,8 @@ package dgcom.model.eo.srv;
 
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.AttributeList;
 import oracle.jbo.domain.Date;
 import oracle.jbo.domain.RowID;
@@ -31,6 +33,7 @@ public class SrvLogdetlImpl extends DigicomEntityImpl {
         Mdate,
         Jobstatus,
         Rowid,
+        Logidseq,
         SrvLogistic;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
@@ -68,6 +71,7 @@ public class SrvLogdetlImpl extends DigicomEntityImpl {
     public static final int MDATE = AttributesEnum.Mdate.index();
     public static final int JOBSTATUS = AttributesEnum.Jobstatus.index();
     public static final int ROWID = AttributesEnum.Rowid.index();
+    public static final int LOGIDSEQ = AttributesEnum.Logidseq.index();
     public static final int SRVLOGISTIC = AttributesEnum.SrvLogistic.index();
 
     /**
@@ -269,6 +273,22 @@ public class SrvLogdetlImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Logidseq, using the alias name Logidseq.
+     * @return the value of Logidseq
+     */
+    public Integer getLogidseq() {
+        return (Integer) getAttributeInternal(LOGIDSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Logidseq.
+     * @param value value to set the Logidseq
+     */
+    public void setLogidseq(Integer value) {
+        setAttributeInternal(LOGIDSEQ, value);
+    }
+
+    /**
      * @return the associated entity SrvLogisticImpl.
      */
     public SrvLogisticImpl getSrvLogistic() {
@@ -314,7 +334,10 @@ public class SrvLogdetlImpl extends DigicomEntityImpl {
         if (operation==DML_INSERT && getJobcardno()==null) {
             remove();
             return;
-        }        
+        }
+            if (operation==DML_INSERT ) {
+            populateAttributeAsChanged(LOGIDSEQ, getSrvLogistic().getAttribute("Logid"));
+        }
         super.doDML(operation, e);
     }
 }

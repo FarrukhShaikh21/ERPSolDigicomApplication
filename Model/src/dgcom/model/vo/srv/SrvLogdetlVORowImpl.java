@@ -3,6 +3,8 @@ package dgcom.model.vo.srv;
 import dgcom.model.eo.srv.SrvLogdetlImpl;
 import dgcom.model.stand.DigicomViewRowImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.Row;
 import oracle.jbo.RowSet;
 import oracle.jbo.domain.Date;
@@ -37,6 +39,7 @@ public class SrvLogdetlVORowImpl extends DigicomViewRowImpl {
         Jobstatus,
         Rowid,
         txtLovName,
+        Logidseq,
         SrvLogisticVO,
         SrvLogDetSrvJobCardNoCIC_0082QVO,
         AccSrvLogDetSrvJobCardNo,
@@ -79,6 +82,7 @@ public class SrvLogdetlVORowImpl extends DigicomViewRowImpl {
     public static final int JOBSTATUS = AttributesEnum.Jobstatus.index();
     public static final int ROWID = AttributesEnum.Rowid.index();
     public static final int TXTLOVNAME = AttributesEnum.txtLovName.index();
+    public static final int LOGIDSEQ = AttributesEnum.Logidseq.index();
     public static final int SRVLOGISTICVO = AttributesEnum.SrvLogisticVO.index();
     public static final int SRVLOGDETSRVJOBCARDNOCIC_0082QVO = AttributesEnum.SrvLogDetSrvJobCardNoCIC_0082QVO.index();
     public static final int ACCSRVLOGDETSRVJOBCARDNO = AttributesEnum.AccSrvLogDetSrvJobCardNo.index();
@@ -289,6 +293,22 @@ public class SrvLogdetlVORowImpl extends DigicomViewRowImpl {
      */
     public String gettxtLovName() {
         return (String) getAttributeInternal(TXTLOVNAME);
+    }
+
+    /**
+     * Gets the attribute value for LOGIDSEQ using the alias name Logidseq.
+     * @return the LOGIDSEQ
+     */
+    public Integer getLogidseq() {
+        return (Integer) getAttributeInternal(LOGIDSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for LOGIDSEQ using the alias name Logidseq.
+     * @param value value to set the LOGIDSEQ
+     */
+    public void setLogidseq(Integer value) {
+        setAttributeInternal(LOGIDSEQ, value);
     }
 
     /**

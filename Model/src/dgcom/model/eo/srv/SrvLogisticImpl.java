@@ -394,6 +394,7 @@ public class SrvLogisticImpl extends DigicomEntityImpl {
      * @param attributeList list of attribute names/values to initialize the row
      */
     protected void create(AttributeList attributeList) {
+        setSrvSequenceName("SRV_LOGISTIC_SEQ");
         super.create(attributeList);
     }
 
@@ -438,7 +439,7 @@ public class SrvLogisticImpl extends DigicomEntityImpl {
                                                 "Where to_char(LogDATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getLogdate().toString(), "yyMM")+"' \n"+
                                                 "and locationid = '"+getLocationid()+"'");
             vo.executeQuery();
-            setLogid(vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(LOGIDSEQ,vo.first().getAttribute(0).toString());
         }
         super.doDML(operation, e);
     }
