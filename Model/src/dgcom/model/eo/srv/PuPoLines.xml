@@ -32,7 +32,6 @@
   </Attribute>
   <Attribute
     Name="Poid"
-    IsNotNull="true"
     Precision="15"
     ColumnName="POID"
     SQLType="VARCHAR"
