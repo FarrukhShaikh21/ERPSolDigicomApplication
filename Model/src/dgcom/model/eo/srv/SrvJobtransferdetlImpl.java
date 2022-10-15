@@ -2,6 +2,8 @@ package dgcom.model.eo.srv;
 
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.AttributeList;
 import oracle.jbo.domain.Date;
 import oracle.jbo.domain.RowID;
@@ -31,6 +33,7 @@ public class SrvJobtransferdetlImpl extends DigicomEntityImpl {
         Cdate,
         Mdate,
         Rowid,
+        Transferseq,
         SrvJobtransfer,
         SrvJobcard;
         private static AttributesEnum[] vals = null;
@@ -69,6 +72,7 @@ public class SrvJobtransferdetlImpl extends DigicomEntityImpl {
     public static final int CDATE = AttributesEnum.Cdate.index();
     public static final int MDATE = AttributesEnum.Mdate.index();
     public static final int ROWID = AttributesEnum.Rowid.index();
+    public static final int TRANSFERSEQ = AttributesEnum.Transferseq.index();
     public static final int SRVJOBTRANSFER = AttributesEnum.SrvJobtransfer.index();
     public static final int SRVJOBCARD = AttributesEnum.SrvJobcard.index();
 
@@ -268,6 +272,22 @@ public class SrvJobtransferdetlImpl extends DigicomEntityImpl {
      */
     public RowID getRowid() {
         return (RowID) getAttributeInternal(ROWID);
+    }
+
+    /**
+     * Gets the attribute value for Transferseq, using the alias name Transferseq.
+     * @return the value of Transferseq
+     */
+    public Integer getTransferseq() {
+        return (Integer) getAttributeInternal(TRANSFERSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Transferseq.
+     * @param value value to set the Transferseq
+     */
+    public void setTransferseq(Integer value) {
+        setAttributeInternal(TRANSFERSEQ, value);
     }
 
     /**
