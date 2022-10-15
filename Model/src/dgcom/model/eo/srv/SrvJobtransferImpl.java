@@ -3,6 +3,8 @@ package dgcom.model.eo.srv;
 import dgcom.model.stand.DigicomClass;
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.ApplicationModule;
 import oracle.jbo.AttributeList;
 import oracle.jbo.Key;
@@ -38,6 +40,7 @@ public class SrvJobtransferImpl extends DigicomEntityImpl {
         Doctype,
         IsMigrated,
         MigratedDate,
+        Transferseq,
         SrvJobtransferdetl;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
@@ -61,6 +64,8 @@ public class SrvJobtransferImpl extends DigicomEntityImpl {
             return vals;
         }
     }
+
+
     public static final int TRANSFERID = AttributesEnum.Transferid.index();
     public static final int LOCATIONID = AttributesEnum.Locationid.index();
     public static final int TOLOCATIONID = AttributesEnum.Tolocationid.index();
@@ -76,6 +81,7 @@ public class SrvJobtransferImpl extends DigicomEntityImpl {
     public static final int DOCTYPE = AttributesEnum.Doctype.index();
     public static final int ISMIGRATED = AttributesEnum.IsMigrated.index();
     public static final int MIGRATEDDATE = AttributesEnum.MigratedDate.index();
+    public static final int TRANSFERSEQ = AttributesEnum.Transferseq.index();
     public static final int SRVJOBTRANSFERDETL = AttributesEnum.SrvJobtransferdetl.index();
 
     /**
@@ -83,6 +89,14 @@ public class SrvJobtransferImpl extends DigicomEntityImpl {
      */
     public SrvJobtransferImpl() {
     }
+
+    /**
+     * @return the definition object for this instance class.
+     */
+    public static synchronized EntityDefImpl getDefinitionObject() {
+        return EntityDefImpl.findDefObject("dgcom.model.eo.srv.SrvJobtransfer");
+    }
+
 
     /**
      * Gets the attribute value for Transferid, using the alias name Transferid.
@@ -325,26 +339,36 @@ public class SrvJobtransferImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Transferseq, using the alias name Transferseq.
+     * @return the value of Transferseq
+     */
+    public Integer getTransferseq() {
+        return (Integer) getAttributeInternal(TRANSFERSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Transferseq.
+     * @param value value to set the Transferseq
+     */
+    public void setTransferseq(Integer value) {
+        setAttributeInternal(TRANSFERSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getSrvJobtransferdetl() {
         return (RowIterator) getAttributeInternal(SRVJOBTRANSFERDETL);
     }
 
+
     /**
-     * @param transferid key constituent
+     * @param transferseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String transferid) {
-        return new Key(new Object[] { transferid });
-    }
-
-    /**
-     * @return the definition object for this instance class.
-     */
-    public static synchronized EntityDefImpl getDefinitionObject() {
-        return EntityDefImpl.findDefObject("dgcom.model.eo.srv.SrvJobtransfer");
+    public static Key createPrimaryKey(Integer transferseq) {
+        return new Key(new Object[] { transferseq });
     }
 
     /**
@@ -352,6 +376,7 @@ public class SrvJobtransferImpl extends DigicomEntityImpl {
      * @param attributeList list of attribute names/values to initialize the row
      */
     protected void create(AttributeList attributeList) {
+        setSrvSequenceName("SRV_JOBTRANSFER_SEQ");
         super.create(attributeList);
     }
 
@@ -389,7 +414,8 @@ public class SrvJobtransferImpl extends DigicomEntityImpl {
                                                 "Where to_char(TDATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getTdate().toString(), "yyMM")+"' \n"+
                                                 "and locationid = '"+getLocationid()+"'");
             vo.executeQuery();
-            setTransferid(vo.first().getAttribute(0).toString());
+//            setTransferid(vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(TRANSFERID, vo.first().getAttribute(0).toString());
         }
         super.doDML(operation, e);
     }

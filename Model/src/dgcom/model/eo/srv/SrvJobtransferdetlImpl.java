@@ -330,7 +330,14 @@ public class SrvJobtransferdetlImpl extends DigicomEntityImpl {
         if (operation==DML_INSERT && getJobcardno()==null) {
             remove();
             return;
-        }        
+        }
+        if (operation==DML_INSERT /*&& getJobcardno().contains("-")*/) {
+            System.out.println("one");
+            populateAttributeAsChanged(TRANSFERID, getSrvJobtransfer().getAttribute("Transferid"));
+          System.out.println("two");
+            
+        //            setJobcardno(this.getDBTransaction().getRootApplicationModule().findViewObject("SrvJobcardCRUD").getCurrentRow().getAttribute("Jobcardno").toString());
+        }
         super.doDML(operation, e);
     }
 }
