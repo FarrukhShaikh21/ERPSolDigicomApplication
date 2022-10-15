@@ -19,7 +19,6 @@
   </DesignTime>
   <Attribute
     Name="Transferid"
-    IsNotNull="true"
     Precision="20"
     ColumnName="TRANSFERID"
     SQLType="VARCHAR"

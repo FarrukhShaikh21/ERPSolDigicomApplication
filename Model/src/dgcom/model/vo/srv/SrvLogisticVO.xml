@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvLogisticVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="SrvLogistic.LOGID, 
        SrvLogistic.LOCATIONID, 
@@ -21,7 +21,8 @@
        SrvLogistic.DOCTYPEID, 
        SrvLogistic.DOCTYPE, 
        SrvLogistic.IS_MIGRATED, 
-       SrvLogistic.MIGRATED_DATE"
+       SrvLogistic.MIGRATED_DATE, 
+       SrvLogistic.LOGIDSEQ"
   FromList="SRV_LOGISTIC SrvLogistic"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -322,16 +323,22 @@
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[if (Doctype=='Log')
  return 'LovSrvLogisticDocumentIdJobDocument'
 else
  return 'LovSrvLogisticDocumentIdJobDocumentPendJobRec']]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Dependencies>
       <Item
         Value="Doctype"/>
     </Dependencies>
   </ViewAttribute>
+  <ViewAttribute
+    Name="Logidseq"
+    PrecisionRule="true"
+    EntityAttrName="Logidseq"
+    EntityUsage="SrvLogistic"
+    AliasName="LOGIDSEQ"/>
   <ViewCriteria
     Name="SrvLogisticJobTypeDPLog"
     ViewObjectName="dgcom.model.vo.srv.SrvLogisticVO"
@@ -364,7 +371,6 @@ else
         Operator="="
         Conjunction="AND"
         Value="DPLog"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
@@ -400,7 +406,6 @@ else
         Operator="="
         Conjunction="AND"
         Value="Log"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
@@ -436,7 +441,6 @@ else
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -450,7 +454,6 @@ else
         ViewAttribute="Logdate"
         Operator="="
         Conjunction="AND"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -465,7 +468,6 @@ else
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional"/>
       <ViewCriteriaItem
         Name="Docid"
@@ -473,7 +475,6 @@ else
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -488,7 +489,6 @@ else
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>

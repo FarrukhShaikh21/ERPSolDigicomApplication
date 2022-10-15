@@ -3,6 +3,8 @@ package dgcom.model.eo.srv;
 import dgcom.model.stand.DigicomClass;
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.ApplicationModule;
 import oracle.jbo.AttributeList;
 import oracle.jbo.Key;
@@ -39,6 +41,7 @@ public class SrvLogisticImpl extends DigicomEntityImpl {
         Doctype,
         IsMigrated,
         MigratedDate,
+        Logidseq,
         SrvLogdetl;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
@@ -63,6 +66,7 @@ public class SrvLogisticImpl extends DigicomEntityImpl {
         }
     }
 
+
     public static final int LOGID = AttributesEnum.Logid.index();
     public static final int LOCATIONID = AttributesEnum.Locationid.index();
     public static final int FROMLOCATIONID = AttributesEnum.Fromlocationid.index();
@@ -79,6 +83,7 @@ public class SrvLogisticImpl extends DigicomEntityImpl {
     public static final int DOCTYPE = AttributesEnum.Doctype.index();
     public static final int ISMIGRATED = AttributesEnum.IsMigrated.index();
     public static final int MIGRATEDDATE = AttributesEnum.MigratedDate.index();
+    public static final int LOGIDSEQ = AttributesEnum.Logidseq.index();
     public static final int SRVLOGDETL = AttributesEnum.SrvLogdetl.index();
 
     /**
@@ -93,6 +98,7 @@ public class SrvLogisticImpl extends DigicomEntityImpl {
     public static synchronized EntityDefImpl getDefinitionObject() {
         return EntityDefImpl.findDefObject("dgcom.model.eo.srv.SrvLogistic");
     }
+
 
     /**
      * Gets the attribute value for Logid, using the alias name Logid.
@@ -351,6 +357,22 @@ public class SrvLogisticImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Logidseq, using the alias name Logidseq.
+     * @return the value of Logidseq
+     */
+    public Integer getLogidseq() {
+        return (Integer) getAttributeInternal(LOGIDSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Logidseq.
+     * @param value value to set the Logidseq
+     */
+    public void setLogidseq(Integer value) {
+        setAttributeInternal(LOGIDSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getSrvLogdetl() {
@@ -359,12 +381,12 @@ public class SrvLogisticImpl extends DigicomEntityImpl {
 
 
     /**
-     * @param logid key constituent
+     * @param logidseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String logid) {
-        return new Key(new Object[] { logid });
+    public static Key createPrimaryKey(Integer logidseq) {
+        return new Key(new Object[] { logidseq });
     }
 
     /**

@@ -39,6 +39,7 @@ public class SrvLogisticVORowImpl extends DigicomViewRowImpl {
         IsMigrated,
         MigratedDate,
         txtLovName,
+        Logidseq,
         SrvLogdetlVO,
         SrvLogDetSrvJobCardNoCIC_0082QVO,
         AccSrvLogisticDocumentIdJobDocument,
@@ -87,6 +88,7 @@ public class SrvLogisticVORowImpl extends DigicomViewRowImpl {
     public static final int ISMIGRATED = AttributesEnum.IsMigrated.index();
     public static final int MIGRATEDDATE = AttributesEnum.MigratedDate.index();
     public static final int TXTLOVNAME = AttributesEnum.txtLovName.index();
+    public static final int LOGIDSEQ = AttributesEnum.Logidseq.index();
     public static final int SRVLOGDETLVO = AttributesEnum.SrvLogdetlVO.index();
     public static final int SRVLOGDETSRVJOBCARDNOCIC_0082QVO = AttributesEnum.SrvLogDetSrvJobCardNoCIC_0082QVO.index();
     public static final int ACCSRVLOGISTICDOCUMENTIDJOBDOCUMENT =
@@ -375,6 +377,22 @@ public class SrvLogisticVORowImpl extends DigicomViewRowImpl {
         return (String) getAttributeInternal(TXTLOVNAME);
     }
 
+
+    /**
+     * Gets the attribute value for LOGIDSEQ using the alias name Logidseq.
+     * @return the LOGIDSEQ
+     */
+    public Integer getLogidseq() {
+        return (Integer) getAttributeInternal(LOGIDSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for LOGIDSEQ using the alias name Logidseq.
+     * @param value value to set the LOGIDSEQ
+     */
+    public void setLogidseq(Integer value) {
+        setAttributeInternal(LOGIDSEQ, value);
+    }
 
     /**
      * Gets the associated <code>RowIterator</code> using master-detail link SrvLogdetlVO.

@@ -37,6 +37,7 @@ public class SrvJobtransferdetlVORowImpl extends DigicomViewRowImpl {
         Mdate,
         Rowid,
         txtLovName,
+        Transferseq,
         SrvJobtransferVO,
         SrvJobTransferSrvJobCardNoCIC_0032QVO,
         AccSrvJobTransferSrvJobCardNo,
@@ -79,6 +80,7 @@ public class SrvJobtransferdetlVORowImpl extends DigicomViewRowImpl {
     public static final int MDATE = AttributesEnum.Mdate.index();
     public static final int ROWID = AttributesEnum.Rowid.index();
     public static final int TXTLOVNAME = AttributesEnum.txtLovName.index();
+    public static final int TRANSFERSEQ = AttributesEnum.Transferseq.index();
     public static final int SRVJOBTRANSFERVO = AttributesEnum.SrvJobtransferVO.index();
     public static final int SRVJOBTRANSFERSRVJOBCARDNOCIC_0032QVO =
         AttributesEnum.SrvJobTransferSrvJobCardNoCIC_0032QVO.index();
@@ -290,6 +292,22 @@ public class SrvJobtransferdetlVORowImpl extends DigicomViewRowImpl {
      */
     public String gettxtLovName() {
         return (String) getAttributeInternal(TXTLOVNAME);
+    }
+
+    /**
+     * Gets the attribute value for TRANSFERSEQ using the alias name Transferseq.
+     * @return the TRANSFERSEQ
+     */
+    public Integer getTransferseq() {
+        return (Integer) getAttributeInternal(TRANSFERSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for TRANSFERSEQ using the alias name Transferseq.
+     * @param value value to set the TRANSFERSEQ
+     */
+    public void setTransferseq(Integer value) {
+        setAttributeInternal(TRANSFERSEQ, value);
     }
 
     /**

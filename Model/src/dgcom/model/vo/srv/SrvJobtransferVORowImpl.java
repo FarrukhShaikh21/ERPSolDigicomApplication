@@ -37,6 +37,7 @@ public class SrvJobtransferVORowImpl extends ViewRowImpl {
         Doctype,
         IsMigrated,
         MigratedDate,
+        Transferseq,
         SrvJobtransferdetlVO,
         AccTolLocations,
         AccSysUserRightsWiseLocation,
@@ -81,6 +82,7 @@ public class SrvJobtransferVORowImpl extends ViewRowImpl {
     public static final int DOCTYPE = AttributesEnum.Doctype.index();
     public static final int ISMIGRATED = AttributesEnum.IsMigrated.index();
     public static final int MIGRATEDDATE = AttributesEnum.MigratedDate.index();
+    public static final int TRANSFERSEQ = AttributesEnum.Transferseq.index();
     public static final int SRVJOBTRANSFERDETLVO = AttributesEnum.SrvJobtransferdetlVO.index();
     public static final int ACCTOLLOCATIONS = AttributesEnum.AccTolLocations.index();
     public static final int ACCSYSUSERRIGHTSWISELOCATION = AttributesEnum.AccSysUserRightsWiseLocation.index();
@@ -338,6 +340,22 @@ public class SrvJobtransferVORowImpl extends ViewRowImpl {
      */
     public void setMigratedDate(Date value) {
         setAttributeInternal(MIGRATEDDATE, value);
+    }
+
+    /**
+     * Gets the attribute value for TRANSFERSEQ using the alias name Transferseq.
+     * @return the TRANSFERSEQ
+     */
+    public Integer getTransferseq() {
+        return (Integer) getAttributeInternal(TRANSFERSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for TRANSFERSEQ using the alias name Transferseq.
+     * @param value value to set the TRANSFERSEQ
+     */
+    public void setTransferseq(Integer value) {
+        setAttributeInternal(TRANSFERSEQ, value);
     }
 
     /**
