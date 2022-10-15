@@ -1,5 +1,7 @@
 package dgcom.model.eo.srv;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.AttributeList;
 import oracle.jbo.domain.Date;
 import oracle.jbo.domain.RowID;
@@ -30,6 +32,7 @@ public class SrvJobretdetlImpl extends EntityImpl {
         Mdate,
         Jobstatus,
         Rowid,
+        Jobretidseq,
         SrvJobreturn;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
@@ -67,6 +70,7 @@ public class SrvJobretdetlImpl extends EntityImpl {
     public static final int MDATE = AttributesEnum.Mdate.index();
     public static final int JOBSTATUS = AttributesEnum.Jobstatus.index();
     public static final int ROWID = AttributesEnum.Rowid.index();
+    public static final int JOBRETIDSEQ = AttributesEnum.Jobretidseq.index();
     public static final int SRVJOBRETURN = AttributesEnum.SrvJobreturn.index();
 
     /**
@@ -268,6 +272,22 @@ public class SrvJobretdetlImpl extends EntityImpl {
     }
 
     /**
+     * Gets the attribute value for Jobretidseq, using the alias name Jobretidseq.
+     * @return the value of Jobretidseq
+     */
+    public Integer getJobretidseq() {
+        return (Integer) getAttributeInternal(JOBRETIDSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Jobretidseq.
+     * @param value value to set the Jobretidseq
+     */
+    public void setJobretidseq(Integer value) {
+        setAttributeInternal(JOBRETIDSEQ, value);
+    }
+
+    /**
      * @return the associated entity SrvJobreturnImpl.
      */
     public SrvJobreturnImpl getSrvJobreturn() {
@@ -313,7 +333,10 @@ public class SrvJobretdetlImpl extends EntityImpl {
         if (operation==DML_INSERT && getJobcardno()==null) {
             remove();
             return;
-        }        
+        }
+        if (operation==DML_INSERT) {
+            populateAttributeAsChanged(JOBRETID, getSrvJobreturn().getAttribute("Jobretid"));
+       }
         super.doDML(operation, e);
     }
 }

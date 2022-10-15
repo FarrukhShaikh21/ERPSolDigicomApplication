@@ -37,6 +37,7 @@ public class SrvJobretdetlVORowImpl extends DigicomViewRowImpl {
         Jobstatus,
         Rowid,
         txtLovName,
+        Jobretidseq,
         SrvJobreturnVO,
         SrvJobReturnDetailSrvJobCardNoCIC_0055QVO,
         AccSrvJobReturnDetailSrvJobCardNo,
@@ -79,6 +80,7 @@ public class SrvJobretdetlVORowImpl extends DigicomViewRowImpl {
     public static final int JOBSTATUS = AttributesEnum.Jobstatus.index();
     public static final int ROWID = AttributesEnum.Rowid.index();
     public static final int TXTLOVNAME = AttributesEnum.txtLovName.index();
+    public static final int JOBRETIDSEQ = AttributesEnum.Jobretidseq.index();
     public static final int SRVJOBRETURNVO = AttributesEnum.SrvJobreturnVO.index();
     public static final int SRVJOBRETURNDETAILSRVJOBCARDNOCIC_0055QVO =
         AttributesEnum.SrvJobReturnDetailSrvJobCardNoCIC_0055QVO.index();
@@ -291,6 +293,22 @@ public class SrvJobretdetlVORowImpl extends DigicomViewRowImpl {
      */
     public String gettxtLovName() {
         return (String) getAttributeInternal(TXTLOVNAME);
+    }
+
+    /**
+     * Gets the attribute value for JOBRETIDSEQ using the alias name Jobretidseq.
+     * @return the JOBRETIDSEQ
+     */
+    public Integer getJobretidseq() {
+        return (Integer) getAttributeInternal(JOBRETIDSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for JOBRETIDSEQ using the alias name Jobretidseq.
+     * @param value value to set the JOBRETIDSEQ
+     */
+    public void setJobretidseq(Integer value) {
+        setAttributeInternal(JOBRETIDSEQ, value);
     }
 
     /**

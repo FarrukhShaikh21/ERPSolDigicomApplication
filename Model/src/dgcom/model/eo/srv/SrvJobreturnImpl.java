@@ -413,7 +413,7 @@ public class SrvJobreturnImpl extends DigicomEntityImpl {
                                                 "Where to_char(Jrdate,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getJrdate().toString(), "yyMM")+"' \n"+
                                                 "and locationid = '"+getLocationid()+"'");
             vo.executeQuery();
-            setJobretid(vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(JOBRETID,vo.first().getAttribute(0).toString());
         }
         super.doDML(operation, e);
     }
