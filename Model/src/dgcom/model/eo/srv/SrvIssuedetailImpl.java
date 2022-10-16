@@ -102,11 +102,11 @@ public class SrvIssuedetailImpl extends DigicomEntityImpl {
         SrvIssuance,
         InParts,
         AllStores,
-        SrvIretdetail,
         SrvJsparts,
         AccSrvIssuanceDetailAvailQty,
         AccSrvIssueDetailPartUsedAgainstJobCard;
-        private static AttributesEnum[] vals = null;
+        static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -155,7 +155,6 @@ public class SrvIssuedetailImpl extends DigicomEntityImpl {
     public static final int SRVISSUANCE = AttributesEnum.SrvIssuance.index();
     public static final int INPARTS = AttributesEnum.InParts.index();
     public static final int ALLSTORES = AttributesEnum.AllStores.index();
-    public static final int SRVIRETDETAIL = AttributesEnum.SrvIretdetail.index();
     public static final int SRVJSPARTS = AttributesEnum.SrvJsparts.index();
     public static final int ACCSRVISSUANCEDETAILAVAILQTY = AttributesEnum.AccSrvIssuanceDetailAvailQty.index();
     public static final int ACCSRVISSUEDETAILPARTUSEDAGAINSTJOBCARD =
@@ -579,12 +578,6 @@ public class SrvIssuedetailImpl extends DigicomEntityImpl {
         setAttributeInternal(ALLSTORES, value);
     }
 
-    /**
-     * @return the associated entity oracle.jbo.RowIterator.
-     */
-    public RowIterator getSrvIretdetail() {
-        return (RowIterator) getAttributeInternal(SRVIRETDETAIL);
-    }
 
     /**
      * @return the associated entity oracle.jbo.RowIterator.

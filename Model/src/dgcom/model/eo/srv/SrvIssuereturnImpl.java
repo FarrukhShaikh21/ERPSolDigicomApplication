@@ -3,6 +3,8 @@ package dgcom.model.eo.srv;
 import dgcom.model.stand.DigicomClass;
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.ApplicationModule;
 import oracle.jbo.AttributeList;
 import oracle.jbo.Key;
@@ -45,6 +47,7 @@ public class SrvIssuereturnImpl extends DigicomEntityImpl {
         MigratedDate,
         txtJobcardno,
         txtTechnicianName,
+        Issueretseq,
         SrvIretdetail,
         SrvIssuance,
         SrvTechnician,
@@ -91,6 +94,7 @@ public class SrvIssuereturnImpl extends DigicomEntityImpl {
     public static final int MIGRATEDDATE = AttributesEnum.MigratedDate.index();
     public static final int TXTJOBCARDNO = AttributesEnum.txtJobcardno.index();
     public static final int TXTTECHNICIANNAME = AttributesEnum.txtTechnicianName.index();
+    public static final int ISSUERETSEQ = AttributesEnum.Issueretseq.index();
     public static final int SRVIRETDETAIL = AttributesEnum.SrvIretdetail.index();
     public static final int SRVISSUANCE = AttributesEnum.SrvIssuance.index();
     public static final int SRVTECHNICIAN = AttributesEnum.SrvTechnician.index();
@@ -434,6 +438,22 @@ public class SrvIssuereturnImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Issueretseq, using the alias name Issueretseq.
+     * @return the value of Issueretseq
+     */
+    public Integer getIssueretseq() {
+        return (Integer) getAttributeInternal(ISSUERETSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Issueretseq.
+     * @param value value to set the Issueretseq
+     */
+    public void setIssueretseq(Integer value) {
+        setAttributeInternal(ISSUERETSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getSrvIretdetail() {
@@ -478,12 +498,12 @@ public class SrvIssuereturnImpl extends DigicomEntityImpl {
 
 
     /**
-     * @param issueretid key constituent
+     * @param issueretseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String issueretid) {
-        return new Key(new Object[] { issueretid });
+    public static Key createPrimaryKey(Integer issueretseq) {
+        return new Key(new Object[] { issueretseq });
     }
 
     /**
@@ -491,6 +511,7 @@ public class SrvIssuereturnImpl extends DigicomEntityImpl {
      * @param attributeList list of attribute names/values to initialize the row
      */
     protected void create(AttributeList attributeList) {
+        setSrvSequenceName("SRV_ISSUERETURN_SEQ");
         super.create(attributeList);
     }
 
@@ -527,7 +548,7 @@ public class SrvIssuereturnImpl extends DigicomEntityImpl {
                                                 "Where to_char(RETDATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getRetdate().toString(), "yyMM")+"' \n"+
                                                 "and locationid = '"+getLocationid()+"'");
             vo.executeQuery();
-            setIssueretid(vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(ISSUERETID, vo.first().getAttribute(0).toString());
             /*for (int i = 0; i < getSrvInvItems().getRowCount(); i++) {
                 getSrvInvItems().getRowAtRangeIndex(i).setAttribute("SrvInvno", vo.first().getAttribute(0).toString());
                 System.out.println(i);

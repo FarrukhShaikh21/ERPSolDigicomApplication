@@ -435,13 +435,6 @@ return 0;]]></TransientExpression>
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
   <AccessorAttribute
-    Name="SrvIretdetail"
-    Association="dgcom.model.asso.srv.SrvIssueDetailSrvIretDetailIssueDetailIdAsso"
-    AssociationEnd="dgcom.model.asso.srv.SrvIssueDetailSrvIretDetailIssueDetailIdAsso.SrvIretdetail"
-    AssociationOtherEnd="dgcom.model.asso.srv.SrvIssueDetailSrvIretDetailIssueDetailIdAsso.SrvIssuedetail"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <AccessorAttribute
     Name="SrvJsparts"
     Association="dgcom.model.asso.srv.SrvIssueDetailSrvJsPartsIssueDetailIDAsso"
     AssociationEnd="dgcom.model.asso.srv.SrvIssueDetailSrvJsPartsIssueDetailIDAsso.SrvJsparts"
@@ -546,9 +539,9 @@ return 0;]]></TransientExpression>
       <validation:Item
         Value="errorId2PartAlreadyUsed"/>
       <validation:Item
-        Value="errorId2ReasonEnter"/>
-      <validation:Item
         Value="errorId3ReasonDontEnter"/>
+      <validation:Item
+        Value="errorId2ReasonEnter"/>
     </validation:MsgIds>
     <validation:TransientExpression><![CDATA[if(SrvIssuance?.txtWarranty=='IW')
 {

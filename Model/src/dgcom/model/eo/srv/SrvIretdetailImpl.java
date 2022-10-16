@@ -35,10 +35,12 @@ public class SrvIretdetailImpl extends DigicomEntityImpl {
         txtStoreTransTypeId,
         txtStoreId,
         txtStoreName,
+        Issueretseq,
         SrvIssuereturn,
-        SrvIssuedetail,
-        AllStores;
-        private static AttributesEnum[] vals = null;
+        AllStores,
+        SrvIssuereturn1;
+        static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -75,9 +77,10 @@ public class SrvIretdetailImpl extends DigicomEntityImpl {
     public static final int TXTSTORETRANSTYPEID = AttributesEnum.txtStoreTransTypeId.index();
     public static final int TXTSTOREID = AttributesEnum.txtStoreId.index();
     public static final int TXTSTORENAME = AttributesEnum.txtStoreName.index();
+    public static final int ISSUERETSEQ = AttributesEnum.Issueretseq.index();
     public static final int SRVISSUERETURN = AttributesEnum.SrvIssuereturn.index();
-    public static final int SRVISSUEDETAIL = AttributesEnum.SrvIssuedetail.index();
     public static final int ALLSTORES = AttributesEnum.AllStores.index();
+    public static final int SRVISSUERETURN1 = AttributesEnum.SrvIssuereturn1.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -294,6 +297,22 @@ public class SrvIretdetailImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Issueretseq, using the alias name Issueretseq.
+     * @return the value of Issueretseq
+     */
+    public Integer getIssueretseq() {
+        return (Integer) getAttributeInternal(ISSUERETSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Issueretseq.
+     * @param value value to set the Issueretseq
+     */
+    public void setIssueretseq(Integer value) {
+        setAttributeInternal(ISSUERETSEQ, value);
+    }
+
+    /**
      * @return the associated entity SrvIssuereturnImpl.
      */
     public SrvIssuereturnImpl getSrvIssuereturn() {
@@ -309,20 +328,6 @@ public class SrvIretdetailImpl extends DigicomEntityImpl {
 
 
     /**
-     * @return the associated entity SrvIssuedetailImpl.
-     */
-    public SrvIssuedetailImpl getSrvIssuedetail() {
-        return (SrvIssuedetailImpl) getAttributeInternal(SRVISSUEDETAIL);
-    }
-
-    /**
-     * Sets <code>value</code> as the associated entity SrvIssuedetailImpl.
-     */
-    public void setSrvIssuedetail(SrvIssuedetailImpl value) {
-        setAttributeInternal(SRVISSUEDETAIL, value);
-    }
-
-    /**
      * @return the associated entity oracle.jbo.server.EntityImpl.
      */
     public EntityImpl getAllStores() {
@@ -334,6 +339,20 @@ public class SrvIretdetailImpl extends DigicomEntityImpl {
      */
     public void setAllStores(EntityImpl value) {
         setAttributeInternal(ALLSTORES, value);
+    }
+
+    /**
+     * @return the associated entity SrvIssuereturnImpl.
+     */
+    public SrvIssuereturnImpl getSrvIssuereturn1() {
+        return (SrvIssuereturnImpl) getAttributeInternal(SRVISSUERETURN1);
+    }
+
+    /**
+     * Sets <code>value</code> as the associated entity SrvIssuereturnImpl.
+     */
+    public void setSrvIssuereturn1(SrvIssuereturnImpl value) {
+        setAttributeInternal(SRVISSUERETURN1, value);
     }
 
     /**
@@ -367,7 +386,10 @@ public class SrvIretdetailImpl extends DigicomEntityImpl {
         if (operation==DML_INSERT && getIssuedetlid() ==null) {
             remove();
             return;
-        }        
+        }  
+        if (operation==DML_INSERT) {
+           populateAttributeAsChanged(ISSUERETID, getSrvIssuereturn().getAttribute("Issueretid"));
+       }
         super.doDML(operation, e);
     }
 }

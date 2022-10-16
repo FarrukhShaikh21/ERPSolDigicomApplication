@@ -38,6 +38,7 @@ public class SrvIretdetailVORowImpl extends DigicomViewRowImpl {
         txtStoreTransTypeId,
         txtStoreId,
         txtStoreName,
+        Issueretseq,
         SrvIssuereturnVO,
         AccSrvIretDetailStoreId,
         AccSrvIssueReturnDetailParts;
@@ -79,6 +80,7 @@ public class SrvIretdetailVORowImpl extends DigicomViewRowImpl {
     public static final int TXTSTORETRANSTYPEID = AttributesEnum.txtStoreTransTypeId.index();
     public static final int TXTSTOREID = AttributesEnum.txtStoreId.index();
     public static final int TXTSTORENAME = AttributesEnum.txtStoreName.index();
+    public static final int ISSUERETSEQ = AttributesEnum.Issueretseq.index();
     public static final int SRVISSUERETURNVO = AttributesEnum.SrvIssuereturnVO.index();
     public static final int ACCSRVIRETDETAILSTOREID = AttributesEnum.AccSrvIretDetailStoreId.index();
     public static final int ACCSRVISSUERETURNDETAILPARTS = AttributesEnum.AccSrvIssueReturnDetailParts.index();
@@ -295,6 +297,22 @@ public class SrvIretdetailVORowImpl extends DigicomViewRowImpl {
      */
     public void settxtStoreName(String value) {
         setAttributeInternal(TXTSTORENAME, value);
+    }
+
+    /**
+     * Gets the attribute value for ISSUERETSEQ using the alias name Issueretseq.
+     * @return the ISSUERETSEQ
+     */
+    public Integer getIssueretseq() {
+        return (Integer) getAttributeInternal(ISSUERETSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for ISSUERETSEQ using the alias name Issueretseq.
+     * @param value value to set the ISSUERETSEQ
+     */
+    public void setIssueretseq(Integer value) {
+        setAttributeInternal(ISSUERETSEQ, value);
     }
 
     /**
