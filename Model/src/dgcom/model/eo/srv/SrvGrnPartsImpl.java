@@ -41,6 +41,7 @@ public class SrvGrnPartsImpl extends DigicomEntityImpl {
         txtPartName,
         txtStoreName,
         txtAmount,
+        Grnseq,
         SrvGrn,
         InParts,
         AllStores,
@@ -85,6 +86,7 @@ public class SrvGrnPartsImpl extends DigicomEntityImpl {
     public static final int TXTPARTNAME = AttributesEnum.txtPartName.index();
     public static final int TXTSTORENAME = AttributesEnum.txtStoreName.index();
     public static final int TXTAMOUNT = AttributesEnum.txtAmount.index();
+    public static final int GRNSEQ = AttributesEnum.Grnseq.index();
     public static final int SRVGRN = AttributesEnum.SrvGrn.index();
     public static final int INPARTS = AttributesEnum.InParts.index();
     public static final int ALLSTORES = AttributesEnum.AllStores.index();
@@ -361,6 +363,22 @@ public class SrvGrnPartsImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Grnseq, using the alias name Grnseq.
+     * @return the value of Grnseq
+     */
+    public Integer getGrnseq() {
+        return (Integer) getAttributeInternal(GRNSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Grnseq.
+     * @param value value to set the Grnseq
+     */
+    public void setGrnseq(Integer value) {
+        setAttributeInternal(GRNSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.server.EntityImpl.
      */
     public SrvGrnImpl getSrvGrn() {
@@ -463,7 +481,9 @@ public class SrvGrnPartsImpl extends DigicomEntityImpl {
                                                 "from SRV_GRN_PARTS \n"+
                                                 "Where GRN_ID='"+ getSrvGrn().getAttribute("GrnId").toString()+"'");
             vo.executeQuery();
-            setGrnitemid(vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(GRNID, getSrvGrn().getAttribute("GrnId"));
+            populateAttributeAsChanged(GRNITEMID,vo.first().getAttribute(0).toString());
+            
         }  
         super.doDML(operation, e);
         }

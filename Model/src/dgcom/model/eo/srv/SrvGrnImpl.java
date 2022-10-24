@@ -3,6 +3,8 @@ package dgcom.model.eo.srv;
 import dgcom.model.stand.DigicomClass;
 import dgcom.model.stand.DigicomEntityImpl;
 
+import java.math.BigDecimal;
+
 import oracle.jbo.ApplicationModule;
 import oracle.jbo.AttributeList;
 import oracle.jbo.Key;
@@ -47,6 +49,7 @@ public class SrvGrnImpl extends DigicomEntityImpl {
         txtItemId,
         txtModelName,
         txtSupplierName,
+        Grnseq,
         SrvGrnParts,
         PuSupplierInvoices,
         PuSuppliers,
@@ -96,6 +99,7 @@ public class SrvGrnImpl extends DigicomEntityImpl {
     public static final int TXTITEMID = AttributesEnum.txtItemId.index();
     public static final int TXTMODELNAME = AttributesEnum.txtModelName.index();
     public static final int TXTSUPPLIERNAME = AttributesEnum.txtSupplierName.index();
+    public static final int GRNSEQ = AttributesEnum.Grnseq.index();
     public static final int SRVGRNPARTS = AttributesEnum.SrvGrnParts.index();
     public static final int PUSUPPLIERINVOICES = AttributesEnum.PuSupplierInvoices.index();
     public static final int PUSUPPLIERS = AttributesEnum.PuSuppliers.index();
@@ -495,6 +499,22 @@ public class SrvGrnImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Grnseq, using the alias name Grnseq.
+     * @return the value of Grnseq
+     */
+    public Integer getGrnseq() {
+        return (Integer) getAttributeInternal(GRNSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Grnseq.
+     * @param value value to set the Grnseq
+     */
+    public void setGrnseq(Integer value) {
+        setAttributeInternal(GRNSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getSrvGrnParts() {
@@ -532,12 +552,12 @@ public class SrvGrnImpl extends DigicomEntityImpl {
 
 
     /**
-     * @param grnId key constituent
+     * @param grnseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String grnId) {
-        return new Key(new Object[] { grnId });
+    public static Key createPrimaryKey(Integer grnseq) {
+        return new Key(new Object[] { grnseq });
     }
 
     /**
@@ -545,6 +565,7 @@ public class SrvGrnImpl extends DigicomEntityImpl {
      * @param attributeList list of attribute names/values to initialize the row
      */
     protected void create(AttributeList attributeList) {
+        setSrvSequenceName("SRV_GRN_SEQ");
         super.create(attributeList);
     }
 
@@ -581,7 +602,7 @@ public class SrvGrnImpl extends DigicomEntityImpl {
                                                 "Where to_char(GRN_DATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getGrnDate().toString(), "yyMM")+"' \n"+
                                                 "and locationid = '"+getLocationid()+"'");
             vo.executeQuery();
-            setGrnId(vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(GRNID,vo.first().getAttribute(0).toString());
             /*for (int i = 0; i < getSrvInvItems().getRowCount(); i++) {
                 getSrvInvItems().getRowAtRangeIndex(i).setAttribute("SrvInvno", vo.first().getAttribute(0).toString());
                 System.out.println(i);

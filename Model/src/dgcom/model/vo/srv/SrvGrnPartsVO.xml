@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvGrnPartsVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="SrvGrnParts.GRNITEMID, 
        SrvGrnParts.GRN_ID, 
@@ -17,7 +17,8 @@
        SrvGrnParts.CREATEDBY, 
        SrvGrnParts.CREATED_DATE, 
        SrvGrnParts.MODIFIEDBY, 
-       SrvGrnParts.MODIFIED_DATE"
+       SrvGrnParts.MODIFIED_DATE, 
+       SrvGrnParts.GRNSEQ"
   FromList="SRV_GRN_PARTS SrvGrnParts"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -254,6 +255,12 @@
     AliasName="TXT_AMOUNT"
     IsQueriable="false"
     IsPersistent="false"/>
+  <ViewAttribute
+    Name="Grnseq"
+    PrecisionRule="true"
+    EntityAttrName="Grnseq"
+    EntityUsage="SrvGrnParts"
+    AliasName="GRNSEQ"/>
   <ViewLinkAccessor
     Name="SrvGrnVO"
     ViewLink="dgcom.model.vl.srv.SysC0015104Link"

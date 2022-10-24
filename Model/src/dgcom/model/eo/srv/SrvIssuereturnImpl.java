@@ -189,7 +189,7 @@ public class SrvIssuereturnImpl extends DigicomEntityImpl {
         while(getSrvIretdetail().getRowCount()>0) {
             getSrvIretdetail().first().remove();
         }
-        System.out.println(getAccSrvIssueReturnSrvIssueDetailParts().getRowCount()+ "Row count");
+        System.out.println(getAccSrvIssueReturnSrvIssueDetailParts().getRowCount()+ "Row count loop");
         if (getAccSrvIssueReturnSrvIssueDetailParts().getRowCount()>0) {
             Row r;
             getAccSrvIssueReturnSrvIssueDetailParts().first();
@@ -452,6 +452,7 @@ public class SrvIssuereturnImpl extends DigicomEntityImpl {
     public void setIssueretseq(Integer value) {
         setAttributeInternal(ISSUERETSEQ, value);
     }
+
 
     /**
      * @return the associated entity oracle.jbo.RowIterator.

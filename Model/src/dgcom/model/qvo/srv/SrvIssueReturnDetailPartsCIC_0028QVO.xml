@@ -21,7 +21,14 @@
   <Variable
     Name="P_ADF_ISSUE_ID"
     Kind="where"
-    Type="java.lang.String"/>
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
   <SQLQuery><![CDATA[SELECT ISSUEDETLID,PART_DESC,PARTNO,CATEGORY,QTY,REJECT_QTY 
 FROM 
 ( 

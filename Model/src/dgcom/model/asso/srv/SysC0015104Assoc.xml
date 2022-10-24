@@ -4,7 +4,7 @@
 <Association
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SysC0015104Assoc"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge">
   <DesignTime>
     <Attr Name="_isCodegen" Value="true"/>
@@ -19,27 +19,24 @@
     <DesignTime>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="SrvGrn"/>
-      <Attr Name="_foreignKey" Value="dgcom.model.eo.srv.SrvGrn.SysC0014191"/>
       <Attr Name="_isUpdateable" Value="true"/>
       <Attr Name="_minCardinality" Value="1"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="dgcom.model.eo.srv.SrvGrn.GrnId"/>
+      <Item Value="dgcom.model.eo.srv.SrvGrn.Grnseq"/>
     </AttrArray>
   </AssociationEnd>
   <AssociationEnd
     Name="SrvGrnParts"
     Cardinality="-1"
-    Owner="dgcom.model.eo.srv.SrvGrnParts"
-    HasOwner="true">
+    Owner="dgcom.model.eo.srv.SrvGrnParts">
     <DesignTime>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="SrvGrnParts"/>
-      <Attr Name="_foreignKey" Value="dgcom.model.eo.srv.SrvGrnParts.SysC0015104"/>
       <Attr Name="_isUpdateable" Value="true"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="dgcom.model.eo.srv.SrvGrnParts.GrnId"/>
+      <Item Value="dgcom.model.eo.srv.SrvGrnParts.Grnseq"/>
     </AttrArray>
   </AssociationEnd>
 </Association>

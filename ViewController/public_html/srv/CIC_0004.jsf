@@ -7,7 +7,8 @@
             <af:pageTemplate viewId="/tmpDigicomTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
                 <f:facet name="left"/>
                 <f:facet name="middle">
-                    <af:panelCollection id="pc1" partialTriggers="b3 b4 b1 b2" featuresOff="detach viewMenu">
+                    <af:panelCollection id="pc1" partialTriggers="b3 b4 b1 b2" featuresOff="detach viewMenu"
+                                        styleClass="AFStretchWidth">
                         <f:facet name="menus"/>
                         <f:facet name="toolbar">
                             <af:toolbar id="t2">
@@ -57,7 +58,8 @@
                                               required="#{bindings.SrvTechnicianCRUD.hints.Empid.mandatory}"
                                               columns="#{bindings.SrvTechnicianCRUD.hints.Empid.displayWidth}"
                                               maximumLength="#{bindings.SrvTechnicianCRUD.hints.Empid.precision}"
-                                              shortDesc="#{bindings.SrvTechnicianCRUD.hints.Empid.tooltip}" id="it2">
+                                              shortDesc="#{bindings.SrvTechnicianCRUD.hints.Empid.tooltip}" id="it2"
+                                              autoSubmit="true">
                                     <f:validator binding="#{row.bindings.Empid.validator}"/>
                                 </af:inputText>
                             </af:column>
@@ -69,7 +71,7 @@
                                               columns="#{bindings.SrvTechnicianCRUD.hints.Techician.displayWidth}"
                                               maximumLength="#{bindings.SrvTechnicianCRUD.hints.Techician.precision}"
                                               shortDesc="#{bindings.SrvTechnicianCRUD.hints.Techician.tooltip}"
-                                              id="it3">
+                                              id="it3" autoSubmit="true">
                                     <f:validator binding="#{row.bindings.Techician.validator}"/>
                                 </af:inputText>
                             </af:column>

@@ -219,9 +219,9 @@
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
   <AccessorAttribute
-    Name="SrvIssuereturn1"
+    Name="SrvIssuedetail"
     Association="dgcom.model.asso.srv.SrvIssueDetailSrvIretDetailIssueDetailIdAsso"
-    AssociationEnd="dgcom.model.asso.srv.SrvIssueDetailSrvIretDetailIssueDetailIdAsso.SrvIssuereturn"
+    AssociationEnd="dgcom.model.asso.srv.SrvIssueDetailSrvIretDetailIssueDetailIdAsso.SrvIssuedetail"
     AssociationOtherEnd="dgcom.model.asso.srv.SrvIssueDetailSrvIretDetailIssueDetailIdAsso.SrvIretdetail"
     Type="dgcom.model.eo.srv.SrvIssuereturnImpl"
     IsUpdateable="true"/>

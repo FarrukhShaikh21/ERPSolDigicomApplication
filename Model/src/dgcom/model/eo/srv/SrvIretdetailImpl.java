@@ -38,9 +38,8 @@ public class SrvIretdetailImpl extends DigicomEntityImpl {
         Issueretseq,
         SrvIssuereturn,
         AllStores,
-        SrvIssuereturn1;
-        static AttributesEnum[] vals = null;
-        ;
+        SrvIssuedetail;
+        private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -80,7 +79,7 @@ public class SrvIretdetailImpl extends DigicomEntityImpl {
     public static final int ISSUERETSEQ = AttributesEnum.Issueretseq.index();
     public static final int SRVISSUERETURN = AttributesEnum.SrvIssuereturn.index();
     public static final int ALLSTORES = AttributesEnum.AllStores.index();
-    public static final int SRVISSUERETURN1 = AttributesEnum.SrvIssuereturn1.index();
+    public static final int SRVISSUEDETAIL = AttributesEnum.SrvIssuedetail.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -312,6 +311,7 @@ public class SrvIretdetailImpl extends DigicomEntityImpl {
         setAttributeInternal(ISSUERETSEQ, value);
     }
 
+
     /**
      * @return the associated entity SrvIssuereturnImpl.
      */
@@ -325,7 +325,6 @@ public class SrvIretdetailImpl extends DigicomEntityImpl {
     public void setSrvIssuereturn(SrvIssuereturnImpl value) {
         setAttributeInternal(SRVISSUERETURN, value);
     }
-
 
     /**
      * @return the associated entity oracle.jbo.server.EntityImpl.
@@ -342,18 +341,20 @@ public class SrvIretdetailImpl extends DigicomEntityImpl {
     }
 
     /**
-     * @return the associated entity SrvIssuereturnImpl.
+     * @return the associated entity SrvIssuedetailImpl.
      */
-    public SrvIssuereturnImpl getSrvIssuereturn1() {
-        return (SrvIssuereturnImpl) getAttributeInternal(SRVISSUERETURN1);
+    public SrvIssuedetailImpl getSrvIssuedetail() {
+        return (SrvIssuedetailImpl) getAttributeInternal(SRVISSUEDETAIL);
     }
 
     /**
-     * Sets <code>value</code> as the associated entity SrvIssuereturnImpl.
+     * Sets <code>value</code> as the associated entity SrvIssuedetailImpl.
      */
-    public void setSrvIssuereturn1(SrvIssuereturnImpl value) {
-        setAttributeInternal(SRVISSUERETURN1, value);
+    public void setSrvIssuedetail(SrvIssuedetailImpl value) {
+        setAttributeInternal(SRVISSUEDETAIL, value);
     }
+
+    
 
     /**
      * Add attribute defaulting logic in this method.

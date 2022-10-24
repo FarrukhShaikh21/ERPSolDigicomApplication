@@ -539,9 +539,9 @@ return 0;]]></TransientExpression>
       <validation:Item
         Value="errorId2PartAlreadyUsed"/>
       <validation:Item
-        Value="errorId3ReasonDontEnter"/>
-      <validation:Item
         Value="errorId2ReasonEnter"/>
+      <validation:Item
+        Value="errorId3ReasonDontEnter"/>
     </validation:MsgIds>
     <validation:TransientExpression><![CDATA[if(SrvIssuance?.txtWarranty=='IW')
 {

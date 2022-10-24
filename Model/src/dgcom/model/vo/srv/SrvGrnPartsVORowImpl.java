@@ -40,6 +40,7 @@ public class SrvGrnPartsVORowImpl extends DigicomViewRowImpl {
         txtPartNo,
         txtStoreName,
         txtAmount,
+        Grnseq,
         SrvGrnVO,
         AllStoresVO,
         AccSrvGrnPartId,
@@ -85,6 +86,7 @@ public class SrvGrnPartsVORowImpl extends DigicomViewRowImpl {
     public static final int TXTPARTNO = AttributesEnum.txtPartNo.index();
     public static final int TXTSTORENAME = AttributesEnum.txtStoreName.index();
     public static final int TXTAMOUNT = AttributesEnum.txtAmount.index();
+    public static final int GRNSEQ = AttributesEnum.Grnseq.index();
     public static final int SRVGRNVO = AttributesEnum.SrvGrnVO.index();
     public static final int ALLSTORESVO = AttributesEnum.AllStoresVO.index();
     public static final int ACCSRVGRNPARTID = AttributesEnum.AccSrvGrnPartId.index();
@@ -358,6 +360,22 @@ public class SrvGrnPartsVORowImpl extends DigicomViewRowImpl {
      */
     public void settxtAmount(BigDecimal value) {
         setAttributeInternal(TXTAMOUNT, value);
+    }
+
+    /**
+     * Gets the attribute value for GRNSEQ using the alias name Grnseq.
+     * @return the GRNSEQ
+     */
+    public Integer getGrnseq() {
+        return (Integer) getAttributeInternal(GRNSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for GRNSEQ using the alias name Grnseq.
+     * @param value value to set the GRNSEQ
+     */
+    public void setGrnseq(Integer value) {
+        setAttributeInternal(GRNSEQ, value);
     }
 
     /**
