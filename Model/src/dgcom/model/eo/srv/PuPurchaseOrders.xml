@@ -19,7 +19,7 @@
   </DesignTime>
   <Attribute
     Name="Poid"
-    Precision="15"
+    Precision="20"
     ColumnName="POID"
     SQLType="VARCHAR"
     Type="java.lang.String"
