@@ -770,11 +770,12 @@ public class PuPurchaseOrdersImpl extends DigicomEntityImpl {
                 {
                    vo.remove();     
                 }
-            vo=am.createViewObjectFromQueryStmt("myPuOrderPK",
-                                                "Select 2||'"+getLocationid()+"'||'"+DigicomClass.doGetFormattedDate(getPoDate().toString(), "yyMM")+"'||Lpad(nvl(max(to_number(substr(POID,-4)))+1,1) ,4,'0') as PK \n"+
-                                                "from pu_purchase_orders \n"+
-                                                "Where to_char(PO_DATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getPoDate().toString(), "yyMM")+"' \n"+
-                                                "and locationid = '"+getLocationid()+"'");
+            vo=am.createViewObjectFromQueryStmt("myPuOrderPK", "select imp_purchase_order_id('D','"+getLocationid()+"','B','"+DigicomClass.doGetFormattedDate(getPoDate().toString(), "dd-MMM-yyyy")+"') from dual");
+//            vo=am.createViewObjectFromQueryStmt("myPuOrderPK",
+//                                                "Select 2||'"+getLocationid()+"'||'"+DigicomClass.doGetFormattedDate(getPoDate().toString(), "yyMM")+"'||Lpad(nvl(max(to_number(substr(POID,-4)))+1,1) ,4,'0') as PK \n"+
+//                                                "from pu_purchase_orders \n"+
+//                                                "Where to_char(PO_DATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getPoDate().toString(), "yyMM")+"' \n"+
+//                                                "and locationid = '"+getLocationid()+"'");
             vo.executeQuery();
             populateAttributeAsChanged(POID,vo.first().getAttribute(0).toString());
         }  
