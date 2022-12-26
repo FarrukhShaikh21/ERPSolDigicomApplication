@@ -748,11 +748,12 @@ public class SrvStnImpl extends DigicomEntityImpl {
                 {
                    vo.remove();     
                 }
-            vo=am.createViewObjectFromQueryStmt("mySrvSTNPK",
-                                                "Select 2||'"+getLocationid()+"'||'"+DigicomClass.doGetFormattedDate(getStndate().toString(), "yyMM")+"'||Lpad(nvl(max(to_number(substr(STNNO,-4)))+1,1) ,4,'0') as PK \n"+
-                                                "from SRV_STN \n"+
-                                                "Where to_char(STNDate,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getStndate().toString(), "yyMM")+"' \n"+
-                                                "and locationid = '"+getLocationid()+"'");
+            vo=am.createViewObjectFromQueryStmt("mySrvSTNPK", "select FUNC_GET_DOCUMENT_ID('SRV_STN','STNNO','"+getLocationid()+"','"+DigicomClass.doGetFormattedDate(getStndate().toString(), "dd-MMM-yyyy")+"') from dual");
+//            vo=am.createViewObjectFromQueryStmt("mySrvSTNPK",
+//                                                "Select 2||'"+getLocationid()+"'||'"+DigicomClass.doGetFormattedDate(getStndate().toString(), "yyMM")+"'||Lpad(nvl(max(to_number(substr(STNNO,-4)))+1,1) ,4,'0') as PK \n"+
+//                                                "from SRV_STN \n"+
+//                                                "Where to_char(STNDate,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getStndate().toString(), "yyMM")+"' \n"+
+//                                                "and locationid = '"+getLocationid()+"'");
             vo.executeQuery();
             setStnno(vo.first().getAttribute(0).toString());
             /*for (int i = 0; i < getSrvInvItems().getRowCount(); i++) {

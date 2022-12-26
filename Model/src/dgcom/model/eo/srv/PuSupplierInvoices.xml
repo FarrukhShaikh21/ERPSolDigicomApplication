@@ -24,7 +24,7 @@
   <Attribute
     Name="Suppinvoiceid"
     IsNotNull="true"
-    Precision="15"
+    Precision="20"
     ColumnName="SUPPINVOICEID"
     SQLType="VARCHAR"
     Type="java.lang.String"
