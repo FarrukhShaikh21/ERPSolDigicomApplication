@@ -596,11 +596,12 @@ public class SrvGrnImpl extends DigicomEntityImpl {
                 {
                    vo.remove();     
                 }
-            vo=am.createViewObjectFromQueryStmt("mySrvGrnPK",
-                                                "Select 2||'"+getLocationid()+"'||'"+DigicomClass.doGetFormattedDate(getGrnDate().toString(), "yyMM")+"'||Lpad(nvl(max(to_number(substr(GRN_ID,-4)))+1,1) ,4,'0') as PK \n"+
-                                                "from SRV_GRN \n"+
-                                                "Where to_char(GRN_DATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getGrnDate().toString(), "yyMM")+"' \n"+
-                                                "and locationid = '"+getLocationid()+"'");
+            vo=am.createViewObjectFromQueryStmt("mySrvGrnPK", "select func_get_document_id('SRV_GRN','GRN_ID','"+getLocationid()+"','"+DigicomClass.doGetFormattedDate(getGrnDate().toString(), "dd-MMM-yyyy")+"') from dual");
+//            vo=am.createViewObjectFromQueryStmt("mySrvGrnPK",
+//                                                "Select 2||'"+getLocationid()+"'||'"+DigicomClass.doGetFormattedDate(getGrnDate().toString(), "yyMM")+"'||Lpad(nvl(max(to_number(substr(GRN_ID,-4)))+1,1) ,4,'0') as PK \n"+
+//                                                "from SRV_GRN \n"+
+//                                                "Where to_char(GRN_DATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getGrnDate().toString(), "yyMM")+"' \n"+
+//                                                "and locationid = '"+getLocationid()+"'");
             vo.executeQuery();
             populateAttributeAsChanged(GRNID,vo.first().getAttribute(0).toString());
             /*for (int i = 0; i < getSrvInvItems().getRowCount(); i++) {

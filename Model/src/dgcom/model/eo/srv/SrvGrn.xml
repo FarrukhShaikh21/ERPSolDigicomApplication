@@ -32,7 +32,7 @@
   </ViewAccessor>
   <Attribute
     Name="GrnId"
-    Precision="15"
+    Precision="20"
     ColumnName="GRN_ID"
     SQLType="VARCHAR"
     Type="java.lang.String"
