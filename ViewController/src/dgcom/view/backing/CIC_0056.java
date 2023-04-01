@@ -423,19 +423,19 @@ public class CIC_0056 {
         if (qvo!=null) {
             qvo.remove();
         }
-        qvo=am.createViewObjectFromQueryStmt("rptRunSrvReport", "select parameter_value from scott.SYS_PARAMETERS where parameter_id='HOST'");
+        qvo=am.createViewObjectFromQueryStmt("rptRunSrvReport", "select parameter_value from SYS_PARAMETERS where parameter_id='HOST'");
         qvo.executeQuery();
         String host=qvo.first().getAttribute(0).toString();
         qvo.remove();
-        qvo=am.createViewObjectFromQueryStmt("rptRunSrvReport", "select parameter_value from scott.SYS_PARAMETERS where parameter_id='PORT'");
+        qvo=am.createViewObjectFromQueryStmt("rptRunSrvReport", "select parameter_value from SYS_PARAMETERS where parameter_id='PORT'");
         qvo.executeQuery();
         String port=qvo.first().getAttribute(0).toString();
         qvo.remove();
-        qvo=am.createViewObjectFromQueryStmt("rptRunSrvReport", "select parameter_value from scott.SYS_PARAMETERS where parameter_id='USERID'");
+        qvo=am.createViewObjectFromQueryStmt("rptRunSrvReport", "select parameter_value from SYS_PARAMETERS where parameter_id='USERID'");
         qvo.executeQuery();
         String userid=qvo.first().getAttribute(0).toString();
         qvo.remove();
-        qvo=am.createViewObjectFromQueryStmt("rptRunSrvReport", "select parameter_value from scott.SYS_PARAMETERS where parameter_id='REPORT_PATH'");
+        qvo=am.createViewObjectFromQueryStmt("rptRunSrvReport", "select parameter_value from SYS_PARAMETERS where parameter_id='REPORT_PATH'");
         qvo.executeQuery();
         String reportpath=qvo.first().getAttribute(0).toString();
         qvo.remove();
