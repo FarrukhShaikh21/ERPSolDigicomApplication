@@ -415,8 +415,8 @@ public class CIC_0056 {
                 }
             }
         }
-        FacesMessage msg = new FacesMessage(whereClause.toString());
-        FacesContext.getCurrentInstance().addMessage(null, msg);       
+//        FacesMessage msg = new FacesMessage(whereClause.toString());
+//        FacesContext.getCurrentInstance().addMessage(null, msg);       
 /////////////
         ApplicationModule  am=vo.getApplicationModule();
         ViewObject         qvo =am.findViewObject("rptRunSrvReport");
