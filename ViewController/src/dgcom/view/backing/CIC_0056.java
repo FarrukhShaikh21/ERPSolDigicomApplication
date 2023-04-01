@@ -423,7 +423,7 @@ public class CIC_0056 {
         if (qvo!=null) {
             qvo.remove();
         }
-        qvo=am.createViewObjectFromQueryStmt("rptRunSrvReport", "select parameter_value from SYS_PARAMETERS where parameter_id='HOST'");
+        qvo=am.createViewObjectFromQueryStmt("rptRunSrvReport", "SELECT parameter_value from SYS_PARAMETERS where parameter_id='HOST'");
         qvo.executeQuery();
         String host=qvo.first().getAttribute(0).toString();
         qvo.remove();
