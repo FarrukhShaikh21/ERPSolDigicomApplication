@@ -78,7 +78,6 @@ public class SrvJobcardImpl extends DigicomEntityImpl {
         else
             if(operation==DML_UPDATE)
         {
-//            settxtStartDate(gettxtExpDate());
              populateAttributeAsChanged(TXTSTARTDATE, gettxtExpDate());
          }
         super.doDML(operation, e);
