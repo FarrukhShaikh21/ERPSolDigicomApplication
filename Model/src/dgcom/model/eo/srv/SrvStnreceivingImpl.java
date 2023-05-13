@@ -42,6 +42,7 @@ public class SrvStnreceivingImpl extends DigicomEntityImpl {
         Supplierid,
         CourierNo,
         CourierAmount,
+        Recenoseq,
         SrvStnreceparts,
         AccSrvStnReceivingSrvStnRecPartsDetail;
         private static AttributesEnum[] vals = null;
@@ -84,6 +85,7 @@ public class SrvStnreceivingImpl extends DigicomEntityImpl {
     public static final int SUPPLIERID = AttributesEnum.Supplierid.index();
     public static final int COURIERNO = AttributesEnum.CourierNo.index();
     public static final int COURIERAMOUNT = AttributesEnum.CourierAmount.index();
+    public static final int RECENOSEQ = AttributesEnum.Recenoseq.index();
     public static final int SRVSTNRECEPARTS = AttributesEnum.SrvStnreceparts.index();
     public static final int ACCSRVSTNRECEIVINGSRVSTNRECPARTSDETAIL =
         AttributesEnum.AccSrvStnReceivingSrvStnRecPartsDetail.index();
@@ -404,6 +406,22 @@ public class SrvStnreceivingImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Recenoseq, using the alias name Recenoseq.
+     * @return the value of Recenoseq
+     */
+    public Integer getRecenoseq() {
+        return (Integer) getAttributeInternal(RECENOSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Recenoseq.
+     * @param value value to set the Recenoseq
+     */
+    public void setRecenoseq(Integer value) {
+        setAttributeInternal(RECENOSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.RowIterator.
      */
     public RowIterator getSrvStnreceparts() {
@@ -419,12 +437,12 @@ public class SrvStnreceivingImpl extends DigicomEntityImpl {
 
 
     /**
-     * @param receno key constituent
+     * @param recenoseq key constituent
 
      * @return a Key object based on given key constituents.
      */
-    public static Key createPrimaryKey(String receno) {
-        return new Key(new Object[] { receno });
+    public static Key createPrimaryKey(Integer recenoseq) {
+        return new Key(new Object[] { recenoseq });
     }
 
     /**
@@ -432,6 +450,7 @@ public class SrvStnreceivingImpl extends DigicomEntityImpl {
      * @param attributeList list of attribute names/values to initialize the row
      */
     protected void create(AttributeList attributeList) {
+        setSrvSequenceName("SRV_STNRECEIVING_SEQ");
         super.create(attributeList);
     }
 

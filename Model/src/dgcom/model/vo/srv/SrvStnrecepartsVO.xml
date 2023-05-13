@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvStnrecepartsVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="SrvStnreceparts.RECENO, 
        SrvStnreceparts.STNDETLID, 
@@ -17,7 +17,8 @@
        SrvStnreceparts.MODIFIEDBY, 
        SrvStnreceparts.MODIFIED_DATE, 
        SrvStnreceparts.SALESRATE, 
-       SrvStnreceparts.ROWID"
+       SrvStnreceparts.ROWID, 
+       SrvStnreceparts.RECENOSEQ"
   FromList="SRV_STNRECEPARTS SrvStnreceparts"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -148,8 +149,8 @@
     ColumnType="INTEGER"
     AliasName="VIEW_ATTR"
     SQLType="INTEGER">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[getRowSet().count("Receno")]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Properties>
       <SchemaBasedProperties>
         <LABEL
@@ -167,8 +168,8 @@
     ColumnType="NUMBER"
     AliasName="VIEW_ATTR"
     SQLType="NUMERIC">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[getRowSet().sum("Receqty")]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
   </ViewAttribute>
   <ViewAttribute
     Name="txtStoreName"
@@ -178,6 +179,12 @@
     EntityAttrName="txtStoreName"
     EntityUsage="SrvStnreceparts"
     AliasName="TXT_STORE_NAME"/>
+  <ViewAttribute
+    Name="Recenoseq"
+    PrecisionRule="true"
+    EntityAttrName="Recenoseq"
+    EntityUsage="SrvStnreceparts"
+    AliasName="RECENOSEQ"/>
   <ViewLinkAccessor
     Name="SrvStnreceivingVO"
     ViewLink="dgcom.model.vl.srv.SysC0015220Link"

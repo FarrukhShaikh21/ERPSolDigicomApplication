@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvStnreceivingVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   SelectList="SrvStnreceiving.RECENO, 
        SrvStnreceiving.LOCATIONID, 
@@ -21,7 +21,8 @@
        SrvStnreceiving.MIGRATED_DATE, 
        SrvStnreceiving.SUPPLIERID, 
        SrvStnreceiving.COURIER_NO, 
-       SrvStnreceiving.COURIER_AMOUNT"
+       SrvStnreceiving.COURIER_AMOUNT, 
+       SrvStnreceiving.RECENOSEQ"
   FromList="SRV_STNRECEIVING SrvStnreceiving"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -258,6 +259,12 @@
     EntityAttrName="CourierAmount"
     EntityUsage="SrvStnreceiving"
     AliasName="COURIER_AMOUNT"/>
+  <ViewAttribute
+    Name="Recenoseq"
+    PrecisionRule="true"
+    EntityAttrName="Recenoseq"
+    EntityUsage="SrvStnreceiving"
+    AliasName="RECENOSEQ"/>
   <ViewCriteria
     Name="SrvStnreceivingFindVC"
     ViewObjectName="dgcom.model.vo.srv.SrvStnreceivingVO"
@@ -290,7 +297,6 @@
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -305,7 +311,6 @@
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -319,7 +324,6 @@
         ViewAttribute="Recedate"
         Operator="="
         Conjunction="AND"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional">
         <Properties>
           <SchemaBasedProperties>
@@ -334,7 +338,6 @@
         Operator="="
         Conjunction="AND"
         UpperColumns="0"
-        GenerateIsNullClauseForBindVars="false"
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>

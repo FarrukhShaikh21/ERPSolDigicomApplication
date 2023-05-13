@@ -4,7 +4,7 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvStnreceiving"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="SRV_STNRECEIVING"
@@ -29,14 +29,12 @@
   </ViewAccessor>
   <Attribute
     Name="Receno"
-    IsNotNull="true"
     Precision="15"
     ColumnName="RECENO"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="SRV_STNRECEIVING"
-    PrimaryKey="true">
+    TableName="SRV_STNRECEIVING">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="15"/>
     </DesignTime>
@@ -99,8 +97,8 @@
     Type="oracle.jbo.domain.Date"
     ColumnType="DATE"
     TableName="SRV_STNRECEIVING">
-    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
     <Properties>
       <SchemaBasedProperties>
         <DISPLAYWIDTH
@@ -118,7 +116,8 @@
       Inverse="false"
       DisplayName="RulCheckDateRights"
       ValidationBeanClass="dgcom.model.rules.RulCheckDateRights">
-      <validation:OnCondition><![CDATA[newValue!=null]]></validation:OnCondition>
+      <validation:OnCondition
+        Name="OnConditionExpr"><![CDATA[newValue!=null]]></validation:OnCondition>
     </validation:ValidationBean>
   </Attribute>
   <Attribute
@@ -286,6 +285,14 @@
       </SchemaBasedProperties>
     </Properties>
   </Attribute>
+  <Attribute
+    Name="Recenoseq"
+    ColumnName="RECENOSEQ"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SRV_STNRECEIVING"
+    PrimaryKey="true"/>
   <AccessorAttribute
     Name="SrvStnreceparts"
     Association="dgcom.model.asso.srv.SysC0015220Assoc"
@@ -300,7 +307,7 @@
       <Attr Name="_DBObjectName" Value="SYS_C0014307"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="dgcom.model.eo.srv.SrvStnreceiving.Receno"/>
+      <Item Value="dgcom.model.eo.srv.SrvStnreceiving.Recenoseq"/>
     </AttrArray>
   </Key>
   <Key
@@ -329,7 +336,8 @@
     Name="BRSrvStnreceiving"
     OperandType="EXPR"
     Inverse="false">
-    <validation:OnCondition><![CDATA[Posted=='Y']]></validation:OnCondition>
+    <validation:OnCondition
+      Name="OnConditionExpr"><![CDATA[Posted=='Y']]></validation:OnCondition>
     <validation:MsgIds>
       <validation:Item
         Value="errorId2CourierInfo"/>
@@ -342,7 +350,6 @@ return true;]]></validation:TransientExpression>
   <validation:ValidationBean
     Name="BRCheckDocDateForSubmit"
     ResId="dgcom.model.eo.srv.SrvDap_Rule_0"
-    OnAttribute="SrvStnreceiving"
     Version="2"
     OperandType="LITERAL"
     Inverse="false"
@@ -352,7 +359,8 @@ return true;]]></validation:TransientExpression>
       <validation:Item
         Value="Posted"/>
     </validation:OnAttributes>
-    <validation:OnCondition><![CDATA[Posted=='Y']]></validation:OnCondition>
+    <validation:OnCondition
+      Name="OnConditionExpr"><![CDATA[Posted=='Y']]></validation:OnCondition>
   </validation:ValidationBean>
   <ResourceBundle>
     <PropertiesBundle

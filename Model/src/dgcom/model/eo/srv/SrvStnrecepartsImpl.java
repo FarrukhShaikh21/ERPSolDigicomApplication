@@ -38,6 +38,7 @@ public class SrvStnrecepartsImpl extends DigicomEntityImpl {
         txtPartNo,
         txtPartName,
         txtStoreName,
+        Recenoseq,
         SrvStnreceiving,
         InParts,
         AllStores;
@@ -81,6 +82,7 @@ public class SrvStnrecepartsImpl extends DigicomEntityImpl {
     public static final int TXTPARTNO = AttributesEnum.txtPartNo.index();
     public static final int TXTPARTNAME = AttributesEnum.txtPartName.index();
     public static final int TXTSTORENAME = AttributesEnum.txtStoreName.index();
+    public static final int RECENOSEQ = AttributesEnum.Recenoseq.index();
     public static final int SRVSTNRECEIVING = AttributesEnum.SrvStnreceiving.index();
     public static final int INPARTS = AttributesEnum.InParts.index();
     public static final int ALLSTORES = AttributesEnum.AllStores.index();
@@ -348,6 +350,22 @@ public class SrvStnrecepartsImpl extends DigicomEntityImpl {
     }
 
     /**
+     * Gets the attribute value for Recenoseq, using the alias name Recenoseq.
+     * @return the value of Recenoseq
+     */
+    public BigDecimal getRecenoseq() {
+        return (BigDecimal) getAttributeInternal(RECENOSEQ);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Recenoseq.
+     * @param value value to set the Recenoseq
+     */
+    public void setRecenoseq(BigDecimal value) {
+        setAttributeInternal(RECENOSEQ, value);
+    }
+
+    /**
      * @return the associated entity oracle.jbo.server.EntityImpl.
      */
     public SrvStnreceivingImpl getSrvStnreceiving() {
@@ -418,6 +436,9 @@ public class SrvStnrecepartsImpl extends DigicomEntityImpl {
      * @param e the transaction event
      */
     protected void doDML(int operation, TransactionEvent e) {
+        if (operation==DML_INSERT) {
+            populateAttributeAsChanged(RECENO, getSrvStnreceiving().getAttribute("Receno"));
+        }
         super.doDML(operation, e);
     }
 }
