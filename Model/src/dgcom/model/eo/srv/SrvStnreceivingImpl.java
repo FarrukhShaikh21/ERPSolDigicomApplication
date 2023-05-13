@@ -481,13 +481,15 @@ public class SrvStnreceivingImpl extends DigicomEntityImpl {
                 {
                    vo.remove();     
                 }
-            vo=am.createViewObjectFromQueryStmt("mySrvSTNRecPK",
-                                                "Select 2||'"+getLocationid()+"'||'"+DigicomClass.doGetFormattedDate(getRecedate().toString(), "yyMM")+"'||Lpad(nvl(max(to_number(substr(RECENO,-4)))+1,1) ,4,'0') as PK \n"+
-                                                "from SRV_STNRECEIVING \n"+
-                                                "Where to_char(receDATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getRecedate().toString(), "yyMM")+"' \n"+
-                                                "and locationid = '"+getLocationid()+"'");
+//            vo=am.createViewObjectFromQueryStmt("mySrvSTNRecPK",
+            vo=am.createViewObjectFromQueryStmt("mySrvSTNRecPK", "select func_get_document_id('SRV_STNRECEIVING','RECENO','"+getLocationid()+"','"+DigicomClass.doGetFormattedDate(getRecedate().toString(), "dd-MMM-yyyy")+"') from dual");
+//            "Select 2||'"+getLocationid()+"'||'"+DigicomClass.doGetFormattedDate(getRecedate().toString(), "yyMM")+"'||Lpad(nvl(max(to_number(substr(RECENO,-5)))+1,1) ,5,'0') as PK \n"+
+//                                                "from SRV_STNRECEIVING \n"+
+//                                                "Where to_char(RECEDATE,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getRecedate().toString(), "yyMM")+"' \n"+
+//                                                "and locationid = '"+getLocationid()+"'");
             vo.executeQuery();
-            setReceno(vo.first().getAttribute(0).toString());
+            populateAttributeAsChanged(RECENO, vo.first().getAttribute(0).toString());
+//            setReceno(vo.first().getAttribute(0).toString());
             /*for (int i = 0; i < getSrvInvItems().getRowCount(); i++) {
                 getSrvInvItems().getRowAtRangeIndex(i).setAttribute("SrvInvno", vo.first().getAttribute(0).toString());
                 System.out.println(i);

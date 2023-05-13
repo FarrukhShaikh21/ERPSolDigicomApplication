@@ -19,7 +19,6 @@
   </DesignTime>
   <Attribute
     Name="Receno"
-    IsNotNull="true"
     Precision="15"
     ColumnName="RECENO"
     SQLType="VARCHAR"
