@@ -74,7 +74,7 @@
             (SELECT SUM(NVL(QTY_ON_HAND,0)) vw_kms_qty,D.PARTID 
 						FROM IN_STORE_PARTS D, ALL_STORES M 
 						WHERE M.STOREID = D.STOREID 
-  						AND M.LOCATIONID='KMS' 
+  						AND M.LOCATIONID='KSC' 
               GROUP BY D.PARTID 
               )vw_kms_qty, 
                    
