@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SrvPartItemAndCategoryWiseQVO"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="true"
@@ -40,10 +40,10 @@
       </SchemaBasedProperties>
     </Properties>
   </Variable>
-  <SQLQuery><![CDATA[SELECT p.PartId, p.PartNo, p.DESCRIPTION Part_Desc, c.description category 
-FROM IN_Parts p, srv_partcategory c 
-where p.partcatid = c.partcatid 
-  and (p.ITEMID    = :P_ADF_ITEMID or :P_ADF_ITEMID is null) 
+  <SQLQuery><![CDATA[SELECT p.PartId, p.PartNo, p.DESCRIPTION||'('||p.PartNo||')' Part_Desc, c.description category  
+FROM IN_Parts p, srv_partcategory c  
+where p.partcatid = c.partcatid  
+  and (p.ITEMID    = :P_ADF_ITEMID or :P_ADF_ITEMID is null)  
   and (c.partcatid = :P_CAT_ID or :P_CAT_ID is null)]]></SQLQuery>
   <ViewAttribute
     Name="Partid"

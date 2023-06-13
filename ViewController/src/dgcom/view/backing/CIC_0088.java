@@ -189,7 +189,7 @@ public class CIC_0088 {
         //System.out.println(vo.getEstimatedRowCount()+ " ERC");
         while(vo.getViewObject().hasNext()) {
             Row resourceRow=vo.next();
-            resourceList.add(new SelectItem(resourceRow.getAttribute("PartDesc"),resourceRow.getAttribute("PartDesc")+":"+resourceRow.getAttribute("Partno").toString()+":"+resourceRow.getAttribute("Partid")));
+            resourceList.add(new SelectItem(resourceRow.getAttribute("PartDesc"),resourceRow.getAttribute("PartDesc")+":"+resourceRow.getAttribute("Partid")));
         }
         return resourceList;
     }
