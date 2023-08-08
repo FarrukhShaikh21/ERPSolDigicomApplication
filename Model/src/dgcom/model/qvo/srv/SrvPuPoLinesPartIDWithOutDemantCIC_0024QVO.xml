@@ -54,7 +54,7 @@ WHERE P.PARTCATID = C.PARTCATID
   AND   I.ITEMID=M.ITEMID 
   AND  (M.ITEMID = :P_ADF_ITEMID OR :P_ADF_ITEMID IS NULL) 
   )    
-  AND P.PROD_ID = :P_ADF_PROD_ID]]></SQLQuery>
+    AND (P.PROD_ID = :P_ADF_PROD_ID OR P.PROD_ID='001')]]></SQLQuery>
   <ViewAttribute
     Name="Partdesc"
     IsUpdateable="false"
