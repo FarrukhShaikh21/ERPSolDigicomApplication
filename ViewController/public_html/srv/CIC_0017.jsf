@@ -17,7 +17,7 @@
                                       columns="#{bindings.IpId.hints.displayWidth}"
                                       maximumLength="#{bindings.IpId.hints.precision}"
                                       shortDesc="#{bindings.IpId.hints.tooltip}" id="it1" readOnly="true"
-                                      binding="#{backingBeanScope.backing_CIC_0017.it1}">
+                                      binding="#{backingBeanScope.backing_CIC_0017.it1}" partialTriggers="soc1">
                             <f:validator binding="#{bindings.IpId.validator}"/>
                         </af:inputText>
                         <af:inputDate value="#{bindings.DocDate.inputValue}" label="#{bindings.DocDate.hints.label}"
@@ -28,6 +28,14 @@
                             <f:validator binding="#{bindings.DocDate.validator}"/>
                             <af:convertDateTime pattern="#{bindings.DocDate.format}"/>
                         </af:inputDate>
+                        <af:inputText value="#{bindings.Posted.inputValue}" label="#{bindings.Posted.hints.label}"
+                                      required="#{bindings.Posted.hints.mandatory}"
+                                      columns="#{bindings.Posted.hints.displayWidth}"
+                                      maximumLength="#{bindings.Posted.hints.precision}"
+                                      shortDesc="#{bindings.Posted.hints.tooltip}" id="it3"
+                                      binding="#{backingBeanScope.backing_CIC_0017.it3}" rendered="false">
+                            <f:validator binding="#{bindings.Posted.validator}"/>
+                        </af:inputText>
                         <af:inputDate value="#{bindings.EffectFrom.inputValue}"
                                       label="#{bindings.EffectFrom.hints.label}"
                                       required="#{bindings.EffectFrom.hints.mandatory}"
@@ -53,8 +61,7 @@
                                               required="#{bindings.Locationid.hints.mandatory}"
                                               columns="#{bindings.Locationid.hints.displayWidth}"
                                               shortDesc="#{bindings.Locationid.hints.tooltip}"
-                                              binding="#{backingBeanScope.backing_CIC_0017.locationidId}"
-                                              readOnly="#{data.dgcom_view_LoginPageDef.HLevel.inputValue=='U'||data.dgcom_view_LoginPageDef.HLevel.inputValue=='L'}">
+                                              binding="#{backingBeanScope.backing_CIC_0017.locationidId}">
                             <f:validator binding="#{bindings.Locationid.validator}"/>
                         </af:inputListOfValues>
                         <af:inputListOfValues id="txtItemIdId"
@@ -72,7 +79,7 @@
                                             label="#{bindings.txtPartCategory.label}"
                                             required="#{bindings.txtPartCategory.hints.mandatory}"
                                             shortDesc="#{bindings.txtPartCategory.hints.tooltip}" id="soc1"
-                                            binding="#{backingBeanScope.backing_CIC_0017.soc1}">
+                                            binding="#{backingBeanScope.backing_CIC_0017.soc1}" autoSubmit="true">
                             <f:selectItems value="#{bindings.txtPartCategory.items}" id="si1"
                                            binding="#{backingBeanScope.backing_CIC_0017.si1}"/>
                             <f:validator binding="#{bindings.txtPartCategory.validator}"/>
@@ -134,7 +141,9 @@
                 <f:facet name="toolbar">
                     <af:panelGroupLayout id="pgl1" binding="#{backingBeanScope.backing_CIC_0017.pgl1}">
                         <af:button id="b1" binding="#{backingBeanScope.backing_CIC_0017.b1}"
-                                   accessKey="m" styleClass="CRUDButton" icon="#{resource['images:imgSubmit.png']}"/><af:button text="Print" id="b11" binding="#{backingBeanScope.backing_CIC_0017.b11}"
+                                   accessKey="m" styleClass="CRUDButton" icon="#{resource['images:imgSubmit.png']}">
+                            <af:setActionListener from="#{'Y'}" to="#{bindings.Posted.inputValue}"/>
+                        </af:button><af:button text="Print" id="b11" binding="#{backingBeanScope.backing_CIC_0017.b11}"
                                    icon="#{resource['images:imgPrintPreview.png']}" styleClass="CRUDButton"
                                    accessKey="r"/>
                         <af:button actionListener="#{bindings.Find.execute}" text="Find"

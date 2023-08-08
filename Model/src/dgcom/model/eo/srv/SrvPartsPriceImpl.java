@@ -280,6 +280,7 @@ public class SrvPartsPriceImpl extends DigicomEntityImpl {
      */
     public void settxtPartCategory(String value) {
         setAttributeInternal(TXTPARTCATEGORY, value);
+        getDBTransaction().commit();
     }
 
     /**
@@ -305,7 +306,9 @@ public class SrvPartsPriceImpl extends DigicomEntityImpl {
      */
     protected void create(AttributeList attributeList) {
         super.create(attributeList);
+        
     }
+    
 
     /**
      * Add entity remove logic in this method.
@@ -327,23 +330,31 @@ public class SrvPartsPriceImpl extends DigicomEntityImpl {
      * @param e the transaction event
      */
     protected void doDML(int operation, TransactionEvent e) {
-        
         if (operation==DML_INSERT) {
-            ApplicationModule am=this.getDBTransaction().getRootApplicationModule();
-            ViewObject        vo=am.findViewObject("PKparts_price");
-            if (vo!=null)
-                {
-                   vo.remove();     
-                }
-            vo=am.createViewObjectFromQueryStmt("PKparts_price",
-                                                "Select '"+DigicomClass.doGetFormattedDate(getDocDate().toString(), "yyMM")+"'||Lpad(nvl(max(to_number(substr(ip_id,-4)))+1,1) ,4,'0') as PKparts_price \n"+
-                                                "from srv_parts_price \n"+
-                                                "Where to_char(DocDate,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getDocDate().toString(), "yyMM")+"' \n"+
-                                                "and locationid = '"+getLocationid()+"'");
-            vo.executeQuery();
-            setIpId(vo.first().getAttribute(0).toString());
+                ApplicationModule am=this.getDBTransaction().getRootApplicationModule();
+                ViewObject        vo=am.findViewObject("PKparts_price");
+                if (vo!=null)
+                    {
+                       vo.remove();     
+                    }
+                vo=am.createViewObjectFromQueryStmt("PKparts_price",
+                                                    "Select '"+getLocationid()+"'||'-'||'"+DigicomClass.doGetFormattedDate(getDocDate().toString(), "yyyyMM")+"'||Lpad(nvl(max(to_number(substr(ip_id,-5)))+1,1) ,5,'0') as PKparts_price \n"+
+                                                    "from srv_parts_price \n"+
+                                                    "Where to_char(Doc_Date,'rrmm') ='"+ DigicomClass.doGetFormattedDate(getDocDate().toString(), "yyMM")+"' \n"+
+                                                    "and locationid = '"+getLocationid()+"'");
+                vo.executeQuery();
+                setIpId(vo.first().getAttribute(0).toString());
+//                populateAttributeAsChanged(IPID,vo.first().getAttribute(0).toString());
         }
         super.doDML(operation, e);
+    }
+    @Override
+    public boolean isAttributeUpdateable(int i) {
+        // TODO Implement this method
+        if (getPosted().equals("Y")) {
+            return false;
+       }
+        return super.isAttributeUpdateable(i);
     }
 }
 

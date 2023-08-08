@@ -1063,6 +1063,9 @@
     <view id="CIC_0213">
       <page>/srv/CIC_0213.jsf</page>
     </view>
+    <view id="CIC_0017">
+      <page>/srv/CIC_0017.jsf</page>
+    </view>
     <control-flow-rule id="__1">
       <from-activity-id>*</from-activity-id>
       <control-flow-case id="__2">
@@ -1358,6 +1361,10 @@
       <control-flow-case id="__322">
         <from-outcome>ACT-CIC-0213</from-outcome>
         <to-activity-id>CIC_0213</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__326">
+        <from-outcome>ACT-CIC-0017</from-outcome>
+        <to-activity-id>CIC_0017</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__27">

@@ -53,6 +53,8 @@ public class SrvIpdetlImpl extends DigicomEntityImpl {
             return vals;
         }
     }
+
+
     public static final int IPID = AttributesEnum.IpId.index();
     public static final int PARTID = AttributesEnum.Partid.index();
     public static final int PRICE = AttributesEnum.Price.index();
@@ -69,6 +71,14 @@ public class SrvIpdetlImpl extends DigicomEntityImpl {
      */
     public SrvIpdetlImpl() {
     }
+
+    /**
+     * @return the definition object for this instance class.
+     */
+    public static synchronized EntityDefImpl getDefinitionObject() {
+        return EntityDefImpl.findDefObject("dgcom.model.eo.srv.SrvIpdetl");
+    }
+
 
     /**
      * Gets the attribute value for IpId, using the alias name IpId.
@@ -209,23 +219,17 @@ public class SrvIpdetlImpl extends DigicomEntityImpl {
     /**
      * @return the associated entity dgcom.model.stand.DigicomEntityImpl.
      */
-    public DigicomEntityImpl getSrvPartsPrice() {
-        return (DigicomEntityImpl) getAttributeInternal(SRVPARTSPRICE);
+    public SrvPartsPriceImpl getSrvPartsPrice() {
+        return (SrvPartsPriceImpl) getAttributeInternal(SRVPARTSPRICE);
     }
 
     /**
      * Sets <code>value</code> as the associated entity dgcom.model.stand.DigicomEntityImpl.
      */
-    public void setSrvPartsPrice(DigicomEntityImpl value) {
+    public void setSrvPartsPrice(SrvPartsPriceImpl value) {
         setAttributeInternal(SRVPARTSPRICE, value);
     }
 
-    /**
-     * @return the definition object for this instance class.
-     */
-    public static synchronized EntityDefImpl getDefinitionObject() {
-        return EntityDefImpl.findDefObject("dgcom.model.eo.srv.SrvIpdetl");
-    }
 
     /**
      * Add attribute defaulting logic in this method.
@@ -255,7 +259,18 @@ public class SrvIpdetlImpl extends DigicomEntityImpl {
      * @param e the transaction event
      */
     protected void doDML(int operation, TransactionEvent e) {
+//        if (operation==DML_INSERT) {
+//            populateAttributeAsChanged(IPID,getDBTransaction().getRootApplicationModule().findViewObject("SrvPartsPriceCRUD").getCurrentRow().getAttribute("IpId").toString());
+//       }
         super.doDML(operation, e);
+    }
+    @Override
+    public boolean isAttributeUpdateable(int i) {
+        // TODO Implement this method
+        if (getSrvPartsPrice().getAttribute("Posted").equals("Y")) {
+            return false;
+       }
+        return super.isAttributeUpdateable(i);
     }
 }
 

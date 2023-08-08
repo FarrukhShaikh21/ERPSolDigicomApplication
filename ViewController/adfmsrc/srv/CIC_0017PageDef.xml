@@ -56,5 +56,12 @@
                 Action="createInsertRow"/>
         <action IterBinding="SrvIpdetlDetCRUDIterator" id="Delete" RequiresUpdateModel="false"
                 Action="removeCurrentRow"/>
+        <listOfValues IterBinding="SrvPartsPriceCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                      id="Locationid"/>
+        <attributeValues IterBinding="SrvPartsPriceCRUDIterator" id="Posted">
+            <AttrNames>
+                <Item Value="Posted"/>
+            </AttrNames>
+        </attributeValues>
     </bindings>
 </pageDefinition>

@@ -45,6 +45,8 @@ public class CIC_0017 {
     private RichButton b10;
     private RichButton b11;
     private RichButton b1;
+    private RichInputListOfValues locationidId;
+    private RichInputText it3;
 
     public CIC_0017() {
     }
@@ -265,5 +267,21 @@ public class CIC_0017 {
 
     public RichButton getB11() {
         return b11;
+    }
+
+    public void setLocationidId(RichInputListOfValues locationidId) {
+        this.locationidId = locationidId;
+    }
+
+    public RichInputListOfValues getLocationidId() {
+        return locationidId;
+    }
+
+    public void setIt3(RichInputText it3) {
+        this.it3 = it3;
+    }
+
+    public RichInputText getIt3() {
+        return it3;
     }
 }
