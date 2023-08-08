@@ -141,7 +141,8 @@
                 <f:facet name="toolbar">
                     <af:panelGroupLayout id="pgl1" binding="#{backingBeanScope.backing_CIC_0017.pgl1}">
                         <af:button id="b1" binding="#{backingBeanScope.backing_CIC_0017.b1}"
-                                   accessKey="m" styleClass="CRUDButton" icon="#{resource['images:imgSubmit.png']}">
+                                   accessKey="m" styleClass="CRUDButton" icon="#{resource['images:imgSubmit.png']}"
+                                   actionListener="#{backingBeanScope.backing_CIC_0017.execute}">
                             <af:setActionListener from="#{'Y'}" to="#{bindings.Posted.inputValue}"/>
                         </af:button><af:button text="Print" id="b11" binding="#{backingBeanScope.backing_CIC_0017.b11}"
                                    icon="#{resource['images:imgPrintPreview.png']}" styleClass="CRUDButton"
