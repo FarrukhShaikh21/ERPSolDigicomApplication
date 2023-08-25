@@ -624,26 +624,28 @@ public class SrvStnpartsImpl extends DigicomEntityImpl {
      */
     protected void doDML(int operation, TransactionEvent e) {
         
-        if (operation==DML_INSERT) {
-            
-            if (/* getStndetlid().contains("-") && */
-            getPartid()==null) {
-                remove();
-                return ;
-           }
-            ApplicationModule am=this.getDBTransaction().getRootApplicationModule();
-            ViewObject        vo=am.findViewObject("mySrvStnPartPK");
-            if (vo!=null)
-                {
-                   vo.remove();     
-                }
-            vo=am.createViewObjectFromQueryStmt("mySrvStnPartPK",
-                                                "Select '"+getSrvStn().getAttribute("Stnno").toString()+"-'||nvl(max(to_number(substr(STNDetlId,length(Stnno)+2)))+1,1) "+
-                                                "from SRV_STNPARTS \n"+
-                                                "Where Stnno='"+ getSrvStn().getAttribute("Stnno").toString()+"'");
-            vo.executeQuery();
-            setStndetlid(vo.first().getAttribute(0).toString());
-        }  
+            if (operation==DML_INSERT) {
+                
+                if (/* getStndetlid().contains("-") && */
+                getPartid()==null) {
+                    remove();
+                    return ;
+               }
+                ApplicationModule am=this.getDBTransaction().getRootApplicationModule();
+                ViewObject        vo=am.findViewObject("mySrvStnPartPK");
+                ViewObject        stnvo=am.findViewObject("SrvStnStoreCRUD");
+                setStnno((String)stnvo.getCurrentRow().getAttribute("Stnno"));
+                if (vo!=null)
+                    {
+                       vo.remove();     
+                    }
+                vo=am.createViewObjectFromQueryStmt("mySrvStnPartPK",
+                                                    "Select '"+getSrvStn().getAttribute("Stnno").toString()+"-'||nvl(max(to_number(substr(STNDetlId,length(Stnno)+2)))+1,1) "+
+                                                    "from SRV_STNPARTS \n"+
+                                                    "Where Stnno='"+ getSrvStn().getAttribute("Stnno").toString()+"'");
+                vo.executeQuery();
+                setStndetlid(vo.first().getAttribute(0).toString());
+            }  
         super.doDML(operation, e);
         }
 }

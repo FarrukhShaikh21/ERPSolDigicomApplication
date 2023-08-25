@@ -187,12 +187,12 @@
                             <f:facet name="toolbar">
                                 <af:toolbar id="t2" binding="#{backingBeanScope.backing_CIC_0065.t2}">
                                     <af:button actionListener="#{bindings.CreateInsert1.execute}" text="New"
-                                               disabled="#{!bindings.CreateInsert1.enabled}" id="b8"
+                                               disabled="#{!bindings.CreateInsert1.enabled||bindings.Posted.inputValue=='Y'}" id="b8"
                                                binding="#{backingBeanScope.backing_CIC_0065.b8}"
                                                styleClass="CRUDButton"
                                                icon="#{resource['images:imgNewDocument4.png']}" accessKey="w"/>
                                     <af:button actionListener="#{bindings.Delete1.execute}" text="Delete"
-                                               disabled="#{!bindings.Delete1.enabled}" id="b9"
+                                               disabled="#{!bindings.Delete1.enabled||bindings.Posted.inputValue=='Y'}" id="b9"
                                                binding="#{backingBeanScope.backing_CIC_0065.b9}"
                                                icon="#{resource['images:ImgDelete.png']}" styleClass="CRUDButton"
                                                accessKey="t"/>
@@ -339,11 +339,11 @@
                             <af:showPopupBehavior triggerType="action" align="afterEnd" popupId="::p1"/>
                         </af:button>
                         <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
-                                   disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"
+                                   disabled="#{!bindings.Previous.enabled||bindings.Commit.enabled}" partialSubmit="true" id="b2"
                                    binding="#{backingBeanScope.backing_CIC_0065.b2}" accessKey="p"
                                    styleClass="CRUDButton" icon="#{resource['images:imgPrevious.png']}"/>
                         <af:button actionListener="#{bindings.Next.execute}" text="Next"
-                                   disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"
+                                   disabled="#{!bindings.Next.enabled||bindings.Commit.enabled}" partialSubmit="true" id="b3"
                                    binding="#{backingBeanScope.backing_CIC_0065.b3}" styleClass="CRUDButton"
                                    accessKey="x" icon="#{resource['images:nextImage.png']}"/>
                         <af:button text="New" disabled="#{!bindings.CreateInsert.enabled}" partialSubmit="true" id="b1"

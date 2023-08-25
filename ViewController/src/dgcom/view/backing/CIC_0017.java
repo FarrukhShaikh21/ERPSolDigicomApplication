@@ -2,6 +2,8 @@ package dgcom.view.backing;
 
 import javax.faces.component.UISelectItems;
 
+import javax.faces.event.ActionEvent;
+
 import oracle.adf.view.rich.component.rich.RichDocument;
 import oracle.adf.view.rich.component.rich.RichForm;
 import oracle.adf.view.rich.component.rich.data.RichTable;
@@ -283,5 +285,9 @@ public class CIC_0017 {
 
     public RichInputText getIt3() {
         return it3;
+    }
+
+    public void execute(ActionEvent actionEvent) {
+        // Add event code here...
     }
 }

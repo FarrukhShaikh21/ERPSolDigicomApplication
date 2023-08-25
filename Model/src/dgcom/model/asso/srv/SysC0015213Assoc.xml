@@ -4,7 +4,7 @@
 <Association
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SysC0015213Assoc"
-  Version="12.1.2.66.68"
+  Version="12.1.3.10.47"
   InheritPersonalization="merge">
   <DesignTime>
     <Attr Name="_isCodegen" Value="true"/>
@@ -14,8 +14,7 @@
     Cardinality="1"
     Source="true"
     Owner="dgcom.model.eo.srv.SrvStn"
-    LockLevel="NONE"
-    CascadeUpdate="true">
+    LockLevel="NONE">
     <DesignTime>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="SrvStn"/>
@@ -30,8 +29,7 @@
   <AssociationEnd
     Name="SrvStnparts"
     Cardinality="-1"
-    Owner="dgcom.model.eo.srv.SrvStnparts"
-    HasOwner="true">
+    Owner="dgcom.model.eo.srv.SrvStnparts">
     <DesignTime>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="SrvStnparts"/>
