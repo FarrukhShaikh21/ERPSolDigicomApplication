@@ -607,7 +607,15 @@ public class SrvJobcardImpl extends DigicomEntityImpl {
             if (getAccInItems().first().getAttribute("Discontinue")!=null&&getAccInItems().first().getAttribute("Discontinue").equals("Y") && daysDiff != 20) {
                 setDeliveryDate(DigicomClass.doGetAddedDate(getJobdate(), 20));
             } else {
-                setDeliveryDate(DigicomClass.doGetAddedDate(getJobdate(), 5));
+                String strsigroup=getAccInItems().first().getAttribute("Sigroupid").toString();
+                if (strsigroup.equals("010")||strsigroup.equals("011")||strsigroup.equals("008")) {
+                    setDeliveryDate(DigicomClass.doGetAddedDate(getJobdate(), 15));
+                }
+                else {
+                    setDeliveryDate(DigicomClass.doGetAddedDate(getJobdate(), 5));
+
+                }
+                
             }
         } catch (Exception e) {
             // TODO: Add catch code
