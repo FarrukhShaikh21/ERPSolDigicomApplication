@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0021PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="AllDemandNoteCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="AllDemandNoteCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="AllDemandLinesDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="AllDemandLinesDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="AllDemandNoteFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="AllDemandNoteCRUDIterator" id="AllDemandNoteFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="AllDemandNoteCRUDIterator" id="DemandId">
+      <AttrNames>
+        <Item Value="DemandId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AllDemandNoteCRUDIterator" id="DemandDate">
+      <AttrNames>
+        <Item Value="DemandDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AllDemandNoteCRUDIterator" id="Demandtype">
+      <AttrNames>
+        <Item Value="Demandtype"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AllDemandNoteCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="AllDemandNoteCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="AllDemandNoteCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="AllDemandNoteCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="AllDemandNoteCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <list IterBinding="AllDemandNoteCRUDIterator" StaticList="false" Uses="LovAllProdcategory" id="ProdId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <listOfValues IterBinding="AllDemandNoteCRUDIterator" StaticList="false" Uses="LovAllLocations" id="ToLocationid"/>
+    <attributeValues IterBinding="AllDemandNoteCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="AllDemandLinesDETCRUDIterator" id="AllDemandLinesDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.AllDemandLinesVO" Name="AllDemandLinesDETCRUD0">
+        <AttrNames>
+          <Item Value="Partid"/>
+          <Item Value="Itemid"/>
+          <Item Value="DemandQty"/>
+          <Item Value="txtPartName"/>
+          <Item Value="txtPartNo"/>
+          <Item Value="txtModelNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="AllDemandLinesDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="AllDemandLinesDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <listOfValues IterBinding="AllDemandNoteCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <listOfValues IterBinding="AllDemandNoteCRUDIterator" StaticList="false" Uses="LovInItemsItemName"
+                  id="txtModelName"/>
+    <attributeValues IterBinding="AllDemandNoteCRUDIterator" id="txtModel">
+      <AttrNames>
+        <Item Value="txtModel"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doCreateNewDemandNoteRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewDemandNoteRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.AllDemandNoteCRUD"/>
+    <methodAction id="doCreateNewDemandLineRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewDemandLineRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.AllDemandLinesDETCRUD"/>
+  </bindings>
+</pageDefinition>

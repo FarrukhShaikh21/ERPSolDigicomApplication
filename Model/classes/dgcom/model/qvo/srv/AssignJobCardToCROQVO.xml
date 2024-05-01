@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AssignJobCardToCROQVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  FetchMode="FETCH_AS_NEEDED">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.AssignJobCardToCROQVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_HL"
+    Kind="where"
+    Type="java.lang.String">
+    <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.isOperationAllowed("HLevel")]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_LOCATIONID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_REGIONID"
+    Kind="where"
+    Type="java.lang.String">
+    <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.getUserRegion()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_USERID"
+    Kind="where"
+    Type="java.lang.String">
+    <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.getConnectedUser()]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_JHOID"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <SQLQuery><![CDATA[SELECT J.JOBCARDNO JOBCARDNOO,                    
+       LOC.LOCATIONID,                    
+       AR.REGIONID,                    
+       B.BRAND_NAME || ' ,' || I.DESCRIPTION MODEL_NAME,                    
+       J.JOBSTATUS   ,                 
+       I.ITEMID ,            
+       J.JOBDATE            
+  FROM SRV_JOBCARD       J,                    
+       SO_PRODUCT_BRANDS B,                    
+       IN_ITEMS          I,                    
+       ALL_LOCATIONS     LOC,                    
+       ALL_REGION        AR                        
+ WHERE J.BRANDID = B.PBRANDID                    
+   AND J.ITEMID = I.ITEMID                    
+   AND LOC.LOCATIONID = J.LOCATIONID                    
+   AND AR.REGIONID = LOC.REGIONID                    
+   AND J.POSTED = 'Y'                    
+   AND J.JOBSTATUS IN ('FD')                 
+   AND J.jobcardno NOT IN (SELECT SrvJhotldetlNQ1.jobcardno                    
+                             FROM SRV_JOBHANDOVERTOLAB M, SRV_JHOTLDETL SrvJhotldetlNQ1                    
+                            WHERE m.JHOId = SrvJhotldetlNQ1.JHOId                    
+                              AND m.posted = 'N')                    
+      --      AND J.LOCATIONID = 'HO1'                    
+   AND ((J.CREATEDBY = :P_ADF_USERID AND :P_ADF_HL = 'L') OR                    
+       (J.LOCATIONID = :P_ADF_LOCATIONID AND :P_ADF_HL = 'U')                    
+       OR(AR.REGIONID = :P_ADF_REGIONID AND :P_ADF_HL = 'R')                     
+       OR(:P_ADF_HL = 'A')                    
+       )]]></SQLQuery>
+  <ViewAttribute
+    Name="Jobcardnoo"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="JOBCARDNOO"
+    Expression="JOBCARDNOO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.AssignJobCardToCROQVO.Jobcardnoo_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Locationid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LOCATIONID"
+    Expression="LOCATIONID"
+    SQLType="VARCHAR"
+    IsQueriable="false">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.AssignJobCardToCROQVO.Locationid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Regionid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="3"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="REGIONID"
+    Expression="REGIONID"
+    SQLType="VARCHAR"
+    IsQueriable="false">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.AssignJobCardToCROQVO.Regionid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ModelName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="132"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="MODEL_NAME"
+    Expression="MODEL_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="132"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.AssignJobCardToCROQVO.ModelName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Jobstatus"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="10"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="JOBSTATUS"
+    Expression="JOBSTATUS"
+    SQLType="VARCHAR"
+    IsQueriable="false">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.AssignJobCardToCROQVO.Jobstatus_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Itemid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ITEMID"
+    Expression="ITEMID"
+    SQLType="VARCHAR"
+    IsQueriable="false">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.AssignJobCardToCROQVO.Itemid_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Jobdate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="JOBDATE"
+    Expression="JOBDATE"
+    SQLType="DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.AssignJobCardToCROQVO.Jobdate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="AssignJobCardToCROQVOCriteria"
+    ViewObjectName="dgcom.model.qvo.srv.AssignJobCardToCROQVO"
+    Conjunction="AND"
+    Mode="2">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="AssignJobCardToCROQVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Jobcardnoo"
+        ViewAttribute="Jobcardnoo"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ModelName"
+        ViewAttribute="ModelName"
+        Operator="STARTSWITH"
+        Conjunction="AND"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="SrvJhotldetlVO"
+        ViewAttribute="SrvJhotldetlVO"
+        Operator="NOT EXISTS"
+        Conjunction="AND"
+        IsNestedCriteria="true"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <ViewCriteria
+          Name="SrvJhotldetlVONestedCriteria"
+          ViewObjectName="dgcom.model.vo.srv.SrvJhotldetlVO"
+          Conjunction="AND">
+          <ViewCriteriaRow
+            Name="SrvJhotldetlVONestedCriteria_row_0"
+            UpperColumns="1">
+            <ViewCriteriaItem
+              Name="SrvJhotldetlVONestedCriteria_SrvJhotldetlVONestedCriteria_row_0_Jhoid"
+              ViewAttribute="Jhoid"
+              Operator="="
+              Conjunction="AND"
+              GenerateIsNullClauseForBindVars="false"
+              Required="Optional"
+              Value=":P_ADF_JHOID"
+              IsBindVarValue="true"/>
+          </ViewCriteriaRow>
+        </ViewCriteria>
+      </ViewCriteriaItem>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Jobcardnoo"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="SrvJhotldetlVO"
+    ViewLink="dgcom.model.vl.srv.SrvAssignCroSrvJobHandOverToLabJobcardVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

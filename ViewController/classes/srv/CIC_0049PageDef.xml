@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0049PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvJobcomplainCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobcomplainCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJcdetlDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJcdetlDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJccatDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJccatDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvJobcomplainFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvJobcomplainCRUDIterator" id="SrvJobcomplainFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvJobcomplainCRUDIterator" id="Compid">
+      <AttrNames>
+        <Item Value="Compid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcomplainCRUDIterator" id="Jcdate">
+      <AttrNames>
+        <Item Value="Jcdate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcomplainCRUDIterator" id="Cityid">
+      <AttrNames>
+        <Item Value="Cityid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcomplainCRUDIterator" id="Customer">
+      <AttrNames>
+        <Item Value="Customer"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcomplainCRUDIterator" id="Phoneno2">
+      <AttrNames>
+        <Item Value="Phoneno2"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcomplainCRUDIterator" id="Modifiedby">
+      <AttrNames>
+        <Item Value="Modifiedby"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcomplainCRUDIterator" id="CallType">
+      <AttrNames>
+        <Item Value="CallType"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvJobcomplainCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvJobcomplainCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvJobcomplainCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJobcomplainCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <listOfValues IterBinding="SrvJobcomplainCRUDIterator" StaticList="false" Uses="LovSrvJobcardno" id="Jobcardno"/>
+    <tree IterBinding="SrvJcdetlDETCRUDIterator" id="SrvJcdetlDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJcdetlVO" Name="SrvJcdetlDETCRUD0">
+        <AttrNames>
+          <Item Value="Createdby"/>
+          <Item Value="Remarks"/>
+          <Item Value="Sdate"/>
+          <Item Value="Edate"/>
+          <Item Value="txtDuration"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvJcdetlDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJcdetlDETCRUDIterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="SrvJobcomplainCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcomplainCRUDIterator" id="txtPhone">
+      <AttrNames>
+        <Item Value="txtPhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcomplainCRUDIterator" id="txtMobileNo">
+      <AttrNames>
+        <Item Value="txtMobileNo"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SrvJccatDETCRUDIterator" id="SrvJccatDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJccatVO" Name="SrvJccatDETCRUD0">
+        <AttrNames>
+          <Item Value="Compcatid"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvJccatDETCRUDIterator" id="CreateInsert2" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJccatDETCRUDIterator" id="Delete2" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <listOfValues IterBinding="SrvJobcomplainCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68"
+                id="TFDigicomMain_TFDigicomMain_CreateInsertPageDef1" Package="dgcom.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="InPartsCRUD" RangeSize="25" DataControl="modServiceSetupDataControl" id="InPartsCRUDIterator"/>
+  </executables>
+  <bindings>
+    <action IterBinding="InPartsCRUDIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+  </bindings>
+</pageDefinition>

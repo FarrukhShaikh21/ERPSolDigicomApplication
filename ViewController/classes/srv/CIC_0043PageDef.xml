@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0043PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvReturntermCRUD" RangeSize="25" DataControl="modServiceSetupDataControl"
+              id="SrvReturntermCRUDIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SrvReturntermCRUDIterator" id="SrvReturntermCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvReturntermVO" Name="SrvReturntermCRUD0">
+        <AttrNames>
+          <Item Value="Rettermid"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvReturntermCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvReturntermCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="modServiceSetupDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceSetupDataControl"/>
+  </bindings>
+</pageDefinition>

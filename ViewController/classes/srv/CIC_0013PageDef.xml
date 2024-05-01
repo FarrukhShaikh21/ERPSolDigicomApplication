@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0013PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvIssuanceCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvIssuanceCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvIssuedetailDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvIssuedetailDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Binds="SrvIssuedetailDETCRUDIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SrvIssuedetailDETCRUDQuery"/>
+    <searchRegion Criteria="SrvIssuanceFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvIssuanceCRUDIterator" id="SrvIssuanceFindVCQuery"/>
+    <iterator Binds="SrvJobsymptomIssueDetRO" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobsymptomIssueDetROIterator" ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvIssuanceCRUDIterator" id="IssueId">
+      <AttrNames>
+        <Item Value="IssueId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvIssuanceCRUDIterator" id="Issuedate">
+      <AttrNames>
+        <Item Value="Issuedate"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvIssuanceCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvIssuanceCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action IterBinding="SrvIssuanceCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvIssuanceCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <listOfValues IterBinding="SrvIssuanceCRUDIterator" StaticList="false" Uses="LovSrvIssuanceJobCardJobCardNo"
+                  id="Jobcardno"/>
+    <attributeValues IterBinding="SrvIssuanceCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SrvIssuedetailDETCRUDIterator" id="SrvIssuedetailDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvIssuedetailVO" Name="SrvIssuedetailDETCRUD0">
+        <AttrNames>
+          <Item Value="Partid"/>
+          <Item Value="Partno"/>
+          <Item Value="Description"/>
+          <Item Value="Qty"/>
+          <Item Value="RejectQty"/>
+          <Item Value="Systemrate"/>
+          <Item Value="Rate"/>
+          <Item Value="Storeid" Binds="Storeid"/>
+          <Item Value="Reasonid"/>
+          <Item Value="txtAmount"/>
+          <Item Value="txtPartName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvIssuedetailDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createWithParams" InstanceName="modServiceTransactionsDataControl.SrvIssuedetailDETCRUD"
+            DataControl="modServiceTransactionsDataControl">
+      <NamedData NDName="IssueId" NDValue="#{bindings.IssueId.inputValue}" NDType="java.lang.String"/>
+    </action>
+    <attributeValues IterBinding="SrvIssuanceCRUDIterator" id="txtItemId">
+      <AttrNames>
+        <Item Value="txtItemId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvIssuanceCRUDIterator" id="txtJobDate">
+      <AttrNames>
+        <Item Value="txtJobDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvIssuanceCRUDIterator" id="txtProdId">
+      <AttrNames>
+        <Item Value="txtProdId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvIssuanceCRUDIterator" id="txtApprovedPart">
+      <AttrNames>
+        <Item Value="txtApprovedPart"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvIssuanceCRUDIterator" id="txtJobStatus">
+      <AttrNames>
+        <Item Value="txtJobStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doSubmitIssuance" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doSubmitIssuance"
+                  IsViewObjectMethod="true" DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvIssuanceCRUD"/>
+    <attributeValues IterBinding="SrvIssuanceCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvIssuedetailDETCRUDIterator" id="Delete1"
+            InstanceName="modServiceTransactionsDataControl.SrvIssuedetailDETCRUD"
+            DataControl="modServiceTransactionsDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <listOfValues IterBinding="SrvIssuanceCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <attributeValues IterBinding="SrvIssuanceCRUDIterator" id="txtModelNo">
+      <AttrNames>
+        <Item Value="txtModelNo"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SrvIssuedetailDETCRUDIterator" StaticList="false" Uses="LovSysUserStore" id="Storeid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SrvIssuedetailDETCRUDIterator" id="Issuedetlid">
+      <AttrNames>
+        <Item Value="Issuedetlid"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doCreateNewIssuanceRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewIssuanceRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvIssuanceCRUD"/>
+    <methodAction id="doCreateNewIssueDetDetRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewIssueDetDetRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvIssuedetailDETCRUD"/>
+    <attributeValues IterBinding="SrvIssuanceCRUDIterator" id="txtImeiNo">
+      <AttrNames>
+        <Item Value="txtImeiNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvIssuanceCRUDIterator" id="txtWarranty">
+      <AttrNames>
+        <Item Value="txtWarranty"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SrvJobsymptomIssueDetROIterator" id="SrvJobsymptomIssueDetRO">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJobsymptomVO" Name="SrvJobsymptomIssueDetRO0">
+        <AttrNames>
+          <Item Value="SymptomId"/>
+          <Item Value="txtSymptomDescription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SrvIssuanceCRUDIterator" id="txtTechnicianName">
+      <AttrNames>
+        <Item Value="txtTechnicianName"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

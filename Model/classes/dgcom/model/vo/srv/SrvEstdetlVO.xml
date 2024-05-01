@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvEstdetlVO"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  SelectList="SrvEstdetl.EST_ID, 
+       SrvEstdetl.CALLED_PERSON, 
+       SrvEstdetl.CALL_DATE, 
+       SrvEstdetl.REMARKS, 
+       SrvEstdetl.CREATEDBY, 
+       SrvEstdetl.CREATED_DATE, 
+       SrvEstdetl.MODIFIEDBY, 
+       SrvEstdetl.MODIFIED_DATE, 
+       SrvEstdetl.ROWID, 
+       SrvEstdetl.ESTSEQ"
+  FromList="SRV_ESTDETL SrvEstdetl"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvEstdetlVORowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvEstdetlVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvEstdetlVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvEstdetlVOClient">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <EntityUsage
+    Name="SrvEstdetl"
+    Entity="dgcom.model.eo.srv.SrvEstdetl"/>
+  <ViewAttribute
+    Name="EstId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="EstId"
+    EntityUsage="SrvEstdetl"
+    AliasName="EST_ID"/>
+  <ViewAttribute
+    Name="CalledPerson"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CalledPerson"
+    EntityUsage="SrvEstdetl"
+    AliasName="CALLED_PERSON"/>
+  <ViewAttribute
+    Name="CallDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CallDate"
+    EntityUsage="SrvEstdetl"
+    AliasName="CALL_DATE"/>
+  <ViewAttribute
+    Name="Remarks"
+    PrecisionRule="true"
+    EntityAttrName="Remarks"
+    EntityUsage="SrvEstdetl"
+    AliasName="REMARKS"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvEstdetl"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvEstdetl"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvEstdetl"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvEstdetl"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="SrvEstdetl"
+    AliasName="ROWID"/>
+  <ViewAttribute
+    Name="Estseq"
+    PrecisionRule="true"
+    EntityAttrName="Estseq"
+    EntityUsage="SrvEstdetl"
+    AliasName="ESTSEQ"/>
+  <ViewLinkAccessor
+    Name="SrvJobestimationVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015098Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doCreateNewExtractPartDetRow"
+      MethodName="doCreateNewExtractPartDetRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

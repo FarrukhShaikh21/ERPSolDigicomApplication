@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobCardLogCIC_0051QVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  RowClass="dgcom.model.qvo.srv.SrvJobCardLogCIC_0051QVORowImpl"
+  ComponentClass="dgcom.model.qvo.srv.SrvJobCardLogCIC_0051QVOImpl"
+  RowInterface="dgcom.model.qvo.srv.common.SrvJobCardLogCIC_0051QVORow"
+  ClientRowProxyName="dgcom.model.qvo.srv.client.SrvJobCardLogCIC_0051QVORowClient">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.SrvJobCardLogCIC_0051QVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_JOBCARDNO"
+    Kind="where"
+    Type="java.lang.String"/>
+  <SQLQuery><![CDATA[SELECT   Jobcardno, DocId, DocType, doctypeId, TO_DATE(DOC_DATE,'DD-MON-RRRR HH24:MI:SS') DOC_DATE, cr_date, Doc_Desc, reverse_chk             
+      FROM             
+          (select m.jobcardno, null reverse_chk, nvl(m.modified_date,m.created_date) cr_date, 'JobCard' DocType, 'JOBCARD' DocTypeId, m.jobcardno DocId, m.jobdate||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,             
+                  m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+            from SRV_JOBCARD m             
+           where m.posted = 'Y'             
+             and m.jobcardno = :P_ADF_JOBCARDNO             
+             
+           UNION ALL             
+           select d.jobcardno,d.reverse_chk, nvl(d.modified_date,d.created_date) cr_date, 'CRO Handover' DocType, 'JHO' DocTypeId, m.jhoid DocId, m.hodate||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                   m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+            from SRV_JobHandOverToLab m, SRV_JHOTLDetl d             
+           where m.jhoid = d.jhoid             
+             and m.posted = 'Y'             
+             and d.jobcardno = :P_ADF_JOBCARDNO             
+             
+           UNION ALL             
+           select d.jobcardno,d.reverse_chk, nvl(d.modified_date,d.created_date) cr_date, 'Assign' DocType, 'JOBASSIGN' DocTypeId, m.assignid DocId, m.assdate||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                   m.technicianid||', '||t.techician||', '||m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+            from SRV_JobAssign m, SRV_JobAssDetl d, SRV_TECHNICIAN t             
+           where m.assignid = d.assignid             
+             and t.TECHNICIANID = m.TECHNICIANID             
+             and m.posted = 'Y'             
+             and d.jobcardno = :P_ADF_JOBCARDNO             
+             
+           UNION ALL             
+           select m.jobcardno,m.reverse_chk, nvl(m.modified_date,m.created_date) cr_date, 'Replacement' DocType, 'RP' DocTypeId, m.SR_Id DocId, m.SR_Date||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                   'Replacement: '||i.model_no||' '||m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+            from SRV_Set_Replacement m, In_Items i             
+           where m.posted = 'Y'             
+             and m.itemid=i.itemid             
+             and m.jobcardno = :P_ADF_JOBCARDNO             
+             
+           UNION ALL             
+           select m.jobcardno,null reverse_chk, nvl(m.modified_date,m.created_date) cr_date, 'Reversal' DocType, 'SRREV' DocTypeId, m.Reversal_Id DocId, m.Rev_Date||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                   Decode(DocType,'JHO','CRO Handover',            'JOBASSIGN','Assign',             
+                                  'RP','Replacement',              'RJW','Review Warranty',             
+                                  'JOBEST','Estimation',           'ISSUE','Parts Issuance',             
+                                  'ISSUE_RET','Parts Return',      'JOBSOLUTION','Job Solution',             
+                                  'JOBQC','Job QC',                'JQCBD','QC Before Deliver',             
+                                  'SETDELI','Set Delivery',        'COURIERDELI','Courier Delivery',             
+                                  'JTrans','Job Transfer',         'DPTrans','Pending Transfer',             
+                                  'JRet','Job Return',             'DPJRet','Pending Return',             
+                                  'Log','Logistic',                'DPLog','Pending Receive',             
+                                  'INV','Invoice',                  'JOBSWAP','Job Swap')||' reverse by: '||m.createdby Doc_Desc             
+            from SRV_Reversal m             
+           where m.posted = 'Y'             
+             and m.jobcardno = :P_ADF_JOBCARDNO             
+             
+           UNION ALL             
+           select m.jobcardno,m.reverse_chk, nvl(m.modified_date,m.created_date) cr_date, 'Review Warranty' DocType, 'RJW' DocTypeId, m.reviewid DocId, m.rv_date||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                   decode(m.warranty,'IW','Warranty','NW','Non Warranty','OW','Optional Warranty')||', '||m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+            from SRV_REVIEWJOBWARRANTY m             
+           where m.posted = 'Y'             
+             and m.jobcardno = :P_ADF_JOBCARDNO             
+             
+           UNION ALL             
+           select m.jobcardno,m.reverse_chk, nvl(m.modified_date,m.created_date) cr_date, 'Estimation' DocType, 'JOBEST' DocTypeId, m.est_id DocId, to_char(m.Posted_Date,'DD-MON-YY hh:mi') Doc_Date,             
+                  'Revised Est. part cost '||APCOST||' is '||decode(APPROVED,'Yes','Approved','No','Not Approved')             
+                  ||', '||nvl(d.Remarks,m.remarks)||', submit by: '||m.modifiedby Doc_Desc             
+           from SRV_JOBESTIMATION m,              
+                    (select * from SRV_ESTDETL d              
+                     where d.call_date = (select max(call_date) from SRV_ESTDETL where est_id=d.est_id)) d             
+           where m.posted = 'Y'             
+              and m.est_id=d.est_id(+)             
+             and m.jobcardno = :P_ADF_JOBCARDNO             
+             
+            UNION ALL             
+           select m.jobcardno,m.reverse_chk, nvl(m.modified_date,m.created_date) cr_date, 'Parts Issuance' DocType, 'ISSUE' DocTypeId, m.issue_id DocId, m.issuedate||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                   t.techician||', '||m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+           from SRV_ISSUANCE m, SRV_TECHNICIAN t             
+           where t.TECHNICIANID = m.TECHNICIANID             
+             and m.posted = 'Y'             
+             and m.jobcardno = :P_ADF_JOBCARDNO             
+             
+            UNION ALL             
+           select i.jobcardno,m.reverse_chk, nvl(m.modified_date,m.created_date) cr_date, 'Parts Return' DocType, 'ISSUE_RET' DocTypeId, m.IssueRetId DocId, m.RetDate||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                   t.techician||', '||m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+           from SRV_ISSUERETURN m, SRV_ISSUANCE i, SRV_TECHNICIAN t             
+           where m.issue_id = i.issue_id             
+             and t.TECHNICIANID = m.TECHNICIANID             
+             and m.posted = 'Y'             
+             and i.jobcardno = :P_ADF_JOBCARDNO             
+             
+           UNION ALL             
+           select m.jobcardno,m.reverse_chk, nvl(m.modified_date,m.created_date) cr_date, 'Job Solution' DocType, 'JOBSOLUTION' DocTypeId, m.jsolution_id DocId, m.js_date||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                  'Level:'||m.levelno||', '||m.jsstatus||', '||m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+           from SRV_JOBSOLUTION m             
+           where m.posted = 'Y'             
+              and m.jobcardno = :P_ADF_JOBCARDNO             
+             
+           UNION ALL             
+           select m.jobcardno,m.reverse_chk, nvl(m.modified_date,m.created_date) cr_date, decode(m.doctypeid,'JQC','Job QC','QCBD','QC Before Deliver') DocType,              
+                   decode(m.doctypeid,'JQC','JOBQC','QCBD','JQCBD') DocTypeId, m.qcdocid DocId, m.qcdate||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                   decode(m.status,'Y','Pass','N','Fail')||', '||c.Description||', '||t.techician||', '||m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+           from SRV_JOBQC m, SRV_QC c, SRV_TECHNICIAN t             
+           where m.posted = 'Y'             
+              and m.QCId = c.QCId             
+              and m.qcpersonid = t.TECHNICIANID             
+              and m.jobcardno = :P_ADF_JOBCARDNO             
+             
+           UNION ALL             
+           select m.jobcardno,m.reverse_chk, nvl(m.modified_date,m.created_date) cr_date, 'Set Delivery' DocType, 'SETDELI' DocTypeId, m.setdeliid DocId, m.sddate||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                   m.remarks||', submit by: '||m.modifiedby Doc_Desc             
+           from SRV_SETDELIVERY m             
+            where m.posted = 'Y'             
+             and m.jobcardno = :P_ADF_JOBCARDNO             
+             
+            UNION ALL             
+           select d.jobcardno,d.reverse_chk, nvl(d.modified_date,d.created_date) cr_date, 'Courier Deli' DocType, 'COURIERDELI' DocTypeId, m.CDID DocId, m.CDdate||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                   m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+           from SRV_CourierDeli m, SRV_CDDetail d             
+           where m.CDID = d.CDID             
+             and m.posted = 'Y'             
+             and d.jobcardno = :P_ADF_JOBCARDNO             
+             
+           UNION ALL             
+           select d.jobcardno,d.reverse_chk, nvl(d.modified_date,d.created_date) cr_date, 'Jobs Inventory' DocType, m.doctype DocTypeId, m.jinv_id DocId, m.jinv_date||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date, m.remarks||', submit by: '||m.modifiedby Doc_Desc 
+           from srv_jobsinventory m, srv_jobsinv_detl d 
+           where m.jinv_id = d.jinv_id 
+             and m.posted = 'Y' 
+             and d.jobcardno = :P_ADF_JOBCARDNO 
+ 
+			     UNION ALL 
+           select m.jobcardno,m.reverse_chk, nvl(m.modified_date,m.created_date) cr_date, 'DAP Approval' DocType, 'DAP' DocTypeId, m.dap_id DocId, m.dap_date||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,  
+                  'Approved '||m.bh_approval||' '||m.bh_remarks||', submit by: '||m.modifiedby Doc_Desc 
+           from srv_dap m 
+           where m.posted = 'Y' 
+             and m.jobcardno = :P_ADF_JOBCARDNO 
+ 
+UNION ALL            
+           select d.jobcardno,d.reverse_chk, nvl(d.modified_date,d.created_date) cr_date, decode(m.Doctype,'JTrans','Job Transfer','DPTrans','Pending Transfer') DocType, m.DocType DocTypeId, m.transferid DocId, m.tdate||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                  'Location: '||m.tolocationid||', '||m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+           from SRV_JOBTRANSFER m, SRV_JOBTRANSFERDETL d             
+           where m.transferid = d.transferid             
+             and m.posted = 'Y'             
+             and d.jobcardno = :P_ADF_JOBCARDNO             
+             
+           UNION ALL             
+           select d.jobcardno,d.reverse_chk, nvl(d.modified_date,d.created_date) cr_date, decode(m.Doctype,'JRet','Job Return','DPJRet','Pending Return') DocType, m.DocType DocTypeId, m.jobretid DocId, m.jrdate||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                   'Location: '||m.tolocationid||', '||m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+            from SRV_JOBRETURN m, SRV_JOBRETDETL d             
+           where m.jobretid = d.jobretid             
+             and m.posted = 'Y'             
+             and d.jobcardno = :P_ADF_JOBCARDNO             
+             
+           UNION ALL             
+           select d.jobcardno,d.reverse_chk, nvl(d.modified_date,d.created_date) cr_date, decode(m.Doctype,'Log','Logistic','DPLog','Pending Receive') DocType, m.DocType DocTypeId, m.logid DocId, m.logdate||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                   'from Location: '||m.fromlocationid||', '||m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+            from SRV_LOGISTIC m, SRV_LOGDETL d             
+           where m.logid = d.logid             
+             and m.posted = 'Y'             
+             and d.jobcardno = :P_ADF_JOBCARDNO             
+             
+           UNION ALL             
+           select m.jobcardno,m.reverse_chk, nvl(m.modified_date,m.created_date) cr_date, 'Invoice' DocType, 'INV' DocTypeId, m.srv_invno DocId, m.inv_date||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                   'Received: '||m.Received||', '||m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+            from SRV_INVOICE m             
+           where m.posted = 'Y'             
+             and m.jobcardno = :P_ADF_JOBCARDNO             
+             
+           UNION ALL             
+           select m.jobcardno,m.reverse_chk, nvl(m.modified_date,m.created_date) cr_date, 'Job Swap' DocType, 'JOBSWAP' DocTypeId, m.swapid DocId, m.sdate||to_char(nvl(m.modified_date,m.created_date),' hh:mi') Doc_Date,              
+                   m.swp_status||', '||m.Remarks||', submit by: '||m.modifiedby Doc_Desc             
+           from SRV_JOBSWAP m             
+           where m.posted = 'Y'             
+             and m.jobcardno = :P_ADF_JOBCARDNO)             
+      Order by cr_date]]></SQLQuery>
+  <ViewAttribute
+    Name="Jobcardno"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="JOBCARDNO"
+    Expression="JOBCARDNO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Docid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="20"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DOCID"
+    Expression="DOCID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Doctype"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="17"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DOCTYPE"
+    Expression="DOCTYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="17"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Doctypeid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DOCTYPEID"
+    Expression="DOCTYPEID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="DOC_DATE"
+    Expression="DOC_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="CrDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="CR_DATE"
+    Expression="CR_DATE"
+    SQLType="DATE"/>
+  <ViewAttribute
+    Name="DocDesc"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="443"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DOC_DESC"
+    Expression="DOC_DESC"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="443"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ReverseChk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="REVERSE_CHK"
+    Expression="REVERSE_CHK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="txtDays"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <TransientExpression><![CDATA[if (DocDate!=null && SrvJobcardVO?.Jobdate!=null)
+return DocDate - SrvJobcardVO?.Jobdate;
+else
+return null;]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="DocDate"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvJobCardLogCIC_0051QVO.txtDays_LABEL"/>
+        <DISPLAYWIDTH
+          Value="15"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Docid"/>
+    <Item Value="Doctype"/>
+  </AttrArray>
+  <ViewLinkAccessor
+    Name="SrvJobcardVO"
+    ViewLink="dgcom.model.vl.srv.SrvJobCardSrvJobCardLogCIC_0051QVO"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientRowInterface
+    Name="__rowClientInterface">
+    <Method
+      Name="doReverseTransaction"
+      MethodName="doReverseTransaction">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientRowInterface>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

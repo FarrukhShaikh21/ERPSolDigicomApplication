@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJcdetlVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvJcdetl.COMPID, 
+       SrvJcdetl.SDATE, 
+       SrvJcdetl.EDATE, 
+       SrvJcdetl.REMARKS, 
+       SrvJcdetl.CREATEDBY, 
+       SrvJcdetl.CREATED_DATE, 
+       SrvJcdetl.MODIFIEDBY, 
+       SrvJcdetl.MODIFIED_DATE, 
+       SrvJcdetl.JCDETLID"
+  FromList="SRV_JCDETL SrvJcdetl"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvJcdetlVORowImpl"
+  ComponentClass="dgcom.model.stand.DigicomViewObjectImpl">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <EntityUsage
+    Name="SrvJcdetl"
+    Entity="dgcom.model.eo.srv.SrvJcdetl"/>
+  <ViewAttribute
+    Name="Compid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Compid"
+    EntityUsage="SrvJcdetl"
+    AliasName="COMPID"/>
+  <ViewAttribute
+    Name="Sdate"
+    PrecisionRule="true"
+    EntityAttrName="Sdate"
+    EntityUsage="SrvJcdetl"
+    AliasName="SDATE"/>
+  <ViewAttribute
+    Name="Edate"
+    PrecisionRule="true"
+    EntityAttrName="Edate"
+    EntityUsage="SrvJcdetl"
+    AliasName="EDATE"/>
+  <ViewAttribute
+    Name="Remarks"
+    PrecisionRule="true"
+    EntityAttrName="Remarks"
+    EntityUsage="SrvJcdetl"
+    AliasName="REMARKS"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvJcdetl"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvJcdetl"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvJcdetl"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvJcdetl"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Jcdetlid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jcdetlid"
+    EntityUsage="SrvJcdetl"
+    AliasName="JCDETLID"/>
+  <ViewAttribute
+    Name="txtDuration"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    DefaultValue="if (Edate!=null &amp;&amp; Sdate !=null) return Edate-Sdate; else return null;"/>
+  <ViewLinkAccessor
+    Name="SrvJccatVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015293Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SrvJobcomplainVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015292Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+</ViewObject>

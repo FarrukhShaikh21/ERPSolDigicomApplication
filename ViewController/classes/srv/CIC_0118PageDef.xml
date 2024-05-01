@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0118PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="PuSupplierInvoicesCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="PuSupplierInvoicesCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="PuSuppInvPiLinksDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="PuSuppInvPiLinksDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="DocGlTransTypeDETSUPINVRO" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="DocGlTransTypeDETSUPINVROIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="PuSupplierInvoicesFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="PuSupplierInvoicesCRUDIterator" id="PuSupplierInvoicesFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PuSupplierInvoicesCRUDIterator" id="Suppinvoiceid">
+      <AttrNames>
+        <Item Value="Suppinvoiceid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PuSupplierInvoicesCRUDIterator" id="SuppRefno">
+      <AttrNames>
+        <Item Value="SuppRefno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PuSupplierInvoicesCRUDIterator" id="TotalPackages">
+      <AttrNames>
+        <Item Value="TotalPackages"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PuSupplierInvoicesCRUDIterator" id="SuppRefDate">
+      <AttrNames>
+        <Item Value="SuppRefDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PuSupplierInvoicesCRUDIterator" id="NetWeight">
+      <AttrNames>
+        <Item Value="NetWeight"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PuSupplierInvoicesCRUDIterator" id="GrossWeight">
+      <AttrNames>
+        <Item Value="GrossWeight"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PuSupplierInvoicesCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PuSupplierInvoicesCRUDIterator" StaticList="false" Uses="LovPuPackingTypes" id="Packtypeid"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <action IterBinding="PuSupplierInvoicesCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="PuSupplierInvoicesCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="PuSupplierInvoicesCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="PuSupplierInvoicesCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <listOfValues IterBinding="PuSupplierInvoicesCRUDIterator" StaticList="false" Uses="LovSrvPuSupplierInvoiceSrvGrnId"
+                  id="Rnoteno"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <tree IterBinding="PuSuppInvPiLinksDETCRUDIterator" id="PuSuppInvPiLinksDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.PuSuppInvPiLinksVO" Name="PuSuppInvPiLinksDETCRUD0">
+        <AttrNames>
+          <Item Value="ItemType"/>
+          <Item Value="Partid"/>
+          <Item Value="SiQty"/>
+          <Item Value="ExtraQty"/>
+          <Item Value="UnitPriceInBcurr"/>
+          <Item Value="txtTotalQty"/>
+          <Item Value="txtAmount"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PuSuppInvPiLinksDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="PuSuppInvPiLinksDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <methodAction id="doSubmitSupplierInvoice" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitSupplierInvoice" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.PuSupplierInvoicesCRUD"/>
+    <tree IterBinding="DocGlTransTypeDETSUPINVROIterator" id="DocGlTransTypeDETSUPINVRO">
+      <nodeDefinition DefName="dgcom.model.vo.gl.DocGlTransTypeDVO" Name="DocGlTransTypeDETSUPINVRO0">
+        <AttrNames>
+          <Item Value="AccountCode"/>
+          <Item Value="CostCenter"/>
+          <Item Value="DbtAmount"/>
+          <Item Value="CrdAmount"/>
+          <Item Value="Narration"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="PuSupplierInvoicesCRUDIterator" id="txtPoid">
+      <AttrNames>
+        <Item Value="txtPoid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PuSupplierInvoicesCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="PuSupplierInvoicesCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InIpmDetailVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="InIpmDetail.MAPP_ID, 
+       InIpmDetail.ITEMID, 
+       InIpmDetail.PARTID, 
+       InIpmDetail.QUANTITY, 
+       InIpmDetail.CREATEDBY, 
+       InIpmDetail.CREATED_DATE, 
+       InIpmDetail.MODIFIEDBY, 
+       InIpmDetail.MODIFIED_DATE, 
+       InIpmDetail.RATE, 
+       InIpmDetail.ROWID"
+  FromList="IN_IPM_DETAIL InIpmDetail"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.stand.DigicomViewRowImpl"
+  ComponentClass="dgcom.model.stand.DigicomViewObjectImpl">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccInPartsIPM"
+    ViewObjectName="dgcom.model.vo.srv.InPartsVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="AccInItems"
+    ViewObjectName="dgcom.model.vo.inv.InItemsVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="InItemsItemPartMappingVC"
+      FullName="dgcom.model.vo.inv.InItemsVO.InItemsItemPartMappingVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_PART_ID">
+        <TransientExpression><![CDATA[Partid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovIPMPartid"
+    ListVOName="AccInPartsIPM"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtPartName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Partid"/>
+      <Item Value="Itemid"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Description"/>
+      <Item Value="Partid"/>
+      <Item Value="Itemid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+      <Item Value="Partno"/>
+      <Item Value="Partid"/>
+      <Item Value="txtModel"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="Lov_IPMItemid"
+    ListVOName="AccInItems"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtModel"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Itemid"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ModelNo"/>
+      <Item Value="Itemid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ModelNo"/>
+      <Item Value="Itemid"/>
+      <Item Value="ItemRefId"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="InItemsItemPartMappingVC"/>
+  </ListBinding>
+  <EntityUsage
+    Name="InIpmDetail"
+    Entity="dgcom.model.eo.srv.InIpmDetail"/>
+  <ViewAttribute
+    Name="MappId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="MappId"
+    EntityUsage="InIpmDetail"
+    AliasName="MAPP_ID"/>
+  <ViewAttribute
+    Name="Itemid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Itemid"
+    EntityUsage="InIpmDetail"
+    AliasName="ITEMID"/>
+  <ViewAttribute
+    Name="Partid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Partid"
+    EntityUsage="InIpmDetail"
+    AliasName="PARTID"/>
+  <ViewAttribute
+    Name="Quantity"
+    PrecisionRule="true"
+    EntityAttrName="Quantity"
+    EntityUsage="InIpmDetail"
+    AliasName="QUANTITY"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="InIpmDetail"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="InIpmDetail"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="InIpmDetail"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="InIpmDetail"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Rate"
+    PrecisionRule="true"
+    EntityAttrName="Rate"
+    EntityUsage="InIpmDetail"
+    AliasName="RATE"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="InIpmDetail"
+    AliasName="ROWID"/>
+  <ViewAttribute
+    Name="txtModel"
+    PrecisionRule="true"
+    EntityAttrName="txtModel"
+    EntityUsage="InIpmDetail"
+    AliasName="TXT_MODEL"
+    IsQueriable="false"
+    IsPersistent="false"
+    LOVName="Lov_IPMItemid">
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="Itemid"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="txtPartName"
+    PrecisionRule="true"
+    EntityAttrName="txtPartName"
+    EntityUsage="InIpmDetail"
+    AliasName="TXT_PART_NAME"
+    IsQueriable="false"
+    IsPersistent="false"
+    LOVName="LovIPMPartid">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="Partid"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="txtPartNo"
+    PrecisionRule="true"
+    EntityAttrName="txtPartNo"
+    EntityUsage="InIpmDetail"
+    AliasName="TXT_PART_NO"
+    IsQueriable="false"
+    IsPersistent="false"/>
+  <ViewLinkAccessor
+    Name="InItemPartMovementVO"
+    ViewLink="dgcom.model.vl.srv.SysC0091846Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="InItemsVO"
+    ViewLink="dgcom.model.vl.srv.SysC0091844Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="InPartsVO"
+    ViewLink="dgcom.model.vl.srv.SysC0091845Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+</ViewObject>

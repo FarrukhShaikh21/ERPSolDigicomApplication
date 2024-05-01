@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0202PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvStocktransferCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvStocktransferCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvStransferdetlDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvStransferdetlDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvStocktransferFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvStocktransferCRUDIterator" id="SrvStocktransferFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvStocktransferCRUDIterator" id="Stransid">
+      <AttrNames>
+        <Item Value="Stransid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStocktransferCRUDIterator" id="Tdate">
+      <AttrNames>
+        <Item Value="Tdate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStocktransferCRUDIterator" id="Locationid">
+      <AttrNames>
+        <Item Value="Locationid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStocktransferCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvStocktransferCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvStocktransferCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvStocktransferCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvStocktransferCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <attributeValues IterBinding="SrvStocktransferCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SrvStransferdetlDETCRUDIterator" id="SrvStransferdetlDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvStransferdetlVO" Name="SrvStransferdetlDETCRUD0">
+        <AttrNames>
+          <Item Value="Storeid"/>
+          <Item Value="FromPartid"/>
+          <Item Value="ToPartid"/>
+          <Item Value="TransferQty"/>
+          <Item Value="Rate"/>
+          <Item Value="txtStoreName"/>
+          <Item Value="txtFromPartName"/>
+          <Item Value="txtFromPartNo"/>
+          <Item Value="txtToPartName"/>
+          <Item Value="txtToPartNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvStransferdetlDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvStransferdetlDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <methodAction id="doSubmitSrvStockStranfer" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitSrvStockStranfer" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvStocktransferCRUD"/>
+  </bindings>
+</pageDefinition>

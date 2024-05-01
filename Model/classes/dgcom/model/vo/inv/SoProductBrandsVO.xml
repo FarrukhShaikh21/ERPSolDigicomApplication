@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SoProductBrandsVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SoProductBrands.PBRANDID, 
+       SoProductBrands.BRAND_NAME, 
+       SoProductBrands.CREATEDBY, 
+       SoProductBrands.CREATED_DATE, 
+       SoProductBrands.MODIFIEDBY, 
+       SoProductBrands.MODIFIED_DATE, 
+       SoProductBrands.SERVICE"
+  FromList="SO_PRODUCT_BRANDS SoProductBrands"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="dgcom.model.vo.inv.SoProductBrandsVORowImpl"
+  ComponentClass="dgcom.model.vo.inv.SoProductBrandsVOImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <EntityUsage
+    Name="SoProductBrands"
+    Entity="dgcom.model.eo.inv.SoProductBrands"/>
+  <ViewAttribute
+    Name="Pbrandid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Pbrandid"
+    EntityUsage="SoProductBrands"
+    AliasName="PBRANDID"/>
+  <ViewAttribute
+    Name="BrandName"
+    PrecisionRule="true"
+    EntityAttrName="BrandName"
+    EntityUsage="SoProductBrands"
+    AliasName="BRAND_NAME"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SoProductBrands"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SoProductBrands"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SoProductBrands"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SoProductBrands"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Service"
+    PrecisionRule="true"
+    EntityAttrName="Service"
+    EntityUsage="SoProductBrands"
+    AliasName="SERVICE"/>
+  <ViewLinkAccessor
+    Name="InItemsVO"
+    ViewLink="dgcom.model.vl.srv.SrvPRoductBrandSrvInItemsBrandIdVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+</ViewObject>

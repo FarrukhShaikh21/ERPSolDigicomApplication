@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0015PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvJobsolutionCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobsolutionCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJspartsDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJspartsDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJsprepairDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJsprepairDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Binds="SrvJsprepairDETCRUDIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SrvJsprepairDETCRUDQuery"/>
+    <iterator Binds="SrvJobsymptomDETRO" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobsymptomDETROIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJobfaultDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobfaultDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJobactionDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobactionDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvJobsolutionFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvJobsolutionCRUDIterator" id="SrvJobsolutionFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvJobsolutionCRUDIterator" id="JsolutionId">
+      <AttrNames>
+        <Item Value="JsolutionId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobsolutionCRUDIterator" id="JsDate">
+      <AttrNames>
+        <Item Value="JsDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobsolutionCRUDIterator" id="Technicianid">
+      <AttrNames>
+        <Item Value="Technicianid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobsolutionCRUDIterator" id="Jsstatus">
+      <AttrNames>
+        <Item Value="Jsstatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobsolutionCRUDIterator" id="Levelno">
+      <AttrNames>
+        <Item Value="Levelno"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvJobsolutionCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvJobsolutionCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvJobsolutionCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJobsolutionCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <listOfValues IterBinding="SrvJobsolutionCRUDIterator" StaticList="false" Uses="LovSrvIssuanceJobCardJObCardNo"
+                  id="Jobcardno"/>
+    <attributeValues IterBinding="SrvJobsolutionCRUDIterator" id="NewImeiNo">
+      <AttrNames>
+        <Item Value="NewImeiNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobsolutionCRUDIterator" id="Jobstatus">
+      <AttrNames>
+        <Item Value="Jobstatus"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SrvJobsolutionCRUDIterator" StaticList="false" Uses="LovSrvSwapTermSwapTermId" id="Swaptermid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SrvJobsolutionCRUDIterator" StaticList="false" Uses="LovSrvReturnTermRetTermId" id="Rettermid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SrvJobsolutionCRUDIterator" id="Apcost">
+      <AttrNames>
+        <Item Value="Apcost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobsolutionCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SrvJspartsDETCRUDIterator" id="SrvJspartsDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJspartsVO" Name="SrvJspartsDETCRUD0">
+        <AttrNames>
+          <Item Value="Issuedetlid"/>
+          <Item Value="Qty"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvJspartsDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJspartsDETCRUDIterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <tree IterBinding="SrvJsprepairDETCRUDIterator" id="SrvJsprepairDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJsprepairVO" Name="SrvJsprepairDETCRUD0">
+        <AttrNames>
+          <Item Value="Partid"/>
+          <Item Value="Qty"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvJsprepairDETCRUDIterator" id="CreateInsert2" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJsprepairDETCRUDIterator" id="Delete2" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree IterBinding="SrvJobsymptomDETROIterator" id="SrvJobsymptomDETRO">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJobsymptomVO" Name="SrvJobsymptomDETRO0">
+        <AttrNames>
+          <Item Value="SymptomId"/>
+          <Item Value="txtSymptomDescription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvJobfaultDETCRUDIterator" id="CreateInsert3" RequiresUpdateModel="true"
+            Action="createWithParams" InstanceName="modServiceTransactionsDataControl.SrvJobfaultDETCRUD"
+            DataControl="modServiceTransactionsDataControl">
+      <NamedData NDName="JsolutionId" NDValue="#{bindings.JsolutionId.inputValue}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SrvJobfaultDETCRUDIterator" id="Delete3" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="SrvJobactionDETCRUDIterator" id="CreateInsert4" RequiresUpdateModel="true"
+            Action="createWithParams" InstanceName="modServiceTransactionsDataControl.SrvJobactionDETCRUD"
+            DataControl="modServiceTransactionsDataControl">
+      <NamedData NDName="JsolutionId" NDValue="#{bindings.JsolutionId.inputValue}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SrvJobactionDETCRUDIterator" id="Delete4" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <attributeValues IterBinding="SrvJobsolutionCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doSubmitJobSolutions" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitJobSolutions" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobsolutionCRUD"/>
+    <listOfValues IterBinding="SrvJobsolutionCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <attributeValues IterBinding="SrvJobsolutionCRUDIterator" id="txtProdId">
+      <AttrNames>
+        <Item Value="txtProdId"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SrvJobfaultDETCRUDIterator" id="SrvJobfaultDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJobfaultVO" Name="SrvJobfaultDETCRUD0">
+        <AttrNames>
+          <Item Value="txtFaultDescription"/>
+          <Item Value="Faultid"/>
+          <Item Value="Rowid"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SrvJobactionDETCRUDIterator" id="SrvJobactionDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJobactionVO" Name="SrvJobactionDETCRUD0">
+        <AttrNames>
+          <Item Value="ActionId"/>
+          <Item Value="txtActionName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SrvJobsolutionCRUDIterator" id="txtImeiNo">
+      <AttrNames>
+        <Item Value="txtImeiNo"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doCreateNewJobSolRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewJobSolRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobsolutionCRUD"/>
+    <methodAction id="doCreateNewJobFaultRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewJobFaultRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobfaultDETCRUD"/>
+    <methodAction id="doCreateNewJobActionRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewJobActionRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobactionDETCRUD"/>
+    <methodAction id="doCreateNewJsPartsNewRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewJsPartsNewRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJspartsDETCRUD"/>
+  </bindings>
+</pageDefinition>

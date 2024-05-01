@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SysReportCondition"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SYS_REPORT_CONDITION"
+  AliasName="SysReportCondition"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.stand.DigicomEntityImpl">
+  <DesignTime>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+  </DesignTime>
+  <Attribute
+    Name="ReportConditionSno"
+    IsNotNull="true"
+    Precision="6"
+    Scale="0"
+    ColumnName="REPORT_CONDITION_SNO"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SYS_REPORT_CONDITION"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="ConditionName"
+    Precision="50"
+    ColumnName="CONDITION_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SYS_REPORT_CONDITION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AdfComponentId"
+    Precision="50"
+    ColumnName="ADF_COMPONENT_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SYS_REPORT_CONDITION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AdfBindingName"
+    Precision="50"
+    ColumnName="ADF_BINDING_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SYS_REPORT_CONDITION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ColumnName"
+    Precision="50"
+    ColumnName="COLUMN_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SYS_REPORT_CONDITION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="SysReportConditionDetail"
+    Association="dgcom.model.asso.sys.FkRptConDtlReptCondSnoAssoc"
+    AssociationEnd="dgcom.model.asso.sys.FkRptConDtlReptCondSnoAssoc.SysReportConditionDetail"
+    AssociationOtherEnd="dgcom.model.asso.sys.FkRptConDtlReptCondSnoAssoc.SysReportCondition"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="PkSysReportCondition"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PK_SYS_REPORT_CONDITION"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.sys.SysReportCondition.ReportConditionSno"/>
+    </AttrArray>
+  </Key>
+</Entity>

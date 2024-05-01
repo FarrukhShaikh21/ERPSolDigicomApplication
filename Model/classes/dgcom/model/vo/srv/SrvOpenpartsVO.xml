@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvOpenpartsVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvOpenparts.SOPNGID, 
+       SrvOpenparts.STOREID, 
+       SrvOpenparts.PARTID, 
+       SrvOpenparts.QTY, 
+       SrvOpenparts.RATE, 
+       SrvOpenparts.CREATEDBY, 
+       SrvOpenparts.CREATED_DATE, 
+       SrvOpenparts.MODIFIEDBY, 
+       SrvOpenparts.MODIFIED_DATE, 
+       SrvOpenparts.ITEMID, 
+       SrvOpenparts.SALESRATE, 
+       SrvOpenparts.ROWID"
+  FromList="SRV_OPENPARTS SrvOpenparts"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.stand.DigicomViewRowImpl"
+  ComponentClass="dgcom.model.stand.DigicomViewObjectImpl">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvPartPriceDetailPartID"
+    ViewObjectName="dgcom.model.qvo.srv.SrvPartPriceDetailPartIDCIC_0017QVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="AccSysUserStore"
+    ViewObjectName="dgcom.model.vo.sys.SysUserStoreVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_Partid"
+    ListVOName="AccSrvPartPriceDetailPartID"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Partid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Partid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Partno"/>
+      <Item Value="Description"/>
+      <Item Value="Category"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Storeid"
+    ListVOName="AccSysUserStore"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="StoreName"/>
+      <Item Value="Storeid"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvOpenparts"
+    Entity="dgcom.model.eo.srv.SrvOpenparts"/>
+  <ViewAttribute
+    Name="Sopngid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Sopngid"
+    EntityUsage="SrvOpenparts"
+    AliasName="SOPNGID"/>
+  <ViewAttribute
+    Name="Storeid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Storeid"
+    EntityUsage="SrvOpenparts"
+    AliasName="STOREID"
+    LOVName="LOV_Storeid">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Partid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Partid"
+    EntityUsage="SrvOpenparts"
+    AliasName="PARTID"
+    LOVName="LOV_Partid">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Qty"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Qty"
+    EntityUsage="SrvOpenparts"
+    AliasName="QTY"/>
+  <ViewAttribute
+    Name="Rate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Rate"
+    EntityUsage="SrvOpenparts"
+    AliasName="RATE"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvOpenparts"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvOpenparts"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvOpenparts"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvOpenparts"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Itemid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Itemid"
+    EntityUsage="SrvOpenparts"
+    AliasName="ITEMID"/>
+  <ViewAttribute
+    Name="Salesrate"
+    PrecisionRule="true"
+    EntityAttrName="Salesrate"
+    EntityUsage="SrvOpenparts"
+    AliasName="SALESRATE"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="SrvOpenparts"
+    AliasName="ROWID"/>
+  <ViewLinkAccessor
+    Name="SrvStockopeningVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015179Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+</ViewObject>

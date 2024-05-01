@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvStockadjustVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvStockadjust.SAID, 
+       SrvStockadjust.LOCATIONID, 
+       SrvStockadjust.SADATE, 
+       SrvStockadjust.REMARKS, 
+       SrvStockadjust.POSTED, 
+       SrvStockadjust.POSTEDBY, 
+       SrvStockadjust.CREATEDBY, 
+       SrvStockadjust.CREATED_DATE, 
+       SrvStockadjust.MODIFIEDBY, 
+       SrvStockadjust.MODIFIED_DATE, 
+       SrvStockadjust.IS_MIGRATED, 
+       SrvStockadjust.MIGRATED_DATE, 
+       SrvStockadjust.DOC_TYPE_ID"
+  FromList="SRV_STOCKADJUST SrvStockadjust"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.stand.DigicomViewRowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvStockadjustVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvStockadjustVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvStockadjustVOClient">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Coll|VarAccess"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvPartcategory"
+    ViewObjectName="dgcom.model.vo.srv.SrvPartcategoryVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="AccInItems"
+    ViewObjectName="dgcom.model.vo.inv.InItemsVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="InItemsExistsInServiceAndSrvBOMWOProductVC"
+      FullName="dgcom.model.vo.inv.InItemsVO.InItemsExistsInServiceAndSrvBOMWOProductVC"/>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSubmitYesNo"
+    ViewObjectName="dgcom.model.qvo.sys.YesNoQVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LovSrvPartcategory"
+    ListVOName="AccSrvPartcategory"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    MRUCount="0"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtCatId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Partcatid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSubmitYesNo"
+    ListVOName="AccSubmitYesNo"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Posted"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ID"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovInItemsName"
+    ListVOName="AccInItems"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtModelName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="txtModelNo"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ModelNo"/>
+      <Item Value="Itemid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ModelNo"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="InItemsExistsInServiceAndSrvBOMWOProductVC"/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvStockadjust"
+    Entity="dgcom.model.eo.srv.SrvStockadjust"/>
+  <ViewAttribute
+    Name="Said"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Said"
+    EntityUsage="SrvStockadjust"
+    AliasName="SAID"/>
+  <ViewAttribute
+    Name="Locationid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Locationid"
+    EntityUsage="SrvStockadjust"
+    AliasName="LOCATIONID"/>
+  <ViewAttribute
+    Name="Sadate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Sadate"
+    EntityUsage="SrvStockadjust"
+    AliasName="SADATE"/>
+  <ViewAttribute
+    Name="Remarks"
+    PrecisionRule="true"
+    EntityAttrName="Remarks"
+    EntityUsage="SrvStockadjust"
+    AliasName="REMARKS"/>
+  <ViewAttribute
+    Name="Posted"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Posted"
+    EntityUsage="SrvStockadjust"
+    AliasName="POSTED"
+    LOVName="LovSubmitYesNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Postedby"
+    PrecisionRule="true"
+    EntityAttrName="Postedby"
+    EntityUsage="SrvStockadjust"
+    AliasName="POSTEDBY"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvStockadjust"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvStockadjust"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvStockadjust"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvStockadjust"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="IsMigrated"
+    PrecisionRule="true"
+    EntityAttrName="IsMigrated"
+    EntityUsage="SrvStockadjust"
+    AliasName="IS_MIGRATED"/>
+  <ViewAttribute
+    Name="MigratedDate"
+    PrecisionRule="true"
+    EntityAttrName="MigratedDate"
+    EntityUsage="SrvStockadjust"
+    AliasName="MIGRATED_DATE"/>
+  <ViewAttribute
+    Name="DocTypeId"
+    PrecisionRule="true"
+    EntityAttrName="DocTypeId"
+    EntityUsage="SrvStockadjust"
+    AliasName="DOC_TYPE_ID"/>
+  <ViewAttribute
+    Name="txtCatId"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtCatId"
+    EntityUsage="SrvStockadjust"
+    AliasName="TXT_CAT_ID"
+    LOVName="LovSrvPartcategory">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="combo"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="txtModelNo"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtModelNo"
+    EntityUsage="SrvStockadjust"
+    AliasName="TXT_MODEL_NO"/>
+  <ViewAttribute
+    Name="txtModelName"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtModelName"
+    EntityUsage="SrvStockadjust"
+    AliasName="TXT_MODEL_NAME"
+    LOVName="LovInItemsName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewCriteria
+    Name="SrvStockadjustFindVC"
+    ViewObjectName="dgcom.model.vo.srv.SrvStockadjustVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SrvStockadjustVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Said"
+        ViewAttribute="Said"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Sadate"
+        ViewAttribute="Sadate"
+        Operator="="
+        Conjunction="AND"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Posted"
+        ViewAttribute="Posted"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="SrvSadjustdetlVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015203Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="DocGlTransTypeDVO"
+    ViewLink="dgcom.model.vl.srv.SrvStockAdjustDocGlTranTypeVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doSubmitSrvStockAdjust"
+      MethodName="doSubmitSrvStockAdjust">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="doCreateNewStockAdjRow"
+      MethodName="doCreateNewStockAdjRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="executeEmptyRowSet"
+      MethodName="executeEmptyRowSet">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

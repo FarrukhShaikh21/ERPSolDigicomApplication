@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SysC0015177Link"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  EntityAssociation="dgcom.model.asso.srv.SysC0015177Assoc">
+  <ViewLinkDefEnd
+    Name="SrvLogisticVO"
+    Cardinality="1"
+    Source="true"
+    Owner="dgcom.model.vo.srv.SrvLogisticVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SrvLogisticVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+      <Attr Name="_accessor" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.SrvLogisticVO.Logid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="SrvLogdetlVO"
+    Cardinality="-1"
+    Owner="dgcom.model.vo.srv.SrvLogdetlVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SrvLogdetlVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.SrvLogdetlVO.Logid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

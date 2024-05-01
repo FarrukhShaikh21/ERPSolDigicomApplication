@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvIssuedetail"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SRV_ISSUEDETAIL"
+  AliasName="SrvIssuedetail"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.eo.srv.SrvIssuedetailImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvIssuanceDetailAvailQty"
+    ViewObjectName="dgcom.model.qvo.srv.SrvIssuanceDetailQtyCIC_0013QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_ISSUEDETLID">
+        <TransientExpression><![CDATA[Issuedetlid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_PARTID">
+        <TransientExpression><![CDATA[Partid==null?"-1":Partid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_STOREID">
+        <TransientExpression><![CDATA[Storeid==null?"-1":Storeid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSrvIssueDetailPartUsedAgainstJobCard"
+    ViewObjectName="dgcom.model.qvo.srv.SrvIssueDetailPartUsedAgainstJobCardCIC_0013QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_ISSUE_ID">
+        <TransientExpression><![CDATA[IssueId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_JOBCARDNO">
+        <TransientExpression><![CDATA[SrvIssuance?.Jobcardno]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_PARTID">
+        <TransientExpression><![CDATA[Partid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <Attribute
+    Name="Issuedetlid"
+    Precision="20"
+    ColumnName="ISSUEDETLID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUEDETAIL"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IssueId"
+    Precision="15"
+    ColumnName="ISSUE_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUEDETAIL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Storeid"
+    Precision="15"
+    ColumnName="STOREID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUEDETAIL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvIssuedetail.Storeid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Partid"
+    Precision="15"
+    ColumnName="PARTID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUEDETAIL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvIssuedetail.Partid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Reasonid"
+    Precision="15"
+    ColumnName="REASONID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUEDETAIL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvIssuedetail.Reasonid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Qty"
+    Precision="20"
+    Scale="6"
+    ColumnName="QTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_ISSUEDETAIL">
+    <validation:CompareValidationBean
+      Name="QtysLessThan2"
+      ResId="dgcom.model.eo.srv.SrvIssuedetail.Qty_Rule_2"
+      OnAttribute="Qty"
+      OperandType="LITERAL"
+      Inverse="false"
+      CompareType="LESSTHANEQUALTO"
+      CompareValue="2">
+      <validation:OnCondition
+        Name="OnConditionExpr"><![CDATA[newValue!=null]]></validation:OnCondition>
+    </validation:CompareValidationBean>
+    <validation:CompareValidationBean
+      Name="CheckingAvailQtyBR"
+      OnAttribute="Qty"
+      OperandType="VO_USAGE"
+      Inverse="false"
+      CompareType="LESSTHANEQUALTO"
+      ViewAccAttrName="AvailQty"
+      ViewAccName="AccSrvIssuanceDetailAvailQty"
+      ResId="dgcom.model.eo.srv.SrvIssuedetail.Qty_Rule_0">
+      <validation:OnCondition
+        Name="OnConditionExpr"><![CDATA[if (newValue!=null && Partid !=null && Storeid!=null)
+{
+AccSrvIssuanceDetailAvailQty.executeQuery();
+return true;
+}
+else 
+return false;]]></validation:OnCondition>
+      <validation:ResExpressions
+        Name="CheckingAvailQtyBR_ResExprList">
+        <validation:Expression
+          Name="0"><![CDATA[
+
+AccSrvIssuanceDetailAvailQty?.first()?.getAttribute(1)
+            
+            ]]></validation:Expression>
+      </validation:ResExpressions>
+    </validation:CompareValidationBean>
+    <validation:CompareValidationBean
+      Name="QtyRuleLessThanRejectQty"
+      ResId="dgcom.model.eo.srv.SrvIssuedetail.Qty_Rule_1"
+      OnAttribute="Qty"
+      OperandType="EXPR"
+      Inverse="false"
+      CompareType="LESSTHANEQUALTO">
+      <validation:OnCondition
+        Name="OnConditionExpr"><![CDATA[newValue!=null && RejectQty!=null && RejectQty > newValue]]></validation:OnCondition>
+      <validation:TransientExpression><![CDATA[return RejectQty;]]></validation:TransientExpression>
+    </validation:CompareValidationBean>
+  </Attribute>
+  <Attribute
+    Name="RejectQty"
+    Precision="20"
+    Scale="6"
+    ColumnName="REJECT_QTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_ISSUEDETAIL">
+    <validation:CompareValidationBean
+      Name="RejectRuleLessThanQtyQty"
+      ResId="dgcom.model.eo.srv.SrvIssuedetail.Qty_Rule_1"
+      OnAttribute="RejectQty"
+      OperandType="EXPR"
+      Inverse="false"
+      CompareType="LESSTHANEQUALTO">
+      <validation:OnCondition
+        Name="OnConditionExpr"><![CDATA[Qty!=null && newValue!=null]]></validation:OnCondition>
+      <validation:TransientExpression><![CDATA[return Qty;]]></validation:TransientExpression>
+    </validation:CompareValidationBean>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvIssuedetail.RejectQty_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Pdqty"
+    Precision="20"
+    Scale="6"
+    ColumnName="PDQTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_ISSUEDETAIL"/>
+  <Attribute
+    Name="Retqty"
+    Precision="20"
+    Scale="6"
+    ColumnName="RETQTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_ISSUEDETAIL"/>
+  <Attribute
+    Name="Retrejectqty"
+    Precision="20"
+    Scale="6"
+    ColumnName="RETREJECTQTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_ISSUEDETAIL"/>
+  <Attribute
+    Name="Rate"
+    Precision="20"
+    Scale="6"
+    ColumnName="RATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_ISSUEDETAIL">
+    <validation:CompareValidationBean
+      Name="RateEqualSysRateOrZero"
+      ResId="dgcom.model.eo.srv.SrvIssuedetail.Rate_Rule_0"
+      OnAttribute="Rate"
+      OperandType="EXPR"
+      Inverse="false"
+      CompareType="EQUALTO">
+      <validation:TransientExpression><![CDATA[System.out.println("PakRate"+Rate+" "+Systemrate);
+if (newValue==null||newValue==0)
+return 0;
+else
+return Systemrate;]]></validation:TransientExpression>
+    </validation:CompareValidationBean>
+  </Attribute>
+  <Attribute
+    Name="Systemrate"
+    Precision="20"
+    Scale="6"
+    ColumnName="SYSTEMRATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_ISSUEDETAIL">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvIssuedetail.Systemrate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUEDETAIL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_ISSUEDETAIL"/>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_ISSUEDETAIL">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_ISSUEDETAIL"/>
+  <Attribute
+    Name="RbRejqty"
+    ColumnName="RB_REJQTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_ISSUEDETAIL"/>
+  <Attribute
+    Name="Purchrate"
+    Precision="20"
+    Scale="6"
+    ColumnName="PURCHRATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_ISSUEDETAIL"/>
+  <Attribute
+    Name="txtStoreTransTypeId"
+    Precision="80"
+    ColumnName="TXT_STORE_TRANS_TYPE_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <TransientExpression><![CDATA[AllStores?.StoreTransTypeId]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <Dependencies>
+      <Item
+        Value="Storeid"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="txtPartName"
+    Precision="80"
+    ColumnName="TXT_PART_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[if (Partid!=null)
+return InParts?.Description+"("+AllStores?.StoreName+")"
+else
+return null;]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <Dependencies>
+      <Item
+        Value="Partid"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvIssuedetail.txtPartName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="txtAmount"
+    ColumnName="TXT_AMOUNT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[if (Rate!=null && Qty!=null)
+return Rate * Qty;
+else
+return 0;]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvIssuedetail.txtAmount_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="Partid"/>
+      <Item
+        Value="Qty"/>
+      <Item
+        Value="Rate"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="Issueseq"
+    ColumnName="ISSUESEQ"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SRV_ISSUEDETAIL"/>
+  <AccessorAttribute
+    Name="SrvIssuance"
+    Association="dgcom.model.asso.srv.SysC0015123Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0015123Assoc.SrvIssuance"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0015123Assoc.SrvIssuedetail"
+    Type="dgcom.model.eo.srv.SrvIssuanceImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="InParts"
+    Association="dgcom.model.asso.srv.InPartsSrvIssuancDetailPartIDAsso"
+    AssociationEnd="dgcom.model.asso.srv.InPartsSrvIssuancDetailPartIDAsso.InParts"
+    AssociationOtherEnd="dgcom.model.asso.srv.InPartsSrvIssuancDetailPartIDAsso.SrvIssuedetail"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="AllStores"
+    Association="dgcom.model.asso.srv.AllStoresSrvIssueDetailStoreIdAsso"
+    AssociationEnd="dgcom.model.asso.srv.AllStoresSrvIssueDetailStoreIdAsso.AllStores"
+    AssociationOtherEnd="dgcom.model.asso.srv.AllStoresSrvIssueDetailStoreIdAsso.SrvIssuedetail"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="SrvJsparts"
+    Association="dgcom.model.asso.srv.SrvIssueDetailSrvJsPartsIssueDetailIDAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvIssueDetailSrvJsPartsIssueDetailIDAsso.SrvJsparts"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvIssueDetailSrvJsPartsIssueDetailIDAsso.SrvIssuedetail"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="SysC0014200"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0014200"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvIssuedetail.Issuedetlid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0014201">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014201"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvIssuedetail.IssueId"/>
+      <Item Value="dgcom.model.eo.srv.SrvIssuedetail.Partid"/>
+      <Item Value="dgcom.model.eo.srv.SrvIssuedetail.Storeid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015122">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0013956"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015122"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvIssuedetail.Reasonid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015123">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014199"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015123"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvIssuedetail.IssueId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015124">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014331"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015124"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvIssuedetail.Partid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015125">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_STORES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015125"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvIssuedetail.Storeid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvIssuedetail">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014331"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_ISSUEDETAIL"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvIssuedetail.Partid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvIssuedetail1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_STORES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_ISSUEDETAIL1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvIssuedetail.Storeid"/>
+    </AttrArray>
+  </Key>
+  <validation:ExpressionValidationBean
+    Name="BRReasonIssuedetailRule0"
+    OperandType="EXPR"
+    Inverse="false">
+    <validation:OnCondition
+      Name="OnConditionExpr"><![CDATA[Partid!=null]]></validation:OnCondition>
+    <validation:MsgIds>
+      <validation:Item
+        Value="errorId2PartAlreadyUsed"/>
+      <validation:Item
+        Value="errorId2ReasonEnter"/>
+      <validation:Item
+        Value="errorId3ReasonDontEnter"/>
+    </validation:MsgIds>
+    <validation:TransientExpression><![CDATA[if(SrvIssuance?.txtWarranty=='IW')
+{
+AccSrvIssueDetailPartUsedAgainstJobCard.executeQuery();
+if(AccSrvIssueDetailPartUsedAgainstJobCard.getRowCount()>0)
+{
+adf.error.raise("errorId2PartAlreadyUsed");
+return false;
+}
+}
+
+if(Reasonid ==null &&( (Rate==0||Rate==null||RejectQty==0||RejectQty==null) ))
+{
+adf.error.raise("errorId2ReasonEnter");
+return false;
+}
+
+else
+if(Reasonid!=null && Rate!=null && Rate>0 && RejectQty !=null && RejectQty>0)
+{
+adf.error.raise("errorId3ReasonDontEnter");
+return false;
+}
+
+else
+{
+return true;
+}]]></validation:TransientExpression>
+  </validation:ExpressionValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

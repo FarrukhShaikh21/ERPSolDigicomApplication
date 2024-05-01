@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobswapVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvJobswap.SWAPID, 
+       SrvJobswap.LOCATIONID, 
+       SrvJobswap.JOBCARDNO, 
+       SrvJobswap.ITEMID, 
+       SrvJobswap.PARTID, 
+       SrvJobswap.SDATE, 
+       SrvJobswap.SWP_STATUS, 
+       SrvJobswap.REMARKS, 
+       SrvJobswap.POSTED, 
+       SrvJobswap.POSTEDBY, 
+       SrvJobswap.CREATEDBY, 
+       SrvJobswap.CREATED_DATE, 
+       SrvJobswap.MODIFIEDBY, 
+       SrvJobswap.MODIFIED_DATE, 
+       SrvJobswap.PREV_DOCTYPE, 
+       SrvJobswap.PREV_DOCID, 
+       SrvJobswap.ASSIGNID, 
+       SrvJobswap.CDATE, 
+       SrvJobswap.MDATE, 
+       SrvJobswap.IS_MIGRATED, 
+       SrvJobswap.MIGRATED_DATE"
+  FromList="SRV_JOBSWAP SrvJobswap"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvJobswapVORowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvJobswapVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvJobswapVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvJobswapVOClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvJobSwapSrvJobCardNo"
+    ViewObjectName="dgcom.model.qvo.srv.SrvJobSwapSrvJobCardNoCIC_0054QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[Locationid==null?"-1":Locationid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccInItemsItemId"
+    ViewObjectName="dgcom.model.vo.inv.InItemsVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="InItemsExistsInServiceAndSrvBOM"
+      FullName="dgcom.model.vo.inv.InItemsVO.InItemsExistsInServiceAndSrvBOM"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_PROD_ID">
+        <TransientExpression><![CDATA[txtProdId==null?"-1":txtProdId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSrvJobSwapSrvPartID"
+    ViewObjectName="dgcom.model.qvo.srv.SrvJobSwapSrvPartIDCIC_0054QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_MODEL_ID">
+        <TransientExpression><![CDATA[txtItemId==null?"-1":txtItemId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSysUserRightsWiseLocation"
+    ViewObjectName="dgcom.model.qvo.sys.SysUserRightsWiseLocationQVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_HL">
+        <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.isOperationAllowed("HLevel")]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSubmitYesNo"
+    ViewObjectName="dgcom.model.qvo.sys.YesNoQVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LovSrvJobSwapSrvJobCardNo"
+    ListVOName="AccSrvJobSwapSrvJobCardNo"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="PrevDocid"/>
+      <Item Value="PrevDoctype"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Jobcardno"/>
+      <Item Value="PrevDocid"/>
+      <Item Value="PrevDoctype"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Jobcardno"/>
+      <Item Value="Model"/>
+      <Item Value="Jobdate"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSysUserRightsWiseLocation"
+    ListVOName="AccSysUserRightsWiseLocation"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Locationid"/>
+      <Item Value="LocationDescription"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSubmitYesNo"
+    ListVOName="AccSubmitYesNo"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Posted"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ID"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSrvJobSwapSrvPartName"
+    ListVOName="AccSrvJobSwapSrvPartID"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0"
+    ComboRowCountHint="10">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtPartName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Partid"/>
+      <Item Value="txtPartNo"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Description"/>
+      <Item Value="Partid"/>
+      <Item Value="Partno"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovInItemsItemName"
+    ListVOName="AccInItemsItemId"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="txtItemName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Itemid"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ModelNo"/>
+      <Item Value="Itemid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ModelNo"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="InItemsExistsInServiceAndSrvBOM"/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvJobswap"
+    Entity="dgcom.model.eo.srv.SrvJobswap"/>
+  <ViewAttribute
+    Name="Swapid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Swapid"
+    EntityUsage="SrvJobswap"
+    AliasName="SWAPID"/>
+  <ViewAttribute
+    Name="Locationid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Locationid"
+    EntityUsage="SrvJobswap"
+    AliasName="LOCATIONID"
+    LOVName="LovSysUserRightsWiseLocation">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Jobcardno"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobcardno"
+    EntityUsage="SrvJobswap"
+    AliasName="JOBCARDNO"
+    LOVName="LovSrvJobSwapSrvJobCardNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="Locationid"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Itemid"
+    PrecisionRule="true"
+    EntityAttrName="Itemid"
+    EntityUsage="SrvJobswap"
+    AliasName="ITEMID"/>
+  <ViewAttribute
+    Name="Partid"
+    PrecisionRule="true"
+    EntityAttrName="Partid"
+    EntityUsage="SrvJobswap"
+    AliasName="PARTID"/>
+  <ViewAttribute
+    Name="Sdate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Sdate"
+    EntityUsage="SrvJobswap"
+    AliasName="SDATE"/>
+  <ViewAttribute
+    Name="SwpStatus"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="SwpStatus"
+    EntityUsage="SrvJobswap"
+    AliasName="SWP_STATUS"/>
+  <ViewAttribute
+    Name="Remarks"
+    PrecisionRule="true"
+    EntityAttrName="Remarks"
+    EntityUsage="SrvJobswap"
+    AliasName="REMARKS"/>
+  <ViewAttribute
+    Name="Posted"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Posted"
+    EntityUsage="SrvJobswap"
+    AliasName="POSTED"
+    LOVName="LovSubmitYesNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Postedby"
+    PrecisionRule="true"
+    EntityAttrName="Postedby"
+    EntityUsage="SrvJobswap"
+    AliasName="POSTEDBY"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvJobswap"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvJobswap"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvJobswap"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvJobswap"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="PrevDoctype"
+    PrecisionRule="true"
+    EntityAttrName="PrevDoctype"
+    EntityUsage="SrvJobswap"
+    AliasName="PREV_DOCTYPE"/>
+  <ViewAttribute
+    Name="PrevDocid"
+    PrecisionRule="true"
+    EntityAttrName="PrevDocid"
+    EntityUsage="SrvJobswap"
+    AliasName="PREV_DOCID"/>
+  <ViewAttribute
+    Name="Assignid"
+    PrecisionRule="true"
+    EntityAttrName="Assignid"
+    EntityUsage="SrvJobswap"
+    AliasName="ASSIGNID"/>
+  <ViewAttribute
+    Name="Cdate"
+    PrecisionRule="true"
+    EntityAttrName="Cdate"
+    EntityUsage="SrvJobswap"
+    AliasName="CDATE"/>
+  <ViewAttribute
+    Name="Mdate"
+    PrecisionRule="true"
+    EntityAttrName="Mdate"
+    EntityUsage="SrvJobswap"
+    AliasName="MDATE"/>
+  <ViewAttribute
+    Name="IsMigrated"
+    PrecisionRule="true"
+    EntityAttrName="IsMigrated"
+    EntityUsage="SrvJobswap"
+    AliasName="IS_MIGRATED"/>
+  <ViewAttribute
+    Name="MigratedDate"
+    PrecisionRule="true"
+    EntityAttrName="MigratedDate"
+    EntityUsage="SrvJobswap"
+    AliasName="MIGRATED_DATE"/>
+  <ViewAttribute
+    Name="txtImeiNo"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtImeiNo"
+    EntityUsage="SrvJobswap"
+    AliasName="TXT_IMEI_NO"/>
+  <ViewAttribute
+    Name="txtProdId"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtProdId"
+    EntityUsage="SrvJobswap"
+    AliasName="TXT_PROD_ID"/>
+  <ViewAttribute
+    Name="txtItemId"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtItemId"
+    EntityUsage="SrvJobswap"
+    AliasName="TXT_ITEM_ID"/>
+  <ViewAttribute
+    Name="txtItemName"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtItemName"
+    EntityUsage="SrvJobswap"
+    AliasName="TXT_ITEM_NAME"
+    LOVName="LovInItemsItemName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="txtPartName"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtPartName"
+    EntityUsage="SrvJobswap"
+    AliasName="TXT_PART_NAME"
+    LOVName="LovSrvJobSwapSrvPartName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="txtPartNo"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtPartNo"
+    EntityUsage="SrvJobswap"
+    AliasName="TXT_PART_NO"/>
+  <ViewCriteria
+    Name="SrvJobswapFindVC"
+    ViewObjectName="dgcom.model.vo.srv.SrvJobswapVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SrvJobswapVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Swapid"
+        ViewAttribute="Swapid"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="Sdate"
+        ViewAttribute="Sdate"
+        Operator="="
+        Conjunction="AND"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="SrvJobcardVO"
+        ViewAttribute="SrvJobcardVO"
+        Operator="EXISTS"
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional"
+        IsNestedCriteria="true">
+        <ViewCriteria
+          Name="SrvJobcardVONestedCriteria"
+          ViewObjectName="dgcom.model.vo.srv.SrvJobcardVO"
+          Conjunction="AND">
+          <ViewCriteriaRow
+            Name="SrvJobcardVONestedCriteria_row_0"
+            UpperColumns="1">
+            <ViewCriteriaItem
+              Name="SrvJobcardVONestedCriteria_SrvJobcardVONestedCriteria_row_0_Jobcardno"
+              ViewAttribute="Jobcardno"
+              Operator="="
+              Conjunction="AND"
+              UpperColumns="0"
+              GenerateIsNullClauseForBindVars="false"
+              Required="Optional">
+              <Properties>
+                <SchemaBasedProperties>
+                  <DISPLAYWIDTH
+                    Value="20"/>
+                </SchemaBasedProperties>
+              </Properties>
+            </ViewCriteriaItem>
+          </ViewCriteriaRow>
+        </ViewCriteria>
+      </ViewCriteriaItem>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="SrvJobcardVO"
+    ViewLink="dgcom.model.vl.srv.SrvJobcardSrvJobSwapJobCardNoVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="InItemsVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015164Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="InPartsVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015165Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doSubmitJobSwap"
+      MethodName="doSubmitJobSwap">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="executeEmptyRowSet"
+      MethodName="executeEmptyRowSet">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

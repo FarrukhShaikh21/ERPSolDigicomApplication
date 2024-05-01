@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SysC0015386Link"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  EntityAssociation="dgcom.model.asso.srv.SysC0015386Assoc">
+  <ViewLinkDefEnd
+    Name="SrvStocktransferVO"
+    Cardinality="1"
+    Source="true"
+    Owner="dgcom.model.vo.srv.SrvStocktransferVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SrvStocktransferVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+      <Attr Name="_accessor" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.SrvStocktransferVO.Stransid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="SrvStransferdetlVO"
+    Cardinality="-1"
+    Owner="dgcom.model.vo.srv.SrvStransferdetlVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SrvStransferdetlVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.SrvStransferdetlVO.Stransid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

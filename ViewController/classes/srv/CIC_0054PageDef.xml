@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0054PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvJobswapCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobswapCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvJobswapFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvJobswapCRUDIterator" id="SrvJobswapFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvJobswapCRUDIterator" id="Swapid">
+      <AttrNames>
+        <Item Value="Swapid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobswapCRUDIterator" id="Sdate">
+      <AttrNames>
+        <Item Value="Sdate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobswapCRUDIterator" id="SwpStatus">
+      <AttrNames>
+        <Item Value="SwpStatus"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobswapCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvJobswapCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvJobswapCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <attributeValues IterBinding="SrvJobswapCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvJobswapCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"
+            InstanceName="modServiceTransactionsDataControl.SrvJobswapCRUD"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action IterBinding="SrvJobswapCRUDIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <listOfValues IterBinding="SrvJobswapCRUDIterator" StaticList="false" Uses="LovSrvJobSwapSrvJobCardNo"
+                  id="Jobcardno"/>
+    <methodAction id="doSubmitJobSwap" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doSubmitJobSwap"
+                  IsViewObjectMethod="true" DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobswapCRUD"/>
+    <listOfValues IterBinding="SrvJobswapCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <attributeValues IterBinding="SrvJobswapCRUDIterator" id="Itemid">
+      <AttrNames>
+        <Item Value="Itemid"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvJobswapCRUDIterator" StaticList="false" Uses="LovInItemsItemName" id="txtItemName"/>
+    <listOfValues IterBinding="SrvJobswapCRUDIterator" StaticList="false" Uses="LovSrvJobSwapSrvPartName"
+                  id="txtPartName"/>
+    <attributeValues IterBinding="SrvJobswapCRUDIterator" id="Partid">
+      <AttrNames>
+        <Item Value="Partid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobswapCRUDIterator" id="txtProdId">
+      <AttrNames>
+        <Item Value="txtProdId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobswapCRUDIterator" id="txtItemId">
+      <AttrNames>
+        <Item Value="txtItemId"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

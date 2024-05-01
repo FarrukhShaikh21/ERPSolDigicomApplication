@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0198PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvSetReplacementCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvSetReplacementCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvSetReplacementFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvSetReplacementCRUDIterator" id="SrvSetReplacementFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvSetReplacementCRUDIterator" id="SrId">
+      <AttrNames>
+        <Item Value="SrId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvSetReplacementCRUDIterator" id="Locationid">
+      <AttrNames>
+        <Item Value="Locationid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvSetReplacementCRUDIterator" id="SrDate">
+      <AttrNames>
+        <Item Value="SrDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvSetReplacementCRUDIterator" id="NewImeiNo">
+      <AttrNames>
+        <Item Value="NewImeiNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvSetReplacementCRUDIterator" id="Amount">
+      <AttrNames>
+        <Item Value="Amount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvSetReplacementCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvSetReplacementCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvSetReplacementCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvSetReplacementCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow" InstanceName="modServiceTransactionsDataControl.SrvSetReplacementCRUD"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action IterBinding="SrvSetReplacementCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <listOfValues IterBinding="SrvSetReplacementCRUDIterator" StaticList="false" Uses="LovSrvSetReplacementSrvJobCardNo"
+                  id="Jobcardno"/>
+    <attributeValues IterBinding="SrvSetReplacementCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doSubmitSetReplacement" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitSetReplacement" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvSetReplacementCRUD"/>
+    <attributeValues IterBinding="SrvSetReplacementCRUDIterator" id="InStoreid">
+      <AttrNames>
+        <Item Value="InStoreid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvSetReplacementCRUDIterator" id="txtInStoreName">
+      <AttrNames>
+        <Item Value="txtInStoreName"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvSetReplacementCRUDIterator" StaticList="false" Uses="LovSysUserStoreOutStoreName"
+                  id="txtOutStoreName"/>
+    <attributeValues IterBinding="SrvSetReplacementCRUDIterator" id="OutStoreid">
+      <AttrNames>
+        <Item Value="OutStoreid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvSetReplacementCRUDIterator" id="txtProdId">
+      <AttrNames>
+        <Item Value="txtProdId"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvSetReplacementCRUDIterator" StaticList="false" Uses="LovInItemsItemName"
+                  id="txtModelName"/>
+    <attributeValues IterBinding="SrvSetReplacementCRUDIterator" id="Itemid">
+      <AttrNames>
+        <Item Value="Itemid"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

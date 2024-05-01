@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0035PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvSetdeliveryCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvSetdeliveryCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvSetdeliveryFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvSetdeliveryCRUDIterator" id="SrvSetdeliveryFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvSetdeliveryCRUDIterator" id="Setdeliid">
+      <AttrNames>
+        <Item Value="Setdeliid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvSetdeliveryCRUDIterator" id="Sddate">
+      <AttrNames>
+        <Item Value="Sddate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvSetdeliveryCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvSetdeliveryCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvSetdeliveryCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvSetdeliveryCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvSetdeliveryCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <attributeValues IterBinding="SrvSetdeliveryCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvSetdeliveryCRUDIterator" StaticList="false" Uses="LovSrvSetDeliveryJobCardNo"
+                  id="Jobcardno"/>
+    <methodAction id="doSubmitSetDelivery" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitSetDelivery" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvSetdeliveryCRUD"/>
+    <listOfValues IterBinding="SrvSetdeliveryCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <attributeValues IterBinding="SrvSetdeliveryCRUDIterator" id="txtJobcardInfo">
+      <AttrNames>
+        <Item Value="txtJobcardInfo"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

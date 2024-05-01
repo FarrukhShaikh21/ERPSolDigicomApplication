@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="R264Link"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  EntityAssociation="dgcom.model.asso.set.R264Assoc">
+  <ViewLinkDefEnd
+    Name="ParentLocationidAllLocationsVO"
+    Cardinality="1"
+    Source="true"
+    Owner="dgcom.model.vo.set.AllLocationsVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="ParentLocationidAllLocationsVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.set.AllLocationsVO.Locationid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="AllLocationsVO"
+    Cardinality="-1"
+    Owner="dgcom.model.vo.set.AllLocationsVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="AllLocationsVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.set.AllLocationsVO.ParentLocationid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0031PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvJobqcCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobqcCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJspartsCIC_0031DETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJspartsCIC_0031DETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJsprepairCIC_0031DETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJsprepairCIC_0031DETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJobsymptomCIC_0031DETRO" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobsymptomCIC_0031DETROIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvJobqcFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvJobqcCRUDIterator" id="SrvJobqcFindVCQuery"/>
+    <iterator Binds="SrvJobfaultCIC_0031RO" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobfaultCIC_0031ROIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJobactionCIC_0031RO" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobactionCIC_0031ROIterator" ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvJobqcCRUDIterator" id="Qcdocid">
+      <AttrNames>
+        <Item Value="Qcdocid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobqcCRUDIterator" id="Qcdate">
+      <AttrNames>
+        <Item Value="Qcdate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobqcCRUDIterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobqcCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvJobqcCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvJobqcCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <listOfValues IterBinding="SrvJobqcCRUDIterator" StaticList="false" Uses="LovSrvJobQcSrvJobCardNo" id="Jobcardno"/>
+    <action IterBinding="SrvJobqcCRUDIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SrvJobqcCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <list IterBinding="SrvJobqcCRUDIterator" StaticList="false" Uses="LovSrvQc" id="Qcid" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject"/>
+    <tree IterBinding="SrvJspartsCIC_0031DETCRUDIterator" id="SrvJspartsCIC_0031DETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJspartsVO" Name="SrvJspartsCIC_0031DETCRUD0">
+        <AttrNames>
+          <Item Value="Issuedetlid"/>
+          <Item Value="Qty"/>
+          <Item Value="txtPartName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SrvJsprepairCIC_0031DETCRUDIterator" id="SrvJsprepairCIC_0031DETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJsprepairVO" Name="SrvJsprepairCIC_0031DETCRUD0">
+        <AttrNames>
+          <Item Value="Partid"/>
+          <Item Value="Qty"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SrvJobsymptomCIC_0031DETROIterator" id="SrvJobsymptomCIC_0031DETRO">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJobsymptomVO" Name="SrvJobsymptomCIC_0031DETRO0">
+        <AttrNames>
+          <Item Value="SymptomId"/>
+          <Item Value="txtSymptomDescription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SrvJobqcCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doSubmitJobQC" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doSubmitJobQC"
+                  IsViewObjectMethod="true" DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobqcCRUD"/>
+    <listOfValues IterBinding="SrvJobqcCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <listOfValues IterBinding="SrvJobqcCRUDIterator" StaticList="false" Uses="LovSrvTechnicianName"
+                  id="txtTechnicianName"/>
+    <attributeValues IterBinding="SrvJobqcCRUDIterator" id="Qcpersonid">
+      <AttrNames>
+        <Item Value="Qcpersonid"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SrvJobfaultCIC_0031ROIterator" StaticList="false" Uses="LovSrvFaultsFaultDescription"
+          id="txtFaultDescription" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <tree IterBinding="SrvJobactionCIC_0031ROIterator" id="SrvJobactionCIC_0031RO">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJobactionVO" Name="SrvJobactionCIC_0031RO0">
+        <AttrNames>
+          <Item Value="txtActionName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="SrvJobfaultCIC_0031ROIterator" id="SrvJobfaultCIC_0031RO">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJobfaultVO" Name="SrvJobfaultCIC_0031RO0">
+        <AttrNames>
+          <Item Value="txtFaultDescription"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SrvJobqcCRUDIterator" id="txtImeiNo">
+      <AttrNames>
+        <Item Value="txtImeiNo"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

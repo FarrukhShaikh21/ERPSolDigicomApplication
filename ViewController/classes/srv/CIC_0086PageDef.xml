@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0086PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvPartsalesCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvPartsalesCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvPsdetlDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvPsdetlDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="DocGlTransTypePartSaleDETRO" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="DocGlTransTypePartSaleDETROIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvPartsalesFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvPartsalesCRUDIterator" id="SrvPartsalesFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvPartsalesCRUDIterator" id="Psid">
+      <AttrNames>
+        <Item Value="Psid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvPartsalesCRUDIterator" id="Psdate">
+      <AttrNames>
+        <Item Value="Psdate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvPartsalesCRUDIterator" id="Customer">
+      <AttrNames>
+        <Item Value="Customer"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvPartsalesCRUDIterator" id="Phoneno">
+      <AttrNames>
+        <Item Value="Phoneno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvPartsalesCRUDIterator" id="Referno">
+      <AttrNames>
+        <Item Value="Referno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvPartsalesCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvPartsalesCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvPartsalesCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvPartsalesCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvPartsalesCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <tree IterBinding="SrvPsdetlDETCRUDIterator" id="SrvPsdetlDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvPsdetlVO" Name="SrvPsdetlDETCRUD0">
+        <AttrNames>
+          <Item Value="Storeid"/>
+          <Item Value="Partid"/>
+          <Item Value="Itemid"/>
+          <Item Value="Salesqty"/>
+          <Item Value="Rate"/>
+          <Item Value="txtAmount"/>
+          <Item Value="txtStoreName"/>
+          <Item Value="txtPartName"/>
+          <Item Value="txtPartNo"/>
+          <Item Value="txtModelNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvPsdetlDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createWithParams" InstanceName="modServiceTransactionsDataControl.SrvPsdetlDETCRUD"
+            DataControl="modServiceTransactionsDataControl">
+      <NamedData NDName="Psid" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SrvPsdetlDETCRUDIterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <methodAction id="doSubmitPartSale" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doSubmitPartSale"
+                  IsViewObjectMethod="true" DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvPartsalesCRUD"/>
+    <tree IterBinding="DocGlTransTypePartSaleDETROIterator" id="DocGlTransTypePartSaleDETRO">
+      <nodeDefinition DefName="dgcom.model.vo.gl.DocGlTransTypeDVO" Name="DocGlTransTypePartSaleDETRO0">
+        <AttrNames>
+          <Item Value="AccountCode"/>
+          <Item Value="CostCenter"/>
+          <Item Value="DbtAmount"/>
+          <Item Value="CrdAmount"/>
+          <Item Value="Narration"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="SrvPartsalesCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvPartsalesCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <listOfValues IterBinding="SrvPartsalesCRUDIterator" StaticList="false" Uses="LovSysUserStoreName"
+                  id="txtStoreName"/>
+    <attributeValues IterBinding="SrvPartsalesCRUDIterator" id="txtStoreId">
+      <AttrNames>
+        <Item Value="txtStoreId"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvPartsalesCRUDIterator" StaticList="false" Uses="LovInItemsItemName"
+                  id="txtModelName"/>
+    <attributeValues IterBinding="SrvPartsalesCRUDIterator" id="txtItemId">
+      <AttrNames>
+        <Item Value="txtItemId"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doCreateNewPartSaleRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewPartSaleRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvPartsalesCRUD"/>
+    <methodAction id="doCreateNewPartSaleDetRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewPartSaleDetRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvPsdetlDETCRUD"/>
+  </bindings>
+</pageDefinition>

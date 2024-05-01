@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0208PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="InItemPartMovementCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="InItemPartMovementCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="InIpmDetailDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="InIpmDetailDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="InItemPartMovementFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="InItemPartMovementCRUDIterator" id="InItemPartMovementFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="InItemPartMovementCRUDIterator" id="MappId">
+      <AttrNames>
+        <Item Value="MappId"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="InItemPartMovementCRUDIterator" StaticList="false" Uses="LovLocationidIPM"
+                  id="Locationid"/>
+    <attributeValues IterBinding="InItemPartMovementCRUDIterator" id="MapDate">
+      <AttrNames>
+        <Item Value="MapDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InItemPartMovementCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="InIpmDetailDETCRUDIterator" id="InIpmDetailDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.InIpmDetailVO" Name="InIpmDetailDETCRUD0">
+        <AttrNames>
+          <Item Value="Itemid"/>
+          <Item Value="txtModel"/>
+          <Item Value="Partid"/>
+          <Item Value="txtPartName"/>
+          <Item Value="txtPartNo"/>
+          <Item Value="Quantity"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="InItemPartMovementCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="InItemPartMovementCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="InItemPartMovementCRUDIterator" id="Find" RequiresUpdateModel="true" Action="iteratorFind"/>
+    <action IterBinding="InItemPartMovementCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="InItemPartMovementCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action IterBinding="InIpmDetailDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="InIpmDetailDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <methodAction id="doSubmitItemPartMove" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitItemPartMove" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.InItemPartMovementCRUD"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.doSubmitItemPartMove_modServiceTransactionsDataControl_InItemPartMovementCRUD_doSubmitItemPartMove_result"/>
+    <listOfValues IterBinding="InItemPartMovementCRUDIterator" StaticList="false" Uses="LovSysUserStoreIPM"
+                  id="txtFromStoreName"/>
+    <attributeValues IterBinding="InItemPartMovementCRUDIterator" id="FromStoreid">
+      <AttrNames>
+        <Item Value="FromStoreid"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="InItemPartMovementCRUDIterator" StaticList="false" Uses="LovSysUsertoStoreIPM"
+                  id="txtToStoreName"/>
+    <attributeValues IterBinding="InItemPartMovementCRUDIterator" id="ToStoreid">
+      <AttrNames>
+        <Item Value="ToStoreid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InItemPartMovementCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

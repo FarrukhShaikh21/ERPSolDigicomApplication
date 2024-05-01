@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68"
+                id="TFDigicomMain_TFDigicomMain_doCreateNewJobAssignRowPageDef" Package="dgcom.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="doCreateNewJobAssignRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewJobAssignRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobassignCRUD"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.doCreateNewJobAssignRow_modServiceTransactionsDataControl_SrvJobassignCRUD_doCreateNewJobAssignRow_result"/>
+  </bindings>
+</pageDefinition>

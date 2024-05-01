@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0034PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvEpfsetsCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvEpfsetsCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvEpfsetsdetlDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvEpfsetsdetlDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvEpfsetsFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvEpfsetsCRUDIterator" id="SrvEpfsetsFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvEpfsetsCRUDIterator" id="ExtId">
+      <AttrNames>
+        <Item Value="ExtId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvEpfsetsCRUDIterator" id="Edate">
+      <AttrNames>
+        <Item Value="Edate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvEpfsetsCRUDIterator" id="ImeiNo">
+      <AttrNames>
+        <Item Value="ImeiNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvEpfsetsCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvEpfsetsCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvEpfsetsCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvEpfsetsCRUDIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SrvEpfsetsCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <attributeValues IterBinding="SrvEpfsetsCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SrvEpfsetsdetlDETCRUDIterator" id="SrvEpfsetsdetlDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvEpfsetsdetlVo" Name="SrvEpfsetsdetlDETCRUD0">
+        <AttrNames>
+          <Item Value="Partid"/>
+          <Item Value="Storeid"/>
+          <Item Value="Exqty"/>
+          <Item Value="txtPartName"/>
+          <Item Value="txtPartNo"/>
+          <Item Value="txtStoreName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvEpfsetsdetlDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvEpfsetsdetlDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <methodAction id="doSubmitDismental" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doSubmitDismental"
+                  IsViewObjectMethod="true" DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvEpfsetsCRUD"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.doSubmitDismental_modServiceTransactionsDataControl_SrvEpfsetsCRUD_doSubmitDismental_result"/>
+    <listOfValues IterBinding="SrvEpfsetsCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <listOfValues IterBinding="SrvEpfsetsCRUDIterator" StaticList="false" Uses="LovSysUserStoreStoreName"
+                  id="txtStoreName"/>
+    <attributeValues IterBinding="SrvEpfsetsCRUDIterator" id="Storeid">
+      <AttrNames>
+        <Item Value="Storeid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvEpfsetsCRUDIterator" id="Itemid">
+      <AttrNames>
+        <Item Value="Itemid"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvEpfsetsCRUDIterator" StaticList="false" Uses="LovInItemsByStoreItemName"
+                  id="txtModelName"/>
+    <attributeValues IterBinding="SrvEpfsetsdetlDETCRUDIterator" id="txtPartCategoryId">
+      <AttrNames>
+        <Item Value="txtPartCategoryId"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doCreateNewEetractPartRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewEetractPartRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvEpfsetsCRUD"/>
+    <methodAction id="doCreateNewExtractDetRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewExtractDetRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvEpfsetsdetlDETCRUD"/>
+  </bindings>
+</pageDefinition>

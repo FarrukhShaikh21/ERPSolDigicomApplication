@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68"
+                id="TFDigicomMain_TFDigicomMain_doCreateNewJobRetDetRow1PageDef" Package="dgcom.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="doCreateNewJobRetDetRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewJobRetDetRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobretdetlDETCIC_0195CRUD"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0206PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvJobsinventoryCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobsinventoryCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJobsinvDetlDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobsinvDetlDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvJobsinventoryFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvJobsinventoryCRUDIterator" id="SrvJobsinventoryFindVCQuery"/>
+    <searchRegion Binds="SrvJobsinvDetlDETCRUDIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SrvJobsinvDetlDETCRUDQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvJobsinventoryCRUDIterator" id="JinvId">
+      <AttrNames>
+        <Item Value="JinvId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobsinventoryCRUDIterator" id="Locationid">
+      <AttrNames>
+        <Item Value="Locationid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobsinventoryCRUDIterator" id="JinvDate">
+      <AttrNames>
+        <Item Value="JinvDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobsinventoryCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvJobsinventoryCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJobsinventoryCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="SrvJobsinventoryCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvJobsinventoryCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvJobsinventoryCRUDIterator" id="Find" RequiresUpdateModel="true" Action="iteratorFind"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action IterBinding="SrvJobsinvDetlDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJobsinvDetlDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree IterBinding="SrvJobsinvDetlDETCRUDIterator" id="SrvJobsinvDetlDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJobsinvDetlVO" Name="SrvJobsinvDetlDETCRUD0">
+        <AttrNames>
+          <Item Value="Jobcardno"/>
+          <Item Value="txtModelNo"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="SrvJobsinventoryCRUDIterator" StaticList="false" Uses="LovSysUserStore" id="Storeid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SrvJobsinventoryCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doSubmitJobInventory" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitJobInventory" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobsinventoryCRUD"/>
+  </bindings>
+</pageDefinition>

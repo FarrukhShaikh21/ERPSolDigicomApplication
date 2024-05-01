@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AllProdcategory"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="ALL_PRODCATEGORY"
+  AliasName="AllProdcategory"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="ProdId"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="PROD_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ALL_PRODCATEGORY"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Description"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ALL_PRODCATEGORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="ALL_PRODCATEGORY"/>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ALL_PRODCATEGORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="ALL_PRODCATEGORY"/>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="ALL_PRODCATEGORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="PuPurchaseOrders"
+    Association="dgcom.model.asso.srv.AllProdCatProdIdPuPurchaseOrdLinAsso"
+    AssociationEnd="dgcom.model.asso.srv.AllProdCatProdIdPuPurchaseOrdLinAsso.PuPurchaseOrders"
+    AssociationOtherEnd="dgcom.model.asso.srv.AllProdCatProdIdPuPurchaseOrdLinAsso.AllProdcategory"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="SrvSymptoms"
+    Association="dgcom.model.asso.srv.SrvAllProdCatSrvSymptomsProdIDAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvAllProdCatSrvSymptomsProdIDAsso.SrvSymptoms"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvAllProdCatSrvSymptomsProdIDAsso.AllProdcategory"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="SysC0014065"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0014065"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.inv.AllProdcategory.ProdId"/>
+    </AttrArray>
+  </Key>
+</Entity>

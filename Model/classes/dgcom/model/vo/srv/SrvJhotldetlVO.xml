@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJhotldetlVO"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  SelectList="SrvJhotldetl.JHOID, 
+       SrvJhotldetl.JOBCARDNO, 
+       SrvJhotldetl.JOBSTATUS, 
+       SrvJhotldetl.PREV_DOCTYPE, 
+       SrvJhotldetl.PREV_DOCID, 
+       SrvJhotldetl.CREATEDBY, 
+       SrvJhotldetl.CREATED_DATE, 
+       SrvJhotldetl.MODIFIEDBY, 
+       SrvJhotldetl.MODIFIED_DATE, 
+       SrvJhotldetl.ROWID, 
+       SrvJhotldetl.JHOSEQ"
+  FromList="SRV_JHOTLDETL SrvJhotldetl"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvJhotldetlVORowImpl"
+  FetchMode="FETCH_AS_NEEDED"
+  ComponentClass="dgcom.model.vo.srv.SrvJhotldetlVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvJhotldetlVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvJhotldetlVOClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccAssignJobCardToCROQVO1"
+    ViewObjectName="dgcom.model.qvo.srv.AssignJobCardToCROQVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="AssignJobCardToCROQVOCriteria"
+      FullName="dgcom.model.qvo.srv.AssignJobCardToCROQVO.AssignJobCardToCROQVOCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[SrvJobhandovertolabVO?.Locationid==null?"-1":SrvJobhandovertolabVO?.Locationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_JHOID">
+        <TransientExpression><![CDATA[Jhoid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovSrvJobCardHandOverToCRO"
+    ListVOName="AccAssignJobCardToCROQVO1"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Jobcardnoo"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Jobcardnoo"/>
+      <Item Value="ModelName"/>
+      <Item Value="Jobdate"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvJhotldetl"
+    Entity="dgcom.model.eo.srv.SrvJhotldetl"/>
+  <ViewAttribute
+    Name="Jhoid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jhoid"
+    EntityUsage="SrvJhotldetl"
+    AliasName="JHOID"/>
+  <ViewAttribute
+    Name="Jobcardno"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobcardno"
+    EntityUsage="SrvJhotldetl"
+    AliasName="JOBCARDNO"
+    LOVName="LovSrvJobCardHandOverToCRO">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Jobstatus"
+    PrecisionRule="true"
+    EntityAttrName="Jobstatus"
+    EntityUsage="SrvJhotldetl"
+    AliasName="JOBSTATUS"/>
+  <ViewAttribute
+    Name="PrevDoctype"
+    PrecisionRule="true"
+    EntityAttrName="PrevDoctype"
+    EntityUsage="SrvJhotldetl"
+    AliasName="PREV_DOCTYPE"/>
+  <ViewAttribute
+    Name="PrevDocid"
+    PrecisionRule="true"
+    EntityAttrName="PrevDocid"
+    EntityUsage="SrvJhotldetl"
+    AliasName="PREV_DOCID"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvJhotldetl"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvJhotldetl"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvJhotldetl"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvJhotldetl"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="SrvJhotldetl"
+    AliasName="ROWID"/>
+  <ViewAttribute
+    Name="txtModelName"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[SrvJobcardVO?.ModelNo]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <Dependencies>
+      <Item
+        Value="Jobcardno"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.vo.srv.SrvJhotldetlVO.txtModelName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Jhoseq"
+    PrecisionRule="true"
+    EntityAttrName="Jhoseq"
+    EntityUsage="SrvJhotldetl"
+    AliasName="JHOSEQ"/>
+  <ViewLinkAccessor
+    Name="SrvJobhandovertolabVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015130Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SrvJobcardVO"
+    ViewLink="dgcom.model.vl.srv.SrvJobCardSrvJobCardHandOverCroVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="AssignJobCardToCROQVO"
+    ViewLink="dgcom.model.vl.srv.SrvAssignCroSrvJobHandOverToLabJobcardVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doCreateNewJobHODetRow"
+      MethodName="doCreateNewJobHODetRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

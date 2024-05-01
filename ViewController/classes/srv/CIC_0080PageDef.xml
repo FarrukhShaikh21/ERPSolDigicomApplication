@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0080PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvJobcardCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobcardCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJobsymptomDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobsymptomDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvJobcardFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvJobcardCRUDIterator" id="SrvJobcardFindVCQuery"/>
+  </executables>
+  <bindings>
+    <listOfValues IterBinding="SrvJobcardCRUDIterator" StaticList="false" Uses="LovSrvDealersLocationWise"
+                  id="DealerId"/>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="Jobcardno">
+      <AttrNames>
+        <Item Value="Jobcardno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="Jobdate">
+      <AttrNames>
+        <Item Value="Jobdate"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvJobcardCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <listOfValues IterBinding="SrvJobcardCRUDIterator" StaticList="false" Uses="LovSrvJobCardItemId" id="Itemid"/>
+    <list IterBinding="SrvJobcardCRUDIterator" StaticList="false" Uses="LovSrvJobTypeJobtypeid" id="Jobtypeid"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="Customer">
+      <AttrNames>
+        <Item Value="Customer"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="Phoneno">
+      <AttrNames>
+        <Item Value="Phoneno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="Mobileno">
+      <AttrNames>
+        <Item Value="Mobileno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="ImeiNo">
+      <AttrNames>
+        <Item Value="ImeiNo"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SrvJobcardCRUDIterator" StaticList="false" Uses="LovWarrantyTypes" id="Warranty"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="ComplainMedia">
+      <AttrNames>
+        <Item Value="ComplainMedia"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="Charges">
+      <AttrNames>
+        <Item Value="Charges"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="Epcost">
+      <AttrNames>
+        <Item Value="Epcost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="PurchDate">
+      <AttrNames>
+        <Item Value="PurchDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="WCard">
+      <AttrNames>
+        <Item Value="WCard"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="DeliveryDate">
+      <AttrNames>
+        <Item Value="DeliveryDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SrvJobcardCRUDIterator" StaticList="false" Uses="LovSoProductBrandBased" id="Brandid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <listOfValues IterBinding="SrvJobcardCRUDIterator" StaticList="false" Uses="LovSrvJobcardItemIdModelNo"
+                  id="txtModelNo"/>
+    <listOfValues IterBinding="SrvJobcardCRUDIterator" StaticList="false" Uses="LovNameSrvDealersLocationWise"
+                  id="Name"/>
+    <list IterBinding="SrvJobcardCRUDIterator" StaticList="false" Uses="LovSrvJobconditionsConditionID"
+          id="Conditionid" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <tree IterBinding="SrvJobsymptomDETCRUDIterator" id="SrvJobsymptomDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJobsymptomVO" Name="SrvJobsymptomDETCRUD0">
+        <AttrNames>
+          <Item Value="txtSymptomDescription"/>
+          <Item Value="SymptomId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvJobsymptomDETCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJobsymptomDETCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="txtTotalCost">
+      <AttrNames>
+        <Item Value="txtTotalCost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobcardCRUDIterator" id="txtTotalImei">
+      <AttrNames>
+        <Item Value="txtTotalImei"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

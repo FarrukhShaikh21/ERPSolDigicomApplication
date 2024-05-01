@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0213PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvJobassignagentCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobassignagentCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJaadetlDetCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJaadetlDetCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvJobAssignAgentFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvJobassignagentCRUDIterator" id="SrvJobAssignAgentFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvJobassignagentCRUDIterator" id="JaaId">
+      <AttrNames>
+        <Item Value="JaaId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobassignagentCRUDIterator" id="Locationid">
+      <AttrNames>
+        <Item Value="Locationid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobassignagentCRUDIterator" id="Jaadate">
+      <AttrNames>
+        <Item Value="Jaadate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobassignagentCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SrvJaadetlDetCRUDIterator" id="SrvJaadetlDetCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJaadetlVO" Name="SrvJaadetlDetCRUD0">
+        <AttrNames>
+          <Item Value="JaaId"/>
+          <Item Value="Jobcardno"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvJaadetlDetCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJaadetlDetCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="SrvJobassignagentCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJobassignagentCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action IterBinding="SrvJobassignagentCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvJobassignagentCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <list IterBinding="SrvJobassignagentCRUDIterator" StaticList="false" Uses="LovAgent" id="Callagentid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SrvJobassignagentCRUDIterator" id="txtFromDate">
+      <AttrNames>
+        <Item Value="txtFromDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobassignagentCRUDIterator" id="txtToDate">
+      <AttrNames>
+        <Item Value="txtToDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobassignagentCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

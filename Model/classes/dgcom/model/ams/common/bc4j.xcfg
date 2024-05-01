@@ -1,0 +1,55 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="dgcom.model.ams.modLogin">
+      <AppModuleConfig DeployPlatform="LOCAL" name="modLoginLocal" ApplicationName="dgcom.model.ams.modLogin" jbo.project="dgcom.model.Model">
+         <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="dgcom.model.ams.modLogin"/>
+         <Custom ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" ns0:JDBCDataSource="java:comp/env/jdbc/connDigicomDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig jbo.project="dgcom.model.Model" ApplicationName="dgcom.model.ams.modLogin" DeployPlatform="LOCAL" name="modLoginShared">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.resetnontransactionalstate="false" jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="OracleApps" jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="dgcom.model.ams.modLogin"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/connDigicomDS" ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="dgcom.model.ams.modServiceTransactions">
+      <AppModuleConfig DeployPlatform="LOCAL" name="modServiceTransactionsLocal" ApplicationName="dgcom.model.ams.modServiceTransactions" jbo.project="dgcom.model.Model">
+         <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="dgcom.model.ams.modServiceTransactions"/>
+         <Custom ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" ns0:JDBCDataSource="java:comp/env/jdbc/connDigicomDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig jbo.project="dgcom.model.Model" ApplicationName="dgcom.model.ams.modServiceTransactions" DeployPlatform="LOCAL" name="modServiceTransactionsShared">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.resetnontransactionalstate="false" jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="OracleApps" jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="dgcom.model.ams.modServiceTransactions"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/connDigicomDS" ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="dgcom.model.ams.modServiceSetup">
+      <AppModuleConfig DeployPlatform="LOCAL" name="modServiceSetupLocal" ApplicationName="dgcom.model.ams.modServiceSetup" jbo.project="dgcom.model.Model">
+         <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="dgcom.model.ams.modServiceSetup"/>
+         <Custom ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" ns0:JDBCDataSource="java:comp/env/jdbc/connDigicomDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig jbo.project="dgcom.model.Model" ApplicationName="dgcom.model.ams.modServiceSetup" DeployPlatform="LOCAL" name="modServiceSetupShared">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.resetnontransactionalstate="false" jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="OracleApps" jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="dgcom.model.ams.modServiceSetup"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/connDigicomDS" ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="dgcom.model.ams.modServiceReports">
+      <AppModuleConfig DeployPlatform="LOCAL" name="modServiceReportsLocal" ApplicationName="dgcom.model.ams.modServiceReports" jbo.project="dgcom.model.Model">
+         <Database jbo.locking.mode="optimistic" jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="dgcom.model.ams.modServiceReports"/>
+         <Custom ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" ns0:JDBCDataSource="java:comp/env/jdbc/connDigicomDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig jbo.project="dgcom.model.Model" ApplicationName="dgcom.model.ams.modServiceReports" DeployPlatform="LOCAL" name="modServiceReportsShared">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.resetnontransactionalstate="false" jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="OracleApps" jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="dgcom.model.ams.modServiceReports"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/connDigicomDS" ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

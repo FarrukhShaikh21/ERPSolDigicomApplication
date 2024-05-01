@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="dgcom.model.ams.modServiceSetup">
+      <AppModuleConfig name="189D4583B48" IsLazyLoadingTrue="true" DBconnection="java:comp/env/jdbc/connDigicomDS" ApplicationName="dgcom.model.ams.modServiceSetup" jbo.project="dgcom.model.Model" BC4JConfigName="modServiceSetupLocal" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" DeployPlatform="LOCAL" JDBCName="connDigicom">
+         <Database jbo.SQLBuilder="Oracle" jbo.TypeMapEntries="OracleApps" jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="dgcom.model.ams.modServiceSetup"/>
+         <Tester FullProxyInterfaceName="dgcom.model.ams.common.modServiceSetup"/>
+         <Custom ns0:LastUsedConfiguration="modServiceSetupLocal" ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" ns0:JDBCDataSource="java:comp/env/jdbc/connDigicomDS" ns0:_testers_credentials_needed="false" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

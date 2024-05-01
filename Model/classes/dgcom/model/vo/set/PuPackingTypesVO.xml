@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PuPackingTypesVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="PuPackingTypes.PACKTYPEID, 
+       PuPackingTypes.DESCRIPTION, 
+       PuPackingTypes.CREATEDBY, 
+       PuPackingTypes.CREATED_DATE, 
+       PuPackingTypes.MODIFIEDBY, 
+       PuPackingTypes.MODIFIED_DATE"
+  FromList="PU_PACKING_TYPES PuPackingTypes"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full">
+  <EntityUsage
+    Name="PuPackingTypes"
+    Entity="dgcom.model.eo.set.PuPackingTypes"/>
+  <ViewAttribute
+    Name="Packtypeid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Packtypeid"
+    EntityUsage="PuPackingTypes"
+    AliasName="PACKTYPEID"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="PuPackingTypes"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="PuPackingTypes"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="PuPackingTypes"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="PuPackingTypes"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="PuPackingTypes"
+    AliasName="MODIFIED_DATE"/>
+</ViewObject>

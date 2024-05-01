@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0098PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvJobhandovertolabCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobhandovertolabCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJhotldetDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJhotldetDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvJobhandovertolabFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvJobhandovertolabCRUDIterator" id="SrvJobhandovertolabFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvJobhandovertolabCRUDIterator" id="Jhoid">
+      <AttrNames>
+        <Item Value="Jhoid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobhandovertolabCRUDIterator" id="Hodate">
+      <AttrNames>
+        <Item Value="Hodate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobhandovertolabCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobhandovertolabCRUDIterator" id="Createdby">
+      <AttrNames>
+        <Item Value="Createdby"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvJobhandovertolabCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvJobhandovertolabCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action IterBinding="SrvJobhandovertolabCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJobhandovertolabCRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <attributeValues IterBinding="SrvJobhandovertolabCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SrvJhotldetDETCRUDIterator" id="SrvJhotldetDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJhotldetlVO" Name="SrvJhotldetDETCRUD0">
+        <AttrNames>
+          <Item Value="Jobcardno"/>
+          <Item Value="txtModelName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="doSubmitJobHandOver" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitJobHandOver" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobhandovertolabCRUD"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.doSubmitJobHandOver_modServiceTransactionsDataControl_SrvJobhandovertolabCRUD_doSubmitJobHandOver_result"/>
+    <action IterBinding="SrvJhotldetDETCRUDIterator" id="CreateInsert1"
+            InstanceName="modServiceTransactionsDataControl.SrvJhotldetDETCRUD"
+            DataControl="modServiceTransactionsDataControl" RequiresUpdateModel="true" Action="createWithParams">
+      <NamedData NDName="Jhoid" NDValue="#{bindings.Jhoid.inputValue}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SrvJhotldetDETCRUDIterator" id="Delete1"
+            InstanceName="modServiceTransactionsDataControl.SrvJhotldetDETCRUD"
+            DataControl="modServiceTransactionsDataControl" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action IterBinding="SrvJobhandovertolabCRUDIterator" id="Execute" RequiresUpdateModel="true"
+            Action="iteratorExecute"/>
+    <listOfValues IterBinding="SrvJobhandovertolabCRUDIterator" StaticList="false"
+                  Uses="LovAccSysUserRightsWiseLocation" id="Locationid"/>
+  </bindings>
+</pageDefinition>

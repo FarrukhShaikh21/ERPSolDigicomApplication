@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvBomparts"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SRV_BOMPARTS"
+  AliasName="SrvBomparts"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.eo.srv.SrvBompartsImpl">
+  <DesignTime>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Init|Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="Partid"
+    IsNotNull="true"
+    Precision="15"
+    ColumnName="PARTID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BOMPARTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BomId"
+    Precision="15"
+    ColumnName="BOM_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BOMPARTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Qty"
+    Precision="5"
+    Scale="0"
+    ColumnName="QTY"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SRV_BOMPARTS"/>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BOMPARTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_BOMPARTS">
+    <TransientExpression><![CDATA[adf.currentDate]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_BOMPARTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_BOMPARTS"/>
+  <Attribute
+    Name="Rowid"
+    IsUpdateable="false"
+    ColumnName="ROWID"
+    SQLType="ROWID"
+    Type="oracle.jbo.domain.RowID"
+    ColumnType="ROWID"
+    TableName="SRV_BOMPARTS"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="Bomseq"
+    ColumnName="BOMSEQ"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SRV_BOMPARTS"/>
+  <AccessorAttribute
+    Name="SrvBom"
+    Association="dgcom.model.asso.srv.SysC0015083Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0015083Assoc.SrvBom"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0015083Assoc.SrvBomparts"
+    Type="dgcom.model.eo.srv.SrvBomImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="InParts"
+    Association="dgcom.model.asso.srv.SrvInPartsSrvBomPartsPartIdAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvInPartsSrvBomPartsPartIdAsso.InParts"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvInPartsSrvBomPartsPartIdAsso.SrvBomparts"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC0013975">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0013975"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvBomparts.BomId"/>
+      <Item Value="dgcom.model.eo.srv.SrvBomparts.Partid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015083">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0013974"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015083"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvBomparts.BomId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015084">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014331"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015084"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvBomparts.Partid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvBomparts">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0013974"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_BOMPARTS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvBomparts.BomId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvBomparts1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014331"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_BOMPARTS1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvBomparts.Partid"/>
+    </AttrArray>
+  </Key>
+</Entity>

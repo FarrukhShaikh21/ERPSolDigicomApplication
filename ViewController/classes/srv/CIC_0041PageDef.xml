@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0041PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SrvJobtypesVO1" RangeSize="25" DataControl="modServiceSetupDataControl"
+              id="SrvJobtypesVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SrvJobtypesVO1Iterator" id="SrvJobtypesVO1">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJobtypesVO" Name="SrvJobtypesVO10">
+        <AttrNames>
+          <Item Value="Jobtypeid"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvJobtypesVO1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="SrvJobtypesVO1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="modServiceSetupDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceSetupDataControl"/>
+  </bindings>
+</pageDefinition>

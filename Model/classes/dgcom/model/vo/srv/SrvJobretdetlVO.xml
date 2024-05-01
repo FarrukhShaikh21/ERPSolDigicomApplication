@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobretdetlVO"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  SelectList="SrvJobretdetl.JOBRETID, 
+       SrvJobretdetl.JOBCARDNO, 
+       SrvJobretdetl.CREATEDBY, 
+       SrvJobretdetl.CREATED_DATE, 
+       SrvJobretdetl.MODIFIEDBY, 
+       SrvJobretdetl.MODIFIED_DATE, 
+       SrvJobretdetl.PREV_DOCTYPE, 
+       SrvJobretdetl.PREV_DOCID, 
+       SrvJobretdetl.CDATE, 
+       SrvJobretdetl.MDATE, 
+       SrvJobretdetl.JOBSTATUS, 
+       SrvJobretdetl.ROWID, 
+       SrvJobretdetl.JOBRETIDSEQ"
+  FromList="SRV_JOBRETDETL SrvJobretdetl"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvJobretdetlVORowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvJobretdetlVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvJobretdetlVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvJobretdetlVOClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvJobReturnDetailSrvJobCardNo"
+    ViewObjectName="dgcom.model.qvo.srv.SrvJobReturnDetailSrvJobCardNoCIC_0055QVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvJobReturnDetailSrvJobCardJobRetVC"
+      FullName="dgcom.model.qvo.srv.SrvJobReturnDetailSrvJobCardNoCIC_0055QVO.SrvJobReturnDetailSrvJobCardJobRetVC"/>
+    <ViewCriteriaUsage
+      Name="SrvJobReturnDetailSrvJobCardNoNotExitsInCurrentDocVC"
+      FullName="dgcom.model.qvo.srv.SrvJobReturnDetailSrvJobCardNoCIC_0055QVO.SrvJobReturnDetailSrvJobCardNoNotExitsInCurrentDocVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[SrvJobreturnVO?.Locationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_TOLOCATIONID">
+        <TransientExpression><![CDATA[SrvJobreturnVO?.Tolocationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_JOBRETID">
+        <TransientExpression><![CDATA[Jobretid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_DOC_TYPE">
+        <TransientExpression><![CDATA[SrvJobreturnVO?.Doctype]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSrvJobReturnDetailSrvJobCardPendJobRet"
+    ViewObjectName="dgcom.model.qvo.srv.SrvJobReturnDetailSrvJobCardNoCIC_0055QVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="SrvJobReturnDetailSrvJobCardNoNotExitsInCurrentDocVC"
+      FullName="dgcom.model.qvo.srv.SrvJobReturnDetailSrvJobCardNoCIC_0055QVO.SrvJobReturnDetailSrvJobCardNoNotExitsInCurrentDocVC"/>
+    <ViewCriteriaUsage
+      Name="SrvJobReturnDetailSrvJobCardPendingJobRetVC"
+      FullName="dgcom.model.qvo.srv.SrvJobReturnDetailSrvJobCardNoCIC_0055QVO.SrvJobReturnDetailSrvJobCardPendingJobRetVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[SrvJobreturnVO?.Locationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_TOLOCATIONID">
+        <TransientExpression><![CDATA[SrvJobreturnVO?.Tolocationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_JOBRETID">
+        <TransientExpression><![CDATA[Jobretid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_DOC_TYPE">
+        <TransientExpression><![CDATA[SrvJobreturnVO?.Doctype]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovSrvJobReturnDetailSrvJobCardNo"
+    ListVOName="AccSrvJobReturnDetailSrvJobCardNo"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Jobcardno"/>
+      <Item Value="Model"/>
+      <Item Value="Jobdate"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"
+      Name="SrvJobReturnDetailSrvJobCardJobRetVC"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSrvJobReturnDetailSrvJobCardPendJobRet"
+    ListVOName="AccSrvJobReturnDetailSrvJobCardPendJobRet"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+        <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Jobcardno"/>
+      <Item Value="Model"/>
+      <Item Value="Jobdate"/>
+        </AttrArray>    
+    <DisplayCriteria
+      Name="SrvJobReturnDetailSrvJobCardPendingJobRetVC"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvJobretdetl"
+    Entity="dgcom.model.eo.srv.SrvJobretdetl"/>
+  <ViewAttribute
+    Name="Jobretid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobretid"
+    EntityUsage="SrvJobretdetl"
+    AliasName="JOBRETID"/>
+  <ViewAttribute
+    Name="Jobcardno"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobcardno"
+    EntityUsage="SrvJobretdetl"
+    AliasName="JOBCARDNO"
+    LOVName="LovSrvJobReturnDetailSrvJobCardNo"
+    LOVFinder="txtLovName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvJobretdetl"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvJobretdetl"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvJobretdetl"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvJobretdetl"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="PrevDoctype"
+    PrecisionRule="true"
+    EntityAttrName="PrevDoctype"
+    EntityUsage="SrvJobretdetl"
+    AliasName="PREV_DOCTYPE"/>
+  <ViewAttribute
+    Name="PrevDocid"
+    PrecisionRule="true"
+    EntityAttrName="PrevDocid"
+    EntityUsage="SrvJobretdetl"
+    AliasName="PREV_DOCID"/>
+  <ViewAttribute
+    Name="Cdate"
+    PrecisionRule="true"
+    EntityAttrName="Cdate"
+    EntityUsage="SrvJobretdetl"
+    AliasName="CDATE"/>
+  <ViewAttribute
+    Name="Mdate"
+    PrecisionRule="true"
+    EntityAttrName="Mdate"
+    EntityUsage="SrvJobretdetl"
+    AliasName="MDATE"/>
+  <ViewAttribute
+    Name="Jobstatus"
+    PrecisionRule="true"
+    EntityAttrName="Jobstatus"
+    EntityUsage="SrvJobretdetl"
+    AliasName="JOBSTATUS"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="SrvJobretdetl"
+    AliasName="ROWID"/>
+  <ViewAttribute
+    Name="txtLovName"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[if (SrvJobreturnVO?.Doctype=='JRet')
+ return 'LovSrvJobReturnDetailSrvJobCardNo'
+else
+ return 'LovSrvJobReturnDetailSrvJobCardPendJobRet']]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Jobretidseq"
+    PrecisionRule="true"
+    EntityAttrName="Jobretidseq"
+    EntityUsage="SrvJobretdetl"
+    AliasName="JOBRETIDSEQ"/>
+  <ViewLinkAccessor
+    Name="SrvJobreturnVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015155Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SrvJobReturnDetailSrvJobCardNoCIC_0055QVO"
+    ViewLink="dgcom.model.vl.srv.SrvJobRetDetSrvJobCardNoCIC_0055QVOVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doCreateNewJobRetDetRow"
+      MethodName="doCreateNewJobRetDetRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

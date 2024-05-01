@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvIssueReturnDetailPartsCIC_0028QVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.SrvIssueReturnDetailPartsCIC_0028QVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_ISSUE_ID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[SELECT ISSUEDETLID,PART_DESC,PARTNO,CATEGORY,QTY,REJECT_QTY 
+FROM 
+( 
+SELECT I.ISSUEDETLID, P.DESCRIPTION PART_DESC, P.PARTNO, C.DESCRIPTION CATEGORY,  
+  (I.QTY-(NVL(I.PDQTY,0)+NVL(I.RETQTY,0)+NVL(US.USQTY,0))) QTY,  
+  ((NVL(I.REJECT_QTY,0)-NVL(I.RETREJECTQTY,0))-((NVL(I.REJECT_QTY,0)-NVL(I.PDQTY,0))+NVL(US.USRQTY,0))) REJECT_QTY  
+FROM SRV_ISSUEDETAIL I, IN_PARTS P, SRV_PARTCATEGORY C,  
+  (SELECT ISSUEDETLID, SUM(USQTY) USQTY, SUM(USRQTY) USRQTY  
+  FROM  
+          (SELECT D.ISSUEDETLID, D.QTY USQTY, 0 USRQTY  
+           FROM SRV_JOBSOLUTION M, SRV_JSPARTS D  
+           WHERE M.JSOLUTION_ID=D.JSOLUTION_ID  
+             AND M.POSTED='N'  
+             AND D.ISSUEDETLID IN(SELECT D.ISSUEDETLID FROM SRV_ISSUANCE M, SRV_ISSUEDETAIL D  
+                                  WHERE M.ISSUE_ID=D.ISSUE_ID AND M.ISSUE_ID = :P_ADF_ISSUE_ID)  
+  
+           UNION ALL  
+           SELECT D.ISSUEDETLID, D.QTY USQTY, D.REJECT_QTY USRQTY  
+           FROM SRV_ISSUERETURN M, SRV_IRETDETAIL D  
+           WHERE M.ISSUERETID=D.ISSUERETID  
+             AND M.ISSUE_ID = :P_ADF_ISSUE_ID  
+             AND M.POSTED='N')  
+  GROUP BY ISSUEDETLID) US  
+  
+WHERE I.PARTID = P.PARTID  
+  AND P.PARTCATID = C.PARTCATID  
+  AND ( (I.QTY-(NVL(I.PDQTY,0)+NVL(I.RETQTY,0)+NVL(US.USQTY,0))) >0  
+         OR ((NVL(REJECT_QTY,0)-NVL(RETREJECTQTY,0))- ((NVL(REJECT_QTY,0)-NVL(PDQTY,0))+NVL(US.USRQTY,0))  ) >0)   
+  AND I.ISSUEDETLID = US.ISSUEDETLID(+)  
+  AND I.ISSUE_ID = :P_ADF_ISSUE_ID 
+  )]]></SQLQuery>
+  <ViewAttribute
+    Name="Issuedetlid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ISSUEDETLID"
+    Expression="ISSUEDETLID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PartDesc"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PART_DESC"
+    Expression="PART_DESC"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvIssueReturnDetailPartsCIC_0028QVO.PartDesc_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Partno"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="25"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PARTNO"
+    Expression="PARTNO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvIssueReturnDetailPartsCIC_0028QVO.Partno_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Category"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CATEGORY"
+    Expression="CATEGORY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Qty"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="QTY"
+    Expression="QTY"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="10"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RejectQty"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="REJECT_QTY"
+    Expression="REJECT_QTY"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvIssueReturnDetailPartsCIC_0028QVO.RejectQty_LABEL"/>
+        <DISPLAYWIDTH
+          Value="10"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Issuedetlid"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0085PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvStockadjustCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvStockadjustCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvSadjustdetlDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvSadjustdetlDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvStockadjustFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvStockadjustCRUDIterator" id="SrvStockadjustFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvStockadjustCRUDIterator" id="Said">
+      <AttrNames>
+        <Item Value="Said"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStockadjustCRUDIterator" id="Locationid">
+      <AttrNames>
+        <Item Value="Locationid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStockadjustCRUDIterator" id="Sadate">
+      <AttrNames>
+        <Item Value="Sadate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStockadjustCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvStockadjustCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvStockadjustCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvStockadjustCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvStockadjustCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <tree IterBinding="SrvSadjustdetlDETCRUDIterator" id="SrvSadjustdetlDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvSadjustdetlVO" Name="SrvSadjustdetlDETCRUD0">
+        <AttrNames>
+          <Item Value="Storeid"/>
+          <Item Value="Partid"/>
+          <Item Value="Itemid"/>
+          <Item Value="Incqty"/>
+          <Item Value="Decqty"/>
+          <Item Value="Rate"/>
+          <Item Value="txtAmount"/>
+          <Item Value="txtPartName"/>
+          <Item Value="txtPartNo"/>
+          <Item Value="txtStoreName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvSadjustdetlDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvSadjustdetlDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <attributeValues IterBinding="SrvStockadjustCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doSubmitSrvStockAdjust" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitSrvStockAdjust" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvStockadjustCRUD"/>
+    <list IterBinding="SrvStockadjustCRUDIterator" StaticList="false" Uses="LovSrvPartcategory" id="txtCatId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <listOfValues IterBinding="SrvStockadjustCRUDIterator" StaticList="false" Uses="LovInItemsName" id="txtModelName"/>
+    <attributeValues IterBinding="SrvStockadjustCRUDIterator" id="txtModelNo">
+      <AttrNames>
+        <Item Value="txtModelNo"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doCreateNewStockAdjRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewStockAdjRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvStockadjustCRUD"/>
+    <methodAction id="doCreateNewStockAdjDetRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewStockAdjDetRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvSadjustdetlDETCRUD"/>
+  </bindings>
+</pageDefinition>

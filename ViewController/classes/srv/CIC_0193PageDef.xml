@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0193PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvJobtransferCIC_0193CRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobtransferCIC_0193CRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJobtransferdetlDETCIC_0193CRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobtransferdetlDETCIC_0193CRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Binds="SrvJobtransferdetlDETCIC_0193CRUDIterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  id="SrvJobtransferdetlDETCIC_0193CRUDQuery"/>
+    <searchRegion Criteria="SrvJobtransferFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvJobtransferCIC_0193CRUDIterator" id="SrvJobtransferFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvJobtransferCIC_0193CRUDIterator" id="Transferid">
+      <AttrNames>
+        <Item Value="Transferid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobtransferCIC_0193CRUDIterator" id="Tdate">
+      <AttrNames>
+        <Item Value="Tdate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobtransferCIC_0193CRUDIterator" id="Locationid">
+      <AttrNames>
+        <Item Value="Locationid"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvJobtransferCIC_0193CRUDIterator" StaticList="false" Uses="LovToLocation"
+                  id="Tolocationid"/>
+    <attributeValues IterBinding="SrvJobtransferCIC_0193CRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvJobtransferCIC_0193CRUDIterator" id="Previous" RequiresUpdateModel="true"
+            Action="previous"/>
+    <action IterBinding="SrvJobtransferCIC_0193CRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvJobtransferCIC_0193CRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createWithParams" InstanceName="modServiceTransactionsDataControl.SrvJobtransferCIC_0193CRUD"
+            DataControl="modServiceTransactionsDataControl">
+      <NamedData NDName="Doctype" NDValue="#{'DPTrans'}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SrvJobtransferCIC_0193CRUDIterator" id="Delete" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <attributeValues IterBinding="SrvJobtransferCIC_0193CRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SrvJobtransferdetlDETCIC_0193CRUDIterator" id="SrvJobtransferdetlDETCIC_0193CRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJobtransferdetlVO" Name="SrvJobtransferdetlDETCIC_0193CRUD0">
+        <AttrNames>
+          <Item Value="Jobcardno"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvJobtransferdetlDETCIC_0193CRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJobtransferdetlDETCIC_0193CRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <methodAction id="doSubmitJobTransfer" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitJobTransfer" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobtransferCRUD"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.doSubmitJobTransfer_modServiceTransactionsDataControl_SrvJobtransferCRUD_doSubmitJobTransfer_result"/>
+    <methodAction id="doCreateNewJobTransferRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewJobTransferRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobtransferCIC_0193CRUD"/>
+    <methodAction id="doCreateNewJobTransDetRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewJobTransDetRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobtransferdetlDETCIC_0193CRUD"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.doCreateNewJobTransDetRow_modServiceTransactionsDataControl_SrvJobtransferdetlDETCIC_0193CRUD_doCreateNewJobTransDetRow_result"/>
+  </bindings>
+</pageDefinition>

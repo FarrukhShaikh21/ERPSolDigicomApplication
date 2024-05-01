@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0017PageDef" Package="srv">
+    <parameters/>
+    <executables>
+        <variableIterator id="variables"/>
+        <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+        <iterator Binds="SrvPartsPriceCRUD" RangeSize="25" DataControl="modServiceSetupDataControl"
+                  id="SrvPartsPriceCRUDIterator" ChangeEventPolicy="ppr"/>
+        <iterator Binds="SrvIpdetlDetCRUD" RangeSize="25" DataControl="modServiceSetupDataControl"
+                  id="SrvIpdetlDetCRUDIterator" ChangeEventPolicy="ppr"/>
+    </executables>
+    <bindings>
+        <attributeValues IterBinding="SrvPartsPriceCRUDIterator" id="IpId">
+            <AttrNames>
+                <Item Value="IpId"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SrvPartsPriceCRUDIterator" id="DocDate">
+            <AttrNames>
+                <Item Value="DocDate"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SrvPartsPriceCRUDIterator" id="EffectFrom">
+            <AttrNames>
+                <Item Value="EffectFrom"/>
+            </AttrNames>
+        </attributeValues>
+        <attributeValues IterBinding="SrvPartsPriceCRUDIterator" id="EffectTo">
+            <AttrNames>
+                <Item Value="EffectTo"/>
+            </AttrNames>
+        </attributeValues>
+        <action IterBinding="SrvPartsPriceCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+                Action="createInsertRow"/>
+        <action IterBinding="SrvPartsPriceCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <action IterBinding="SrvPartsPriceCRUDIterator" id="Find" RequiresUpdateModel="true" Action="iteratorFind"/>
+        <action IterBinding="SrvPartsPriceCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+        <action IterBinding="SrvPartsPriceCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+        <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+                DataControl="modServiceSetupDataControl"/>
+        <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+                DataControl="modServiceSetupDataControl"/>
+        <listOfValues IterBinding="SrvPartsPriceCRUDIterator" StaticList="false" Uses="LovSrvItemId" id="txtItemId"/>
+        <list IterBinding="SrvPartsPriceCRUDIterator" StaticList="false" Uses="LovSrvPartCategory"
+              id="txtPartCategory" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+        <tree IterBinding="SrvIpdetlDetCRUDIterator" id="SrvIpdetlDetCRUD">
+            <nodeDefinition DefName="dgcom.model.vo.srv.SrvIpdetlVO" Name="SrvIpdetlDetCRUD0">
+                <AttrNames>
+                    <Item Value="Partid"/>
+                    <Item Value="Price"/>
+                </AttrNames>
+            </nodeDefinition>
+        </tree>
+        <action IterBinding="SrvIpdetlDetCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+                Action="createInsertRow"/>
+        <action IterBinding="SrvIpdetlDetCRUDIterator" id="Delete" RequiresUpdateModel="false"
+                Action="removeCurrentRow"/>
+        <listOfValues IterBinding="SrvPartsPriceCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                      id="Locationid"/>
+        <attributeValues IterBinding="SrvPartsPriceCRUDIterator" id="Posted">
+            <AttrNames>
+                <Item Value="Posted"/>
+            </AttrNames>
+        </attributeValues>
+    </bindings>
+</pageDefinition>

@@ -1,0 +1,359 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobreturnVO"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  SelectList="SrvJobreturn.JOBRETID, 
+       SrvJobreturn.LOCATIONID, 
+       SrvJobreturn.TOLOCATIONID, 
+       SrvJobreturn.JRDATE, 
+       SrvJobreturn.REMARKS, 
+       SrvJobreturn.POSTED, 
+       SrvJobreturn.POSTEDBY, 
+       SrvJobreturn.CREATEDBY, 
+       SrvJobreturn.CREATED_DATE, 
+       SrvJobreturn.MODIFIEDBY, 
+       SrvJobreturn.MODIFIED_DATE, 
+       SrvJobreturn.STATUS, 
+       SrvJobreturn.DOCTYPE, 
+       SrvJobreturn.IS_MIGRATED, 
+       SrvJobreturn.MIGRATED_DATE, 
+       SrvJobreturn.JOBRETIDSEQ"
+  FromList="SRV_JOBRETURN SrvJobreturn"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvJobreturnVORowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvJobreturnVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvJobreturnVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvJobreturnVOClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccToAllLocations"
+    ViewObjectName="dgcom.model.vo.set.AllLocationsVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="AllLocationsServiceLocationsVC"
+      FullName="dgcom.model.vo.set.AllLocationsVO.AllLocationsServiceLocationsVC"/>
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[Locationid==null?"-1":Locationid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSysUserRightsWiseLocation"
+    ViewObjectName="dgcom.model.qvo.sys.SysUserRightsWiseLocationQVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_HL">
+        <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.isOperationAllowed("HLevel")]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSubmitYesNo"
+    ViewObjectName="dgcom.model.qvo.sys.YesNoQVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LovToAllLocations"
+    ListVOName="AccToAllLocations"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Tolocationid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="LocationDescription"/>
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="AllLocationsServiceLocationsVC"
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSysUserRightsWiseLocation"
+    ListVOName="AccSysUserRightsWiseLocation"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Locationid"/>
+      <Item Value="LocationDescription"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSubmitYesNo"
+    ListVOName="AccSubmitYesNo"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Posted"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ID"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvJobreturn"
+    Entity="dgcom.model.eo.srv.SrvJobreturn"/>
+  <ViewAttribute
+    Name="Jobretid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobretid"
+    EntityUsage="SrvJobreturn"
+    AliasName="JOBRETID"/>
+  <ViewAttribute
+    Name="Locationid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Locationid"
+    EntityUsage="SrvJobreturn"
+    AliasName="LOCATIONID"
+    LOVName="LovSysUserRightsWiseLocation">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Tolocationid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Tolocationid"
+    EntityUsage="SrvJobreturn"
+    AliasName="TOLOCATIONID"
+    LOVName="LovToAllLocations">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Jrdate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jrdate"
+    EntityUsage="SrvJobreturn"
+    AliasName="JRDATE"/>
+  <ViewAttribute
+    Name="Remarks"
+    PrecisionRule="true"
+    EntityAttrName="Remarks"
+    EntityUsage="SrvJobreturn"
+    AliasName="REMARKS"/>
+  <ViewAttribute
+    Name="Posted"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Posted"
+    EntityUsage="SrvJobreturn"
+    AliasName="POSTED"
+    LOVName="LovSubmitYesNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Postedby"
+    PrecisionRule="true"
+    EntityAttrName="Postedby"
+    EntityUsage="SrvJobreturn"
+    AliasName="POSTEDBY"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvJobreturn"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvJobreturn"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvJobreturn"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvJobreturn"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="SrvJobreturn"
+    AliasName="STATUS"/>
+  <ViewAttribute
+    Name="Doctype"
+    PrecisionRule="true"
+    EntityAttrName="Doctype"
+    EntityUsage="SrvJobreturn"
+    AliasName="DOCTYPE"/>
+  <ViewAttribute
+    Name="IsMigrated"
+    PrecisionRule="true"
+    EntityAttrName="IsMigrated"
+    EntityUsage="SrvJobreturn"
+    AliasName="IS_MIGRATED"/>
+  <ViewAttribute
+    Name="MigratedDate"
+    PrecisionRule="true"
+    EntityAttrName="MigratedDate"
+    EntityUsage="SrvJobreturn"
+    AliasName="MIGRATED_DATE"/>
+  <ViewAttribute
+    Name="Jobretidseq"
+    PrecisionRule="true"
+    EntityAttrName="Jobretidseq"
+    EntityUsage="SrvJobreturn"
+    AliasName="JOBRETIDSEQ"/>
+  <ViewCriteria
+    Name="SrvJobreturnFindVC"
+    ViewObjectName="dgcom.model.vo.srv.SrvJobreturnVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SrvJobreturnVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Jobretid"
+        ViewAttribute="Jobretid"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="Tolocationid"
+        ViewAttribute="Tolocationid"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="Jrdate"
+        ViewAttribute="Jrdate"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="Posted"
+        ViewAttribute="Posted"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="SrvJobretdetlVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015155Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doSubmitJobReturn"
+      MethodName="doSubmitJobReturn">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="executeEmptyRowSet"
+      MethodName="executeEmptyRowSet">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="doCreateNewJobReturnRow"
+      MethodName="doCreateNewJobReturnRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

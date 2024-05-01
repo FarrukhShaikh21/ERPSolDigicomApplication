@@ -1,0 +1,500 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvReviewjobwarrantyVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvReviewjobwarranty.REVIEWID, 
+       SrvReviewjobwarranty.LOCATIONID, 
+       SrvReviewjobwarranty.JOBCARDNO, 
+       SrvReviewjobwarranty.RV_DATE, 
+       SrvReviewjobwarranty.WARRANTY, 
+       SrvReviewjobwarranty.CHARGES, 
+       SrvReviewjobwarranty.EPCOST, 
+       SrvReviewjobwarranty.LASTCHARGES, 
+       SrvReviewjobwarranty.LASTEPCOST, 
+       SrvReviewjobwarranty.REMARKS, 
+       SrvReviewjobwarranty.POSTED, 
+       SrvReviewjobwarranty.POSTEDBY, 
+       SrvReviewjobwarranty.CREATEDBY, 
+       SrvReviewjobwarranty.CREATED_DATE, 
+       SrvReviewjobwarranty.MODIFIEDBY, 
+       SrvReviewjobwarranty.MODIFIED_DATE, 
+       SrvReviewjobwarranty.PREV_DOCTYPE, 
+       SrvReviewjobwarranty.PREV_DOCID, 
+       SrvReviewjobwarranty.ASSIGNID, 
+       SrvReviewjobwarranty.JOBSTATUS, 
+       SrvReviewjobwarranty.CDATE, 
+       SrvReviewjobwarranty.MDATE, 
+       SrvReviewjobwarranty.IS_MIGRATED, 
+       SrvReviewjobwarranty.MIGRATED_DATE, 
+       SrvReviewjobwarranty.CURRENT_WARRANTY, 
+       SrvReviewjobwarranty.REVERSE_CHK"
+  FromList="SRV_REVIEWJOBWARRANTY SrvReviewjobwarranty"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.stand.DigicomViewRowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvReviewjobwarrantyVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvReviewjobwarrantyVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvReviewjobwarrantyVOClient">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Coll|VarAccess"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvJobWarrantySrvJobCardNo"
+    ViewObjectName="dgcom.model.qvo.srv.SrvJobWarrantySrvJobCardNoCIC_0067QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[Locationid==null?"-1":Locationid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSysUserRightsWiseLocation"
+    ViewObjectName="dgcom.model.qvo.sys.SysUserRightsWiseLocationQVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_HL">
+        <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.isOperationAllowed("HLevel")]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSubmitYesNo"
+    ViewObjectName="dgcom.model.qvo.sys.YesNoQVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LovSrvJobWarrantySrvJobCardNo"
+    ListVOName="AccSrvJobWarrantySrvJobCardNo"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Jobcardno"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Lastcharges"/>
+      <Item Value="Lastepcost"/>
+      <Item Value="Jobstatus"/>
+      <Item Value="CurrentWarranty"/>
+      <Item Value="PrevDocid"/>
+      <Item Value="PrevDoctype"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Jobcardno"/>
+      <Item Value="Charges"/>
+      <Item Value="Epcost"/>
+      <Item Value="Jobstatus"/>
+      <Item Value="Warranty"/>
+      <Item Value="PrevDocid"/>
+      <Item Value="PrevDoctype"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Jobcardno"/>
+      <Item Value="Customer"/>
+      <Item Value="Model"/>
+      <Item Value="Jobdate"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSysUserRightsWiseLocatioin"
+    ListVOName="AccSysUserRightsWiseLocation"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Locationid"/>
+      <Item Value="LocationDescription"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSubmitYesNo"
+    ListVOName="AccSubmitYesNo"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Posted"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ID"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvReviewjobwarranty"
+    Entity="dgcom.model.eo.srv.SrvReviewjobwarranty"/>
+  <ViewAttribute
+    Name="Reviewid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Reviewid"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="REVIEWID"/>
+  <ViewAttribute
+    Name="Locationid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Locationid"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="LOCATIONID"
+    LOVName="LovSysUserRightsWiseLocatioin">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Jobcardno"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobcardno"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="JOBCARDNO"
+    LOVName="LovSrvJobWarrantySrvJobCardNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="Locationid"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="RvDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="RvDate"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="RV_DATE"/>
+  <ViewAttribute
+    Name="Warranty"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Warranty"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="WARRANTY"/>
+  <ViewAttribute
+    Name="Charges"
+    PrecisionRule="true"
+    EntityAttrName="Charges"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="CHARGES"/>
+  <ViewAttribute
+    Name="Epcost"
+    PrecisionRule="true"
+    EntityAttrName="Epcost"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="EPCOST"/>
+  <ViewAttribute
+    Name="Lastcharges"
+    PrecisionRule="true"
+    EntityAttrName="Lastcharges"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="LASTCHARGES"/>
+  <ViewAttribute
+    Name="Lastepcost"
+    PrecisionRule="true"
+    EntityAttrName="Lastepcost"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="LASTEPCOST"/>
+  <ViewAttribute
+    Name="Remarks"
+    PrecisionRule="true"
+    EntityAttrName="Remarks"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="REMARKS"/>
+  <ViewAttribute
+    Name="Posted"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Posted"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="POSTED"
+    LOVName="LovSubmitYesNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Postedby"
+    PrecisionRule="true"
+    EntityAttrName="Postedby"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="POSTEDBY"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="PrevDoctype"
+    PrecisionRule="true"
+    EntityAttrName="PrevDoctype"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="PREV_DOCTYPE"/>
+  <ViewAttribute
+    Name="PrevDocid"
+    PrecisionRule="true"
+    EntityAttrName="PrevDocid"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="PREV_DOCID"/>
+  <ViewAttribute
+    Name="Assignid"
+    PrecisionRule="true"
+    EntityAttrName="Assignid"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="ASSIGNID"/>
+  <ViewAttribute
+    Name="Jobstatus"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Jobstatus"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="JOBSTATUS"/>
+  <ViewAttribute
+    Name="Cdate"
+    PrecisionRule="true"
+    EntityAttrName="Cdate"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="CDATE"/>
+  <ViewAttribute
+    Name="Mdate"
+    PrecisionRule="true"
+    EntityAttrName="Mdate"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="MDATE"/>
+  <ViewAttribute
+    Name="IsMigrated"
+    PrecisionRule="true"
+    EntityAttrName="IsMigrated"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="IS_MIGRATED"/>
+  <ViewAttribute
+    Name="MigratedDate"
+    PrecisionRule="true"
+    EntityAttrName="MigratedDate"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="MIGRATED_DATE"/>
+  <ViewAttribute
+    Name="txtImeiNo"
+    IsQueriable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    EntityAttrName="txtImeiNo"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="TXT_IMEI_NO"/>
+  <ViewAttribute
+    Name="txtItemid"
+    PrecisionRule="true"
+    EntityAttrName="txtItemid"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="TXT_ITEMID"
+    IsQueriable="false"
+    IsPersistent="false"/>
+  <ViewAttribute
+    Name="CurrentWarranty"
+    PrecisionRule="true"
+    EntityAttrName="CurrentWarranty"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="CURRENT_WARRANTY"/>
+  <ViewAttribute
+    Name="ReverseChk"
+    PrecisionRule="true"
+    EntityAttrName="ReverseChk"
+    EntityUsage="SrvReviewjobwarranty"
+    AliasName="REVERSE_CHK"/>
+  <ViewCriteria
+    Name="SrvReviewjobwarrantyFindVC"
+    ViewObjectName="dgcom.model.vo.srv.SrvReviewjobwarrantyVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SrvReviewjobwarrantyVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Reviewid"
+        ViewAttribute="Reviewid"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="RvDate"
+        ViewAttribute="RvDate"
+        Operator="="
+        Conjunction="AND"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="Warranty"
+        ViewAttribute="Warranty"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="Posted"
+        ViewAttribute="Posted"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="SrvJobcardVO"
+        ViewAttribute="SrvJobcardVO"
+        Operator="EXISTS"
+        Conjunction="AND"
+        UpperColumns="0"
+        GenerateIsNullClauseForBindVars="false"
+        Required="Optional"
+        IsNestedCriteria="true">
+        <ViewCriteria
+          Name="SrvJobcardVONestedCriteria"
+          ViewObjectName="dgcom.model.vo.srv.SrvJobcardVO"
+          Conjunction="AND">
+          <ViewCriteriaRow
+            Name="SrvJobcardVONestedCriteria_row_0"
+            UpperColumns="1">
+            <ViewCriteriaItem
+              Name="SrvJobcardVONestedCriteria_SrvJobcardVONestedCriteria_row_0_Jobcardno"
+              ViewAttribute="Jobcardno"
+              Operator="="
+              Conjunction="AND"
+              UpperColumns="0"
+              GenerateIsNullClauseForBindVars="false"
+              Required="Optional">
+              <Properties>
+                <SchemaBasedProperties>
+                  <DISPLAYWIDTH
+                    Value="20"/>
+                </SchemaBasedProperties>
+              </Properties>
+            </ViewCriteriaItem>
+          </ViewCriteriaRow>
+        </ViewCriteria>
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="SrvJobcardVO"
+    ViewLink="dgcom.model.vl.srv.SrvJobCardSrvReviewWtyJobCardNoVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doSubmitReviewJobWty"
+      MethodName="doSubmitReviewJobWty">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="executeEmptyRowSet"
+      MethodName="executeEmptyRowSet">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

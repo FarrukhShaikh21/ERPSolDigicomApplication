@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SysC0015114Link"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  EntityAssociation="dgcom.model.asso.srv.SysC0015114Assoc">
+  <ViewLinkDefEnd
+    Name="SrvPartsPriceVO"
+    Cardinality="1"
+    Source="true"
+    Owner="dgcom.model.vo.srv.SrvPartsPriceVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SrvPartsPriceVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+      <Attr Name="_accessor" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.SrvPartsPriceVO.IpId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="SrvIpdetlVO"
+    Cardinality="-1"
+    Owner="dgcom.model.vo.srv.SrvIpdetlVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SrvIpdetlVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.SrvIpdetlVO.IpId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

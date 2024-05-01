@@ -1,0 +1,572 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvStnparts"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SRV_STNPARTS"
+  AliasName="SrvStnparts"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.eo.srv.SrvStnpartsImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_superClass" Value="dgcom.model.stand.DigicomEntityImpl"/>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvStnPartStnQtyCheckingQuery"
+    ViewObjectName="dgcom.model.qvo.srv.SrvStnPartStnQtyCheckingQueryCIC_0044QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_FROMSTOREID">
+        <TransientExpression><![CDATA[Fromstoreid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_PARTID">
+        <TransientExpression><![CDATA[Partid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_STNDETLID">
+        <TransientExpression><![CDATA[Stndetlid]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <Attribute
+    Name="Stndetlid"
+    IsNotNull="true"
+    Precision="25"
+    ColumnName="STNDETLID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STNPARTS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Stnno"
+    IsNotNull="true"
+    Precision="20"
+    ColumnName="STNNO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STNPARTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Fromstoreid"
+    Precision="15"
+    ColumnName="FROMSTOREID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STNPARTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[SrvStn?.txtFromStore]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvStnparts.Fromstoreid_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Tostoreid"
+    Precision="15"
+    ColumnName="TOSTOREID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STNPARTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="10"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvStnparts.Tostoreid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Partid"
+    Precision="15"
+    ColumnName="PARTID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STNPARTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvStnparts.Partid_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Stnqty"
+    Precision="10"
+    Scale="2"
+    ColumnName="STNQTY"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SRV_STNPARTS">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvStnparts.Stnqty_LABEL"/>
+        <DISPLAYWIDTH
+          Value="10"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="UsedQty"
+    Precision="10"
+    Scale="2"
+    ColumnName="USED_QTY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_STNPARTS"/>
+  <Attribute
+    Name="Rate"
+    Precision="12"
+    Scale="2"
+    ColumnName="RATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_STNPARTS"/>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STNPARTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_STNPARTS"/>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STNPARTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_STNPARTS"/>
+  <Attribute
+    Name="Dmditemid"
+    Precision="25"
+    ColumnName="DMDITEMID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STNPARTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="25"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Itemid"
+    Precision="15"
+    ColumnName="ITEMID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STNPARTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Salesrate"
+    Precision="12"
+    Scale="2"
+    ColumnName="SALESRATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="SRV_STNPARTS"/>
+  <Attribute
+    Name="Incid"
+    Precision="15"
+    ColumnName="INCID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_STNPARTS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="txtDemandQty"
+    ColumnName="TXT_DEMAND_QTY"
+    SQLType="INTEGER"
+    Type="java.lang.Integer"
+    ColumnType="INTEGER"
+    IsPersistent="false"
+    IsQueriable="false"/>
+  <Attribute
+    Name="txtStock"
+    ColumnName="TXT_STOCK"
+    SQLType="INTEGER"
+    Type="java.lang.Integer"
+    ColumnType="INTEGER"
+    IsPersistent="false"
+    IsQueriable="false"/>
+  <Attribute
+    Name="txtPartName"
+    Precision="80"
+    ColumnName="TXT_PART_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[if (Partid!=null)
+return InItems?.ModelNo+":"+InParts?.Description;
+else 
+return null;]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvStnparts.txtPartName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="40"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="Partid"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="txtPartID"
+    Precision="80"
+    ColumnName="TXT_PART_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[InParts?.Partno]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvStnparts.txtPartID_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="Partid"/>
+    </Dependencies>
+  </Attribute>
+  <Attribute
+    Name="txtToStoreName"
+    Precision="80"
+    ColumnName="TXT_TO_STORE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[AllStores?.StoreName]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="Tostoreid"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvStnparts.txtToStoreName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="txtFromStoreName"
+    Precision="80"
+    ColumnName="TXT_FROM_STORE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsQueriable="false"
+    IsPersistent="false">
+    <TransientExpression><![CDATA[AllStores1?.StoreName]]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <Dependencies>
+      <Item
+        Value="Fromstoreid"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="20"/>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvStnparts.txtFromStoreName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="txtDemandQuantity"
+    ColumnName="TXT_DEMAND_QUANTITY"
+    SQLType="INTEGER"
+    Type="java.lang.Integer"
+    ColumnType="INTEGER"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[AllDemandLines?.DemandQty]]></TransientExpression>
+    <Dependencies>
+      <Item
+        Value="Dmditemid"/>
+    </Dependencies>
+  </Attribute>
+  <AccessorAttribute
+    Name="SrvStn"
+    Association="dgcom.model.asso.srv.SysC0015213Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0015213Assoc.SrvStn"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0015213Assoc.SrvStnparts"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="InParts"
+    Association="dgcom.model.asso.srv.InPartsSrvStnPartsPartIdAsso"
+    AssociationEnd="dgcom.model.asso.srv.InPartsSrvStnPartsPartIdAsso.InParts"
+    AssociationOtherEnd="dgcom.model.asso.srv.InPartsSrvStnPartsPartIdAsso.SrvStnparts"
+    Type="dgcom.model.eo.srv.InPartsImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="AllStores"
+    Association="dgcom.model.asso.srv.SysC0015215Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0015215Assoc.AllStores"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0015215Assoc.SrvStnparts"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="AllStores1"
+    Association="dgcom.model.asso.srv.SysC0015216Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0015216Assoc.AllStores1"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0015216Assoc.SrvStnparts1"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="InItems"
+    Association="dgcom.model.asso.srv.SrvInItemsSrvStnPartsItemIdAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvInItemsSrvStnPartsItemIdAsso.InItems"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvInItemsSrvStnPartsItemIdAsso.SrvStnparts"
+    Type="dgcom.model.eo.inv.InItemsImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="AllDemandLines"
+    Association="dgcom.model.asso.srv.SrvAllDemandItemSrvStnPartDemandItemIDAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvAllDemandItemSrvStnPartDemandItemIDAsso.AllDemandLines"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvAllDemandItemSrvStnPartDemandItemIDAsso.SrvStnparts"
+    Type="dgcom.model.eo.srv.AllDemandLinesImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC0013968"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0013968"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvStnparts.Stndetlid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015213">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0013967"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015213"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvStnparts.Stnno"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015214">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014331"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015214"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvStnparts.Partid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015215">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_STORES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015215"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvStnparts.Tostoreid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015216">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_STORES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015216"/>
+      <Attr Name="_isDisabledConstraint" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvStnparts.Fromstoreid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvStnparts">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0013967"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_STNPARTS"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvStnparts.Stnno"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvStnparts1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014331"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_STNPARTS1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvStnparts.Partid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvStnparts2">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_STORES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_STNPARTS2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvStnparts.Tostoreid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvStnparts3">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKALL_STORES"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_STNPARTS3"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvStnparts.Fromstoreid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvStnparts4">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="XPKIN_ITEMS"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_STNPARTS4"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvStnparts.Itemid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvStnparts5">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014455"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_STNPARTS5"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvStnparts.Dmditemid"/>
+    </AttrArray>
+  </Key>
+  <validation:ExpressionValidationBean
+    Name="SrvStnpartsRemQtyRule"
+    OperandType="EXPR"
+    Inverse="false">
+    <validation:OnCondition
+      Name="OnConditionExpr"><![CDATA[Stnqty!=null && Partid!=null && Fromstoreid!=null]]></validation:OnCondition>
+    <validation:MsgIds>
+      <validation:Item
+        Value="errorId2CheckStnQty"/>
+      <validation:Item
+        Value="errorId2DemandChk"/>
+    </validation:MsgIds>
+    <validation:ResExpressions
+      Name="SrvStnpartsRemQtyRule_ResExprList">
+      <validation:Expression
+        Name="txtPartName"><![CDATA[txtPartName]]></validation:Expression>
+    </validation:ResExpressions>
+    <validation:TransientExpression><![CDATA[System.out.println(AccSrvStnPartStnQtyCheckingQuery.getRowCount()+ " ++ ");
+if(SrvStn?.Stntype=='DMD' && Stnqty > txtDemandQuantity)
+{
+adf.error.raise("errorId2DemandChk");
+return false;
+}
+if(AccSrvStnPartStnQtyCheckingQuery.getRowCount()==0||(Stnqty>AccSrvStnPartStnQtyCheckingQuery?.first()?.getAttribute("Qty")))
+{
+adf.error.raise("errorId2CheckStnQty");
+return false;
+}
+
+
+return true;]]></validation:TransientExpression>
+  </validation:ExpressionValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

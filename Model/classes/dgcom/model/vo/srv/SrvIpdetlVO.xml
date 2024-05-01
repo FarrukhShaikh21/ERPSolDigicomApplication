@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvIpdetlVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="SrvIpdetl.IP_ID, 
+       SrvIpdetl.PARTID, 
+       SrvIpdetl.PRICE, 
+       SrvIpdetl.COST_VALUE, 
+       SrvIpdetl.CREATEDBY, 
+       SrvIpdetl.CREATED_DATE, 
+       SrvIpdetl.MODIFIEDBY, 
+       SrvIpdetl.MODIFIED_DATE, 
+       SrvIpdetl.ROWID"
+  FromList="SRV_IPDETL SrvIpdetl"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.stand.DigicomViewRowImpl"
+  ComponentClass="dgcom.model.stand.DigicomViewObjectImpl">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvPartPriceDetailPartID"
+    ViewObjectName="dgcom.model.qvo.srv.SrvPartPriceDetailPartIDCIC_0017QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_CATID">
+        <TransientExpression><![CDATA[SrvPartsPriceVO?.txtPartCategory]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_IP_ID">
+        <TransientExpression><![CDATA[SrvPartsPriceVO?.IpId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_MODEL">
+        <TransientExpression><![CDATA[SrvPartsPriceVO?.txtItemId]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LovSrvPartPriceDetailPartID"
+    ListVOName="AccSrvPartPriceDetailPartID"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Partid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Partid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Partid"/>
+      <Item Value="Partno"/>
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvIpdetl"
+    Entity="dgcom.model.eo.srv.SrvIpdetl"/>
+  <ViewAttribute
+    Name="IpId"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="IpId"
+    EntityUsage="SrvIpdetl"
+    AliasName="IP_ID"/>
+  <ViewAttribute
+    Name="Partid"
+    IsUnique="true"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Partid"
+    EntityUsage="SrvIpdetl"
+    AliasName="PARTID"
+    LOVName="LovSrvPartPriceDetailPartID">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Price"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Price"
+    EntityUsage="SrvIpdetl"
+    AliasName="PRICE"/>
+  <ViewAttribute
+    Name="CostValue"
+    PrecisionRule="true"
+    EntityAttrName="CostValue"
+    EntityUsage="SrvIpdetl"
+    AliasName="COST_VALUE"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvIpdetl"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvIpdetl"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvIpdetl"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvIpdetl"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Rowid"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Rowid"
+    EntityUsage="SrvIpdetl"
+    AliasName="ROWID"/>
+  <ViewLinkAccessor
+    Name="SrvPartsPriceVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015114Link"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+</ViewObject>

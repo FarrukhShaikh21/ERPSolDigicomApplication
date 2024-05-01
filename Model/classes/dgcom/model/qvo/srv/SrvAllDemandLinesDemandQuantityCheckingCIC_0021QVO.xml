@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvAllDemandLinesDemandQuantityCheckingCIC_0021QVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.SrvAllDemandLinesDemandQuantityCheckingCIC_0021QVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_LOCATIONID"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="P_ADF_PARTID"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="P_ADF_DMDITEMID"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="P_ADF_DEMAND_QTY"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="P_ADF_DEMAND_DATE"
+    Kind="where"
+    Type="oracle.jbo.domain.Date"/>
+  <SQLQuery><![CDATA[select 1 PK, VW_STOCK.STOCK,VW_CONS.CONS,VW_PEND.PEND,VW_DEMAND.DEMANDD,  
+       CASE   
+         WHEN  VW_CONS.CONS>0 AND VW_STOCK.STOCK >=VW_CONS.CONS then  
+           'Stock quantity must be less then your month consumption.'  
+         WHEN   (VW_CONS.CONS>5 AND VW_DEMAND.DEMANDD > (VW_CONS.CONS-VW_PEND.PEND))   
+                OR  
+                (VW_CONS.CONS<=5 AND VW_DEMAND.DEMANDD>(5-VW_PEND.PEND)) then  
+          'Demand quantity must be equal or less then '||(VW_CONS.CONS-VW_PEND.PEND)||' because of your month consumption.'  
+         WHEN VW_CONS.CONS=0 and VW_DEMAND.DEMANDD>(5-VW_PEND.PEND) then  
+           'Demand quantity must be equal or less then '||(5-VW_PEND.PEND)||' because your month consumption is zero.'  
+         WHEN VW_CONS.CONS=0 and (5-VW_PEND.PEND) <=0 THEN    
+          'Your month consumption is zero and already pending demand qunatity is '||VW_PEND.PEND||' so you can not demand more.'        
+         WHEN  VW_DEMAND.DEMANDD<=0 THEN  
+           'Invalid Quantity'   
+         else  
+           '0'    
+          END DEMAND_MESSAGE            
+ FROM             
+(  
+      select NVL(sum(stk.qty_on_hand),0)STOCK  
+      from in_store_parts stk, all_stores s, all_locations l  
+      where stk.storeid = s.storeid  
+        and s.locationid = l.locationid   
+        and store_trans_type_id = '001'  
+        and s.locationid = :P_ADF_LOCATIONID  
+        and stk.partid=:P_ADF_PARTID  
+)VW_STOCK,  
+(  
+      select NVL(sum(d.qty),0)  CONS  
+	    from srv_jobsolution m, SRV_JSPARTS d, SRV_IssueDetail i  
+	    where m.posted='Y'   
+	      and m.locationid = :P_ADF_LOCATIONID  
+	      and i.partid=:P_ADF_PARTID  
+	      and m.jsolution_id=d.jsolution_id  
+	      and d.issuedetlid=i.issuedetlid  
+	      and m.js_date between :P_ADF_DEMAND_DATE-30 and :P_ADF_DEMAND_DATE  
+        )VW_CONS,  
+          
+     (     
+	    select NVL(sum(NVL(d.Demand_Qty, 0)-(nvl(d.Used_Qty,0)+nvl(d.Cancel_QTY,0))) ,0) PEND  
+	    from ALL_DEMAND_NOTE m, ALL_DEMAND_LINES d  
+	    where m.demand_id=d.demand_id  
+	      and m.locationid = :P_ADF_LOCATIONID  
+	      and d.partid=:P_ADF_PARTID  
+	      and d.DmdItemId <> nvl(:P_ADF_DMDITEMID,'X')  
+	      and m.Dmd_For = 'P'  
+	      and m.DemandStatus not in ('CA','CO')  
+	      and m.demandtype = 'I'  
+	      and (NVL(d.Demand_Qty, 0)-(nvl(d.Used_Qty,0)+nvl(d.Cancel_QTY,0))) >0  
+        ) VW_PEND ,  
+        (  
+        SELECT SUM(:P_ADF_DEMAND_QTY) DEMANDD FROM DUAL  
+        )VW_DEMAND]]></SQLQuery>
+  <ViewAttribute
+    Name="Pk"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PK"
+    Expression="PK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Stock"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="STOCK"
+    Expression="STOCK"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Cons"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="CONS"
+    Expression="CONS"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Pend"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="PEND"
+    Expression="PEND"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Demandd"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DEMANDD"
+    Expression="DEMANDD"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DemandMessage"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="138"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="DEMAND_MESSAGE"
+    Expression="DEMAND_MESSAGE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="138"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Pk"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

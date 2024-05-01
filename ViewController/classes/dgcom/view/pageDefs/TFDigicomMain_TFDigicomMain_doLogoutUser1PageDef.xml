@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68"
+                id="TFDigicomMain_TFDigicomMain_doLogoutUser1PageDef" Package="dgcom.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="doLogoutUser" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doLogoutUser"
+                  IsViewObjectMethod="true" DataControl="modLoginDataControl"
+                  InstanceName="data.modLoginDataControl.SysUsersVO1"
+                  ReturnName="data.modLoginDataControl.methodResults.doLogoutUser_modLoginDataControl_SysUsersVO1_doLogoutUser_result"/>
+  </bindings>
+</pageDefinition>

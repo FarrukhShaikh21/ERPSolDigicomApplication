@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0056PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvJobtypesRO" RangeSize="25" DataControl="modServiceReportsDataControl"
+              id="SrvJobtypesROIterator"/>
+    <iterator Binds="SrvSymptomsRO" RangeSize="-1" DataControl="modServiceReportsDataControl"
+              id="SrvSymptomsROIterator"/>
+    <iterator Binds="SoProductBrandsRO" RangeSize="25" DataControl="modServiceReportsDataControl"
+              id="SoProductBrandsROIterator"/>
+    <iterator Binds="SrvFaultsRO" RangeSize="-1" DataControl="modServiceReportsDataControl" id="SrvFaultsROIterator"/>
+    <iterator Binds="SrvReasonsRO" RangeSize="25" DataControl="modServiceReportsDataControl" id="SrvReasonsROIterator"/>
+    <iterator id="SysReportConditionDetailROIterator" Binds="SysReportConditionDetailRO"
+              DataControl="modServiceReportsDataControl" RangeSize="25"/>
+    <iterator Binds="SrvReportBlockQueryRO" RangeSize="25" DataControl="modServiceReportsDataControl"
+              id="SrvReportBlockQueryROIterator"/>
+    <iterator id="SysReportParameterROIterator" Binds="SysReportParameterRO" DataControl="modServiceReportsDataControl"
+              RangeSize="25"/>
+    <iterator Binds="SrvDealersRO" RangeSize="-1" DataControl="modServiceReportsDataControl" id="SrvDealersROIterator"/>
+    <iterator Binds="SrvTechnicianRO" RangeSize="-1" DataControl="modServiceReportsDataControl"
+              id="SrvTechnicianROIterator"/>
+    <iterator Binds="SysUserStoreRO" RangeSize="25" DataControl="modServiceReportsDataControl"
+              id="SysUserStoreROIterator"/>
+    <iterator Binds="SrvPartcategoryRO" RangeSize="25" DataControl="modServiceReportsDataControl"
+              id="SrvPartcategoryROIterator"/>
+    <iterator Binds="PuSuppliersRO" RangeSize="25" DataControl="modServiceReportsDataControl"
+              id="PuSuppliersROIterator"/>
+    <iterator Binds="InItemsVORO" RangeSize="-1" DataControl="modServiceReportsDataControl" id="InItemsVOROIterator"/>
+    <iterator Binds="InPartsRO" RangeSize="-1" DataControl="modServiceReportsDataControl" id="InPartsROIterator"/>
+    <iterator Binds="WarrantyTypeRO" RangeSize="25" DataControl="modServiceReportsDataControl"
+              id="WarrantyTypeROIterator"/>
+    <iterator Binds="JobStatusRO" RangeSize="25" DataControl="modServiceReportsDataControl" id="JobStatusROIterator"/>
+    <iterator Binds="SysUsersRO" RangeSize="-1" DataControl="modServiceReportsDataControl" id="SysUsersROIterator"/>
+    <iterator Binds="SysUsersCreatedByRO" RangeSize="-1" DataControl="modServiceReportsDataControl"
+              id="SysUsersCreatedByROIterator"/>
+    <iterator Binds="WarrantyTypeReceiveInRO" RangeSize="25" DataControl="modServiceReportsDataControl"
+              id="WarrantyTypeReceiveInROIterator"/>
+    <iterator Binds="WarrantyTypeChangeInRO" RangeSize="25" DataControl="modServiceReportsDataControl"
+              id="WarrantyTypeChangeInROIterator"/>
+    <iterator Binds="SrvTechnicianJobSolutionRO" RangeSize="25" DataControl="modServiceReportsDataControl"
+              id="SrvTechnicianJobSolutionROIterator"/>
+    <iterator Binds="SrvQcRO" RangeSize="25" DataControl="modServiceReportsDataControl" id="SrvQcROIterator"/>
+    <iterator Binds="AllCitiesRO" RangeSize="-1" DataControl="modServiceReportsDataControl" id="AllCitiesROIterator"/>
+    <iterator Binds="InStoreTransTypeRO" RangeSize="25" DataControl="modServiceReportsDataControl"
+              id="InStoreTransTypeROIterator"/>
+    <iterator Binds="SrvJobStatusInJobSolutionRO" RangeSize="25" DataControl="modServiceReportsDataControl"
+              id="SrvJobStatusInJobSolutionROIterator"/>
+  </executables>
+  <bindings>
+    <list IterBinding="SrvJobtypesROIterator" ListOperMode="multiSelect" ListIter="SrvJobtypesROIterator"
+          id="SrvJobtypesRO" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Jobtypeid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Jobtypeid"/>
+        <Item Value="Description"/>
+
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="SrvSymptomsROIterator" ListOperMode="multiSelect" ListIter="SrvSymptomsROIterator"
+          id="SrvSymptomsRO" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="SymptomId"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Description"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="SrvReportBlockQueryROIterator" StaticList="false" Uses="LovRegion" id="Regionid"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SrvReportBlockQueryROIterator" id="FromDate">
+      <AttrNames>
+        <Item Value="FromDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvReportBlockQueryROIterator" id="ToDate">
+      <AttrNames>
+        <Item Value="ToDate"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SrvReportBlockQueryROIterator" StaticList="false" Uses="LovSysUserWightsWiseLocation"
+          id="Locationid" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SoProductBrandsROIterator" ListOperMode="multiSelect" ListIter="SoProductBrandsROIterator"
+          id="SoProductBrandsRO" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Pbrandid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Pbrandid"/>
+        <Item Value="BrandName"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="SrvFaultsROIterator" ListOperMode="multiSelect" ListIter="SrvFaultsROIterator" id="SrvFaultsRO"
+          SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Faultid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Faultid"/>
+        <Item Value="Description"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="SrvReasonsROIterator" ListOperMode="multiSelect" ListIter="SrvReasonsROIterator"
+          id="SrvReasonsRO" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Reasonid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Reasonid"/>
+        <Item Value="Description"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="SrvReportBlockQueryROIterator" StaticList="false" Uses="LovSysProgram" id="ReportId"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SrvReportBlockQueryROIterator" id="ReportExeName">
+      <AttrNames>
+        <Item Value="ReportExeName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SrvDealersROIterator" ListOperMode="multiSelect" ListIter="SrvDealersROIterator"
+          id="SrvDealersRO" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="DealerId"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Name"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="SrvTechnicianROIterator" ListOperMode="multiSelect" ListIter="SrvTechnicianROIterator"
+          id="SrvTechnicianRO" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Technicianid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Techician"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="SysUserStoreROIterator" ListOperMode="multiSelect" ListIter="SysUserStoreROIterator"
+          id="SysUserStoreRO" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Storeid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="StoreName"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="SrvPartcategoryROIterator" ListOperMode="multiSelect" ListIter="SrvPartcategoryROIterator"
+          id="SrvPartcategoryRO" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Partcatid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Description"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="PuSuppliersROIterator" ListOperMode="multiSelect" ListIter="PuSuppliersROIterator"
+          id="PuSuppliersRO" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Supplierid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="SuppName"/>
+      </ListDisplayAttrNames>
+    </list>
+    <listOfValues IterBinding="SrvReportBlockQueryROIterator" StaticList="false" Uses="LovInItems" id="Itemid"/>
+    <attributeValues IterBinding="SrvReportBlockQueryROIterator" id="txtModelName">
+      <AttrNames>
+        <Item Value="txtModelName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="InItemsVOROIterator" ListOperMode="multiSelect" ListIter="InItemsVOROIterator" id="InItemsVORO"
+          SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Itemid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="ModelNo"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="InPartsROIterator" ListOperMode="multiSelect" ListIter="InPartsROIterator" id="InPartsRO"
+          SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Partid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Description"/>
+        <Item Value="Partno"/>
+      </ListDisplayAttrNames>
+    </list>
+    <listOfValues IterBinding="SrvReportBlockQueryROIterator" StaticList="false" Uses="LovInParts" id="txtPartName"/>
+    <attributeValues IterBinding="SrvReportBlockQueryROIterator" id="Partid">
+      <AttrNames>
+        <Item Value="Partid"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="WarrantyTypeROIterator" ListOperMode="multiSelect" ListIter="WarrantyTypeROIterator"
+          id="WarrantyTypeRO" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Description"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="JobStatusROIterator" ListOperMode="multiSelect" ListIter="JobStatusROIterator" id="JobStatusRO"
+          SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="StatusID"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="StatusDescription"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="SysUsersROIterator" ListOperMode="multiSelect" ListIter="SysUsersROIterator" id="SysUsersRO"
+          SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Userid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Userid"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="SysUsersCreatedByROIterator" ListOperMode="multiSelect" ListIter="SysUsersCreatedByROIterator"
+          id="SysUsersCreatedByRO" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Userid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Userid"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="WarrantyTypeReceiveInROIterator" ListOperMode="multiSelect"
+          ListIter="WarrantyTypeReceiveInROIterator" id="WarrantyTypeReceiveInRO" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Id"/>
+        <Item Value="Description"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="WarrantyTypeChangeInROIterator" ListOperMode="multiSelect"
+          ListIter="WarrantyTypeChangeInROIterator" id="WarrantyTypeChangeInRO" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Id"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Id"/>
+        <Item Value="Description"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="SrvTechnicianJobSolutionROIterator" ListOperMode="multiSelect"
+          ListIter="SrvTechnicianJobSolutionROIterator" id="SrvTechnicianJobSolutionRO"
+          SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Technicianid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Techician"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="SrvQcROIterator" ListOperMode="multiSelect" ListIter="SrvQcROIterator" id="SrvQcRO"
+          SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Qcid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Description"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="SrvReportBlockQueryROIterator" StaticList="false" Uses="LovSysUserRightsWiseLocationTo"
+          id="ToLocationid" DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="AllCitiesROIterator" ListOperMode="multiSelect" ListIter="AllCitiesROIterator" id="AllCitiesRO"
+          SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Cityid"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="CityName"/>
+      </ListDisplayAttrNames>
+    </list>
+    <list IterBinding="SrvReportBlockQueryROIterator" StaticList="false" Uses="LovAllToStore" id="ToStoreid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SrvReportBlockQueryROIterator" StaticList="false" Uses="LovAllStore" id="Storeid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="SrvReportBlockQueryROIterator" id="txtAllias">
+      <AttrNames>
+        <Item Value="txtAllias"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="InStoreTransTypeROIterator" ListOperMode="multiSelect" ListIter="InStoreTransTypeROIterator"
+          id="InStoreTransTypeRO" SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="StoreTransTypeId"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Description"/>
+      </ListDisplayAttrNames>
+    </list>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceReportsDataControl"/>
+    <list IterBinding="SrvReportBlockQueryROIterator" StaticList="false" Uses="LovSrvComcategory" id="Compcatid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SrvReportBlockQueryROIterator" StaticList="false" Uses="LovSrvCallAgent" id="Agentid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <list IterBinding="SrvJobStatusInJobSolutionROIterator" ListOperMode="multiSelect"
+          ListIter="SrvJobStatusInJobSolutionROIterator" id="SrvJobStatusInJobSolutionRO"
+          SelectItemValueMode="ListObject">
+      <AttrNames>
+        <Item Value="Jsstatus"/>
+      </AttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Jsstatus"/>
+      </ListDisplayAttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

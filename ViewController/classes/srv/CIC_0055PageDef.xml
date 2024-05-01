@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0055PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvJobreturnCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobreturnCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvJobretdetlDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvJobretdetlDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvJobreturnFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvJobreturnCRUDIterator" id="SrvJobreturnFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvJobreturnCRUDIterator" id="Jobretid">
+      <AttrNames>
+        <Item Value="Jobretid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobreturnCRUDIterator" id="Jrdate">
+      <AttrNames>
+        <Item Value="Jrdate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobreturnCRUDIterator" id="Locationid">
+      <AttrNames>
+        <Item Value="Locationid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvJobreturnCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvJobreturnCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvJobreturnCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvJobreturnCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvJobreturnCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <attributeValues IterBinding="SrvJobreturnCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvJobreturnCRUDIterator" StaticList="false" Uses="LovToAllLocations" id="Tolocationid"/>
+    <tree IterBinding="SrvJobretdetlDETCRUDIterator" id="SrvJobretdetlDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvJobretdetlVO" Name="SrvJobretdetlDETCRUD0">
+        <AttrNames>
+          <Item Value="Jobcardno"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvJobretdetlDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createWithParams" InstanceName="modServiceTransactionsDataControl.SrvJobretdetlDETCRUD"
+            DataControl="modServiceTransactionsDataControl">
+      <NamedData NDName="Jobretid" NDValue="#{bindings.Jobretid.inputValue}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SrvJobretdetlDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <methodAction id="doSubmitJobReturn" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doSubmitJobReturn"
+                  IsViewObjectMethod="true" DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobreturnCRUD"/>
+    <methodAction id="doCreateNewJobReturnRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewJobReturnRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobreturnCRUD"/>
+    <methodAction id="doCreateNewJobRetDetRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewJobRetDetRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvJobretdetlDETCRUD"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.doCreateNewJobRetDetRow_modServiceTransactionsDataControl_SrvJobretdetlDETCRUD_doCreateNewJobRetDetRow_result"/>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="InStoreTransTypeVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  SelectList="InStoreTransType.STORE_TRANS_TYPE_ID, 
+       InStoreTransType.DESCRIPTION, 
+       InStoreTransType.CREATEDBY, 
+       InStoreTransType.CREATED_DATE, 
+       InStoreTransType.MODIFIEDBY, 
+       InStoreTransType.MODIFIED_DATE, 
+       InStoreTransType.SHORT_NAME"
+  FromList="IN_STORE_TRANS_TYPE InStoreTransType"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.stand.DigicomViewRowImpl"
+  ComponentClass="dgcom.model.stand.DigicomViewObjectImpl"
+  OrderBy="InStoreTransType.DESCRIPTION">
+  <DesignTime>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+  </DesignTime>
+  <EntityUsage
+    Name="InStoreTransType"
+    Entity="dgcom.model.eo.inv.InStoreTransType"/>
+  <ViewAttribute
+    Name="StoreTransTypeId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="StoreTransTypeId"
+    EntityUsage="InStoreTransType"
+    AliasName="STORE_TRANS_TYPE_ID"/>
+  <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="InStoreTransType"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="InStoreTransType"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="InStoreTransType"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="InStoreTransType"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="InStoreTransType"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="ShortName"
+    PrecisionRule="true"
+    EntityAttrName="ShortName"
+    EntityUsage="InStoreTransType"
+    AliasName="SHORT_NAME"/>
+</ViewObject>

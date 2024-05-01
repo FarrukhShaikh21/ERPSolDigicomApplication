@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0028PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SrvIssuereturnCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvIssuereturnCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvIretdetailCRUDDET" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvIretdetailCRUDDETIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvIssuereturnFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvIssuereturnCRUDIterator" id="SrvIssuereturnFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvIssuereturnCRUDIterator" id="Issueretid">
+      <AttrNames>
+        <Item Value="Issueretid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvIssuereturnCRUDIterator" id="Retdate">
+      <AttrNames>
+        <Item Value="Retdate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvIssuereturnCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvIssuereturnCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvIssuereturnCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvIssuereturnCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvIssuereturnCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <attributeValues IterBinding="SrvIssuereturnCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvIssuereturnCRUDIterator" StaticList="false" Uses="LovSrvIssueReturnSrvIssueNo"
+                  id="IssueId"/>
+    <attributeValues IterBinding="SrvIssuereturnCRUDIterator" id="txtJobcardno">
+      <AttrNames>
+        <Item Value="txtJobcardno"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="SrvIretdetailCRUDDETIterator" id="SrvIretdetailCRUDDET">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvIretdetailVO" Name="SrvIretdetailCRUDDET0">
+        <AttrNames>
+          <Item Value="Issuedetlid"/>
+          <Item Value="Qty"/>
+          <Item Value="RejectQty"/>
+          <Item Value="Storeid"/>
+          <Item Value="txtStoreTransTypeId"/>
+          <Item Value="txtStoreId"/>
+          <Item Value="txtStoreName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="SrvIretdetailCRUDDETIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvIretdetailCRUDDETIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <methodAction id="doSubmitIssueReturn" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitIssueReturn" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvIssuereturnCRUD"/>
+    <listOfValues IterBinding="SrvIssuereturnCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+    <listOfValues IterBinding="SrvIssuereturnCRUDIterator" StaticList="false" Uses="LocSrvTechnicianName"
+                  id="txtTechnicianName"/>
+    <attributeValues IterBinding="SrvIssuereturnCRUDIterator" id="Technicianid">
+      <AttrNames>
+        <Item Value="Technicianid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvIretdetailCRUDDETIterator" id="txtStoreTransTypeId">
+      <AttrNames>
+        <Item Value="txtStoreTransTypeId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvIretdetailCRUDDETIterator" id="txtStoreId">
+      <AttrNames>
+        <Item Value="txtStoreId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvIretdetailCRUDDETIterator" id="RejectQty">
+      <AttrNames>
+        <Item Value="RejectQty"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,550 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvLogisticVO"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  SelectList="SrvLogistic.LOGID, 
+       SrvLogistic.LOCATIONID, 
+       SrvLogistic.FROMLOCATIONID, 
+       SrvLogistic.LOGDATE, 
+       SrvLogistic.REMARKS, 
+       SrvLogistic.POSTED, 
+       SrvLogistic.POSTEDBY, 
+       SrvLogistic.CREATEDBY, 
+       SrvLogistic.CREATED_DATE, 
+       SrvLogistic.MODIFIEDBY, 
+       SrvLogistic.MODIFIED_DATE, 
+       SrvLogistic.DOCID, 
+       SrvLogistic.DOCTYPEID, 
+       SrvLogistic.DOCTYPE, 
+       SrvLogistic.IS_MIGRATED, 
+       SrvLogistic.MIGRATED_DATE, 
+       SrvLogistic.LOGIDSEQ"
+  FromList="SRV_LOGISTIC SrvLogistic"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  RowClass="dgcom.model.vo.srv.SrvLogisticVORowImpl"
+  ComponentClass="dgcom.model.vo.srv.SrvLogisticVOImpl"
+  ComponentInterface="dgcom.model.vo.srv.common.SrvLogisticVO"
+  ClientProxyName="dgcom.model.vo.srv.client.SrvLogisticVOClient">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_objectSuperClassName" Value="dgcom.model.stand.DigicomViewObjectImpl"/>
+    <Attr Name="_rowSuperClassName" Value="dgcom.model.stand.DigicomViewRowImpl"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="AccSrvLogisticDocumentIdJobDocument"
+    ViewObjectName="dgcom.model.qvo.srv.SrvLogisticDocumentIdJobDocumentCIC_0082QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_DOCTYPEID">
+        <TransientExpression><![CDATA[Doctypeid==null?"-1":Doctypeid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[Locationid==null?"-1":Locationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_TRANSFER_DOC_TYPE">
+        <TransientExpression><![CDATA['JTrans']]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_RET_DOC_TYPE">
+        <TransientExpression><![CDATA['JRet']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSrvLogisticDocumentIdJobDocumentPendJobRec"
+    ViewObjectName="dgcom.model.qvo.srv.SrvLogisticDocumentIdJobDocumentCIC_0082QVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_DOCTYPEID">
+        <TransientExpression><![CDATA[Doctypeid==null?"-1":Doctypeid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_ADF_LOCATIONID">
+        <TransientExpression><![CDATA[Locationid==null?"-1":Locationid]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_RET_DOC_TYPE">
+        <TransientExpression><![CDATA['DPJRet']]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="P_TRANSFER_DOC_TYPE">
+        <TransientExpression><![CDATA['DPTrans']]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSysUserRightsWiseLocation"
+    ViewObjectName="dgcom.model.qvo.sys.SysUserRightsWiseLocationQVO"
+    RowLevelBinds="true">
+    <ParameterMap>
+      <PIMap Variable="P_ADF_HL">
+        <TransientExpression><![CDATA[dgcom.model.stand.DigicomClass.isOperationAllowed("HLevel")]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="AccSubmitYesNo"
+    ViewObjectName="dgcom.model.qvo.sys.YesNoQVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LovSrvLogisticDocumentIdJobDocument"
+    ListVOName="AccSrvLogisticDocumentIdJobDocument"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Docid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Fromlocationid"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Documentid"/>
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Documentid"/>
+      <Item Value="LocationDescription"/>
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSrvLogisticDocumentIdJobDocumentPendJobRec"
+    ListVOName="AccSrvLogisticDocumentIdJobDocumentPendJobRec"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Docid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="DerivedAttrNames">
+      <Item Value="Fromlocationid"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Documentid"/>
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="showAndExecute"/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSysUserRightsWiseLocation"
+    ListVOName="AccSysUserRightsWiseLocation"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Locationid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Locationid"/>
+      <Item Value="LocationDescription"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LovSubmitYesNo"
+    ListVOName="AccSubmitYesNo"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Posted"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ID"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="SrvLogistic"
+    Entity="dgcom.model.eo.srv.SrvLogistic"/>
+  <ViewAttribute
+    Name="Logid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Logid"
+    EntityUsage="SrvLogistic"
+    AliasName="LOGID"/>
+  <ViewAttribute
+    Name="Locationid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Locationid"
+    EntityUsage="SrvLogistic"
+    AliasName="LOCATIONID"
+    LOVName="LovSysUserRightsWiseLocation">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Fromlocationid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Fromlocationid"
+    EntityUsage="SrvLogistic"
+    AliasName="FROMLOCATIONID">
+    <Dependencies>
+      <Item
+        Value="Docid"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Logdate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Logdate"
+    EntityUsage="SrvLogistic"
+    AliasName="LOGDATE"/>
+  <ViewAttribute
+    Name="Remarks"
+    PrecisionRule="true"
+    EntityAttrName="Remarks"
+    EntityUsage="SrvLogistic"
+    AliasName="REMARKS"/>
+  <ViewAttribute
+    Name="Posted"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Posted"
+    EntityUsage="SrvLogistic"
+    AliasName="POSTED"
+    LOVName="LovSubmitYesNo">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Postedby"
+    PrecisionRule="true"
+    EntityAttrName="Postedby"
+    EntityUsage="SrvLogistic"
+    AliasName="POSTEDBY"/>
+  <ViewAttribute
+    Name="Createdby"
+    PrecisionRule="true"
+    EntityAttrName="Createdby"
+    EntityUsage="SrvLogistic"
+    AliasName="CREATEDBY"/>
+  <ViewAttribute
+    Name="CreatedDate"
+    PrecisionRule="true"
+    EntityAttrName="CreatedDate"
+    EntityUsage="SrvLogistic"
+    AliasName="CREATED_DATE"/>
+  <ViewAttribute
+    Name="Modifiedby"
+    PrecisionRule="true"
+    EntityAttrName="Modifiedby"
+    EntityUsage="SrvLogistic"
+    AliasName="MODIFIEDBY"/>
+  <ViewAttribute
+    Name="ModifiedDate"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedDate"
+    EntityUsage="SrvLogistic"
+    AliasName="MODIFIED_DATE"/>
+  <ViewAttribute
+    Name="Docid"
+    PrecisionRule="true"
+    EntityAttrName="Docid"
+    EntityUsage="SrvLogistic"
+    AliasName="DOCID"
+    LOVName="LovSrvLogisticDocumentIdJobDocument"
+    LOVFinder="txtLovName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <Dependencies>
+      <Item
+        Value="Locationid"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Doctypeid"
+    PrecisionRule="true"
+    EntityAttrName="Doctypeid"
+    EntityUsage="SrvLogistic"
+    AliasName="DOCTYPEID"/>
+  <ViewAttribute
+    Name="Doctype"
+    PrecisionRule="true"
+    EntityAttrName="Doctype"
+    EntityUsage="SrvLogistic"
+    AliasName="DOCTYPE"/>
+  <ViewAttribute
+    Name="IsMigrated"
+    PrecisionRule="true"
+    EntityAttrName="IsMigrated"
+    EntityUsage="SrvLogistic"
+    AliasName="IS_MIGRATED"/>
+  <ViewAttribute
+    Name="MigratedDate"
+    PrecisionRule="true"
+    EntityAttrName="MigratedDate"
+    EntityUsage="SrvLogistic"
+    AliasName="MIGRATED_DATE"/>
+  <ViewAttribute
+    Name="txtLovName"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR">
+    <TransientExpression><![CDATA[if (Doctype=='Log')
+ return 'LovSrvLogisticDocumentIdJobDocument'
+else
+ return 'LovSrvLogisticDocumentIdJobDocumentPendJobRec']]></TransientExpression>
+    <RecalcCondition><![CDATA[true]]></RecalcCondition>
+    <Dependencies>
+      <Item
+        Value="Doctype"/>
+    </Dependencies>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Logidseq"
+    PrecisionRule="true"
+    EntityAttrName="Logidseq"
+    EntityUsage="SrvLogistic"
+    AliasName="LOGIDSEQ"/>
+  <ViewCriteria
+    Name="SrvLogisticJobTypeDPLog"
+    ViewObjectName="dgcom.model.vo.srv.SrvLogisticVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SrvLogisticVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Doctype"
+        ViewAttribute="Doctype"
+        Operator="="
+        Conjunction="AND"
+        Value="DPLog"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="SrvLogisticDocTypeLogVC"
+    ViewObjectName="dgcom.model.vo.srv.SrvLogisticVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SrvLogisticVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Doctype"
+        ViewAttribute="Doctype"
+        Operator="="
+        Conjunction="AND"
+        Value="Log"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="SrvLogisticFindVC"
+    ViewObjectName="dgcom.model.vo.srv.SrvLogisticVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SrvLogisticVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Logid"
+        ViewAttribute="Logid"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="Logdate"
+        ViewAttribute="Logdate"
+        Operator="="
+        Conjunction="AND"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="Posted"
+        ViewAttribute="Posted"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Docid"
+        ViewAttribute="Docid"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+      <ViewCriteriaItem
+        Name="Doctype"
+        ViewAttribute="Doctype"
+        Operator="="
+        Conjunction="AND"
+        UpperColumns="0"
+        Required="Optional">
+        <Properties>
+          <SchemaBasedProperties>
+            <DISPLAYWIDTH
+              Value="20"/>
+          </SchemaBasedProperties>
+        </Properties>
+      </ViewCriteriaItem>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="SrvLogdetlVO"
+    ViewLink="dgcom.model.vl.srv.SysC0015177Link"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="SrvLogDetSrvJobCardNoCIC_0082QVO"
+    ViewLink="dgcom.model.vl.srv.SrvLogisticSrvLogDetSrvJobCardNoCIC_0082VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="doSubmitJobLogistic"
+      MethodName="doSubmitJobLogistic">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="doSubmitJobLogistic"
+      MethodName="doSubmitJobLogistic">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="doSubmitPendingJobLogistic"
+      MethodName="doSubmitPendingJobLogistic">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="executeEmptyRowSet"
+      MethodName="executeEmptyRowSet">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+    <Method
+      Name="doCreateNewLogisticRow"
+      MethodName="doCreateNewLogisticRow">
+      <Return
+        Name="_return_type_"
+        Type="void"/>
+    </Method>
+  </ClientInterface>
+</ViewObject>

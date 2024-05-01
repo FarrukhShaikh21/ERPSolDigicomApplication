@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="LoginPageDef"
+                Package="dgcom.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="SysUsersVO1Iterator" Binds="SysUsersVO1" DataControl="modLoginDataControl" RangeSize="25"/>
+    <iterator id="SysUsersDetail1Iterator" Binds="SysUsersDetail1" DataControl="modLoginDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SysUsersVO1Iterator" id="Userid">
+      <AttrNames>
+        <Item Value="Userid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SysUsersVO1Iterator" id="Locationid">
+      <AttrNames>
+        <Item Value="Locationid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SysUsersVO1Iterator" id="Companyid">
+      <AttrNames>
+        <Item Value="Companyid"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="checkUserRights" RequiresUpdateModel="true" Action="invokeMethod" MethodName="checkUserRights"
+                  IsViewObjectMethod="true" DataControl="modLoginDataControl"
+                  InstanceName="data.modLoginDataControl.SysUsersVO1"
+                  ReturnName="data.modLoginDataControl.methodResults.checkUserRights_modLoginDataControl_SysUsersVO1_checkUserRights_result">
+      <NamedData NDName="p_module_id" NDValue="#{TheAppBean.gotoActivity}" NDType="java.lang.String"/>
+      <NamedData NDName="p_access_type" NDValue="RESTRICT" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="SysUsersDetail1Iterator" id="HLevel">
+      <AttrNames>
+        <Item Value="HLevel"/>
+      </AttrNames>
+    </attributeValues>
+
+    <attributeValues IterBinding="SysUsersDetail1Iterator" id="Submit">
+      <AttrNames>
+        <Item Value="Submit"/>
+      </AttrNames>
+    </attributeValues>    
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68"
+                id="TFDigicomMain_TFDigicomMain_doCreateNewStockAdjDetRowPageDef" Package="dgcom.view.pageDefs"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="doCreateNewStockAdjDetRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewStockAdjDetRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvSadjustdetlDETCRUD"
+                  ReturnName="data.modServiceTransactionsDataControl.methodResults.doCreateNewStockAdjDetRow_modServiceTransactionsDataControl_SrvSadjustdetlDETCRUD_doCreateNewStockAdjDetRow_result"/>
+  </bindings>
+</pageDefinition>

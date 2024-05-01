@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvJobaction"
+  Version="12.1.3.10.47"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="SRV_JOBACTION"
+  AliasName="SrvJobaction"
+  BindingStyle="OracleName"
+  RowClass="dgcom.model.eo.srv.SrvJobactionImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access|DML"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="JsolutionId"
+    Precision="15"
+    ColumnName="JSOLUTION_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBACTION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ActionId"
+    Precision="15"
+    ColumnName="ACTION_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBACTION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Dependencies>
+      <Item
+        Value="txtActionName"/>
+    </Dependencies>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobaction.ActionId_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Createdby"
+    Precision="20"
+    ColumnName="CREATEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBACTION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedDate"
+    ColumnName="CREATED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_JOBACTION"/>
+  <Attribute
+    Name="Modifiedby"
+    Precision="20"
+    ColumnName="MODIFIEDBY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SRV_JOBACTION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifiedDate"
+    ColumnName="MODIFIED_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="SRV_JOBACTION"/>
+  <Attribute
+    Name="Rowid"
+    IsUpdateable="false"
+    ColumnName="ROWID"
+    SQLType="ROWID"
+    Type="oracle.jbo.domain.RowID"
+    ColumnType="ROWID"
+    TableName="SRV_JOBACTION"
+    PrimaryKey="true"/>
+  <Attribute
+    Name="txtActionName"
+    Precision="80"
+    ColumnName="TXT_ACTION_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    IsPersistent="false"
+    IsQueriable="false">
+    <TransientExpression><![CDATA[SrvAction?.Description]]></TransientExpression>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.eo.srv.SrvJobaction.txtActionName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Jsolutionseq"
+    ColumnName="JSOLUTIONSEQ"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SRV_JOBACTION"/>
+  <AccessorAttribute
+    Name="SrvJobsolution"
+    Association="dgcom.model.asso.srv.SysC0015132Assoc"
+    AssociationEnd="dgcom.model.asso.srv.SysC0015132Assoc.SrvJobsolution"
+    AssociationOtherEnd="dgcom.model.asso.srv.SysC0015132Assoc.SrvJobaction"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="SrvAction"
+    Association="dgcom.model.asso.srv.SrvActionSrvJobActionActionIdAsso"
+    AssociationEnd="dgcom.model.asso.srv.SrvActionSrvJobActionActionIdAsso.SrvAction"
+    AssociationOtherEnd="dgcom.model.asso.srv.SrvActionSrvJobActionActionIdAsso.SrvJobaction"
+    Type="dgcom.model.eo.srv.SrvActionImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC0014204">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0014204"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobaction.JsolutionId"/>
+      <Item Value="dgcom.model.eo.srv.SrvJobaction.ActionId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015131">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0013971"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015131"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobaction.ActionId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0015132">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0014102"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0015132"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobaction.JsolutionId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="fk_SrvJobaction">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0013971"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="FK_SRV_JOBACTION"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.eo.srv.SrvJobaction.ActionId"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

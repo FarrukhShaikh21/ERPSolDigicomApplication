@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0012PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvInvoiceVOCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvInvoiceVOCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="SrvInvItemsDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvInvItemsDETCRUDIterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="DocGlTransTypeDDETRO" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="DocGlTransTypeDDETROIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvInvoiceFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvInvoiceVOCRUDIterator" id="SrvInvoiceFindVCQuery"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvInvoiceVOCRUDIterator" id="SrvInvno">
+      <AttrNames>
+        <Item Value="SrvInvno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvInvoiceVOCRUDIterator" id="InvDate">
+      <AttrNames>
+        <Item Value="InvDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvInvoiceVOCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvInvoiceVOCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvInvoiceVOCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <attributeValues IterBinding="SrvInvoiceVOCRUDIterator" id="ReplaceAmount">
+      <AttrNames>
+        <Item Value="ReplaceAmount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvInvoiceVOCRUDIterator" id="Charges">
+      <AttrNames>
+        <Item Value="Charges"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvInvoiceVOCRUDIterator" id="ChrgesDiscount">
+      <AttrNames>
+        <Item Value="ChrgesDiscount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvInvoiceVOCRUDIterator" id="PartDiscount">
+      <AttrNames>
+        <Item Value="PartDiscount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvInvoiceVOCRUDIterator" id="Rcptmode">
+      <AttrNames>
+        <Item Value="Rcptmode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvInvoiceVOCRUDIterator" id="Referno">
+      <AttrNames>
+        <Item Value="Referno"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="SrvInvoiceVOCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvInvoiceVOCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <attributeValues IterBinding="SrvInvoiceVOCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="SrvInvoiceVOCRUDIterator" StaticList="false" Uses="LovSrvInvoiceReasonId" id="Reasonid"
+          DTSupportsMRU="true" SelectItemValueMode="ListObject"/>
+    <action IterBinding="SrvInvItemsDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvInvItemsDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree IterBinding="SrvInvItemsDETCRUDIterator" id="SrvInvItemsDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvInvItemsVO" Name="SrvInvItemsDETCRUD0">
+        <AttrNames>
+          <Item Value="Partid"/>
+          <Item Value="Qty"/>
+          <Item Value="Rate"/>
+          <Item Value="txtAmount"/>
+          <Item Value="SrvInvno"/>
+          <Item Value="txtPartNo"/>
+          <Item Value="txtPartName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="SrvInvoiceVOCRUDIterator" StaticList="false" Uses="LovSrvInvoiceJobCardNo"
+                  id="Jobcardno"/>
+    <attributeValues IterBinding="SrvInvoiceVOCRUDIterator" id="txtSumPartCost">
+      <AttrNames>
+        <Item Value="txtSumPartCost"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvInvoiceVOCRUDIterator" id="txtDiscount">
+      <AttrNames>
+        <Item Value="txtDiscount"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvInvoiceVOCRUDIterator" id="txtTotal">
+      <AttrNames>
+        <Item Value="txtTotal"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvInvoiceVOCRUDIterator" id="txtReceived">
+      <AttrNames>
+        <Item Value="txtReceived"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doSubmitServiceInvoice" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitServiceInvoice" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvInvoiceVOCRUD"/>
+    <tree IterBinding="DocGlTransTypeDDETROIterator" id="DocGlTransTypeDDETRO">
+      <nodeDefinition DefName="dgcom.model.vo.gl.DocGlTransTypeDVO" Name="DocGlTransTypeDDETRO0">
+        <AttrNames>
+          <Item Value="AccountCode"/>
+          <Item Value="CostCenter"/>
+          <Item Value="DbtAmount"/>
+          <Item Value="CrdAmount"/>
+          <Item Value="Narration"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="SrvInvoiceVOCRUDIterator" StaticList="false" Uses="LovSysUserRightsWiseLocation"
+                  id="Locationid"/>
+  </bindings>
+</pageDefinition>

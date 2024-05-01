@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SrvDiscountNoteSrvInvoiceIDCIC_0201QVO"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.qvo.srv.SrvDiscountNoteSrvInvoiceIDCIC_0201QVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="P_ADF_LOCATIONID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <Variable
+    Name="P_ADF_DEALER_ID"
+    Kind="where"
+    Type="java.lang.String">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYHINT
+          Value="Hide"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Variable>
+  <SQLQuery><![CDATA[select SRV_INVNO,ReferNo,JOBCARDNO,charges,P_cost,discount,InvoiceAmount  ,jobdate 
+from    
+(   
+SELECT m.SRV_INVNO, m.ReferNo, m.JOBCARDNO, m.charges, d.P_cost, m.discount,                 
+to_number((m.inv_amnt - (nvl(m.Rece_Amnt,0)+nvl(m.Discount,0)+nvl(m.Rece_Disc,0)+nvl(U.U_Amnt,0)))) InvoiceAmount ,j.jobdate              
+FROM SRV_INVOICE m, SRV_JOBCARD j,                
+	(select SRV_INVNO, sum(Qty*rate) P_cost                 
+	 from SRV_Inv_Items                
+	 group by SRV_INVNO) d,                
+                
+       (select documentid, sum(nvl(Amnt,0)) U_Amnt                 
+	from                
+		(select documentid, (nvl(amount,0)+nvl(discount,0)) Amnt                  
+    		 from SRV_Receipt_Master m, SRV_RECEIPT_DETL d                
+    		 where m.receipt_no=d.receipt_no and m.posted='N'                 
+		   and d.doc_type_id = 'SRINV'                 
+                
+		 Union All                
+		 select d.documentid, nvl(Disc_Amount,0) Amnt                 
+    		 from SRV_DISCOUNT_NOTE m, SRV_DN_DETAIL d                
+    		 where m.DNOTE_ID=d.DNOTE_ID and m.posted='N'                 
+		   and d.doc_type_id = 'SRINV')                
+    	group by documentid) U                
+                
+WHERE (m.JOBCARDNO = j.JOBCARDNO)                 
+  and (m.SRV_INVNO = d.SRV_INVNO(+))                
+  and (m.SRV_INVNO = U.documentid(+))                
+  and m.LOCATIONID = :P_ADF_LOCATIONID                
+  and j.DEALER_ID = :P_ADF_DEALER_ID                
+  and m.RCPTMODE = 'Credit'                
+  and (m.inv_amnt - (nvl(m.Rece_Amnt,0)+nvl(m.Discount,0)+nvl(m.Rece_Disc,0)+nvl(U_Amnt,0))) >0                
+Order by m.inv_date   
+)]]></SQLQuery>
+  <ViewAttribute
+    Name="SrvInvno"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="SRV_INVNO"
+    Expression="SRV_INVNO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Referno"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="REFERNO"
+    Expression="REFERNO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Jobcardno"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="15"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="JOBCARDNO"
+    Expression="JOBCARDNO"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="15"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvDiscountNoteSrvInvoiceIDCIC_0201QVO.Jobcardno_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Charges"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="CHARGES"
+    Expression="CHARGES"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PCost"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="P_COST"
+    Expression="P_COST"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Discount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="12"
+    Scale="2"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DISCOUNT"
+    Expression="DISCOUNT"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Invoiceamount"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="INVOICEAMOUNT"
+    Expression="INVOICEAMOUNT"
+    SQLType="NUMERIC">
+    <Properties>
+      <SchemaBasedProperties>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvDiscountNoteSrvInvoiceIDCIC_0201QVO.Invoiceamount_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Jobdate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    AliasName="JOBDATE"
+    Expression="JOBDATE"
+    SQLType="DATE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="dgcom.model.qvo.srv.SrvDiscountNoteSrvInvoiceIDCIC_0201QVO.Jobdate_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="SrvInvno"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

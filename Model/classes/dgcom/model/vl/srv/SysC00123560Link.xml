@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SysC00123560Link"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  EntityAssociation="dgcom.model.asso.srv.SysC00123560Assoc">
+  <ViewLinkDefEnd
+    Name="SrvJobassignagentVO"
+    Cardinality="1"
+    Source="true"
+    Owner="dgcom.model.vo.srv.SrvJobassignagentVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SrvJobassignagentVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+      <Attr Name="_accessor" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.SrvJobassignagentVO.JaaId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="SrvJaadetlVO"
+    Cardinality="-1"
+    Owner="dgcom.model.vo.srv.SrvJaadetlVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="SrvJaadetlVO"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="dgcom.model.vo.srv.SrvJaadetlVO.JaaId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

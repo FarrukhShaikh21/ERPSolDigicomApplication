@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.2.66.68" id="CIC_0065PageDef" Package="srv">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="dgcom.view.pageDefs.tmpDigicomTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="SrvStnStoreCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvStnStoreCRUDIterator" ChangeEventPolicy="ppr"/>
+    <searchRegion Criteria="SrvStnFindVC" Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer"
+                  Binds="SrvStnStoreCRUDIterator" id="SrvStnFindVCQuery"/>
+    <iterator Binds="SrvStnpartsStoreDETCRUD" RangeSize="25" DataControl="modServiceTransactionsDataControl"
+              id="SrvStnpartsStoreDETCRUDIterator" ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="SrvStnStoreCRUDIterator" id="Stnno">
+      <AttrNames>
+        <Item Value="Stnno"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStnStoreCRUDIterator" id="Stndate">
+      <AttrNames>
+        <Item Value="Stndate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="SrvStnStoreCRUDIterator" id="Locationid">
+      <AttrNames>
+        <Item Value="Locationid"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvStnStoreCRUDIterator" StaticList="false" Uses="LOV_Tolocationid" id="Tolocationid"/>
+    <action IterBinding="SrvStnStoreCRUDIterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="SrvStnStoreCRUDIterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="SrvStnStoreCRUDIterator" id="CreateInsert" RequiresUpdateModel="true"
+            Action="createWithParams" InstanceName="modServiceTransactionsDataControl.SrvStnStoreCRUD"
+            DataControl="modServiceTransactionsDataControl">
+      <NamedData NDName="Stntype" NDValue="#{'STORE'}" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="SrvStnStoreCRUDIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="modServiceTransactionsDataControl"/>
+    <attributeValues IterBinding="SrvStnStoreCRUDIterator" id="Posted">
+      <AttrNames>
+        <Item Value="Posted"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doSubmitSrvStnStore" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doSubmitSrvStnStore" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvStnStoreCRUD"/>
+    <action IterBinding="SrvStnpartsStoreDETCRUDIterator" id="CreateInsert1" RequiresUpdateModel="true"
+            Action="createInsertRow"/>
+    <action IterBinding="SrvStnpartsStoreDETCRUDIterator" id="Delete1" RequiresUpdateModel="false"
+            Action="removeCurrentRow"/>
+    <tree IterBinding="SrvStnpartsStoreDETCRUDIterator" id="SrvStnpartsStoreDETCRUD">
+      <nodeDefinition DefName="dgcom.model.vo.srv.SrvStnpartsVO" Name="SrvStnpartsStoreDETCRUD0">
+        <AttrNames>
+          <Item Value="Stndetlid"/>
+          <Item Value="Stnno"/>
+          <Item Value="Fromstoreid"/>
+          <Item Value="Partid"/>
+          <Item Value="txtPartID"/>
+          <Item Value="txtPartName"/>
+          <Item Value="Stnqty"/>
+          <Item Value="Tostoreid"/>
+          <Item Value="Dmditemid"/>
+          <Item Value="Itemid"/>
+          <Item Value="Rate"/>
+          <Item Value="txtLovName"/>
+          <Item Value="txtStock"/>
+          <Item Value="txtPartNameStnStore"/>
+          <Item Value="txtFromStoreName"/>
+          <Item Value="txtToStoreName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <listOfValues IterBinding="SrvStnStoreCRUDIterator" StaticList="false" Uses="LovSysUserStoreUserWiseFromStoreName"
+                  id="txtFromStoreName"/>
+    <attributeValues IterBinding="SrvStnStoreCRUDIterator" id="txtFromStore">
+      <AttrNames>
+        <Item Value="txtFromStore"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvStnStoreCRUDIterator" StaticList="false" Uses="LovSrvPartCategoryName"
+                  id="txtCatName"/>
+    <attributeValues IterBinding="SrvStnStoreCRUDIterator" id="txtCatID">
+      <AttrNames>
+        <Item Value="txtCatID"/>
+      </AttrNames>
+    </attributeValues>
+    <listOfValues IterBinding="SrvStnStoreCRUDIterator" StaticList="false" Uses="LovInItemsModelName"
+                  id="txtModelName"/>
+    <attributeValues IterBinding="SrvStnStoreCRUDIterator" id="txtModelID">
+      <AttrNames>
+        <Item Value="txtModelID"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="doCreateNewStnRow" RequiresUpdateModel="true" Action="invokeMethod" MethodName="doCreateNewStnRow"
+                  IsViewObjectMethod="true" DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvStnStoreCRUD"/>
+    <methodAction id="doCreateNewStnDetRow" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="doCreateNewStnDetRow" IsViewObjectMethod="true"
+                  DataControl="modServiceTransactionsDataControl"
+                  InstanceName="data.modServiceTransactionsDataControl.SrvStnpartsStoreDETCRUD"/>
+    <attributeValues IterBinding="SrvStnStoreCRUDIterator" id="Remarks">
+      <AttrNames>
+        <Item Value="Remarks"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

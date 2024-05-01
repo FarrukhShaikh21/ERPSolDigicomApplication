@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="modLogin"
+  Version="12.1.2.66.68"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="dgcom.model.ams.modLogin_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="ApplicationActivityQVO1"
+    ViewObjectName="dgcom.model.qvo.ApplicationActivityQVO"/>
+  <ViewUsage
+    Name="SysUsersDetail1"
+    ViewObjectName="dgcom.model.vo.srv.SysUsersDetailVO"/>
+  <ViewUsage
+    Name="CurrentDateTimeReadOnly"
+    ViewObjectName="dgcom.model.qvo.CurrentDateTimeQVO"/>
+  <ViewUsage
+    Name="SysUsersVO1"
+    ViewObjectName="dgcom.model.vo.srv.SysUsersVO"/>
+  <ViewUsage
+    Name="SrvBlockedImeiCRUD"
+    ViewObjectName="dgcom.model.vo.srv.SrvBlockedImeiVO"/>
+  <ViewUsage
+    Name="SysProgramRO"
+    ViewObjectName="dgcom.model.vo.sys.SysProgramVO"
+    FetchMode="FETCH_ALL">
+    <ViewCriteriaUsage
+      Name="AccSysProgramByProjectIDVC"
+      FullName="dgcom.model.vo.sys.SysProgramVO.AccSysProgramByProjectIDVC"/>
+    <ViewCriteriaUsage
+      Name="SysProgramNotReports"
+      FullName="dgcom.model.vo.sys.SysProgramVO.SysProgramNotReports"/>
+    <ParameterMap>
+      <PIMap Variable="P_PROJECT_ID">
+        <TransientExpression><![CDATA["CIC"]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewUsage>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="dgcom.model.ModelBundle"/>
+  </ResourceBundle>
+</AppModule>
