@@ -404,7 +404,7 @@
                                          binding="#{backingBeanScope.backing_CIC_0012.pgl1}">
                         <af:button text="Print" id="b11" binding="#{backingBeanScope.backing_CIC_0012.b11}"
                                    action="#{backingBeanScope.backing_CIC_0012.doPrint}"
-                                   disabled="#{bindings.Posted.inputValue!=null}" accessKey="r"
+                                   disabled="#{bindings.Posted.inputValue=='N'}" accessKey="r"
                                    icon="#{resource['images:imgPrintPreview.png']}" styleClass="CRUDButton"/>
                         <af:button text="Find" id="b12" binding="#{backingBeanScope.backing_CIC_0012.b12}"
                                    icon="#{resource['images:imgFind.png']}" accessKey="i" styleClass="CRUDButton">
